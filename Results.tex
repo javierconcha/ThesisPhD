@@ -1,93 +1,99 @@
+% !TEX root=ProposalJavier.tex 
+% the previous is to reference main .bib
 %% CHAPTER
-\chapter{Results}
-\section{Synthetic Data}
-\subsection{Deep Water}
+\chapter{Initial Results}
+\label{ch:results}
+This chapter is separated in four sections. The first section explains the data collection process, giving some details in the kind of measurements taken in the field. Also, it includes a summary of the data collected at the moment of writing this document. The second section gives a brief description of the lab measurements. The atmospheric section shows preliminary results from the model-based ELM atmospheric correction method. Finally, the last section shows preliminary retrieval results over the area of study.
+% ------------------------------
+\section{Data Collection}
 
-  \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/LUT1_120re.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
+The first area of study used in this research is the Rochester Embayment in the city of Rochester, NY. This area of study includes some nearby ponds (Long and Cranberry ponds), the Genesee River plume, the Irondequoit bay and part of Lake Ontario. This area was selected because it exhibits a wide range of variability in concentration of water constituents, so the retrieval algorithm can be tested with different scenarios. \autoref{fig:0910913Sites} shows an image over this area of study for the data collection done on September, $19^{th}$, 2013  with the different sites as an example. The data collections are divided in two crews. One crew, named ``Lake crew'', is in charge of the Irondequoit Bay, Ontario near shore, Ontario off shore, Genesee River plume, Genesee River pier sites (labeled in \autoref{fig:0910913Sites} as IBayN, OntNS, OntOS, RvrPLM and RvrPIER, respectively). The other crew, named ``Ponds crew'', is in charge of the Long Pond north and south, Cranberry Pond sites (labeled in \autoref{fig:0910913Sites} as LongN, LongS and Cranb, respectively).
 
-  \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/TS1_120re.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
-  
-    \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/TS1TOA120.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
-  
-      \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/TS1TOA8.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
-  
-        \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/TS1TOA8NQ.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
-  
-          \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/TS1ELM.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
-  
-          \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/DarkBrightpxre.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
-  
-  After ELM...
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=12cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/groundtruth-sitenames-no-ends.jpg}
+  \caption{Sites in the Rochester Embayment for the water sample collection on September, $19^{th}$, 2013.\label{fig:0910913Sites} } 
+  % \vspace{1cm}
+\end{figure}
 
-  \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/SMrealretrievedELM.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
+Water samples are collected for each site in dark Nalgene bottles. Additionally, remote-sensing reflectances are measured using an ASD and a SVC instrument (one for each crew). Backscattering measurements are taken using a HydroScat-2. This measurement is taken by both crew only if the logistic of the particular day allows it. Otherwise priority is given to the Lake crew. For each site, a location is recorded using a GPS. \autoref{tab:collect} shows a summary of the data collections done in 2013 and 2014 seasons with the respective available data.
+
+\begin{table}[htb]
+  \caption{Summary of 2013 and 2014 data collections.}
+  \centering
+  \includegraphics[width=13cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/Collect1314.png}
+  \label{tab:collect}
+\end{table}
+
+% ------------------------------
+\section{Laboratory Measurements}
+
+After collection, the water samples are analyzed in laboratory. These lab measurements include concentration of CHL and TSS, absorption coefficients of CHL, TSS and CDOM. The Chlorophyll-{\it a} concentration measurements needed to be validated with measurements analyzed by a credible lab (Monroe County Environmental Laboratory). This comparison with this lab shows agreement between the measurements. \autoref{tab:collect} shows the measurements available. \todo{include references to procedures}
+
+% ------------------------------
+\section{Atmospheric Correction}
+
+Preliminary results of the model-based ELM atmospheric correction methods for different water bodies in the Rochester Embayment area are shown in \autoref{fig:waterpxs}. This figure shows the spectrum of the water pixels in reflectance values after applying the model-based ELM atmospheric correction. These curves exhibit shapes that correspond with the shapes of typical water pixels. \autoref{fig:refcomp} shows water reflectance spectra as preliminary results from the model-based ELM method (solid lines) compared with results from a traditional ELM method (dashed lines) for four different ROIs in the Rochester Embayment area (Cranberry Pond, Long Pond, and nearshore and offshore of the Lake Ontario, labeled as Cranb, LongS, OntNS and OntOS in \autoref{fig:0910913Sites}, respectively). 
+
+The traditional ELM method was performed with reflectance measurements taken in the field. A reflectance measurement taken of the sand of Charlotte Beach, Rochester, NY (labeled as SandDry in \autoref{fig:0910913Sites}) was used for the bright pixel while a reflectance measurement taken at the site OntNS was used for the dark pixel. The radiance values were taken from the corresponding ROIs in the Landsat 8 image. 
+
+As can be seen in \autoref{fig:refcomp}, the atmospheric correction algorithm proposed in this study exhibits less than one percent reflectance unit ($<0.01\Rightarrow <1\%$) of difference in comparison to the results from the traditional ELM algorithm.
+
+\begin{figure}[htb]
+  \begin{minipage}[c]{0.48\linewidth}
+    \centering
+      \includegraphics[height=6cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/NESSF14/latex/WaterPixels_2.eps}
+      \caption{Water pixel spectra after applying the model-based ELM atmospheric correction method.}
+      \label{fig:waterpxs}
+    % \vspace{1.5cm}
+    % \centerline{(a)}\medskip
+  \end{minipage}
+  \hfill
+  \begin{minipage}[d]{0.48\linewidth}
+    \centering
+      \includegraphics[height=6cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/NESSF14/latex/WaterPixelComparisonELMELMbased}
+      \caption{Comparison between traditional ELM (dashed lines) and model-based ELM (solid lines).}
+      \label{fig:refcomp}
+    % \vspace{1.5cm}
+    % \centerline{(b)}\medskip
+  \end{minipage}
+  % \caption{Water pixel spectra: (a) after atmospheric correction and (b) comparison with traditional ELM method.}
+\end{figure}
 
 
+% ------------------------------
+\section{Retrieval}
 
-  \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/CDOMrealretrievedELM.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
-  
-  
-  
-  \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/CHLrealretrievedELM.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
+Preliminary results for concentration maps for each CPA over the Rochester Embayment, Rochester, NY are shown in Figure~\ref{fig:retrievalresults}. The expected trend of having low concentration of CPAs in the offshore of Lake Ontario and higher concentrations in the nearby ponds (Long Pond and Cranberry Pond) can be seen. 
+\begin{figure}[htb]
+\centering
+\includegraphics[trim=200 100 180 0,clip,height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2014_RITResearchSymposium/Images/RetrievalResults.eps}
+   \caption{Retrieval preliminary results.}
+      \label{fig:retrievalresults}   
+\end{figure}
 
-As you can see in Figure \ref{fig:errorLUT1}...
+Comparisons between retrieved CPAs concentrations and field measurements are shown in Figure~\ref{fig:chlcomp}, Figure~\ref{fig:tsscomp} and Figure~\ref{fig:cdomcomp} for four different stations in the area of study. This comparison with field measurements showed good agreement at low concentrations but differences at higher concentrations. Ongoing work is focusing on incorporation of the IOP differences between water bodies in the LUT optimization process.
+\begin{figure}[htb]
+\centering
+    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/chlcomp.eps} 
+    \caption{Comparison between measured and retrieved chlorophyll {\it a} concentration.}
+    \label{fig:chlcomp} 
+\end{figure}     
 
-  \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_1/Images/errorCHLSMCDOM.eps}
- 	\caption{Error  \label{fig:errorLUT1}}
-  \end{figure}
+\begin{figure}[htb]
+\centering
+    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/tsscomp.eps}   
+    \caption{Comparison between measured and retrieved TSS concentration.}
+    \label{fig:tsscomp} 
+\end{figure}  
 
-\subsection{Shallow Water}
+\begin{figure}[htb]
+\centering
+    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/cdomcomp.eps}    
+    \caption{Comparison between measured and retrieved CDOM concentration.}
+    \label{fig:cdomcomp} 
+\end{figure}  
 
-As you can see in Figure \ref{fig:errorLUT2}...
-
-  \begin{figure}[H]
-	\centering
-    	\includegraphics[width=100mm]{/Users/javier/Desktop/Javier/MASTER_RIT/2011_THESIS/LUT/LUT_2/figures/error_CDOMDepthBRELM.eps}
- 	\caption{Error  \label{fig:errorLUT2}}
-  \end{figure}
-
-\subsection{Sensitivity Analysis}
-\subsection{Adding a new band to WV-2}
-
-\section{Real Data}
+% ------------------------------
+\todo{Concluding Remarks}
+% \section{Concluding Remarks}

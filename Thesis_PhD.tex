@@ -1,44 +1,74 @@
-\documentclass[11pt,reqno]{report}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-%\usepackage[paper=a4paper,dvips,top=1.5cm,left=1.5cm,right=1.5cm,
-%    foot=1cm,bottom=1.5cm]{geometry}
+% \documentclass[draft]{book}
+\documentclass[draft]{book}
 
-
-\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
-%\geometry{landscape}                % Activate for for rotated page geometry
-\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}
-\usepackage{amssymb,amsmath}
-\usepackage{mathtools}
+
 \usepackage{epstopdf}
+\usepackage{epsfig}
+
 \usepackage{float}
+\usepackage{amssymb,amsmath}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+\usepackage[makeroom]{cancel} %for cancel out in eq.
+
+\usepackage{multirow}
+\usepackage{fullpage}
+\usepackage{appendix}
+\usepackage{setspace}
+
+\usepackage[bf, small, center]{caption}
+\setlength{\belowcaptionskip}{10pt}
+
+\usepackage{longtable}
+
+\usepackage{geometry}
+\geometry{
+%  top=1.0in,  
+%  inner=1.5in,
+%  outer=1.5in,
+  bottom=1.2in,
+%  headheight=3ex, 
+  headsep=3ex,         
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO, RE]{\rightmark}
+\fancyhead[LE, RO]{\thepage}
+\fancyfoot[]{}
+%\renewcommand{\headrulewidth}{0.3pt}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+
+\usepackage[phd]{thesisfrontmatter}
+
+% *** NOTE WHICH PROGRAM GENERATED IMAGES OR WHICH POWER POINT THEY ARE FROM
+%compare methodology with script for final process
+%how much detail in methodology?
+%some sort of processing flowchart?
+%how much do we care about processing?
+
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+
+
+\usepackage{mathtools}
+
+
 \usepackage{color}
 \usepackage{soul}
-\usepackage{indentfirst}
-\setlength{\parindent}{1cm}
+
 
 
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
 \let\stdsection\chapter  
 \renewcommand\chapter{\newpage\stdsection}  
-
-
-
-
-\title{The Use of Landsat-8 for Monitoring of Fresh and Coastal Water}
-\author{
-	\textsc{Javier A. Concha}%\thanks{Contact Author}
-	\mbox{}\\
-	Center for Imaging Science\\ 
-	Rochester Institute of Technology\\
-	Rochester, NY, USA\\
-	\mbox{}\\
-	\normalsize
-		\texttt{jxc4005@rit.edu}
-	}
-\date{}                                           % Activate to display a given date or no date
-%\date{\today}
 
 %%%%%%%%%%% for Appendix
 \makeatletter
@@ -51,18 +81,22 @@
 \g@addto@macro\appendix{\let\section\appendix@section}
 \makeatother
 
-
+% Added 12-03-13 ----------------------------------------
+\usepackage{imakeidx} % to create index
+\indexsetup{othercode=\small}
+\makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
+% -------------------------------------------------------
 %%%%%%%%%%%%%%
 
 \usepackage{hyperref}
 \hypersetup{
-    bookmarks=true,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-    pdftoolbar=true,        % show Acrobat’s toolbar?
-    pdfmenubar=true,        % show Acrobat’s menu?
+    % bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat√ïs bookmarks
+    pdftoolbar=true,        % show Acrobat√ïs toolbar?
+    pdfmenubar=true,        % show Acrobat√ïs menu?
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={WV-2 In Water Component Retrieval },    % title
+    pdftitle={L8's potential for water constituents retrieval },    % title
     pdfauthor={Javier Concha},     % author
     pdfsubject={Subject},   % subject of the document
     pdfcreator={Creator},   % creator of the document
@@ -71,9 +105,9 @@
     pdfnewwindow=true,      % links in new window
     colorlinks=true,       % false: boxed links; true: colored links
     linkcolor=blue,          % color of internal links
-    citecolor=green,        % color of links to bibliography
+    citecolor=cyan,        % color of links to bibliography
     filecolor=magenta,      % color of file links
-    urlcolor=cyan           % color of external links
+    urlcolor=blue           % color of external links
 }
 
 \usepackage[all]{hypcap} % to see figure with hyper ref
@@ -81,62 +115,126 @@
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 
+% Added 11-12-13 ----------------------------------------
+
+\usepackage{titlesec} % For the spacing after and before chapter title
+
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{40pt}{20pt}
+
+\titlespacing*{\section}{0ex}{2.5ex}{2ex}
+\titlespacing*{\subsection}{0ex}{1.5ex}{1ex}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{20pt}
+\doublespacing
+
+% Added 11-17-13 ----------------------------------------
+% Select what to do with todonotes: 
+\usepackage[disable]{todonotes} % notes not showed
+% \usepackage[draft]{todonotes}   % notes showed
+% \setlength{\marginparwidth}{2cm}
+% \usepackage[textwidth=3.7cm]{todonotes}
+
+\setlength{\marginparwidth}{3.7cm}
+
+% Added 11-15-13 ----------------------------------------
+% \includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
+% \includeonly{Methodology} 
+\includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results} 
+\usepackage{tikz} % for flow charts
+  \usetikzlibrary{shapes,arrows,positioning,shadows,calc}
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+
+\listfiles
+
+\setlength{\headheight}{15pt} % to avoid "Package Fancyhdr Warning: \headheight is too small (0.0pt): Make it at least 12.0pt."
+
+% Added 02-18-14 ----------------------------------------
+% \setlength{\abovecaptionskip}{-2ex}
+% \setlength{\belowcaptionskip}{-4ex} % space after caption
+%******************************************************************************************************
+
+
+% Added 08-10-14 
+\usepackage{enumitem}
+%******************************************************************************************************
+%******************************************************************************************************
+%******************************************************************************************************
 \begin{document}
 
+\degreetitle{The Use of Landsat-8 for Monitoring of Fresh and Coastal Water}
+\degreeauthor{Javier A. Concha}
+\degreedate{October 7, 2014}
+% \degreedate{\today{}}
+\prevdegreeA{M.S. Rochester Institute of Technology, 2012}
+\advisor{Dr. John R. Schott}
+\memberA{Dr. Anthony Vodacek}
+\memberB{Dr. Charles Bachmann}
+\memberC{Dr. Christy Tyler}
+% \memberD{Dr. Christy Tyler}
 
-\maketitle
+\makeproposaldeclaration
+\makePHDproposalapproval
+% \makecopyright
+
+
+% \maketitle
 
 \pagenumbering{roman}
 
-\chapter*{Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
+% \chapter*{Abstract}
+% \addcontentsline{toc}{chapter}{Abstract}
 
-The Landsat Data Continuity Mission (LDCM; a.k.a. Landsat-8), recently launched (February 2013), is the next generation of Landsat satellite and continues with more than 40 years of continuing imaging acquisition, playing a critical role in monitoring, understanding and managing natural resources such as water. Landsat-8, with its improved spectral bands and radiometric resolution, has the potential to dramatically improve our ability to simultaneously retrieve the three primary coloring agents, chlorophyll (Chl), colored dissolved organic material (CDOM) and suspended material (SM) from water bodies. This work presents the results obtained so far. To date, the method has been tested on Landsat-5 images because Landsat-8 images are still not available.
+\begin{abstract}
+\setlength{\parindent}{20pt}
+The Landsat Data Continuity Mission (LDCM; a.k.a. Landsat-8), recently launched (February 2013), is the next generation of Landsat satellite and continues more than 40 years of uninterrupted imaging acquisition, playing a critical role in monitoring, understanding and managing natural resources such as water. Landsat-8, with its improved spectral bands and radiometric resolution, has the potential to dramatically improve our ability to simultaneously retrieve the three primary coloring agents, chlorophyll (Chl), colored dissolved organic material (CDOM) and suspended material (SM) from water bodies. This work presents an approach to obtain these coloring agents in coastal and fresh waters.
 
-In the Case 2 water problem, the sensor-reaching signal due to water is very small when compared to the signal due to the atmospheric effects. Therefore, adequate atmospheric correction becomes an important first step to accurately retrieving water parameters. As a first approach, a model based empirical line method (ELM) atmospheric correction method converts sensor-reaching radiance to water leaving reflectance. This model employs pseudo invariant feature (PIF) pixels extraction from Landsat images along with an in water radiative transfer model (HydroLight) to obtain the field spectra. Further atmospheric compensation technique will be investigated.
+In the Case 2 water problem, the sensor-reaching signal due to water is very small when compared to the signal due to the atmospheric effects. Therefore, adequate atmospheric correction becomes an important first step to accurately retrieving water parameters. As a first approach, a model based empirical line method (ELM) atmospheric correction method converts sensor-reaching radiance to water leaving reflectance. This model employs pseudo invariant feature (PIF) pixels extracted from Landsat images along with an in water radiative transfer model (HydroLight) to obtain the field spectra. Further atmospheric compensation technique based in algorithms currently used in Ocean Color sensors will be investigated.
 
 A look-up-table (LUT) methodology is implemented to retrieve the water parameters. The LUT is created using HydroLight.
 
-Collections of water samples when the satellite passes over the Rochester area are planned for summer 2013. Concentration and inherent optical properties (IOPs) measurement will help to validate the methods.
+Collections of water samples when the satellite passes over the Rochester area are planned for summer 2013 and 2014. Concentration and inherent optical properties (IOPs) measurement will help to validate the methods.
 
-\chapter*{Acknowledgements}
+\end{abstract}
+
+% \chapter*{Acknowledgements}
+% %*****************************************************************************************************
+% \begin{acknowledgements}
+% \setlength{\parindent}{20pt}
+% To my parents, Osvaldo Concha and Nelly Sepulveda, sister Loretto Concha and brother Alvaro Concha. USGS. Monroe County Environment: Scott, Providencia and Gary. Nina and Rolo. Dr. Christy Taylor. Paul. Aaron Gerace. Alan Wiedmman. Ocean Color community: Emmanuel Boss and attendants of the 2013 Ocean color and instrumentation summer course at the Darling Marine Center. Fulbright commission. My advisor Dr. John Schott. Amanda and Cindy. Classmates: Aly, Bikash, Viraj, Madurima, Peter Sun. Professor Dr. John Kerekes. Collection help: Harold Valdivia. My dear friends: Juan Saldana, Kader, Patrick, Sarada, Susan, Melisa, Sasha, Jeremy. The people at Crossfit Rochester: Joe, Andrew. The Latin Rhythm Dance Club at RIT. My best support here Aixa de Jesus. My adopted Chilean family and dancers in Rochester: Marcia, Rosa and Do√±a Rosita, Raul, Willy and Marisol, Harold and Nancy. My Chilean friends in U. of R. Felipe, Maria Eugenia, Emilio, Brenda and Pauly. Kimberley Thoms.
+% \end{acknowledgements}
+%*****************************************************************************************************
 
 \tableofcontents
-
 
 \listoffigures
 \addcontentsline{toc}{chapter}{List of Figures}
 
 \listoftables
 \addcontentsline{toc}{chapter}{List of Tables}
-%  \begin{equation}
-%  {\bf X}[k+1]=A{\bf X}[k]+B{\bf u}[k]
-%  %\label{stateSpaceForm1}
-%  \end{equation}
-%
-%
-%  \begin{figure}[H]
-%  \centerline{
-%    \includegraphics[width=120mm]{LUT8.png}
-%  }
-%  \caption{Replace text here with your desired caption.}
-%  \label{overView}
-%  \end{figure}
 
-\input{Introduction.tex}
-\input{Objectives.tex}
-\input{Background_and_Theory.tex}
-\input{Methodology.tex}
-\input{Results.tex}
-\input{Summary}
-\input{Appendix.tex}
+% \input{Introduction.tex}
+\include{Introduction}
+\include{Objectives}
+\include{Background_and_Theory}
+\include{Methodology}
+\include{Results}
+\include{Future_Work}
+\include{Appendix}
 
-  
+\listoftodos
+
 %\bibliographystyle{ieeetr}
 %\bibliographystyle{unsrtnat}
 \bibliographystyle{apalike}
 
 \bibliography{/Users/javier/Desktop/Javier/PHD_RIT/Latex/javier_bib}
 
+\printindex
 
 \end{document}  
