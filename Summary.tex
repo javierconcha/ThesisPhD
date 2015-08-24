@@ -1,8 +1,20 @@
-% !TEX root=ProposalJavier.tex 
+% !TEX root=Thesis_PhD.tex  
 % the previous is to reference main .bib
 %% CHAPTER
-\chapter{Summary and Recommendations}
-\section{Summary}
+\chapter{Conclusions/Summary and Recommendations}
+\section{Conclusions}
+
+% From San Diego Paper
+\label{sec:conc}  % \label{} allows reference to this section
+There were four different atmospheric correction algorithms analyzed in this study. Three of them are based in the NASA's standard algorithms based on the methods developed by Gordon and Wang\cite{Gordon:1994}. The fourth algorithm is based on the MoB-ELM algorithm developed by Concha and Schott\cite{Concha2014SPIE}. The remote-sensing reflectances retrieved from these atmospheric correction algorithms were compared against each other. There are better agreements in band 3 and 4 than in bands 1 and 2 for all algorithms, which can be concluded from the RMSE (\autoref{tab:Sites}). When compared with {\it in situ} data, the MoB-ELM and Gordon and Wang's algorithm from SeaDAS (SeaDAS-SWIR) show similar results for all bands (\autoref{fig:NRMSE130919_RRS}). The results from the Gordon and Wang's algorithm from Acolite (Acolite-SWIR) shows the largest disagreement (\autoref{fig:NRMSE130919_RRS}).
+
+When retrieved chlorophyll-{\it a} concentrations ($C_a$) are compared with {\it in situ}, the results from the Concha and Schott's approach performed better than the rest of the algorithms(\autoref{fig:NRMSE130919CHL}). This was expected since the ocean color algorithms were developed with the lack of {\it in situ} data representative of Case 2 waters with high concentration of color producing agents (CPAs).
+
+These results demonstrate that for Case 2 waters, the solution for the ocean color measurements likely needs to be local and not global, as opposed to Case 1 waters. This local solution as implemented here, the combined MoB-ELM algorithm with Concha and Schott's $C_a$ retrieval algorithm, requires some knowledge of the waters to be studied, such as inherent optical properties (IOPs) and CPA concentration in at least one site.
+
+The presented work is a very limited study using only a single data set. The results need to be tested on a much larger set of data to see if the can be generalized. This implies that more {\it in situ} data need to be collected.
+
+% -------------------------------------
 \section{Future Work}
 \subsection{Hydrodynamics models} 
 The next step will be to use the validated results from the retrieval process for training hydrodynamics models to predict the future behavior of the water bodies. This would be based on previous work done by Pahlevan~{\it et al.} \cite{Pahlevan:2012b}, who used concentration maps obtained from the retrieval process using satellite imagery to train the ALGE hydrodynamic model. For example, the hydrodynamic model would allow us to monitor the dynamics of coastal and inland waters near river discharges. The maps of water constituent concentrations on the surface can be used to calibrate the hydrodynamic models.

@@ -1,5 +1,5 @@
 % \documentclass[draft]{book}
-\documentclass[]{book}
+\documentclass[draft]{book}
 
 \usepackage{graphicx}
 
@@ -132,17 +132,15 @@
 
 % Added 11-17-13 ----------------------------------------
 % Select what to do with todonotes: 
-\usepackage[disable]{todonotes} % notes not showed
-% \usepackage[draft]{todonotes}   % notes showed
-% \setlength{\marginparwidth}{2cm}
-% \usepackage[textwidth=3.7cm]{todonotes}
+% \usepackage[disable]{todonotes} % notes not showed
+\usepackage[draft]{todonotes}   % notes showed
 
 \setlength{\marginparwidth}{3.7cm}
 
 % Added 11-15-13 ----------------------------------------
-% \includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
+\includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
 % \includeonly{Methodology} 
-\includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results} 
+% \includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results} 
 \usepackage{tikz} % for flow charts
   \usetikzlibrary{shapes,arrows,positioning,shadows,calc}
 \usepackage{colortbl}
@@ -229,7 +227,7 @@ Collections of water samples when the satellite passes over the Rochester area a
 \include{Background_and_Theory}
 \include{Methodology}
 \include{Results}
-\include{Future_Work}
+\include{Summary}
 \include{Appendix}
 
 \listoftodos
