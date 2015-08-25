@@ -195,13 +195,31 @@
 
 \begin{abstract}
 \setlength{\parindent}{20pt}
-The Landsat Data Continuity Mission (LDCM; a.k.a. Landsat-8), recently launched (February 2013), is the next generation of Landsat satellite and continues more than 40 years of uninterrupted imaging acquisition, playing a critical role in monitoring, understanding and managing natural resources such as water. Landsat-8, with its improved spectral bands and radiometric resolution, has the potential to dramatically improve our ability to simultaneously retrieve the three primary coloring agents, chlorophyll (Chl), colored dissolved organic material (CDOM) and suspended material (SM) from water bodies. This work presents an approach to obtain these coloring agents in coastal and fresh waters.
+% Background/motivation/context
+The most interaction between humankind and water occurs in coastal and inland waters (Case 2 waters) at a scale of tens or hundred of meters, but there is not yet an ocean color product at this spatial scale. % taken from SPIE SD paper
+% 
+Landsat 8 is a promising candidate to address the remote sensing of these kinds of waters due to its improved signal-to-noise ratio (SNR), spectral resolution, 12-bit quantization, and high spatial resolution. 
+%
+Landsat 8 is the next generation of Landsat satellite and continues more than 40 years of uninterrupted imaging acquisition, playing a critical role in monitoring, understanding and managing natural resources such as water.
 
-In the Case 2 water problem, the sensor-reaching signal due to water is very small when compared to the signal due to the atmospheric effects. Therefore, adequate atmospheric correction becomes an important first step to accurately retrieving water parameters. As a first approach, a model based empirical line method (ELM) atmospheric correction method converts sensor-reaching radiance to water leaving reflectance. This model employs pseudo invariant feature (PIF) pixels extracted from Landsat images along with an in water radiative transfer model (HydroLight) to obtain the field spectra. Further atmospheric compensation technique based in algorithms currently used in Ocean Color sensors will be investigated.
+Landsat 8 has the potential to dramatically improve our ability to simultaneously retrieve the three primary coloring agents, chlorophyll-{\it a}, colored dissolved organic material (CDOM) and suspended material (SM) from water bodies. This work presents an approach to obtain these coloring agents in coastal and fresh waters.
+
+% Aim/objectives(s)/problem statement
+In the Case 2 water problem, the sensor-reaching signal due to water is very small when compared to the signal due to the atmospheric effects. Therefore, adequate atmospheric correction becomes an important first step to accurately retrieving water parameters. 
+
+Standard atmospheric correction algorithms developed for heritage ocean color instruments (e.g. MODIS, SeaWiFS) require a sufficient SNR in two bands where the water-leaving signal is negligible, which is not always possible, particularly for Landsat 8's bands.
+
+As a first approach, a model based empirical line method (MoB-ELM) atmospheric correction method converts sensor-reaching radiance to water leaving reflectance. This model employs pseudo invariant feature (PIF) pixels extracted from Landsat images along with an in water radiative transfer model (HydroLight) to obtain the field spectra. Further atmospheric compensation technique based in algorithms currently used in Ocean Color sensors will be investigated.
 
 A look-up-table (LUT) methodology is implemented to retrieve the water parameters. The LUT is created using HydroLight.
 
 Collections of water samples when the satellite passes over the Rochester area are planned for summer 2013 and 2014. Concentration and inherent optical properties (IOPs) measurement will help to validate the methods.
+
+% Background/motivation/context
+% Aim/objectives(s)/problem statement
+% Approach/method(s)/procedure(s)/materials
+% Results
+% Conclusion(s)/implications
 
 \end{abstract}
 
