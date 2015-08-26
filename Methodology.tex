@@ -13,9 +13,13 @@ The methodology is separated into the specific objectives mentioned in \S\ref{ch
 
 \section{Over-Water Atmospheric Correction} 
 \label{sec:atmcorr}
-The first objective in this research is to identify a suitable approach to atmospherically correct the type of dataset provided by the OLI sensor. This is a complex task to perform over water because the signal leaving the water that reaches the sensor is very small compared to the signal reaching the sensor from atmospheric scattering. Most of the atmospheric correction algorithms used for Ocean Color Satellites (i.e. CZCS, MODIS, SeaWiFS) are based in the work done by \cite{Gordon:1994} (also described in \cite{Gordon:1997}).
+The first objective in this research is to identify a suitable approach to atmospherically correct the type of dataset provided by the OLI sensor. This is a complex task to perform over water because the signal leaving the water that reaches the sensor is very small compared to the signal reaching the sensor from atmospheric scattering. 
 
-However, some of the atmospheric correction algorithms applied to Ocean Color Satellites are not suitable for highly turbid coastal waters because the {\it black pixel assumption} cannot be applied to these types of waters~\cite{Patt2003}. Several methods for atmospheric compensation are be investigated in this research.
+Most of the atmospheric correction algorithms used for the heritage Ocean Color instruments (e.g. CZCS, MODIS and SeaWiFS) are based in the work done by \cite{Gordon:1994} (also described in \cite{Gordon:1997}). The NASA's standard algorithms for atmospheric correction based on Gordon and Wang (1994)\cite{Gordon:1994} have proved to work well in Case 1 waters where there are at least two wavelengths with a water-leaving signal negligible or known. Therefore, these algorithms could be considered a global solution for Case 1 waters, i.e. they could be applied in most cases. The wavelengths used for clear waters (Case 1) are in general in the near infrared (NIR) part of the spectrum. For highly turbid water (Case 2) or highly productive Case 1 waters, a combination of wavelengths in the NIR and shortwave infrared (SWIR), or two SWIR wavelengths can be used\cite{Wang:2007,Wang:2007dz,Wang2009}. Some efforts have been made to demonstrate the feasibility of using Landsat 8 for ocean color measurements in coastal waters that apply the Gordon and Wang approach\cite{Vanhellemont2014a,Vanhellemont2014,Vanhellemont:2015,Franz:2015} for the atmospheric correction using the NIR and SWIR 1 bands or the SWIR 1 and SWIR 2 bands. One problem with using the Gordon and Wang approach is that it requires a sufficient SNR over water in order to discriminate the water-leaving signal from the instrument noise. This could be particular important for OLI since it has a lower SNR than the heritage ocean color instruments have, and so derived ocean color products can be noisy.
+
+However, some of the atmospheric correction algorithms applied to the heritage Ocean Color instruments are not suitable for highly turbid coastal waters because the {\it black pixel assumption} cannot be applied to these types of waters~\cite{Patt2003}. Concha and Schott (2014)\cite{Concha2014SPIE} developed the model-based empirical line method (MoB-ELM) as an alternative for the standard atmospheric correction algorithms that does not rely on a negligible water-leaving signal assumption, and therefore it is not as sensitive to the SNR. The MoB-ELM algorithm uses a bright and dark pixel from the image to perform the atmospheric correction. One of the goals of this work is to compare the MoB-ELM with the standard algorithms as well as with {\it in situ} data. These comparisons are made in remote-sensing reflectance $R_{rs}$ units. 
+
+Two approaches for atmospheric compensation are investigated in this research. The Gordon and Wang approach, and the Concha and Schott approach.\todo{check if valid statement}
 
 Some atmospheric correction methods described in this section will use the notation used by \cite{Gordon:1994} and \cite{Ruddick:2000bs} who define the apparent reflectance as 
 
@@ -80,8 +84,9 @@ Once water pixels in the image are deglinted, the next step is to atmosphericall
 
 
 
-\subsection{Model-based ELM}
-The first method will be a model-based empirical line method (ELM) based on previous work done by \cite{Gerace:2013} and \cite{Gerace:2012}  for simulated OLI data. While this new method is based on the traditional ELM method (see \S\ref{subsec:ELM}), this model-based ELM method tries to avoid the measurement of ground truth at every sensor overpass over the scene by using pseudo-invariant features (PIF) \index{pseudo-invariant features (PIF)} in the scene as one target along with an estimation of water reflectivity for an open lake region for the other target. The two targets used in this model-based ELM to solve the regression in \autoref{eq:ELM} are referred to in this documents as the {\it bright pixel} \index{bright pixel} and the {\it dark pixel}\index{dark pixel}.
+\subsection{Model-Based Empirical Line Method (MoB-ELM) Atmospheric Correction Method}
+
+The first method will be a model-based empirical line method (MoB-ELM) based on previous work done by \cite{Gerace:2013} and \cite{Gerace:2012}  for simulated OLI data. While this new method is based on the traditional ELM method (see \S\ref{subsec:ELM}), this model-based ELM method tries to avoid the measurement of ground truth at every sensor overpass over the scene by using pseudo-invariant features (PIF) \index{pseudo-invariant features (PIF)} in the scene as one target along with an estimation of water reflectivity for an open lake region for the other target. The two targets used in this model-based ELM to solve the regression in \autoref{eq:ELM} are referred to in this documents as the {\it bright pixel} \index{bright pixel} and the {\it dark pixel}\index{dark pixel}.
 
 \subsubsection{Pseudo-Invariant Feature Extraction}
 
@@ -568,6 +573,8 @@ Enter the algorithm with glint corrected data:\\
 \section{In-Water Constituent Retrieval Process}
 \label{sec:retrieval}
 The retrieval algorithm will be based on previous work done by Gerace {\it et al.} \cite{Gerace:2013} and Raqueno {\it et al.} \cite{Raqueno:2000}. The water surface reflectance product obtained after atmospheric correction from the previous stage is used as input to the retrieval algorithm. Each pixel in the reflectance product has an unknown concentration. A spectral matching technique is applied to predict this concentration by comparing the spectral shape of each pixel with the elements in a look-up table (LUT). The complete retrieval process will be explained in the following sections. 
+
+Additionally, this study presents a comparison of chlorophyll-{\it a} concentrations ($C_a$) retrieved from the standard atmospheric correction algorithms and from the MoB-ELM algorithms. The NASA's standard bio-optical algorithms OC2, OC3, OC4\cite{OReilly2000} and OCI\cite{Hu:2012} for the retrieval of chlorophyll-{\it a} were developed mainly for Case 1 waters, where the main driver is chlorophyll-{\it a}. The {\it in situ} data used to develop these algorithms does not appear to contain enough data for high concentration of color producing agents (CPAs; chlorophyll-{\it a}, minerals (or total suspended matter or TSS), and colored dissolved organic matter (CDOM)), and therefore these data are not fully representative of Case 2 waters. Gerace {\it et al.} (2013)\cite{Gerace:2013} developed an algorithm for the simultaneous retrieval of color producing agents (CPAs) based on spectral matching and a look-up table (LUT) using simulated OLI data. Concha and Schott (2014)\cite{Concha2013IGARSS} extended Gerace's approach to actual OLI data. This approach does not depend on a global {\it in situ} dataset. Instead it builds a LUT specific to the inherent optical properties (IOPs) and observation conditions for the site.
 % -------------------------------------
 \subsection{LUT generation}
 The LUT is generated in Ecolight~\cite{MobleyHE} for different triplets of water constituent concentrations (CPAs). Ecolight was used in the same fashion as in the black pixel determination for the model-based ELM (\S\ref{subsubsec:blackpixel}). \autoref{tab:LUTconc2} shows the different parameters used to create the LUT in Ecolight. Two different sets of IOPs (mass-specific absorption and scattering spectra) were used, one set for modeling the open lake conditions (low concentration of CPAs) and one set for modeling the pond condition (high concentration of CPAs)\todo{show IOPs figures}. These IOPs are labeled in \autoref{tab:LUTconc2} as ``ONTNS'' for the open lake conditions and as ``LONGS'' for the pond conditions. \autoref{tab:LUTconc2} also shows the CPAs concentration used to create the LUT in Ecolight. Furthermore, discretized Fournier-Forand phase function with four different backscatter fraction values ($0.5$, $1.0$, $1.5$ and $2.0\%$) were used to account for the backscattering variability in the scene.
@@ -657,9 +664,10 @@ In this case, $x$ is the three CPA concentrations and the function $f(x)$ is the
 where $F$ is obtained from a trilinear interpolation based in the CPA concentrations of the LUT. The dimension $m$ is the number of bands. In other words, for each pixel in the image, \texttt{lsqnonlin} tries to find a function that minimizes the error between the measured value and an interpolated spectra from the LUT. \texttt{lsqnonlin} stops the search after reaching certain threshold. 
 
 The output of this process is a concentration mapping for each water constituent that spans the range of constituents levels in the scene. 
+\todo{add combination of both methods!}
 
 \section{Ground Truth Data Collection}
-The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, so the retrieval algorithm can be tested with different scenarios. Landsat-8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the summer 2013. This project contemplates performing one new ground truth data collection during 2014. Therefore, images from the 2013-2014 spring and summer collection seasons will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
+The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat-8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the summer 2013\todo{update this info}. This project contemplates performing one new ground truth data collection during 2014. Therefore, images from the 2013-2014 spring and summer collection seasons will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
 \begin{figure}[htb]
   \centering
   \includegraphics[height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/AreaOfStudy1.pdf}
@@ -669,6 +677,48 @@ The area of study for this research is the Lake Ontario Rochester Embayment (lat
   \centering
   \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/AreaOfStudy2.pdf}
   \caption{Area of Study. \label{fig:areaofstudy2} } 
+\end{figure}
+
+A field collection that includes water samples and remote-sensing reflectance ($R_{rs}$) measurements was conducted at the same time as the sensor overpass. The $R_{rs}$ measurements were performed using a SVC HR-1024i instrument\cite{SVCHR1024i} or a ASD instrument\todo{include reference} following the method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site. Then, the water samples were analyzed in the lab, following SeaWiFS protocols\cite{Mueller1995} for obtaining chlorophyll-{\it a} concentration ($C_a$) and total suspended solid concentration (TSS). \autoref{tab:Sites} shows the different site names, location and the $C_a$ and $TSS$ for each site for the collection on 09-19-2013, as example. Note the difference in concentration levels between the ponds (i.e. LONGN, LONGS and CRANB) and the lake (i.e. ONTNS, ONTOS and ONTEX) samples.
+
+% Site  & $C_a$  &    Latitude  & Longitude
+% ONTNS &   ~~0.48 &  43.272159 & -77.538274  
+% ONTOS &   ~~0.96 &  43.308923 & -77.540085  
+% ONTEX &   ~~1.68 &  43.244892 & -77.536671  
+% RVRPI &   ~~2.88 &  43.259925 & -77.601587  
+% RVRPL &   ~~0.48 &  43.270990 & -77.592282  
+% LONGN &   123.85 &  43.290836 & -77.690662  
+% LONGS &   112.76 &  43.289182 & -77.696458  
+% CRANB &   ~64.08 &  43.299938 & -77.692915  
+% BRADI &   ~19.22 &  43.313675 & -77.717531  
+% BRADO &   ~~1.44 &  43.325780 & -77.706432 
+
+\begin{table}[!ht]
+\caption{ Different sites for the collection on 09-19-2013. This collection included sampling in the ponds and the lake, which exhibit a wide range of concentrations. \label{tab:Sites} } 
+\vspace{0.2cm}
+\centering
+\begin{tabular}{lccccl} 
+ % \bfseries{Band n} & \bfseries{$m$}      & \bfseries{$y_0$}    & \bfseries{$R^2$}     & \bfseries{$RMSE$} & $y(x=45^\circ)$   \\ \hline \hline
+ \hline
+Site  &     Latitude  & Longitude  &  $C_a$      &  $TSS$   & Description \\ 
+      &               &        &  $[mg/m^3]$ & $[g/m^3]$  &   \\ \hline \hline
+ONTNS &     43.272159 & -77.538274 &  ~~0.48 & ~1.60      & Lake Ontario near-shore \\    
+ONTOS &     43.308923 & -77.540085 &  ~~0.96 & ~1.00      & Lake Ontario off-shore  \\    
+ONTEX &     43.244892 & -77.536671 &  ~~1.68 & ~0.70      & Lake Ontario extra  \\    
+RVRPI &     43.259925 & -77.601587 &  ~~2.88 & ~2.10      & Genese River pier \\    
+RVRPL &     43.270990 & -77.592282 &  ~~0.48 & ~1.00      & Genese River plume  \\    
+LONGN &     43.290836 & -77.690662 &  123.85 & 48.00      & Long Pong north \\    
+LONGS &     43.289182 & -77.696458 &  112.76 & 46.00      & Long Pond south \\    
+CRANB &     43.299938 & -77.692915 &  ~64.08 & 26.70      & Cranberry Pond  \\    
+BRADIN&     43.313675 & -77.717531 &  ~19.22 & 13.10      & inside Braddock bay \\    
+BRADONT&  43.325780 & -77.706432 &  ~~1.44 & ~2.00        & Braddock Bay, Lake Ontario side \\  \hline
+ \end{tabular}  
+\end{table} 
+
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics[height=8.0cm]{./Images/ROI_RocEmbayment130919-eps-converted-to.pdf}
+  \caption{Landsat 8 image acquired on 09-19-2015 (scene LC80160302013262LGN00) showing the study area, the Rochester Embayment. The labels indicate the sites of the field collection at the same time as the satellite overpass (\autoref{tab:Sites}).\label{fig:RrsROIs130919} } 
 \end{figure}
 
 In order to have outputs in HydroLight that are representative of the water bodies that are being studied, inherent optical properties (IOPs) of those specific waters have to be defined as input to the HydroLight model. After collection, these water samples need to be analyzed in the lab to obtain IOPs for the main water constituents. Furthermore, apparent optical properties (AOPs) (i.e. water surface reflectance) and backscattering measurements will be also collected for further comparison and to pursue closure between the HydroLight AOPs results and in-situ AOPs measurements.

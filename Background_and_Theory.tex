@@ -610,11 +610,11 @@ Although the OLI's spectral bands are not narrow enough to be compared with MODI
 
 
 \begin{table}[!ht]
-\caption{ Bandwidth comparison between Landsat 8, Landsat 7 and MODIS (MO). \label{tab:bandwidth}} 
+\caption{ Bandwidth comparison between Landsat 8, Landsat 7 and MODIS. \label{tab:bandwidth}} 
 \centering
       \begin{tabular}{c|c|c|c|c}
-          \bfseries{Band}& \bfseries{Center}   & \bfseries{L8} & \bfseries{L7} & \bfseries{MO} \\ 
-                  & \bfseries{$[\mu m]$} & $[nm]$\footnote{Bandwidth}   & $[nm]${\it $^a$} & $[nm]${\it $^a$}   \\ \hline \hline
+          \bfseries{Band}& \bfseries{Center}   & \bfseries{L8 Bandwidth} & \bfseries{L7 Bandwidth} & \bfseries{MODIS Bandwidth} \\ 
+                  & \bfseries{$[\mu m]$} & $[nm]$   & $[nm]$ & $[nm]$   \\ \hline \hline
           Coastal & 0.44 & 16 & N/A & 10  \\
           Blue    & 0.48 & 60 & 73  & 10  \\
           Green   & 0.56 & 57 & 82  & 10  \\
@@ -632,6 +632,8 @@ Although the OLI's spectral bands are not narrow enough to be compared with MODI
       \label{fig:olisnr}
 \end{figure}
 
+\todo{include my SNR figure}
+
 % ----------------------------------------------
 \section{Empirical Line Method}\todo{complete from papers}
 \label{subsec:ELM}
@@ -643,6 +645,7 @@ The {\it empirical line method}\index{ELM} (ELM) is a method for calibration of 
 where $L$ is the radiance reaching the sensor value, $m$ is the slope of the regression, $r_d$ is the reflectance of the target, and $b=L_u$ is the intercept, with $L_u$ the upwelled radiance or path radiance. Then, the reflectance of the any Lambertian objects can be calculated by rearranging \autoref{eq:ELM}. In order to solve this regression, i.e. determine the value of $m$ and $b$, we need to have at least two targets with known radiance $L$ and reflectance $r_d$. After $m$ and $b$ have been determined, the reflectance of each pixel at each wavelength can be calculated from its radiance value from the image.
 
 An ELM target needs to have a size at least three times the ground instantaneous field of view of the sensor that will image it at the time of data collection. Taking this in consideration, the target should be at least 90x90 meters big for the Landsat sensor, which is sometimes difficult to build or even to find in the scene. 
+\todo{include figure from paper x-y axis}
 
 % \begin{tikzpicture}[scale=1.5]
 %     % Draw axes
@@ -667,6 +670,7 @@ An ELM target needs to have a size at least three times the ground instantaneous
 % -----------------------------------------------------------------------------
 \section{Landsat Surface Reflectance CDR}
 \label{sec:CDR} 
+\todo{Talk about provisional landsat product}
 The Landsat climate data record (CDR) surface reflectance product is part of the higher-level Landsat data product to support land surface change study developed by USGS \cite{LandsatCDR}. The surface reflectance CDR is generated from specialized software called Landsat Ecosystem Disturbance Adaptive Processing System (LEDAPS) \cite{Masek:2006}. The LEDAPS software uses MODIS atmospheric correction routines to correct Level-1 Landsat Thematic Mapper (TM) or Enhanced Thematic Mapper Plus (ETM+) data. Atmospheric variables such as water vapor, ozone, aerosol optical thickness along with geometric variables ({\todo{What is geopotential height?} geopotential height} and digital elevation) are input with Landsat data to the Second Simulation of a Satellite Signal in the Solar Spectrum (6S) radiative transfer model. The 6S model outputs surface reflectance among others parameters. This surface reflectance product is called the Landsat surface reflectance CDR. This Landsat surface reflectance product has comparable uncertainty to the standard MODIS reflectance product \cite{Masek:2006}.
 
 The LEDAPS algorithm works in the following fashion. First, calibrated images from the Landsat satellite are corrected to {\todo{What does TOA reflectance mean?} top-of-atmosphere (TOA) reflectance} by correcting for solar zenith, Sun-Earth distance, TM or ETM+ bandpass, and solar irradiance. Then, the TOA reflectance is atmospherically corrected with the assumptions that the target is Lambertian and infinite, and the gaseous absorption and particle scattering in the atmosphere can be decoupled. The TOA reflectance can be expressed as \cite{Masek:2006}
