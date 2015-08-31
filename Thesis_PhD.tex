@@ -1,5 +1,5 @@
 % \documentclass[draft]{book}
-\documentclass[draft]{book}
+\documentclass[]{book}
 
 \usepackage{graphicx}
 
@@ -194,9 +194,9 @@
 \memberC{Dr. Christy Tyler}
 % \memberD{Dr. Christy Tyler}
 
-\makeproposaldeclaration
+\makedeclaration
 \makePHDproposalapproval
-% \makecopyright
+\makecopyright
 
 
 % \maketitle
@@ -224,9 +224,24 @@ Standard atmospheric correction algorithms developed for heritage ocean color in
 
 As a first approach, a model based empirical line method (MoB-ELM) atmospheric correction method converts sensor-reaching radiance to water leaving reflectance. This model employs pseudo invariant feature (PIF) pixels extracted from Landsat images along with an in water radiative transfer model (HydroLight) to obtain the field spectra. Further atmospheric compensation technique based in algorithms currently used in Ocean Color sensors will be investigated.
 
-A look-up-table (LUT) methodology is implemented to retrieve the water parameters. The LUT is created using HydroLight.
+% added from RS of Env. paper
+New approaches need to be considered to solve the current high demand for color producing agent (CPA) retrievals over inland and coastal waters (Case 2 waters). 
+%
+Standard retrieval algorithms are known to fail over highly turbid Case 2 waters because they were developed specifically for the open ocean (Case 1 waters). 
+ 
+%Methods
+A look-up-table (LUT) and spectrum-matching methodology was implemented to simultaneously retrieve CPAs, taking advantage of Landsat 8's new features. 
+%
+A LUT of spectral remote-sensing reflectances ($R_{rs}$) with different concentration of CPAs was produced using the in-water radiative transfer model Hydrolight. 
+%Results
+The retrieval algorithm was applied over two Landsat 8 scenes and shows a root mean squared error (RMSE) as a percentage of range of about $10\%$ for Chlorophyll-{\it a} and total suspended solid (TSS), and about $5\%$ for colored dissolved organic matter (CDOM) when compared with ground-truth data. The CPA concentration maps exhibit expected trends of low concentrations in clear water and higher concentrations in turbid water.
+%Conclusions
 
-Collections of water samples when the satellite passes over the Rochester area are planned for summer 2013 and 2014. Concentration and inherent optical properties (IOPs) measurement will help to validate the methods.
+These results demonstrate that the developed algorithm allows the simultaneous mapping of concentration of all CPAs in Case 2 waters and over areas where the standard algorithms are not available due to spatial resolution.
+%
+Therefore, this study shows that the Landsat 8 satellite can be utilized over Case 2 waters as long as a careful atmospheric correction is applied. 
+
+Collections of water samples when the satellite passes over the Rochester area are planned for summer 2013, 2014 and 2015. Concentration and inherent optical properties (IOPs) measurement will help to validate the methods.
 
 % Background/motivation/context
 % Aim/objectives(s)/problem statement
@@ -238,11 +253,18 @@ Collections of water samples when the satellite passes over the Rochester area a
 
 % \chapter*{Acknowledgements}
 % %*****************************************************************************************************
-% \begin{acknowledgements}
-% \setlength{\parindent}{20pt}
+\begin{acknowledgements}
+\setlength{\parindent}{20pt}
 % To my parents, Osvaldo Concha and Nelly Sepulveda, sister Loretto Concha and brother Alvaro Concha. USGS. Monroe County Environment: Scott, Providencia and Gary. Nina and Rolo. Dr. Christy Taylor. Paul. Aaron Gerace. Alan Wiedmman. Ocean Color community: Emmanuel Boss and attendants of the 2013 Ocean color and instrumentation summer course at the Darling Marine Center. Fulbright commission. My advisor Dr. John Schott. Amanda and Cindy. Classmates: Aly, Bikash, Viraj, Madurima, Peter Sun. Professor Dr. John Kerekes. Collection help: Harold Valdivia. My dear friends: Juan Saldana, Kader, Patrick, Sarada, Susan, Melisa, Sasha, Jeremy. The people at Crossfit Rochester: Joe, Andrew. The Latin Rhythm Dance Club at RIT. My best support here Aixa de Jesus. My adopted Chilean family and dancers in Rochester: Marcia, Rosa and Doña Rosita, Raul, Willy and Marisol, Harold and Nancy. My Chilean friends in U. of R. Felipe, Maria Eugenia, Emilio, Brenda and Pauly. Kimberley Thoms.
-% \end{acknowledgements}
+\end{acknowledgements}
 %*****************************************************************************************************
+
+\begin{dedication}
+
+Dedicated to
+
+Mis amados viejitos, Osvaldo Concha Silva and Nelly del Carmen Sep\'ulveda Reyes...
+\end{dedication}
 
 \tableofcontents
 
