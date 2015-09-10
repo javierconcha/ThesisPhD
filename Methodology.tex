@@ -729,6 +729,19 @@ In order to have outputs in HydroLight that are representative of the water bodi
 The results from the retrieval process will be validated by comparison with the concentration of water samples taken during field campaigns in the spring and summer of 2013 and 2014. These concentrations will be obtained from lab measurements made at the Rochester Institute of Technology. For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl-{\it a} product), in regions where it is possible. 
 
 Additionally, the results will be compared with the products derived in the SeaWiFS Data Analysis System (SeaDAS) software for Landsat-8, which is contemplated to be launched soon (more info: \url{http://seadas.gsfc.nasa.gov/}). The latest version (SeaDAS 7.0.2) is a comprehensive image analysis package for the processing, display, analysis, and quality control of ocean color data developed by the developers of ESA's BEAM software package and the Ocean Biology Processing Group (OBPG) at NASA. If this capability is launched in the next version of SeaDAS, Landsat-8 level L1 and L2 data could potentially be  atmospherically corrected using the method used for MODIS \cite{Gordon:1994,Ruddick:2000bs,Wang:2007dz}, and therefore L3 data (e.g. Chl-{\it a} product) could be obtained from Landsat-8 images.
+
+\section{Summary of Process}
+\subsection{Atmospheric Correction}
+\begin{enumerate}
+  \item Create mask for Land/Water and Cloud/Cloud Shadow
+  \item Select dark and bright pixels from the scene
+\end{enumerate}
+
+\subsection{Retrieval}
+\begin{enumerate}
+  \item Process IOPs from lab measurements
+  \item Input IOPs to Ecolight
+\end{enumerate}
 % \section{OLI Sensor}
 % \subsection{Sensor Response}
 % Noise level. Quantization. SNR.
