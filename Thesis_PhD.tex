@@ -1,5 +1,5 @@
 % \documentclass[draft]{book}
-\documentclass[]{book}
+\documentclass[draft]{book}
 
 \usepackage{graphicx}
 
@@ -34,10 +34,10 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead[LO, RE]{\rightmark}
+% \fancyhead[LO, RE]{\rightmark}
 \fancyhead[LE, RO]{\thepage}
 \fancyfoot[]{}
-%\renewcommand{\headrulewidth}{0.3pt}
+% \renewcommand{\headrulewidth}{0.3pt}
 
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -120,11 +120,17 @@
 \usepackage{titlesec} % For the spacing after and before chapter title
 
 \titleformat{\chapter}[display]
-    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}
+    {\normalfont\huge\bfseries}{\chaptertitlename \thechapter}{10pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{40pt}{20pt}
 
 \titlespacing*{\section}{0ex}{2.5ex}{2ex}
 \titlespacing*{\subsection}{0ex}{1.5ex}{1ex}
+
+% Added 09-21-15 ----------------------------------------
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Bjornstrup]{fncychap}
+\ChTitleVar{\raggedleft\Huge\rmfamily\bfseries}
+% ----------------------------------------
 
 \usepackage{indentfirst}
 \setlength{\parindent}{20pt}
@@ -138,8 +144,8 @@
 \setlength{\marginparwidth}{3.7cm}
 
 % Added 11-15-13 ----------------------------------------
-% \includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
-\includeonly{Background_and_Theory} 
+\includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
+% \includeonly{Background_and_Theory} 
 % \includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results} 
 \usepackage{tikz} % for flow charts
   \usetikzlibrary{shapes,arrows,positioning,shadows,calc}
