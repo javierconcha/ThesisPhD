@@ -81,11 +81,7 @@
 \g@addto@macro\appendix{\let\section\appendix@section}
 \makeatother
 
-% Added 12-03-13 ----------------------------------------
-\usepackage{imakeidx} % to create index
-\indexsetup{othercode=\small}
-\makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
-% -------------------------------------------------------
+
 %%%%%%%%%%%%%%
 
 \usepackage{hyperref}
@@ -184,14 +180,20 @@
 \usepackage[percent]{overpic}
 \usepackage{morefloats} % for the error "Too many unprocessed floats"
 
+% Added 12-03-13 ----------------------------------------
+\usepackage{imakeidx} % to create index
+\indexsetup{othercode=\small}
+\makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
+% -------------------------------------------------------
+
 %******************************************************************************************************
 %******************************************************************************************************
 %******************************************************************************************************
 \begin{document}
 
-\degreetitle{The Use of Landsat 8 for Monitoring of Fresh and Coastal Water}
+\degreetitle{The Use of Landsat 8 for Monitoring \\of Fresh and Coastal Water}
 \degreeauthor{Javier A. Concha}
-\degreedate{November 10, 2015}
+\degreedate{November 18, 2015}
 % \degreedate{\today{}}
 \prevdegreeA{B.S. Electronics Engineering, Universidad de Concepci\'on, Chile, 2008}
 \prevdegreeB{M.S. Imaging Science, Rochester Institute of Technology, NY, USA, 2012}
@@ -219,45 +221,52 @@
 \setlength{\parindent}{20pt}
 % 300 Words max.
 % Background/motivation/context
-The most interaction between humankind and water occurs in coastal and inland waters (Case 2 waters) at a scale of tens or hundred of meters, but there is not yet an ocean color product at this spatial scale. % taken from SPIE SD paper
-% 
-Landsat 8 is a promising candidate to address the remote sensing of these kinds of waters due to its improved signal-to-noise ratio (SNR), spectral resolution, 12-bit quantization, and high spatial resolution. 
+The most interaction between humankind and water occurs in coastal and inland waters (Case 2 waters) at a scale of tens or hundred of meters, but there is not yet an ocean color product (e.g. chlorophyll-{\it a} product) at this spatial scale.
 %
-Landsat 8 is the next generation of Landsat satellite and continues more than 40 years of uninterrupted imaging acquisition, playing a critical role in monitoring, understanding and managing natural resources such as water.
-
-Landsat 8 has the potential to dramatically improve our ability to simultaneously retrieve the three primary coloring agents, chlorophyll-{\it a}, colored dissolved organic material (CDOM) and suspended material (SM) from water bodies. This work presents an approach to obtain these coloring agents in coastal and fresh waters.
-
+Landsat 8 could potentially addresses the remote sensing of these kinds of waters due to its improved features. 
 % Aim/objectives(s)/problem statement
-In the Case 2 water problem, the sensor-reaching signal due to water is very small when compared to the signal due to the atmospheric effects. Therefore, adequate atmospheric correction becomes an important first step to accurately retrieving water parameters. 
-
-Standard atmospheric correction algorithms developed for heritage ocean color instruments (e.g. MODIS, SeaWiFS) require a sufficient SNR in two bands where the water-leaving signal is negligible, which is not always possible, particularly for Landsat 8's bands.
-
-As a first approach, a model based empirical line method (MoB-ELM) atmospheric correction method converts sensor-reaching radiance to water leaving reflectance. This model employs pseudo invariant feature (PIF) pixels extracted from Landsat images along with an in water radiative transfer model (HydroLight) to obtain the field spectra. Further atmospheric compensation technique based in algorithms currently used in Ocean Color sensors will be investigated.
-
-% added from RS of Env. paper
-New approaches need to be considered to solve the current high demand for color producing agent (CPA) retrievals over inland and coastal waters (Case 2 waters). 
+This work presents an approach to obtain the coloring producing agents (CPAs) chlorophyll-{\it a}, colored dissolved organic material (CDOM) and suspended material (SM) from water bodies using Landsat 8.
 %
-Standard retrieval algorithms are known to fail over highly turbid Case 2 waters because they were developed specifically for the open ocean (Case 1 waters). 
- 
-%Methods
-A look-up-table (LUT) and spectrum-matching methodology was implemented to simultaneously retrieve CPAs, taking advantage of Landsat 8's new features. 
+Adequate atmospheric correction becomes an important first step to accurately retrieving water parameters since the sensor-reaching signal due to water is very small when compared to the signal due to the atmospheric effects. 
+% Methods
+We developed the model-based empirical line method (MoB-ELM) atmospheric correction method. 
 %
-A LUT of spectral remote-sensing reflectances ($R_{rs}$) with different concentration of CPAs was produced using the in-water radiative transfer model Hydrolight. 
-%Results
-The retrieval algorithm was applied over two Landsat 8 scenes and shows a root mean squared error (RMSE) as a percentage of range of about $10\%$ for Chlorophyll-{\it a} and total suspended solid (TSS), and about $5\%$ for colored dissolved organic matter (CDOM) when compared with ground-truth data. The CPA concentration maps exhibit expected trends of low concentrations in clear water and higher concentrations in turbid water.
-%Conclusions
+The Mob-ELM employs pseudo invariant feature (PIF) pixels extracted from a reflectance product along with the in-water radiative transfer model HydroLight. 
+%
+We used a look-up-table-based (LUT-based) inversion methodology to simultaneously retrieve CPAs.
+%
+The LUT of remote-sensing reflectance spectra was created in Hydrolight using IOPs measured in the field.
 
+% Results
+The retrieval algorithm was applied over two~\todo{maybe three} Landsat 8 scenes.
+%
+The CPA concentration maps exhibit expected trends of low concentrations in clear water and higher concentrations in turbid water.. 
+%
+We estimated a normalized root mean squared error (NRMSE) of about $10\%$ for Chlorophyll-{\it a} and total suspended solid (TSS), and about $5\%$ for colored dissolved organic matter (CDOM) when compared with ground-truth data. 
+% Conclusions
 These results demonstrate that the developed algorithm allows the simultaneous mapping of concentration of all CPAs in Case 2 waters and over areas where the standard algorithms are not available due to spatial resolution.
 %
 Therefore, this study shows that the Landsat 8 satellite can be utilized over Case 2 waters as long as a careful atmospheric correction is applied. 
-
-Collections of water samples when the satellite passes over the Rochester area are planned for summer 2013, 2014 and 2015. Concentration and inherent optical properties (IOPs) measurement will help to validate the methods.
 
 % Background/motivation/context
 % Aim/objectives(s)/problem statement
 % Approach/method(s)/procedure(s)/materials
 % Results
 % Conclusion(s)/implications
+
+% Standard retrieval algorithms are known to fail over highly turbid Case 2 waters because they were developed specifically for the open ocean (Case 1 waters). 
+
+% Standard atmospheric correction algorithms developed for heritage ocean color instruments (e.g. MODIS, SeaWiFS) require a sufficient SNR in two bands where the water-leaving signal is negligible, which is not always possible, particularly for Landsat 8's bands.
+
+% Further atmospheric compensation technique based in algorithms currently used in Ocean Color sensors will be investigated.
+
+% A LUT of spectral remote-sensing reflectances ($R_{rs}$) with different concentration of CPAs was produced using the in-water radiative transfer model Hydrolight. 
+
+
+%
+% Collections of water samples when the satellite passes over the Rochester area are planned for summer 2013, 2014 and 2015. 
+
+% Concentration and inherent optical properties (IOPs) measurement will help to validate the methods.
 
 \end{abstract}
 
