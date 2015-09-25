@@ -103,8 +103,12 @@
     linkcolor=blue,          % color of internal links
     citecolor=cyan,        % color of links to bibliography
     filecolor=magenta,      % color of file links
-    urlcolor=blue           % color of external links
+    urlcolor=blue,           % color of external links
+    breaklinks=true
 }
+
+% Added 09-24-15 ----------------------------------------
+\usepackage{breakcites}
 
 \usepackage[all]{hypcap} % to see figure with hyper ref
 
@@ -186,12 +190,14 @@
 \makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
 % -------------------------------------------------------
 
+
+
 %******************************************************************************************************
 %******************************************************************************************************
 %******************************************************************************************************
 \begin{document}
 
-\degreetitle{The Use of Landsat 8 for Monitoring \\of Fresh and Coastal Water}
+\degreetitle{The Use of Landsat 8 for Monitoring \\of Fresh and Coastal Waters}
 \degreeauthor{Javier A. Concha}
 \degreedate{November 18, 2015}
 % \degreedate{\today{}}
@@ -240,7 +246,7 @@ The LUT of remote-sensing reflectance spectra was created in Hydrolight using IO
 % Results
 The retrieval algorithm was applied over two~\todo{maybe three} Landsat 8 scenes.
 %
-The CPA concentration maps exhibit expected trends of low concentrations in clear water and higher concentrations in turbid water.. 
+The CPA concentration maps exhibit expected trends of low concentrations in clear waters and higher concentrations in turbid waters. 
 %
 We estimated a normalized root mean squared error (NRMSE) of about $10\%$ for Chlorophyll-{\it a} and total suspended solid (TSS), and about $5\%$ for colored dissolved organic matter (CDOM) when compared with ground-truth data. 
 % Conclusions
