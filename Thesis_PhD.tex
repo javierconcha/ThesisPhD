@@ -144,7 +144,7 @@
 \setlength{\marginparwidth}{3.7cm}
 
 % Added 11-15-13 ----------------------------------------
-\includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
+\includeonly{Acronyms,Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
 % \includeonly{Background_and_Theory} 
 % \includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results} 
 \usepackage{tikz} % for flow charts
@@ -191,6 +191,16 @@
 % -------------------------------------------------------
 
 
+% Added 09-28-15 ----------------------------------------
+% Load the package with the acronym option
+\usepackage[acronym,nomain]{glossaries}
+ 
+% Generate the glossary
+\makenoidxglossaries
+\renewcommand*{\acronymname}{Acronyms and Abbreviations}
+
+\include{Acronyms}
+
 
 %******************************************************************************************************
 %******************************************************************************************************
@@ -231,7 +241,7 @@ The most interaction between humankind and water occurs in coastal and inland wa
 %
 Landsat 8 could potentially addresses the remote sensing of these kinds of waters due to its improved features. 
 % Aim/objectives(s)/problem statement
-This work presents an approach to obtain the coloring producing agents (CPAs) chlorophyll-{\it a}, colored dissolved organic material (CDOM) and suspended material (SM) from water bodies using Landsat 8.
+This work presents an approach to obtain the color producing agents (CPAs) chlorophyll-{\it a}, colored dissolved organic material (CDOM) and suspended material (SM) from water bodies using Landsat 8.
 %
 Adequate atmospheric correction becomes an important first step to accurately retrieving water parameters since the sensor-reaching signal due to water is very small when compared to the signal due to the atmospheric effects. 
 % Methods
@@ -298,6 +308,9 @@ Mis amados viejitos, Osvaldo Concha Silva and Nelly del Carmen Sep\'ulveda Reyes
 
 \listoftables
 \addcontentsline{toc}{chapter}{List of Tables}
+
+\printnoidxglossaries
+\addcontentsline{toc}{chapter}{Acronyms and Abbreviations}
 
 % \input{Introduction.tex}
 \include{Introduction}
