@@ -12,9 +12,9 @@ The purpose of this chapter is precisely to define these tasks as an outline tha
 \label{sec:problemstatement}
 The hypothesis addressed in this thesis is the following: 
 
-{ \bf ``The Landsat 8 sensor can be utilized to simultaneously quantify the concentration of the water color producing agents (CPAs) (specifically chlorophyll-{\it a}, sediments, and colored dissolved organic matter (CDOM)) in fresh and coastal waters.''} 
+{ \bf ``The Landsat 8 sensor can be utilized to simultaneously quantify the concentration of the water color producing agents (CPAs) (i.e. chlorophyll-{\it a}, sediments, and colored dissolved organic matter (CDOM)) in fresh and coastal waters.''} 
 
-This leads to the goal of our work: to develop a process to retrieve water constituents (CPAs) from Landsat 8 imagery to evaluate this satellite performance. Specifically, the algorithm will be used over Case 2 water, which includes fresh and coastal water. The retrieval algorithm compares a water leaving reflectance with unknown concentrations to water leaving reflectance whose concentrations are known. Because the comparison is made in the reflectance domain, the process first requires atmospherically correcting the Landsat 8 image and two approaches are investigated to do so. The first one is an ELM-based algorithm while the second one is the standard SeaWiFS/MODIS algorithm using the shortwave infrared (SWIR) bands.
+This leads to the goal of our work: to develop a process to retrieve water constituents (CPAs) from Landsat 8 imagery to evaluate this satellite performance. Specifically, the algorithm will be used over Case 2 water, which includes fresh and coastal water. The retrieval algorithm compares a water leaving reflectance with unknown concentrations to water leaving reflectance whose concentrations are known. Because the comparison is made in the reflectance domain, the process first requires atmospherically correcting the Landsat 8 image and one approach was investigated to do so. The approach was the \acrfull{mobelm} algorithm \cite{Concha2014SPIE}.
 
 % -----------------------------------------------------------------
 \section{Statement of Objectives}
@@ -25,15 +25,16 @@ The successful completion of this research effort will be marked by completion o
 \begin{enumerate}
 	\item To develop over-water atmospheric correction algorithms for Landsat 8 reflective imagery.
 	\item To design a water constituent concentration retrieval algorithm that can be applied to a specific study area.
-	\item To validate results by comparing with in-situ measurements and products from ocean color satellites.
+	\item To validate results by comparing with {\it in situ} measurements and products from ocean color satellites.
 \end{enumerate}
 
 \subsection{Future Objectives:}
 \begin{enumerate}
-	\item Demo this process to a second study site.
-	\item {\todo{Check with Dr. Schott} Include a glint correction.} 
-	\item Integration with Hydrodynamics models \todo{continue numeration} .
-	\item Make the processes and algorithms more user friendly 
+	\item To demo this process to a second study site.
+	\item To include a glint correction.
+	\item To integrate with Hydrodynamics models.
+	\item To make the processes and algorithms more user friendly.
+	\item To investigate {\it in situ} AOPs and IOPs relationship to calculate backscattering.
 \end{enumerate}
 % -----------------------------------------------------------------
 \section{Description of Tasks}
@@ -41,36 +42,36 @@ The successful completion of this research effort will be marked by completion o
 
 \subsection{Primary Requirements:}
 \begin{enumerate} 
-	{\bf \item Develop over-water atmospheric correction algorithms for Landsat 8 reflective imagery.} 
+	{\bf \item To develop over-water atmospheric correction algorithms for Landsat 8 reflective imagery.} 
 
-The first objective in this research is to identify the best approach to atmospherically correct the type of dataset provided by the OLI sensor. Two methods will be investigated. The first method will be based on previous work done on simulated OLI data \cite{Gerace:2013,Gerace:2012,GeraceThesis,Pahlevan:2012} that consists of an ELM-based method that combines the Landsat reflectance product (Landsat Surface Reflectance CDR;\cite{LandsatCDR}) and a physics-based numerical model for water (HydroLight) to determine both the bright and dark pixel reflectance. The second method will be based on methods developed for ocean color satellite such as SeaWiFS, MODIS, and MERIS \cite{Gordon:1997}. These methods are based on the fact that the signal leaving the water does not contribute to the overall signal beyond the NIR part of the spectrum of light (black pixel assumption), so the signal reaching the sensor is caused only by atmospheric scattering. This concept can be expanded to the SWIR bands when the black pixel assumption is not valid in the NIR bands, which is the case for Case 2 and high productive Case 1 waters (\cite{Wang:2007}).
+The first objective in this research is to identify the best approach to atmospherically correct the type of dataset provided by the OLI sensor. Two approaches were investigated. The first method is based on previous work done on simulated OLI data \cite{Gerace:2013,Gerace:2012,GeraceThesis,Pahlevan:2012} that consists of an \acrfull{elm}-based (ELM-based) method that combines the Landsat reflectance product (Landsat Surface Reflectance \acrshort{cdr};\cite{LandsatCDR}) and a physics-based numerical model for water (HydroLight;\cite{MobleyHEtech}) to determine both the bright and dark pixel reflectance. The second method is based on the methods developed for ocean color satellite based on \cite{Gordon:1994}. This method is based on the fact that the signal leaving the water does not contribute to the overall signal beyond the NIR part of the spectrum of light (black pixel assumption), so the signal reaching the sensor is caused only by atmospheric scattering. This concept can be expanded to the SWIR bands when the black pixel assumption is not valid in the NIR bands, which is the case for Case 2 and high productive Case 1 waters (\cite{Wang:2007}).
 
-	{\bf \item Design a water constituent concentration retrieval algorithm that can be applied to a specific study area.}
+	{\bf \item To design a water constituent concentration retrieval algorithm that can be applied to a specific study area.}
 
-The retrieval algorithm is based on previous work done by \cite{Raqueno:2003} and \cite{GeraceThesis}. The water-leaving reflectance product obtained after atmospheric correction from the previous stage is used as input to the retrieval algorithm. Each pixel of reflectance product has an unknown concentration. A spectral matching technique is applied to predict this concentration by comparing the spectral shape of each pixel with the elements in a LUT. The spectral matching is made by a least square error minimization along with a trilinear interpolation. This utilizes a non-linear optimization code provided in the Optimization Toolbox of the MATLAB software \todo{Name Matlab package}. The output of this process is a concentration mapping for each water constituent.
+The retrieval algorithm is based on previous work done by \cite{Raqueno:2003}, \cite{GeraceThesis}, and \cite{Pahlevan:2012}. The water-leaving reflectance product obtained after atmospheric correction from the previous stage is used as input to the retrieval algorithm. Each pixel of reflectance product has an unknown concentration. A spectral matching technique is applied to predict this concentration by comparing the spectral shape of each pixel with the elements in a LUT. The spectral matching is made by a least square error minimization along with a trilinear interpolation. This utilizes the non-linear optimization code ``lsqnonlin'' provided in the Optimization Toolbox of the MATLAB software \cite{MatlabHelp}. The output of this process is a concentration mapping for each water constituent.
 
-The LUT is generated using the ``Case 2'' \todo{check this word} algorithm in HydroLight for different triplets of water constituent concentrations. In order to generate congruent result from HydroLight, the user needs to input IOPs characteristic of the water bodies to be studied. Consequently, IOPs measured spectrophotometrically in the lab from water samples from the field are used as input to HydroLight along with backscattering measurements in the field. These measurements were collected when the Landsat 8 sensor passed over the area of study.
+The LUT is generated using the ``Case 2'' algorithm in HydroLight for different triplets of water constituent concentrations. In order to generate congruent result from HydroLight, the user needs to input IOPs characteristic of the water bodies to be studied. Consequently, IOPs measured spectrophotometrically in the lab from water samples from the field are used as input to HydroLight. These measurements were collected when the Landsat 8 sensor passed over the area of study.
 
 The area of study is the Lake Ontario Rochester Embayment that includes some nearby ponds (Long and Cranberry ponds), the Genesee River plume, the Irondequoit bay and part of Lake Ontario. This area was selected because it exhibits a wide range of variability in concentration of water constituents, so the retrieval algorithm can be tested against a wide range of water conditions.
  
-	{\bf \item Validate results by comparing with in-situ measurements and products from ocean color satellites.}
+	{\bf \item To validate results by comparing with {\it in situ} measurements and products from ocean color satellites.}
 
-The results from the retrieval process are validated by comparison with measurements taken from the water bodies being studied. Before this process, the measurements needed to be validated with measurements analyzed by a credible lab (Monroe County Environmental Laboratory). This comparison with this lab shows agreement between the measurements. 
+The results from the retrieval process were validated by comparison with measurements taken from the water bodies being studied. Before this process, the measurements needed to be validated with measurements analyzed by a credible lab (Monroe County Environmental Laboratory). This comparison with this lab shows agreement between the measurements. 
 
-For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl{\it a} product) if possible.
-
-	{\bf \item {\todo{Check with Dr. Schott} Demo this process to a second study site}.}
-
-After validation of the retrieval algorithm over the study area, the next step would be to make it applicable to a second study site. To do so, a more general LUT would be created with elements representative of the different water bodies present in both study sites.
+For further validation, the results were compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl{\it a} product in SeaDAS).
 
 
 \end{enumerate}
 
-
 % \subsection{Primary Requirements}
 \subsection{Future Objectives}
 	\begin{enumerate}
-			{\bf \item Integration with hydrodynamics models. \todo{continue numeration} } 
+
+		{\bf \item To demo this process to a second study site.}
+
+After validation of the retrieval algorithm over the study area, the next step would be to make it applicable to a second study site. To do so, a more general LUT would be created with elements representative of the different water bodies present in both study sites.
+
+			{\bf \item Integration with hydrodynamics models.} 
 
 The next step would be to use the validated results from the retrieval process for training hydrodynamics models to predicts future behavior of the water bodies. This would be based on previous work made by \cite{Pahlevan:2012} and \cite{GeraceThesis}, who used concentration maps obtained from the retrieval process using satellite imagery to train hydrodynamic models. For example, the hydrodynamic model would allow us to monitor the dynamics of coastal/inland waters near river discharges. The maps of water constituent concentrations on the surface can be used to feed into the hydrodynamic models in order to calibrate them. 
 
