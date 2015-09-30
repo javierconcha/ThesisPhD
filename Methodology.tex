@@ -14,6 +14,50 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
     \caption{Retrieval process flow diagram. The radiance image from the satellite is first corrected for atmospheric effects, having as result $R_{rs}$ spectra for each water pixel in the image. Then, a spectrum-matching methodology is used to find the closest match in the least-squared sense for the water pixels with unknown CPAs concentration in the LUT of water pixels with known CPAs concentration. The final result is a concentration map for each CPA.  \label{fig:retrieval} }
 \end{figure}
 
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[htb]
+  \centering
+% \resizebox{9cm}{!}{%
+% Define block styles
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2em, minimum height=2em,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1em, minimum height=3em, text width=1.0cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=2em, minimum height=2em, text width=2.0cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=2em, minimum height=2em, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=3cm]
+
+% \node (start) [startstop] {Start};
+
+\node (L8image) [io] {Landsat \\Image};
+\node (prepro) [process, right of=L8image] {Image \\pre-processing};
+\node (AtmCorr) [process, right of=prepro] {Atmospheric Correction};
+\node (RetProc) [process, right of=AtmCorr] {Retrieval Process};
+\node (CPAmap) [io, right of=RetProc] {CPA \\maps};
+
+\node[align=left, below=0.0 of prepro] (List1) {\scriptsize - Cloud/Land/Water Mask\\\scriptsize - Radiometric Calibration};
+
+\draw [arrow] (L8image) -- (prepro);
+\draw [arrow] (prepro) -- (AtmCorr);
+\draw [arrow] (AtmCorr) -- (RetProc);
+\draw [arrow] (RetProc) -- (CPAmap);
+
+
+
+\end{tikzpicture}
+
+
+% } % resizebox end
+
+\caption{High-level flowchart of the process. \label{fig:flowchart}}
+
+\end{figure}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Over-Water Atmospheric Correction} 
 \label{sec:atmcorr}
 The first objective in this research is to identify a suitable approach to atmospherically correct the type of dataset provided by the OLI sensor. This is a complex task to perform over water because the signal leaving the water that reaches the sensor is very small compared to the signal reaching the sensor from atmospheric scattering. 

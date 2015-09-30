@@ -1,5 +1,5 @@
 % \documentclass[draft]{book}
-\documentclass[]{book}
+\documentclass[draft]{book}
 
 \usepackage{graphicx}
 
@@ -100,10 +100,14 @@
     pdfkeywords={keyword1} {key2} {key3}, % list of keywords
     pdfnewwindow=true,      % links in new window
     colorlinks=true,       % false: boxed links; true: colored links
-    linkcolor=blue,          % color of internal links
-    citecolor=cyan,        % color of links to bibliography
-    filecolor=magenta,      % color of file links
-    urlcolor=blue,           % color of external links
+    % linkcolor=blue,          % color of internal links
+    % citecolor=cyan,        % color of links to bibliography
+    % filecolor=magenta,      % color of file links
+    % urlcolor=blue,           % color of external links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=black,           % color of external links
     breaklinks=true
 }
 
@@ -148,7 +152,7 @@
 % \includeonly{Background_and_Theory} 
 % \includeonly{Introduction,Objectives,Background_and_Theory,Methodology,Results} 
 \usepackage{tikz} % for flow charts
-  \usetikzlibrary{shapes,arrows,positioning,shadows,calc}
+  \usetikzlibrary{shapes,shapes.geometric,arrows,positioning,shadows,calc}
 
 \begin{filecontents*}{linereg.data}
 #x y
