@@ -52,10 +52,84 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 
 % } % resizebox end
 
-\caption{High-level flowchart of the process. \label{fig:flowchart}}
+\caption{High-level flowchart of the process. \label{fig:highlevelflowchart}}
 
 \end{figure}
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[htb]
+  \centering
+% \resizebox{9cm}{!}{%
+% Define block styles
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2em, minimum height=2em,text centered, draw=black, fill=red!30]
+
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1em, minimum height=3em, text width=2.0cm, text centered, draw=black, fill=blue!30]
+
+\tikzstyle{iosmall} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1em, minimum height=1em, text width=1.0cm, text centered, draw=black, fill=blue!30]
+
+\tikzstyle{process} = [rectangle, minimum width=2em, minimum height=2em, text width=2.0cm, text centered, draw=black, fill=orange!30]
+
+\tikzstyle{decision} = [diamond, minimum width=2em, minimum height=2em, text centered, draw=black, fill=green!30]
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=2cm]
+
+% \node (start) [startstop] {Start};
+
+\node (L8image) [io] {Landsat \\Image (DN)};
+\node (radcal) [process, below of=L8image] {Radiometric \\Calibration};
+\node (resize) [process, below of=radcal] {Resize};
+\node (mask) [process, below of=resize] {Cloud/Land \\Mask};
+\node (AtmCorr) [process, below of=mask] {Atmospheric Correction};
+\node (rrs) [io, below of=AtmCorr] {$R_{rs}$ \\Image};
+\node (RetProc) [process, below of=rrs] {Retrieval Process};
+\node (CPAmap) [io, below of=RetProc] {CPA \\maps};
+
+\node (CDRImage) [io, left of=L8image, xshift=-2cm] {Landsat \\Reflectance \\Product};
+\node (PIFmask) [process, below of=CDRImage] {PIF \\Mask};
+\node (brightpx) [io, below of=PIFmask] {Bright\\Pixel};
+
+\node (samples) [io, right of=L8image, xshift=2cm] {Water \\Samples};
+\node (labmea) [process, below of=samples] {Lab \\Mea.};
+\node (IOPs) [io, below of=labmea] {IOPs \\and \\Concent.};
+\node (hydro) [process, below of=IOPs] {Hydrolight};
+\node (dark) [iosmall, below of=hydro, xshift=-1cm] {Dark \\Pixel};
+\node (LUT) [iosmall, below of=hydro, xshift=1cm] {LUT};
+
+
+\node (AOPs) [io, right of=samples, xshift=2cm] {{\it in situ} \\AOPs \\($R_{rs}$)};
+
+% \node[align=left, right=0.0 of prepro] (List1) {\scriptsize - Cloud/Land/Water Mask\\\scriptsize - Radiometric Calibration};
+
+\draw [arrow] (L8image) -- (radcal);
+\draw [arrow] (radcal) -- (resize);
+\draw [arrow] (resize) -- (mask);
+\draw [arrow] (mask) -- (AtmCorr);
+\draw [arrow] (AtmCorr) -- (rrs);
+\draw [arrow] (rrs) -- (RetProc);
+\draw [arrow] (RetProc) -- (CPAmap);
+
+\draw [dashed] (L8image) -- (CDRImage);
+\draw [arrow] (CDRImage) -- (PIFmask);
+\draw [arrow] (PIFmask) -- (brightpx);
+\draw [arrow] (brightpx) |- (AtmCorr);
+
+\draw [arrow] (samples) -- (labmea);
+\draw [arrow] (labmea) -- (IOPs);
+\draw [arrow] (IOPs) -- (hydro);
+% \draw [arrow] (hydro) |- (AtmCorr);
+
+\end{tikzpicture}
+
+
+% } % resizebox end
+
+\caption{Detailed flowchart of the process. \label{fig:detailflowchart}}
+
+\end{figure}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Over-Water Atmospheric Correction} 
