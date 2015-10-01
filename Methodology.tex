@@ -17,7 +17,7 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[htb]
+\begin{figure}[!ht]
   \centering
 % \resizebox{9cm}{!}{%
 % Define block styles
@@ -58,7 +58,7 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[htb]
+\begin{figure}[!ht]
   \centering
 % \resizebox{9cm}{!}{%
 % Define block styles
@@ -74,6 +74,7 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 \tikzstyle{decision} = [diamond, minimum width=2em, minimum height=2em, text centered, draw=black, fill=green!30]
 
 \tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{arrowdashed} = [thick,dashed,->,>=stealth]
 
 \begin{tikzpicture}[node distance=2cm]
 
@@ -83,24 +84,30 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 \node (radcal) [process, below of=L8image] {Radiometric \\Calibration};
 \node (resize) [process, below of=radcal] {Resize};
 \node (mask) [process, below of=resize] {Cloud/Land \\Mask};
-\node (AtmCorr) [process, below of=mask] {Atmospheric Correction};
+\node (AtmCorr) [process, below of=mask] {Atmospheric \\Correction \\(MoB-ELM)};
 \node (rrs) [io, below of=AtmCorr] {$R_{rs}$ \\Image};
-\node (RetProc) [process, below of=rrs] {Retrieval Process};
+\node (RetProc) [process, below of=rrs] {Retrieval \\Process \\(RMSE \\lsqnonlin)};
 \node (CPAmap) [io, below of=RetProc] {CPA \\maps};
 
-\node (CDRImage) [io, left of=L8image, xshift=-2cm] {Landsat \\Reflectance \\Product};
+\node (CDRImage) [io, left of=L8image, xshift=-1.5cm] {Landsat \\Reflectance \\Product};
 \node (PIFmask) [process, below of=CDRImage] {PIF \\Mask};
 \node (brightpx) [io, below of=PIFmask] {Bright\\Pixel};
 
-\node (samples) [io, right of=L8image, xshift=2cm] {Water \\Samples};
+\node (AOPs) [iosmall, right of=L8image, xshift=0.8cm] {{\it in situ} \\AOPs \\($R_{rs}$)};
+
+\node (samples) [io, right of=AOPs, xshift=0.8cm] {Water \\Samples};
 \node (labmea) [process, below of=samples] {Lab \\Mea.};
-\node (IOPs) [io, below of=labmea] {IOPs \\and \\Concent.};
-\node (hydro) [process, below of=IOPs] {Hydrolight};
-\node (dark) [iosmall, below of=hydro, xshift=-1cm] {Dark \\Pixel};
-\node (LUT) [iosmall, below of=hydro, xshift=1cm] {LUT};
+\node (IOPs) [iosmall, below of=labmea, xshift=-1cm] {IOPs};
+\node (conc) [iosmall, below of=labmea, xshift=1cm] {Conc.};
+\node (hydro) [process, below of=IOPs, xshift=1cm] {Hydrolight};
+\node (darkpx) [iosmall, below of=hydro, xshift=-1.5cm] {Dark \\Pixel};
+\node (LUT) [iosmall, below of=hydro, xshift=1.5cm] {LUT};
+
+\node (bb_b) [iosmall, right of=hydro, xshift=1cm] {$b_b/b$};
 
 
-\node (AOPs) [io, right of=samples, xshift=2cm] {{\it in situ} \\AOPs \\($R_{rs}$)};
+\node (Comp) [process, right of=CPAmap, xshift=1.5cm] {Comparison};
+\node (NRMSE) [io, below of=Comp] {NRMSE};
 
 % \node[align=left, right=0.0 of prepro] (List1) {\scriptsize - Cloud/Land/Water Mask\\\scriptsize - Radiometric Calibration};
 
@@ -112,14 +119,31 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 \draw [arrow] (rrs) -- (RetProc);
 \draw [arrow] (RetProc) -- (CPAmap);
 
-\draw [dashed] (L8image) -- (CDRImage);
+\draw [arrowdashed] (L8image) -- (CDRImage);
 \draw [arrow] (CDRImage) -- (PIFmask);
 \draw [arrow] (PIFmask) -- (brightpx);
 \draw [arrow] (brightpx) |- (AtmCorr);
 
 \draw [arrow] (samples) -- (labmea);
-\draw [arrow] (labmea) -- (IOPs);
+\draw [arrow] (labmea) |- (IOPs);
+\draw [arrow] (labmea) |- (conc);
 \draw [arrow] (IOPs) -- (hydro);
+\draw [arrow] (conc) -- (hydro);
+\draw [arrow] (hydro) |- (darkpx);
+\draw [arrow] (hydro) |- (LUT);
+\draw [arrow] (darkpx) -- (AtmCorr);
+\draw [arrow] (LUT) |- (RetProc);
+
+\draw [arrowdashed] (AOPs) |- (hydro);
+
+\draw [arrow] (conc.east) |- ([xshift=2.5cm]conc.east)  |- (Comp);
+\draw [arrow] (CPAmap) -- (Comp);
+\draw [arrow] (Comp) -- (NRMSE);
+
+\draw [arrow] (hydro) -- (bb_b);
+
+\draw [arrow] (bb_b.south) -- ([yshift=-0.8cm]bb_b.south) -| ([xshift=-0.5cm]hydro.south east);
+
 % \draw [arrow] (hydro) |- (AtmCorr);
 
 \end{tikzpicture}
