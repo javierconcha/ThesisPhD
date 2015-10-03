@@ -430,8 +430,8 @@ The IOPs are additive. Therefore, the total absorption coefficient, for instance
   a_{total}(z,\lambda) = \sum_{i=1}^{ncomp} a_i(z,\lambda)
 \end{equation}
 e.g.,
-\begin{equation}
-  a_{total}(z,\lambda) =  a_w(\lambda) +a_{CDOM}(z,\lambda)+ a_{Chl}(z,\lambda)+a_{SM}(z,\lambda) \notag
+\begin{equation}\label{eq:atotal}
+  a_{total}(z,\lambda) =  a_w(\lambda) +a_{CDOM}(z,\lambda)+ a_{Chl}(z,\lambda)+a_{SM}(z,\lambda)
 \end{equation}
 This fact is important because it will help to retrieve simultaneously the CPAs in this case. This also implies that we need to know the IOPs for each component, which is not an easy task, especially the scattering coefficient.
 
@@ -466,6 +466,11 @@ and the {\it backscattered fraction} \index{backscattered fraction, $b_b/b$} as
 \end{equation}
 which tells how much of the total scattering is due to backscattering.
 
+Again, because the IOPs are additive, the total backscattering coefficients can be expressed as
+\begin{equation}\label{eq:b_btotal}
+  b_b(z,\lambda) =  b_{bw}(\lambda) + b_{bChl}(z,\lambda)+b_{bSM}(z,\lambda)
+\end{equation}
+
 It is important to note that the previous definition assumed that there are no inelastic-scattering processes present. However, fluorescence by dissolved matter or chlorophyll, and Raman scattering by the water molecules themselves, are inelastic-scattering processes that do occur in nature. The power that is lost from $\lambda$ by scattering into $\lambda'\neq\lambda$ results in absorption coefficient $a(\lambda)$ increment. The gain in power at $\lambda'$ is expressed as a source term in the radiative transfer equation (see \autoref{eq:RTEfinal}).
 
 Another IOP commonly used in ocean optics is the {\it single-scattering albedo} \index{single-scattering albedo, $\omega_o$} $\omega_o$, defined as
@@ -482,7 +487,7 @@ Additionally, the {\it volume scattering phase function} $\tilde{\beta}(\psi,\la
 % ----------------------------------------------------
 \subsubsection*{The Radiative Transfer Equation (RTE)}
 \addcontentsline{toc}{subsubsection}{The Radiative Transfer Equation}
-The connection between the IOPs, boundary conditions, and light sources (e.g. bioluminescence) to the radiances is made through the radiative transfer equation (RTE). It expresses conservation of energy in terms of radiance for a collimated beam of radiance traveling through an absorbing, scattering and emitting medium. All other radiometric variable (irradiances) and AOPs can be derived from the radiance.
+The connection between the IOPs, boundary conditions, and light sources (e.g. bioluminescence) to the radiances is made through the \gls{rte}. It expresses conservation of energy in terms of radiance for a collimated beam of radiance traveling through an absorbing, scattering and emitting medium. All other radiometric variable (irradiances) and AOPs can be derived from the radiance.
 
 \begin{figure}[htb]
 \centering
@@ -536,7 +541,7 @@ which is more convenient to use in oceanography because it depends on the depth 
 % ----------------------------------------------------
 \subsubsection*{Apparent Optical Properties (AOPs)}
 \addcontentsline{toc}{subsubsection}{Apparent Optical Properties}
-The apparent optical properties are those properties that not only depend on the medium (the IOPs) but also on the directional structure of the ambient light field (radiance distribution). Additionally, AOPs need to display enough stability to be useful descriptors of a water body. They are always a ratio of two radiometric quantities. Examples of AOPs are the irradiance reflectance, the remote-sensing reflectance, and various diffuse attenuation functions.
+The \gls{aops} are those properties that not only depend on the medium (the IOPs) but also on the directional structure of the ambient light field (radiance distribution). Additionally, AOPs need to display enough stability to be useful descriptors of a water body. They are always a ratio of two radiometric quantities. Examples of AOPs are the irradiance reflectance, the remote-sensing reflectance, and various diffuse attenuation functions.
 
 The irradiance reflectance (a.k.a. irradiance ratio) is defined as
 \begin{equation}
@@ -566,13 +571,13 @@ It is important to note that AOPs are not additive as the IOPs. Also, AOPs can n
 
 % ------------------------------------------
 \subsection{Deriving IOPs from AOPs}
-The reflectance inversion methods refer to method to derive IOPs (e.g. absorption $a$ and scattering $b$ coefficients) from AOPs (e.g. $R_{rs}$). There two kinds of inversion methods: empirical and semi-analytic models. The general expression of optical closure relationships is well known \{$R_{rs}(\lambda)~or~L_{wN} = f[b_b(\lambda)/a(\lambda)]$\} with $R_{rs}=L_w/E_d$ the remote-sensing reflectance and $L_{wN}$ the normalized water-leaving radiance \cite{Morel:1977rw,Maritorena:02}. \cite{Gordon:1988qv} derived this relationship as
+The reflectance inversion methods refer to method to derive IOPs (e.g. absorption $a$ and scattering $b$ coefficients) from AOPs (e.g. $R_{rs}$). There two kinds of inversion algorithms: empirical and semi-analytic algorithms. The empirical algorithms apply simple or multiple regressions between the property of of interest and the ratios of \gls{rrs}. These kinds of algorithms tend to work only in waters with similar properties to the ones they were based on, resulting in a limited applicability. Some of the advantage of the empirical algorithms are their simplicity and rapidity in data processing. On the other hand, the semianalytical algorithms are based on solving the \gls{rte} and they can be applied to different water types \cite{Lee2002_invQAA}.
+
+It is well known that the AOPs are a function of the ratio between the backscattering and the absorption coefficients, .i.e. $R_{rs}(\lambda)~or~L_{wN} = f[b_b(\lambda)/a(\lambda)]$ with $R_{rs}=L_w/E_d$ the remote-sensing reflectance and $L_{wN}$ the normalized water-leaving radiance \cite{Morel:1977rw,Maritorena:02}. As an example, \cite{Gordon:1988qv} derived this relationship as
 \begin{equation}\label{eq:semianal}
   \hat{L}_{wN} = \frac{tF_0(\lambda)}{n_w^2} \sum_{i=1}^2g_i\left[\frac{b_b(\lambda)}{b_b(\lambda)+a(\lambda)}\right]^i
 \end{equation}
-\noindent where $t$ is the sea-air transmission factor, $F_0(\lambda)$ is the extraterrestrial solar irradiance, $n_w$ is the index of refraction of the water, and the $g_i$ terms are fitting coefficients from Monte Carlo simulations of an idealized ocean by \cite{Gordon:1986fr}. If \autoref{eq:semianal} is used at first order only, the $g_1$ term becomes the $f/Q$ factor, which is dependent on the viewing geometry and not constant \cite{Maritorena:02}.
-
-This was extended by \cite{Lee2002_invQAA} and \cite{Werdell2013_inv}. 
+\noindent where $t$ is the sea-air transmission factor, $F_0(\lambda)$ is the extraterrestrial solar irradiance, $n_w$ is the index of refraction of the water, and the $g_i$ terms are fitting coefficients from Monte Carlo simulations of an idealized ocean by \cite{Gordon:1986fr}. If \autoref{eq:semianal} is used at first order only, the $g_1$ term becomes the $f/Q$ factor, which is dependent on the viewing geometry and not constant \cite{Maritorena:02}. Examples of semianalytical algorithms can be found in \cite{Lee2002_invQAA} and \cite{Werdell2013_inv}. Note that the IOP spectra, $a(\lambda)$ and $b_b(\lambda)$, can be decomposed in the different water constituents or \gls{cpas} (see \autoref{eq:atotal} and \autoref{eq:b_btotal}). Therefore, if all the \gls{iops} but the $b_b(\lambda)$ are known, then the $b_b(\lambda)$ can be determined from \gls{rrs} using one of these semianalytical algorithms.
 % ------------------------------------------
 \subsection{Standard Algorithms (NASA)}
 \subsubsection{$C_a$}
