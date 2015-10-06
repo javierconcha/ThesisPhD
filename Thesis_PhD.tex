@@ -188,11 +188,7 @@
 \usepackage[percent]{overpic}
 \usepackage{morefloats} % for the error "Too many unprocessed floats"
 
-% Added 12-03-13 ----------------------------------------
-\usepackage{imakeidx} % to create index
-\indexsetup{othercode=\small}
-\makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
-% -------------------------------------------------------
+
 
 
 % Added 09-28-15 ----------------------------------------
@@ -204,6 +200,14 @@
 \renewcommand*{\acronymname}{Acronyms and Abbreviations}
 
 \include{Acronyms}
+
+% Added 12-03-13 ----------------------------------------
+\usepackage{imakeidx} % to create index
+% \indexsetup{othercode=\small}
+% \makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
+\usepackage{imakeidx}     % use this one when is not working
+\makeindex                % use this one when is not working
+% -------------------------------------------------------
 
 
 %******************************************************************************************************
@@ -367,5 +371,6 @@ Mis amados viejitos, Osvaldo Concha Silva and Nelly del Carmen Sep\'ulveda Reyes
 \bibliography{C:/Users/Aixa/Documents/Javier/Latex/ThesisPhD/javier_bib}
 
 \printindex
+\addcontentsline{toc}{chapter}{Index}
 
 \end{document}  
