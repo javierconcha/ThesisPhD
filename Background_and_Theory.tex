@@ -3,11 +3,9 @@
 %% CHAPTER
 \chapter{Background and Theory}
 \label{ch:background}
-\todo{introduction to the chapter}
+When the target is a water body, besides the traditional concept applied to remote sensing over land, additional concepts need to be introduced. This chapter will first explain the basics concept of remote sensing such as radiometric quantities and the governing equation. Later, the additional concepts needed to complete the remote sensing over water are introduced. These concepts include energy interaction with the water column and paths associated with it. Also, this chapter describes the atmospheric correction of satellite imagery, and the atmospheric correction methods used over water. Some tools such as Hydrolight, ACOLITE and the Landsat surface reflectance products are described as well. Furthermore, the concept of light propagation and interaction over the water column and its constituents are addressed, along with the optical properties of these constituents.  
 % ----------------------------------------------------
-\section{Remote Sensing of Water}
-When the target is a water body, besides the traditional concept applied to remote sensing over land, additional concepts need to be introduced. This section will first explain the basics concept of remote sensing such as radiometric quantities and the governing equation. Later, the additional concepts needed to complete the remote sensing over water are introduced. These concepts include energy interaction with the water column and paths associated with it. Some tools such as Hydrolight and the Landsat surface reflectance product are described at the end of this section.
-
+\section{Remote Sensing and Water}
 \subsection{Radiometric Quantities}
 \autoref{fig:radiance} shows the geometry used to define the radiometric quantities. We need to define a fundamental radiometric quantity that specifies completely positional ($x,y,z$), temporal ($t$), directional ($\theta,\phi$) and spectral ($\lambda$) structure of the light field. This is accomplished by the spectral radiance $L$. The {\it spectral radiance} $L$ \index{spectral radiance, $L$} can be defined as (\cite{Mobley:2001})
 \begin{equation}\label{eq:rad1}
@@ -26,7 +24,6 @@ where:\\
 \caption{Radiance (Note: image taken from \cite{Mobley:2001})}
 \label{fig:radiance} 
 \end{figure}
-\todo{can I use a fig. from other author?} 
 
 In the conceptual limit of infinitesimal parameter interval (\cite{Mobley:2001}), \autoref{eq:rad1} becomes
 \begin{equation}
@@ -161,7 +158,6 @@ Once the incident energy is transmitted through the water surface, i.e. $L_w$ in
   \caption{Contributions to sensor-reaching radiance from the water column.}
   \label{fig:WaterColumn}
 \end{figure}
-\todo{fix sun color}
 
 Path $I$ represents the bottom effect caused by the incident light that penetrates the water surface, is transmitted through the water column, reflected by the bottom, transmitted through the water column, and leaves the water into the sensor direction. This contribution depends on the depth and the clarity of the water. This signal can be significant in shallow Case 2 waters, i.e. depth $<10-15m$, where there is not much organic and/or inorganic suspended particles within the water column, and it can be used to extract information about the bottom composition or bathymetry, for instance. However, for water quality studies, this is a signal that needs to be avoided or isolated from the total signal. In the present study, this path will be assumed to have zero contribution to the water-leaving signal because the water bodies of interest are deep enough to not allow the incident light to interact with the bottom or the water have a significant concentration of suspended particles (i.e. $>0.1mg/L$ (\cite{Pahlevan:2012})).
 
@@ -323,7 +319,7 @@ where $z$ is the path length and the product
 is referred to as {\it optical depth}\index{optical depth $\delta$} $\delta$ \cite{Schott}.
 
 % ----------------------------------------------------
-\todo{not forget this section}
+% \todo{not forget this section}
 % \subsubsection*{Atmospheric Optics}
 % \addcontentsline{toc}{subsubsection}{Atmospheric Optics}
 % A plane wave traveling through a homogeneous material in the $z$ direction can be perceived as the time-averaged quantity irradiance \index{irradiance}  (power per unit area) on a surface \cite{Eismann2012}. The irradiance after propagation distance $z$ is given by
