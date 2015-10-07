@@ -1,5 +1,5 @@
 % \documentclass[draft]{book}
-\documentclass[]{book}
+\documentclass[draft]{book}
 
 \usepackage{graphicx}
 
@@ -22,17 +22,17 @@
 
 \usepackage{longtable}
 
-\usepackage{geometry}
+\usepackage[twoside]{geometry} % for page margin for odd and even pages to bind them
 \geometry{
 %  top=1.0in,  
-%  inner=1.5in,
+ inner=1.5in,
 %  outer=1.5in,
   bottom=1.2in,
 %  headheight=3ex, 
   headsep=3ex,         
 }
 
-\usepackage{fancyhdr}
+\usepackage{fancyhdr} % for the header
 \pagestyle{fancy}
 % \fancyhead[LO, RE]{\rightmark}
 \fancyhead[LE, RO]{\thepage}
