@@ -405,7 +405,7 @@ Several kinds of classification schemes have been suggested for natural waters b
 % ------------------------------------------------
 \subsubsection*{IOPs}
 \addcontentsline{toc}{subsubsection}{IOPs}
-The {\it inherent optical properties}\index{IOPs: inherent optical properties} (IOPs) are defined as those properties of the water that depend only upon the medium, and therefore are independent of the ambient light field (\cite{Mobley:2001}). The IOPs mostly used in radiative transfer theory are the absorption and scattering coefficients. As a way to define these concepts, we use the geometry illustrated in \autoref{fig:IOPsdef}. Consider a collimated beam of monochromatic light of wavelength $\lambda$ and spectral radiant power $\Phi_i(\lambda)$ illuminating a small volume $\Delta V$ of water with thickness $\Delta r$. The portion of the incident power $\Phi_i(\lambda)$ that is absorbed by the volume of water is denoted $\Phi_a(\lambda)$, while the part that is scattered out of the beam at an angle $\psi$ is denoted $\Phi_s(\psi,\lambda)$ and total power scattered in all directions $\Phi_s(\lambda)$. The part that is transmitted through the volume with no change in direction is denoted $\Phi_t(\lambda)$. 
+The {\it inherent optical properties} (\acrshort{iops})\index{IOPs: inherent optical properties} are defined as those properties of the water that depend only upon the medium, and therefore are independent of the ambient light field (\cite{Mobley:2001}). The IOPs mostly used in radiative transfer theory are the absorption and scattering coefficients. As a way to define these concepts, we use the geometry illustrated in \autoref{fig:IOPsdef}. Consider a collimated beam of monochromatic light of wavelength $\lambda$ and spectral radiant power $\Phi_i(\lambda)$ illuminating a small volume $\Delta V$ of water with thickness $\Delta r$. The portion of the incident power $\Phi_i(\lambda)$ that is absorbed by the volume of water is denoted $\Phi_a(\lambda)$, while the part that is scattered out of the beam at an angle $\psi$ is denoted $\Phi_s(\psi,\lambda)$ and total power scattered in all directions $\Phi_s(\lambda)$. The part that is transmitted through the volume with no change in direction is denoted $\Phi_t(\lambda)$. 
 
 \begin{figure}[htb]
 \centering
@@ -437,7 +437,7 @@ e.g.,
 \end{equation}
 This fact is important because it will help to retrieve simultaneously the CPAs in this case. This also implies that we need to know the IOPs for each component, which is not an easy task, especially the scattering coefficient.
 
-The scattering coefficients does not take in account the angular distribution of the scattered power. The volume scattering function is an IOP that takes in account angular information. Consider $\Phi_s(\psi,\lambda)/\Phi_i(\lambda)$ as the fraction of incident power scattered out of the beam through an angle $\psi$ into a solid angle $\Delta\Omega$ centered on $\Psi$, as shown in \autoref{fig:IOPsdef}. Then, the {\it volume scattering fraction} (VSF) \index{volume scattering function, VSF} is defined as the fraction of scattered power per unit distance and unit solid angle, i.e.
+The scattering coefficients does not take in account the angular distribution of the scattered power. The \gls{vsf} is an IOP that takes in account angular information. Consider $\Phi_s(\psi,\lambda)/\Phi_i(\lambda)$ as the fraction of incident power scattered out of the beam through an angle $\psi$ into a solid angle $\Delta\Omega$ centered on $\Psi$, as shown in \autoref{fig:IOPsdef}. Then, the {\it volume scattering function} (VSF) \index{volume scattering function, VSF} is defined as the fraction of scattered power per unit distance and unit solid angle, i.e.
 \begin{equation}\label{eq:VSF1}
   \beta(\psi,\lambda)\equiv \lim_{\Delta r\to 0} \lim_{\Delta \Omega\to 0}  \frac{\Phi_s(\psi,\lambda)}{\Phi_i(\lambda)\Delta r\Delta \Omega}~~\left[m^{-1}sr^{-1} \right]
 \end{equation}
@@ -489,7 +489,7 @@ Additionally, the {\it volume scattering phase function} $\tilde{\beta}(\psi,\la
 % ----------------------------------------------------
 \subsubsection*{The Radiative Transfer Equation (RTE)}
 \addcontentsline{toc}{subsubsection}{The Radiative Transfer Equation}
-The connection between the IOPs, boundary conditions, and light sources (e.g. bioluminescence) to the radiances is made through the \gls{rte}. It expresses conservation of energy in terms of radiance for a collimated beam of radiance traveling through an absorbing, scattering and emitting medium. All other radiometric variable (irradiances) and AOPs can be derived from the radiance.
+The connection between the IOPs, boundary conditions, and light sources (e.g. bioluminescence) to the radiances is made through the \gls{rte}. In other words, the \gls{rte} describes the relationship between \gls{iops} and \gls{aops}. It expresses conservation of energy in terms of radiance for a collimated beam of radiance traveling through an absorbing, scattering and emitting medium. All other radiometric variable (irradiances) and AOPs can be derived from the radiance.
 
 \begin{figure}[htb]
 \centering
@@ -543,14 +543,14 @@ which is more convenient to use in oceanography because it depends on the depth 
 % ----------------------------------------------------
 \subsubsection*{Apparent Optical Properties (AOPs)}
 \addcontentsline{toc}{subsubsection}{Apparent Optical Properties}
-The \gls{aops} are those properties that not only depend on the medium (the IOPs) but also on the directional structure of the ambient light field (radiance distribution). Additionally, AOPs need to display enough stability to be useful descriptors of a water body. They are always a ratio of two radiometric quantities. Examples of AOPs are the irradiance reflectance, the remote-sensing reflectance, and various diffuse attenuation functions.
+The \gls{aops} are those properties that not only depend on the medium (i.e. in the IOPs) but also on the directional structure of the ambient light field (radiance distribution). Additionally, \gls{aops} need to display enough stability to be useful descriptors of a water body. They are always a ratio of two radiometric quantities. Examples of AOPs are the irradiance reflectance, the remote-sensing reflectance, and various diffuse attenuation functions.
 
-The irradiance reflectance (a.k.a. irradiance ratio) is defined as
+The irradiance reflectance\index{reflectance!irradiance,$R(z,\lambda)$} (a.k.a. irradiance ratio\index{ratio!irradiance}) is defined as
 \begin{equation}
   R(z,\lambda)\equiv \frac{E_u(z,\lambda)}{E_d(z,\lambda)}
 \end{equation}
 
-The fundamental quantity used in ocean color remote sensing is the remote-sensing reflectance $R_{rs}$, defined as
+The fundamental quantity used in ocean color remote sensing is the \acrfull{rrs}\index{reflectance!remote-sensing, $R_{rs}$}, defined as
 \begin{equation}
   R_{rs}(\theta,\phi,\lambda)\equiv \frac{L_w(\theta,\varphi,\lambda)}{E_d(\lambda)}~~\left[sr^{-1} \right]
 \end{equation}
@@ -562,7 +562,7 @@ When the incident light is provided by the sun and the sky, the irradiances and 
 \begin{equation}\label{eq:EdKd}
   E_d(z,\lambda)\equiv E_d(0,\lambda) exp\left[-\int_0^{z}K_d(z',\lambda)dz'\right]
 \end{equation}
-where $K_d(z,\lambda)$ is the {\it spectral diffuse attenuation coefficient} for spectral downwelling plane irradiance. Solving \autoref{eq:EdKd} for $K_d$ gives
+where $K_d(z,\lambda)$ is the {\it spectral diffuse attenuation coefficient}\index{attenuation coefficient! spectral diffuse, $K_d$} for spectral downwelling plane irradiance. Solving \autoref{eq:EdKd} for $K_d$ gives
 \begin{align}
   K_d(z,\lambda)  &=- \frac{d\ln E_d(z,\lambda)}{dz} \notag \\
           &=-\frac{1}{E_d(z,\lambda)}\frac{dE_d(z,\lambda)}{dz} ~~\left[m^{-1} \right].
@@ -574,7 +574,7 @@ It is important to note that AOPs are not additive as the IOPs. Also, AOPs can n
 % ------------------------------------------
 \subsection{Deriving IOPs from AOPs}
 \label{subsec:semianalitic}
-The reflectance inversion methods refer to method to derive IOPs (e.g. absorption $a$ and scattering $b$ coefficients) from AOPs (e.g. $R_{rs}$). There two kinds of inversion algorithms: empirical and semi-analytic algorithms. The empirical algorithms apply simple or multiple regressions between the property of of interest and the ratios of \gls{rrs}. These kinds of algorithms tend to work only in waters with similar properties to the ones they were based on, resulting in a limited applicability. Some of the advantage of the empirical algorithms are their simplicity and rapidity in data processing. On the other hand, the semianalytical algorithms are based on solving the \gls{rte} and they can be applied to different water types \cite{Lee2002_invQAA}.
+The reflectance inversion methods\index{reflectance inversion algorithms} refer to method to derive IOPs (e.g. absorption $a$ and scattering $b$ coefficients) from AOPs (e.g. $R_{rs}$). There two kinds of inversion algorithms: empirical\index{empirical algorithms|see {reflectance inversion algorithms}} and semi-analytic algorithms\index{semi-analytic algorithms|see {reflectance inversion algorithms}}. The empirical algorithms apply simple or multiple regressions between the property of of interest and the ratios of \gls{rrs}. These kinds of algorithms tend to work only in waters with similar properties to the ones they were based on, resulting in a limited applicability. Some of the advantage of the empirical algorithms are their simplicity and rapidity in data processing. On the other hand, the semianalytical algorithms are based on solving the \gls{rte} and they can be applied to different water types \cite{Lee2002_invQAA}.
 
 It is well known that the AOPs are a function of the ratio between the backscattering and the absorption coefficients, .i.e. $R_{rs}(\lambda)~or~L_{wN} = f[b_b(\lambda)/a(\lambda)]$ with $R_{rs}=L_w/E_d$ the remote-sensing reflectance and $L_{wN}$ the normalized water-leaving radiance \cite{Morel:1977rw,Maritorena:02}. As an example, \cite{Gordon:1988qv} derived this relationship as
 \begin{equation}\label{eq:semianal}
@@ -604,9 +604,9 @@ It is well known that the AOPs are a function of the ratio between the backscatt
 
 % ----------------------------------------------------
 \section{The OLI Sensor}
-The Landsat project, a joint initiative between USGS and NASA, has been monitoring the earth for over four decades, creating the longest uninterrupted data set available. Landsat 8, formally known as the Landsat Data Continuity Mission (LDCM), is the most recent satellite to continue this objective. Carrying two instruments onboard, the Operational Land Imager (OLI) and the Thermal InfraRed Scanner (TIRS), Landsat 8 is the first of a new generation of Landsat satellites with these state-of-the-art technologies. 
+The Landsat project, a joint initiative between USGS and NASA, has been monitoring the earth for over four decades, creating the longest uninterrupted data set available. Landsat 8, formally known as the \gls{ldcm}, is the most recent satellite to continue this objective. Carrying two instruments onboard, the \acrfull{oli} and the \acrfull{tirs}, Landsat 8 is the first of a new generation of Landsat satellites with these state-of-the-art technologies. 
 
-Landsat 8 is an optical passive satellite, which means it records the energy reflected from a source (in this case the sun) by a target. It has a temporal resolution is 16 days, which means that it images the same location on Earth every 16 days. Because the area of study (Rochester Embayment) appears in two Landsat 8 paths, there is one image of this area every eight days. OLI is considered to be a multispectral instrument with a total of seven bands: four bands in the visible (VIS), one band in the near infrared (NIR) and two bands in the short wave infrared (SWIR), as can be seen in \autoref{fig:olibands}. \autoref{fig:olibands} also shows Landsat 7 bands for comparison. Note the two new bands: coastal band and cirrus bands.
+Landsat 8 is an optical passive satellite, which means it records the energy reflected from a source (in this case the sun) by a target. It has a temporal resolution is 16 days, which means that it images the same location on Earth every 16 days. Because the area of study (Rochester Embayment) appears in two Landsat 8 paths, there is one image of this area every eight days. OLI is considered to be a multispectral instrument with a total of seven bands: four bands in the \gls{vis}, one band in the \acrfull{nir} and two bands in the \acrfull{swir}, as can be seen in \autoref{fig:olibands}. \autoref{fig:olibands} also shows Landsat 7 bands for comparison. Note the two new bands added to the mission: coastal band and cirrus bands.
 
 \begin{figure}[htb]
 \centering
@@ -615,7 +615,7 @@ Landsat 8 is an optical passive satellite, which means it records the energy ref
       \label{fig:olibands}
 \end{figure}
 
-OLI has a spatial resolution of $30m$ in all seven bands, the same as previous Landsat satellites. Considering its 30-meter resolution, Landsat 8 should be especially useful for studying the nearshore and coastal environment at a much higher spatial resolution, when compared to ocean color satellites (e.g. MODIS, SeaWiFS, MERIS). This is illustrated in \autoref{fig:resol} where some features in the nearshore areas of Rochester, NY (such as ponds) can be fully resolved by Landsat 8 ($30m$) and not by Terra-MODIS ($500m$).
+OLI has a spatial resolution of $30m$ in all seven bands, the same as previous Landsat satellites. Considering its 30-meter resolution, Landsat 8 should be especially useful for studying the nearshore and coastal environment at a much higher spatial resolution, when compared to ocean color satellites (e.g. \gls{modis}, \gls{seawifs}, \gls{meris}). This is illustrated in \autoref{fig:resol} where some features in the nearshore areas of Rochester, NY (such as ponds) can be fully resolved by Landsat 8 ($30m$) and not by Terra-MODIS ($500m$).
 
 \begin{figure}[htb]
   \centering
@@ -648,20 +648,19 @@ Although the OLI's spectral bands are not narrow enough to be compared with MODI
       \caption{Comparison between Landsat 7 and Landsat 8 SNR. \label{fig:L8SNR} } 
       \label{fig:olisnr}
 \end{figure}
-
 \todo{include my SNR figure}
 
 % ----------------------------------------------
 \section{Empirical Line Method}
-\label{subsec:ELM}
-The {\it empirical line method}\index{ELM} (ELM) is a method for calibration of image data to reflectance that uses ground truth. The ELM uses a linear regression in each band to relate digital counts or radiance to reflectance \cite{Schott,Smith:1999}. The ground truth can be in general  either control panels or ad hoc control surfaces of known reflectance. These ground truth objects need to be approximately Lambertian to minimize any errors that could be introduced by sensor view angles effects. Also, these calibration targets are assumed flat and level, with no neighboring obscuration, and homogeneous as well. The ELM method generally assumes that the atmosphere is constant over the complete scene. If that is not the case, corrections must be made for changes in the atmosphere over the scene. The regression to be solved for each band in the ELM method is given by
+\label{sec:ELM}
+The {\it empirical line method}\index{ELM} (ELM) is a method for calibration of image data to reflectance that uses ground truth. The \acrshort{elm} uses a linear regression in each band to relate digital counts (\acrshort{dc}; a.k.a. \gls{dn}) or radiance to reflectance \cite{Schott,Smith:1999}. The ground truth can be in general  either control panels or ad hoc control surfaces of known reflectance. These ground truth objects need to be approximately Lambertian to minimize any errors that could be introduced by sensor view angles effects. Also, these calibration targets are assumed flat and level, with no neighboring obscuration, and homogeneous as well. The ELM method generally assumes that the atmosphere is constant over the complete scene. If that is not the case, corrections must be made for changes in the atmosphere over the scene. The regression to be solved for each band in the ELM method (\autoref{fig:ELMregression}) is given by
 \begin{equation}
 	\label{eq:ELM} 
 	L = m\times R_{rs} + b
 \end{equation}
-where $L$ is the radiance reaching the sensor value, $m$ is the slope of the regression, $R_{rs}$ is the remote-sensing reflectance, and $b=L_u$ is the intercept, with $L_u$ the upwelled radiance or path radiance. Then, the reflectance of the any Lambertian objects can be calculated by rearranging \autoref{eq:ELM}. In order to solve this regression, i.e. determine the value of $m$ and $b$, we need to have at least two targets with known radiance $L$ and reflectance $R_{rs}$. After $m$ and $b$ have been determined, the reflectance of each pixel at each wavelength can be calculated from its radiance value from the image.
+where $L$ is the radiance reaching the sensor value, $m$ is the slope of the regression, $R_{rs}$ is the remote-sensing reflectance, and $b=L_u$ is the intercept, with $L_u$ the upwelled radiance or path radiance. Then, the reflectance of the any Lambertian objects can be calculated by rearranging \autoref{eq:ELM}. In order to solve this regression, i.e. determine the value of $m$ and $b$, we need to have at least two targets with known radiance $L$ and reflectance $R_{rs}$. These targets are known as dark and bright targets or objects (\autoref{fig:ELMregression}). After $m$ and $b$ have been determined, the reflectance of each pixel at each wavelength can be calculated from its radiance value from the image.
 
-An ELM target needs to have a size at least three times the ground instantaneous field of view of the sensor that will image it at the time of data collection. Taking this in consideration, the target should be at least 90x90 meters big for the Landsat sensor, which is sometimes difficult to build or even to find in the scene.\todo{relate to ELM figure} 
+An ELM target needs to have a size at least three times the ground instantaneous field of view of the sensor that will image it at the time of data collection. Taking this in consideration, the target should be at least 90x90 meters big for the Landsat sensor, which is sometimes difficult to build or even to find in the scene. 
 
 \begin{figure}[htb]
   \centering
@@ -726,21 +725,22 @@ An ELM target needs to have a size at least three times the ground instantaneous
 % -----------------------------------------------------------------------------
 \section{Landsat Surface Reflectance CDR}
 \label{sec:CDR} 
-\todo{Talk about provisional landsat product}
-The Landsat climate data record (CDR) surface reflectance product is part of the higher-level Landsat data product to support land surface change study developed by USGS \cite{LandsatCDR}. The surface reflectance CDR is generated from specialized software called Landsat Ecosystem Disturbance Adaptive Processing System (LEDAPS) \cite{Masek:2006}. The LEDAPS software uses MODIS atmospheric correction routines to correct Level-1 Landsat Thematic Mapper (TM) or Enhanced Thematic Mapper Plus (ETM+) data. Atmospheric variables such as water vapor, ozone, aerosol optical thickness along with geometric variables ({\todo{What is geopotential height?} geopotential height} and digital elevation) are input with Landsat data to the Second Simulation of a Satellite Signal in the Solar Spectrum (6S) radiative transfer model. The 6S model outputs surface reflectance among others parameters. This surface reflectance product is called the Landsat surface reflectance CDR. This Landsat surface reflectance product has comparable uncertainty to the standard MODIS reflectance product \cite{Masek:2006}.
+\subsection{Landsat 4-7 Surface Reflectance Product}
+The Landsat \gls{cdr} surface reflectance product for Landsat 4-7 is part of the higher-level Landsat data product to support land surface change study developed by USGS \cite{LandsatCDR}. This product is generated from specialized software called \gls{ledaps} \cite{Masek:2006}. The LEDAPS software uses MODIS atmospheric correction routines to correct Level-1 Landsat \gls{tm} or \gls{etmplus} data. Atmospheric variables such as water vapor, ozone, aerosol optical thickness along with geometric variables ({\todo{What is geopotential height?} geopotential height} and digital elevation) are input with Landsat data to the \gls{6s} radiative transfer model. The 6S model outputs surface reflectance among others parameters. This surface reflectance product is called the Landsat surface reflectance CDR. This Landsat surface reflectance product has comparable uncertainty to the standard MODIS reflectance product \cite{Masek:2006}.
 
-The LEDAPS algorithm works in the following fashion. First, calibrated images from the Landsat satellite are corrected to {\todo{What does TOA reflectance mean?} top-of-atmosphere (TOA) reflectance} by correcting for solar zenith, Sun-Earth distance, TM or ETM+ bandpass, and solar irradiance. Then, the TOA reflectance is atmospherically corrected with the assumptions that the target is Lambertian and infinite, and the gaseous absorption and particle scattering in the atmosphere can be decoupled. The TOA reflectance can be expressed as \cite{Masek:2006}
+The LEDAPS algorithm works in the following fashion. First, calibrated images from the Landsat satellite are corrected to \gls{toa} reflectance by correcting for solar zenith, Sun-Earth distance, TM or ETM+ bandpass, and solar irradiance. Then, the TOA reflectance is atmospherically corrected with the assumptions that the target is Lambertian and infinite, and the gaseous absorption and particle scattering in the atmosphere can be decoupled. The TOA reflectance can be expressed as \cite{Masek:2006}
 \begin{equation}
 	\rho_{TOA}=T_g(O_3,O_2,CO_2,NO_2,CH_4)\\	
 		\times \left[\rho_{R+A}+T_{R+A}T_g(H_2O)\frac{\rho_s}{1-\rho_s\times S_{R+A}}\right]
 		\label{eq:TOAref} 
 \end{equation}
-where $\rho_s$ is the surface reflectance, $T_g$ is the gaseous transmission due to the atmospheric gases, $T_{R+A}$ is Rayleigh and aerosol transmission, $\rho_{R+A}$ is the Rayleigh and aerosols atmospheric intrinsic reflectance, and $S_{R+A}$ is the Rayleigh and aerosols spherical albedo. The 6S radiative transfer code is utilized to compute the transmission, intrinsic reflectance, and spherical albedo terms. Ozone concentrations and column water vapor are derived from ancillary data. The aerosol optical thickness (AOP) is extracted directly from the imagery by using the dark, dense vegetation (DDV) method of Kaufman {\it et al.} \todo{add reference}.This method postulates a linear relation between SWIR surface reflectance and reflectance in the visible bands, based on the physical correlation between chlorophyll absorption and bound water absorption \todo{Research more about AOT and the Kaufman method!!!}. Finally, the derived AOT, ozone, atmospheric pressure, and water vapor are supplied to the 6S radiative transfer algorithm, which then inverts TOA reflectance to surface reflectance using \autoref{eq:TOAref}. 
+where $\rho_s$ is the surface reflectance, $T_g$ is the gaseous transmission due to the atmospheric gases, $T_{R+A}$ is Rayleigh and aerosol transmission, $\rho_{R+A}$ is the Rayleigh and aerosols atmospheric intrinsic reflectance, and $S_{R+A}$ is the Rayleigh and aerosols spherical albedo. The 6S radiative transfer code is utilized to compute the transmission, intrinsic reflectance, and spherical albedo terms. Ozone concentrations and column water vapor are derived from ancillary data. The \gls{aot} is extracted directly from the imagery by using the dark, dense vegetation (DDV) method of [Kaufman {\it et al.}, 1993] \todo{cite Kaufman {\it et al.}, 1993}.This method postulates a linear relation between SWIR surface reflectance and reflectance in the visible bands, based on the physical correlation between chlorophyll absorption and bound water absorption. Finally, the derived AOT, ozone, atmospheric pressure, and water vapor are supplied to the 6S radiative transfer algorithm, which then inverts TOA reflectance to surface reflectance using \autoref{eq:TOAref}. 
 
-According to the author in \cite{LandsatCDR}, the Landsat reflectance product has to be used with caution in coastal regions where land area is small relative to adjacent water because the efficacy of the surface correction is likely to be reduced. This product was available only for Landsat 4 TM, Landsat 5 TM and Landsat 7 ETM+ at the time of this publication. A quality assurance (QA) layer is attached to this product and it can be used for pixel-level conditions and validity production. The surface reflectance product is available in the earthexplorer.com website in a HDF-EOS package that contains all necessary files and it can be read in ENVI (through an ENVI header file).
+According to the author in \cite{LandsatCDR}\todo{fix ref!}, the Landsat reflectance product has to be used with caution in coastal regions where land area is small relative to adjacent water because the efficacy of the surface correction is likely to be reduced. This product was available only for Landsat 4 TM, Landsat 5 TM and Landsat 7 ETM+ at the time of this publication. A \gls{qa} layer is attached to this product and it can be used for pixel-level conditions and validity production. The surface reflectance product is available in the earthexplorer.com website (\url{http://earthexplorer.usgs.gov/}) in a HDF-EOS package that contains all necessary files and it can be read in ENVI (through an ENVI header file).
 % -----------------------------------------------------------------------------
-\section{Provisional Landsat 8 Surface Reflectance CDR}
-\label{sec:provisionalCDR} 
+\subsection{Landsat 8 Surface Reflectance Product}
+\label{subsec:provisionalCDR} 
+With the launch of Landsat 8, a new Landsat surface reflectance product was developed by \gls{usgs}. At the moment of writing this document, the product was named ``Provisional Landsat 8 Surface Reflectance'' [USGS, 2014]\todo{cite}. This product is generated from a specialized software called L8SR, which is different from the \gls{ledaps} algorithm. The product have to be used with caution because there are some artifacts reported. These artifacts particularly near feature transitions such as cloud, water-land regions, and high topography variation. The product includes Level 1 data file, and the ``Cloud QA'' band for cloud, cloud shadow, snow and water identification along. Also, the ``cfmask'' and ``cfmask\_conf'' are included as alternative to the Cloud QA band. This product can be downloaded from \url{http://earthexplorer.usgs.gov/}.
 % ----------------------------------------------------
 % \section{MODTRAN}
 % ----------------------------------------------------
