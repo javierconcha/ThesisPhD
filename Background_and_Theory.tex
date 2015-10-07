@@ -250,7 +250,7 @@ In clean oceanic waters where the larger phytoplankton are relatively scarce, {\
 Note that \acrfull{sm} in natural water bodies comprises both organic and inorganic material. These groups of organic and inorganic material is referred to as seston in limnology. Seston could include mineral particles of terrigenous origin, plankton, detritus (largely residual products of the decomposition of phytoplankton and zooplankton cells as well as macrophytic plants), volcanic ash particles, particulates resulting from {\it in situ} chemical reactions, and particles of anthropogenic origin \cite{Bukata1995}. The major contributor to the water absorption and scattering properties is the particulate matter, being responsible for most of the temporal and spatial variability in these optical properties \cite{Mobley:2001}.
 
 The relevant water constituents for this research are referred to as \acrfull{cpas}\index{CPAs} or optically \gls{oacs} and they are colored dissolved organic matter (CDOM), chlorophyll-{\it a}, and suspended matter (SM) (a.k.a. minerals or \gls{tss}).
-\todo{define Case 1 and 2}
+
 % ----------------------------------------------------
 \subsubsection{Atmospheric Effect and Water}
 At sea level, the principal constituents of the atmosphere are gases (e.g. nitrogen, oxygen, argon and carbon dioxide), water vapor (significant but variable amount), liquid and solid water (in cloud and in the form of precipitation), dust, and aerosol particles, with variable concentrations for each component. $90\%$ of the atmospheric mass is below a height of about $16km$, therefore a satellite looks through effectively all of the atmosphere.
@@ -268,11 +268,11 @@ A description of the processes involved in the energy interaction in the atmosph
 
 It is often convenient in visible ocean remote sensing to consider the atmosphere to be made up of two components: Rayleigh scattering of the air molecules and Mie scattering of haze and other aerosols. 
 
-{\it Rayleigh scattering}\index{Rayleigh Scattering}  (a.k.a. molecular scattering) occurs where the wavelength of the radiation is much larger than the molecular diameters (e.g. daylight scattering or very pure water), or in other words when the scattering particles are small compared the wavelength. Rayleigh scattering dominates the blue to UV region of the spectrum. Air molecules are much smaller than the wavelength of solar radiation and therefore their scattering obeys Rayleigh scattering. 
+{\it Rayleigh scattering}\index{Rayleigh Scattering}  (a.k.a. molecular scattering\index{molecular scattering|see {Rayleigh scattering}}) occurs where the wavelength of the radiation is much larger than the molecular diameters (e.g. daylight scattering or very pure water), or in other words when the scattering particles are small compared the wavelength. Rayleigh scattering dominates the blue to UV region of the spectrum. Air molecules are much smaller than the wavelength of solar radiation and therefore their scattering obeys Rayleigh scattering. 
 
 The Rayleigh's Law states that the amount of scattered energy is proportional to $1/\lambda^4$. Because this proportionality, blue light is very much more strongly scattered than red light. Therefore, the ``white'' light from the sun suffers selective scattering since much of the blue light is removed from the forward direction and redistributed  sideways. This is the reason why the sky appears blue, and why the rising or setting sun appears red even in the absence of scattering by dust particles \cite{Rees1990}. It is also important to mention that the Rayleigh scattering process generates an increase in the degree of polarization of the scattered radiation. As can be seen in \autoref{fig:ScatPhFn}, in the Rayleigh scattering case there is as much scattering in the forward as in the backward direction. 
 
-{\it Mie scattering}\index{Mie scattering} occurs when the wavelength is of the same order of magnitude as the particle diameter.The smallest non-molecular particles that are responsible for scattering are aerosols. That is why Mie scattering is sometimes referred to as {\it aerosol scattering}\index{aerosol scattering}. Aerosol can be defined as a dispersed systems of particles of small particles, liquid or solid, suspended in a gas, like atmospheric air. Therefore dust, haze, smoke, smog, fog, mist, and clouds can be considered to be specific aerosol types. The typical size and number density for non-molecular particles are shown in \autoref{tab:aerosol_size}.
+{\it Mie scattering}\index{Mie scattering} occurs when the wavelength is of the same order of magnitude as the particle diameter.The smallest non-molecular particles that are responsible for scattering are aerosols. That is why Mie scattering is sometimes referred to as {\it aerosol scattering}\index{aerosol scattering|seealso {Mie scattering}}. Aerosol can be defined as a dispersed systems of particles of small particles, liquid or solid, suspended in a gas, like atmospheric air. Therefore dust, haze, smoke, smog, fog, mist, and clouds can be considered to be specific aerosol types. The typical size and number density for non-molecular particles are shown in \autoref{tab:aerosol_size}.
 
 %--------------------------------------
 \begin{table}[htb]
@@ -290,7 +290,7 @@ The Rayleigh's Law states that the amount of scattered energy is proportional to
 
 Mie scattering is characterized by an angular distribution predominately in the forward direction, as shown in \autoref{fig:ScatPhFn}. It has a much weaker dependence on wavelength, although scattering is still more intense at shorter wavelengths because it may often be crudely approximated as being proportional to $1/\lambda$ \cite{Rees1990}.
 
-{\it Non-selective scattering}\index{Non-selective scattering} (a.k.a. {\it isotropic scattering}) occurs when the particle size is very much larger than the wavelength. Non-selective scattering at visible wavelengths occurs in nature in thick clouds or in fog, and its cross-section is independent of the wavelength. \todo{define cross-section}
+{\it Non-selective scattering}\index{Non-selective scattering} (a.k.a. {\it isotropic scattering}\index{isotropic scattering|see {Non-selective scattering}}) occurs when the particle size is very much larger than the wavelength. Non-selective scattering at visible wavelengths occurs in nature in thick clouds or in fog, and its cross-section is independent of the wavelength. \todo{define cross-section}
 
 \begin{figure}[htb]
   \centering
@@ -390,7 +390,7 @@ The sky glint is a function of the sky downwelled radiance $L_d$ and it can be e
   L_{sg}(\lambda) = \rho_F(\lambda)L_d(\lambda)\tau_2(\lambda)~~~~~\left[\frac{W}{m^2\mu msr}\right]
 \end{equation}
 where $L_{sg}(\lambda)$ is the TOA radiance due to sky glint, $\rho_F(\lambda)$ is the Fresnel reflection coefficient, and $\tau_2(\lambda)$ is the sensor-target transmission. The Fresnel refraction is a function of imaging geometry, wavelength, and concentration of water constituents \cite{Pahlevan:2012}. It can be considered constant over the entire spectrum, usually $\rho_F=0.002$, for calm water and nadir-viewing geometry. However, $\rho_F$ is a parameter complex to quantify for real world conditions where wave-induced actions yield a non-uniform surface. $\tau_2$ can be either measured or derived from simulations.
-\todo{mention technique to account for the sun glint when measuring Rrs}
+
 % ----------------------------------------------------
 \subsection{Optical Classification of Natural Waters}
 
