@@ -745,28 +745,32 @@ With the launch of Landsat 8, a new Landsat surface reflectance product was deve
 % \section{MODTRAN}
 % ----------------------------------------------------
 \section{HydroLight}
-HydroLight is a radiative transfer numerical model written in Fortran \cite{MobleyHE}. It computes radiance distributions and derived quantities (e.g. irradiances, reflectances, K functions, etc.) for natural water bodies. It was developed by Dr. Curtis Mobley for over 20 years (since 1989) and is a commercial software product of Sequoia Scientific, Inc.
+HydroLight is a radiative transfer numerical model written in Fortran \cite{MobleyHE} (more info: \url{http://www.sequoiasci.com/product/hydrolight/}). It computes radiance distributions and derived quantities (e.g. irradiances, reflectances, K functions, etc.) for natural water bodies. It was developed by Dr. Curtis Mobley for over 20 years (since 1989) and is a commercial software product of Sequoia Scientific, Inc. Hydrolight solves the \gls{rte} based on the \gls{iops} and the boundary conditions  to compute the in-water radiance as a function of depth, direction, and wavelength (\autoref{fig:HLflowchart}). Other quantities of interest for ocean color, such as the remote-sensing reflectance, can be obtained from the computed radiances. It has several models, including the Case 1 water model, whose main input is the chlorophyll IOPs and the Case 2 model, which is a 4-constituent model, pure water, chlorophyll, minerals and CDOM.
 
-% \begin{figure}[H]
-% \begin{columns}[onlytextwidth] % contents are top vertically aligned
-% 	\column{.35\textwidth}
-%   		\includegraphics[height=3cm]{C:/Users/Aixa/Dropbox/Javier/20123_Spring/Modeling/HydroLight/Beamer/absvsz.png}
-%   	\column{.32\textwidth}
-%   	\footnotesize
-%   		\begin{equation}
-%   			\cos\theta\frac{dL(z,\theta,\varphi,\lambda)}{dz}=\cdots \notag
-%   		\end{equation}
-% 	\column{.35\textwidth} 
-% 		\includegraphics[height=3cm]{C:/Users/Aixa/Dropbox/Javier/20123_Spring/Modeling/HydroLight/Beamer/RadSpec.png}
-% \end{columns}
+\begin{figure}[H]
+  \begin{minipage}[c]{0.3\linewidth}
+      \hspace{0.5cm}
+  		\includegraphics[height=3cm]{C:/Users/Aixa/Dropbox/Javier/20123_Spring/Modeling/HydroLight/Beamer/absvsz.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{0.3\linewidth}
+  		\begin{equation}
+  			\cos\theta\frac{dL(z,\theta,\varphi,\lambda)}{dz}=\cdots \notag
+  		\end{equation}
+	\end{minipage}
+  \hfill
+  \begin{minipage}[c]{0.3\linewidth}  
+		\includegraphics[height=3cm]{C:/Users/Aixa/Dropbox/Javier/20123_Spring/Modeling/HydroLight/Beamer/RadSpec.png}
+  \end{minipage}\\
 % \end{figure}
-\todo{Try to fix fig and talk about it.}
-\begin{figure}[htb]
+% \begin{figure}[htb]
 % \resizebox{1.0\textwidth}{!}{%
+  \begin{minipage}[c]{1\linewidth}
+  \vspace{0.5cm}
 	\centering
-  \begin{tikzpicture}[node distance=0.75cm, auto]
+  \begin{tikzpicture}[node distance=1cm, auto]
           \tikzset{
-                  basenode/.style={rectangle,rounded corners,draw=black,very thick, inner sep=1em, minimum size=3em, text centered,text width=2cm},
+                  basenode/.style={rectangle,rounded corners,draw=black,very thick, inner sep=1em, minimum size=3em, text centered,text width=3cm},
                   productnode/.style={ellipse,rounded corners,draw=black, very thick, text centered,text width=1.5cm},
                   myarrow/.style={->,>=stealth',thick, double = black},
                   mylabel/.style={text width=7em, text centered}
@@ -782,10 +786,11 @@ HydroLight is a radiative transfer numerical model written in Fortran \cite{Mobl
           \draw[myarrow] (RTE)--(rad);
   \end{tikzpicture}
 % } %xobeziser
-\caption{Hydrolight flow chart \label{fig:HLflowchart} } 
+\end{minipage}
+\caption{Hydrolight flow chart. Images taken from \cite{MobleyHE}. \label{fig:HLflowchart} } 
 \end{figure}
 
-The HydroLight physical model has the following characteristics:
+The HydroLight physical model has the following characteristics \cite{MobleyHE}:
 
 \begin{itemize}
 	\item It is time-independent.
@@ -859,6 +864,9 @@ The \gls{acolite} package is a binary distribution for processing Lansat 8 image
 
 % ----------------------------------------------------
 \section{Challenges in the remote sensing of Case 2 waters}
+
+
+\cite{IOCCG2000_Coastal}
 
 \begin{figure}[htb]
 \centering
