@@ -543,7 +543,7 @@ which is more convenient to use in oceanography because it depends on the depth 
 % ----------------------------------------------------
 \subsubsection*{Apparent Optical Properties (AOPs)}
 \addcontentsline{toc}{subsubsection}{Apparent Optical Properties}
-The \gls{aops} are those properties that not only depend on the medium (i.e. in the IOPs) but also on the directional structure of the ambient light field (radiance distribution). Additionally, \gls{aops} need to display enough stability to be useful descriptors of a water body. They are always a ratio of two radiometric quantities. Examples of AOPs are the irradiance reflectance, the remote-sensing reflectance, and various diffuse attenuation functions.
+The \gls{aops} are those properties that not only depend on the medium (i.e. in the IOPs) but also on the directional structure of the ambient light field (radiance distribution). Additionally, \gls{aops} need to display enough stability to be useful descriptors of a water body. Radiances and irradiances are never AOPs themselves. They are always a ratio of two radiometric quantities. Examples of AOPs are the irradiance reflectance, the remote-sensing reflectance, and various diffuse attenuation functions.
 
 The irradiance reflectance\index{reflectance!irradiance,$R(z,\lambda)$} (a.k.a. irradiance ratio\index{ratio!irradiance}) is defined as
 \begin{equation}
@@ -556,7 +556,7 @@ The fundamental quantity used in ocean color remote sensing is the \acrfull{rrs}
 \end{equation}
 where $L_w$ is the upwelling water-leaving radiance and $E_d$ is the downwelling plane irradiance. $L_w$ is the total upward radiance minus the sky and solar radiance that is reflected upward by the water surface. $L_w$ and $E_d$ are measured in air, just above the water surface.
 
-Both $R$ and $R_{rs}$ are used to estimate water quality parameters, such as the chlorophyll concentration.
+Both $R$ and $R_{rs}$ are used to estimate bio-optical variables, such as the chlorophyll concentration, because they are much less affected by the illumination conditions and strongly affected by the water composition.
 
 When the incident light is provided by the sun and the sky, the irradiances and radiances decrease exponentially with depth (but only when they are measured far enough below the surface and far enough above the bottom for shallow water), then
 \begin{equation}\label{eq:EdKd}
@@ -567,6 +567,9 @@ where $K_d(z,\lambda)$ is the {\it spectral diffuse attenuation coefficient}\ind
   K_d(z,\lambda)  &=- \frac{d\ln E_d(z,\lambda)}{dz} \notag \\
           &=-\frac{1}{E_d(z,\lambda)}\frac{dE_d(z,\lambda)}{dz} ~~\left[m^{-1} \right].
 \end{align}
+
+For example, the diffuse attenuation coefficient for spectral downwelling plane irradiance at $\lambda=490nm$, $K_d(490)$, could be used as an indicator of the turbidity of the water column, among others, since it is directly related to the presence of scattering particles in the water column \cite{Lee2005_Kd}\todo{fix ref}.
+
 % Other $K$ functions such as $K_u$, $K_o$, or $K_L$ can be obtained using similar definition with the corresponding radiometric quantities such $E_u$, $E_o$, or $L$.
 
 It is important to note that AOPs are not additive as the IOPs. Also, AOPs can not be measured in the lab or on a water sample, therefore they must be measured {\it in situ}.
@@ -812,7 +815,7 @@ The HydroLight physical model has the following characteristics \cite{MobleyHE}:
 
 The \gls{seadas} software (more info: \url{http://seadas.gsfc.nasa.gov/}) is a comprehensive image analysis package for the processing, display, analysis, and quality control of ocean color data developed by the developers of \gls{esa}'s BEAM software package (\url{http://www.brockmann-consult.de/cms/web/beam/}) and the \gls{obpg} at NASA. Its last version (\gls{seadas} 7.2), recently launched, supports Level 1 Landsat 8 data. It can generate Level 2 data from Level 0 and Level 1. The level 2 data is obtained by applying the atmospheric correction method based on \cite{Gordon:1994} to the different heritage ocean color instruments and now Landsat 8, among others. It also can generate Level 3 data, such as temporal binned data. \gls{seadas} includes some  semi-analytical bio-optical models described in \S\ref{subsec:semianalitic}.
 
-A number of standard products are supported by the \gls{obpg} at NASA's Goddard Space Flight Center (\url{http://oceancolor.gsfc.nasa.gov/}). The \gls{obpg}'s responsibilities are collection, processing, calibration, validation, archive and distribution of ocean-related products from a large number of operational, satellite-based remote-sensing missions providing ocean color, sea surface temperature and sea surface salinity data to the international research community. Most of the ocean-related products are included in the \gls{seadas} package, supported by the \gls{obpg}. The following section describes some of the products relevant to this research.
+A number of standard ocean bio-optical products are supported by the \gls{obpg} at NASA's Goddard Space Flight Center (\url{http://oceancolor.gsfc.nasa.gov/}). The \gls{obpg}'s responsibilities are collection, processing, calibration, validation, archive and distribution of ocean-related products from a large number of operational, satellite-based remote-sensing missions providing ocean color, sea surface temperature and sea surface salinity data to the international research community. Most of the ocean-related products are included in the \gls{seadas} package, supported by the \gls{obpg}. The following section describes some of the products relevant to this research.
 
 \subsection{Chlorophyll-{\it a} Concentration}
 \label{subsec:chlempirical}
@@ -853,6 +856,9 @@ The \gls{oc2} algorithm utilized just a green and a blue band. Modifications to 
 One of the known limitations of the approach is that the data set is mostly representative of Case 1 waters and not few Case 2 waters \cite{OReilly2000}. Some modification for low $C_a$ values have been suggested by \cite{Hu:2012fv}.
 
 \subsection{$TSS$}
+
+
+
 \subsection{$CDOM$}
 
 % ----------------------------------------------------
@@ -936,4 +942,4 @@ Finally, if we want to study areas that have direct influences in human activiti
 
 % ----------------------------------------------------
 \section{Concluding Remarks}
-An overview of fundamental concepts that are relevant to this research was presented in this chapter. We began by describing the different energy contributions to the signal captured by the sensor followed by a description of the water constituents and their optical properties in the form of absorption and scattering coefficients. We continued with the description of how the atmosphere interacts with photons and its effect in the total signal along with the glint effect due to energy reflected in the water surface. The in water radiative transfer theory was also treated. A brief description of the Landsat 8 instrument was described. Finally, some tools used in this research were overviewed. These tools are the ELM atmospheric correction method, the Landsat surface Reflectance CDR and Hydrolight. The next section will present the methodology that will be used to accomplish this research's goal.
+An overview of fundamental concepts that are relevant to this research was presented in this chapter. We began by describing the different energy contributions to the signal captured by the sensor followed by a description of the water constituents and their optical properties in the form of absorption and scattering coefficients. We continued with the description of how the atmosphere interacts with photons and its effect in the total signal along with the glint effect due to energy reflected in the water surface from the sun and sky. The in water radiative transfer theory was also treated by describing the variables that form the RTE. A brief description of the Landsat 8 instrument was described. Finally, some tools used in this research were overviewed. These tools are the ELM atmospheric correction method, the Landsat surface Reflectance CDR products and Hydrolight. The next section will present the methodology that will be used to accomplish this research's goal.
