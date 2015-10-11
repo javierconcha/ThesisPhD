@@ -147,9 +147,7 @@
 
 \setlength{\marginparwidth}{2cm}
 
-% Added 11-15-13 ----------------------------------------
-\includeonly{Acronyms,Introduction,Objectives} 
-% \includeonly{Acronyms,Introduction,Objectives,Background_and_Theory,Methodology,Summary,Results,Appendix}
+
 
 \usepackage{tikz} % for flow charts
   \usetikzlibrary{shapes,shapes.geometric,arrows,positioning,shadows,calc}
@@ -191,24 +189,28 @@
 
 
 
-% Added 09-28-15 ----------------------------------------
-% Load the package with the acronym option
-\usepackage[acronym,nomain]{glossaries}
- 
-% Generate the glossary
-\makenoidxglossaries
-\renewcommand*{\acronymname}{Acronyms and Abbreviations}
 
-\include{Acronyms}
+ 
+
 
 % Added 12-03-13 ----------------------------------------
-\usepackage{imakeidx} % to create index
+% \usepackage{imakeidx} % to create index
 % \indexsetup{othercode=\small}
 % \makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
 \usepackage{imakeidx}     % use this one when is not working
 \makeindex                % use this one when is not working
 % -------------------------------------------------------
 
+% Added 09-28-15 ----------------------------------------
+% Load the package with the acronym option
+\usepackage[acronym,nomain,toc]{glossaries}
+% Generate the glossary
+\makeglossaries
+\renewcommand*{\acronymname}{Acronyms and Abbreviations}
+
+% Added 11-15-13 ----------------------------------------
+\includeonly{Acronyms,Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
+% \includeonly{Acronyms,Introduction,Objectives,Background_and_Theory,Methodology,Summary,Results,Appendix}
 
 %******************************************************************************************************
 %******************************************************************************************************
@@ -350,8 +352,11 @@ Mis amados viejitos, Osvaldo Concha Silva and Nelly del Carmen Sep\'ulveda Reyes
 \listoftables
 \addcontentsline{toc}{chapter}{List of Tables}
 
-\printnoidxglossaries
+\include{Acronyms}
+\glsaddall
+\printglossaries
 \addcontentsline{toc}{chapter}{Acronyms and Abbreviations}
+
 
 % \input{Introduction.tex}
 \include{Introduction}

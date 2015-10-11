@@ -10,7 +10,7 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 
 \begin{figure}[htb]
   \centering
-    \includegraphics[height=8cm]{C:/Users/Aixa/Dropbox/Javier/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/Retrieval_RMSE.pdf}
+    \includegraphics[height=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/Retrieval_RMSE.pdf}
     \caption{Retrieval process flow diagram. The radiance image from the satellite is first corrected for atmospheric effects, having as result $R_{rs}$ spectra for each water pixel in the image. Then, a spectrum-matching methodology is used to find the closest match in the least-squared sense for the water pixels with unknown CPAs concentration in the LUT of water pixels with known CPAs concentration. The final result is a concentration map for each CPA.  \label{fig:retrieval} }
 \end{figure}
 
@@ -211,7 +211,7 @@ where $R_i'$ is the sun-glint corrected pixel value in band $i$, $R_i$ is the pi
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=11cm,clip=true]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/RegressionHedley.png}
+  \includegraphics[width=11cm,clip=true]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/RegressionHedley.png}
   \caption{Linear regression used in the deglinting process (Note: image taken from \cite{Hedley:2005}). \label{fig:regressiohedley} } 
 \end{figure}
 
@@ -289,14 +289,14 @@ The PIF extraction process is illustrated in \autoref{fig:PIFflowchart}. The PIF
 \begin{figure}[htb]
   \begin{minipage}[c]{0.48\linewidth}
     \centering
-      \includegraphics[trim=30 0 30 0,clip,height=6cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/DTROCL8falsecolor.jpg}  
+      \includegraphics[trim=30 0 30 0,clip,height=6cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/DTROCL8falsecolor.jpg}  
     % \vspace{1.5cm}
     \centerline{(a)}\medskip
   \end{minipage}
   \hfill
   \begin{minipage}[d]{0.48\linewidth}
     \centering
-      \includegraphics[trim=30 0 30 0,clip,height=6cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/PIFmaskApplied.jpg}
+      \includegraphics[trim=30 0 30 0,clip,height=6cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/PIFmaskApplied.jpg}
     % \vspace{1.5cm}
     \centerline{(b)}\medskip
   \end{minipage}
@@ -310,14 +310,14 @@ The PIF mask is used to determine the bright pixel spectra in both radiance (fro
 \begin{figure}[!ht]
   \begin{minipage}[c]{0.48\linewidth}
     \centering
-      \includegraphics[height=9cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/PIFstatCDR.png}  
+      \includegraphics[height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/PIFstatCDR.png}  
     % \vspace{1.5cm}
     \centerline{(a)}\medskip
   \end{minipage}
   \hfill
   \begin{minipage}[d]{0.48\linewidth}
     \centering
-      \includegraphics[height=9cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/PIFstatL8.png}
+      \includegraphics[height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/PIFstatL8.png}
     % \vspace{1.5cm} 
     \centerline{(b)}\medskip
   \end{minipage}
@@ -335,7 +335,7 @@ where $x$ represents the solar zenith angle and $m$ the reflectance value. \auto
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[height=13cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/Shadow.png}
+    \includegraphics[height=13cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/Shadow.png}
   \caption{Shadow size as function of zenith angle. \label{fig:shadow} } 
 \end{figure}
 
@@ -358,13 +358,13 @@ The Landsat-8 image has associated a particular solar zenith angle. The previous
 
 \begin{figure}[htb]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/ZenithCorrelation.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ZenithCorrelation.eps}
   \caption{Correlation for band 1. \label{fig:Band1Corr} } 
 \end{figure}
 
 \begin{figure}[htb]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/ZenithCorrection.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ZenithCorrection.eps}
   \caption{Bright pixel for 9 different scenes. \label{fig:ZenithCorr} } 
 \end{figure}
 Because the Landsat reflectance products was not available for Landsat-8 at the moment of writing this documents, it was necessary to estimate a theoretical reflectance value for the coastal band for Landsat 5 in order to match with the Landsat-8 bands. To accomplish this, it was assumed that the coastal band would exhibit a similar trend as the blue and green bands. Hence, a straight-line that passes through the blue and green band values was used to extrapolate the value of the coastal band, as seen in \autoref{fig:Extrapol}, where the estimation of this reflectance value for the coastal band is shown at $443 [nm]$ and the straight-line is shown as a black solid line. It is expected the Landsat reflectance product will be available for Landsat-8 in the future. Therefore, the Landsat-8 reflectance could be used directly, and the previous step would not be necessary. Finally, the reflectance spectra for the bright pixel is shown in \autoref{tab:brightref}. As was mentioned previously, the radiance spectra for the bright pixel is obtained by applying the master PIF mask to the Landsat-8 image (see \autoref{fig:PIFstats}.(b)).
@@ -386,7 +386,7 @@ Because the Landsat reflectance products was not available for Landsat-8 at the 
 
 \begin{figure}[htb]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/Extrapolation.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/Extrapolation.eps}
   \caption{Extrapolation for the coastal band. \label{fig:Extrapol} } 
 \end{figure}
 
@@ -411,14 +411,14 @@ LONGS & 112.76 & 1.1953 & 46.0\\
 The absorption properties for the component chlorophyll were input by user-supplied data files containing mass-specific absorption coefficient as a function of wavelength. This mass-specific absorption spectra is shown in \autoref{fig:CHLaast}. This data was obtained from lab measurements of absorption coefficient spectra for the water sample ONTNS with a {\todo{describe method} spectrophotometric method}. The spectrophotometric method yields absorption coefficients, which are converted to mass-specific absorption coefficient by dividing the absorption coefficient spectra by the concentration. This chlorophyll concentration was determined in lab by a {\todo{describe method} spectrophotometric method} as well. For the chlorophyll scattering properties, the same mass-specific scattering coefficient data used in \cite{Raqueno:2000} and \cite{Raqueno:2003} were utilized. This data is shown in \autoref{fig:CHLbast}. A Fournier-Forand (FF) phase function with backscatter fraction 0.010 was selected as the phase function for the chlorophyll. The details about the selection of this phase function will be described {\todo{correct?!} below}.
 \begin{figure}[htb]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/CHLaastJavier.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastJavier.eps}
   \caption{Chlorophyll mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLaast} } 
 \end{figure}
 
 
 \begin{figure}[htb]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/CHLbastRolo.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLbastRolo.eps}
   \caption{Chlorophyll mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLbast} } 
 \end{figure}
 
@@ -431,13 +431,13 @@ was fitted to the normalized data. It was determined that the decay constant $\g
 
 \begin{figure}[!ht]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/ONTNS_CDOMabs.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ONTNS_CDOMabs.eps}
   \caption{CDOM absorption coefficient spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOMa} } 
 \end{figure}
 
 \begin{figure}[!ht]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/ONTNS_CDOMfitting.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ONTNS_CDOMfitting.eps}
   \caption{CDOM mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOMaast} }
 \end{figure}
 
@@ -445,14 +445,14 @@ The mineral mass-specific absorption coefficient was determined in the same fash
 
 \begin{figure}[!ht]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/SMaastJavier.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/SMaastJavier.eps}
   \caption{Mineral mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMaast} } 
   % \vspace{0.5cm}
 \end{figure}
 
 \begin{figure}[!ht]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/SMbastRolo.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/SMbastRolo.eps}
   \caption{Mineral mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMbast} } 
 \end{figure}
 
@@ -466,7 +466,7 @@ This best matched is used as the reflectance spectra of the dark pixel in the Mo
 
 \begin{figure}[htb]
   	\centering
-  	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/RefWithFFbbONTNS.eps}
+  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/RefWithFFbbONTNS.eps}
   \caption{Reflectance for ONTNS sample and best matching from HydroLight. \label{fig:BestMatchONTNS} } 
 \end{figure}
 
@@ -478,7 +478,7 @@ As a review, \autoref{fig:ELMpxsENVI} shows the different spectra used to perfor
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=14cm,clip=true]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/ELMpixelsENVI.pdf}
+  \includegraphics[width=14cm,clip=true]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ELMpixelsENVI.pdf}
   \caption{Bright and Dark pixels used in ENVI to apply ELM. \label{fig:ELMpxsENVI} } 
   % \vspace{0.5cm}
 \end{figure}
@@ -553,7 +553,7 @@ where $c$ is a constant that depends on the viewing geometry and the aerosol mod
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=11cm,clip=true]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/epsilonvslambdaGordon.png}
+  \includegraphics[width=11cm,clip=true]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/epsilonvslambdaGordon.png}
   \caption{$\varepsilon(\lambda,\lambda_l)$ values in natural logaritmic scale for different aerosol models and relative humidity (Note: image taken from \cite{Gordon:1997}). \label{fig:epsilonvslambda} } 
   % \vspace{0.5cm}
 \end{figure}
@@ -660,7 +660,7 @@ The process is summarized as follows:
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=10cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/RuddickPlot.png}
+  \includegraphics[width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/RuddickPlot.png}
   \caption{Scatterplot of Rayleigh-corrected reflectances at 765 and 865 nm for an subregion in a SeaWiFS image taken 28 October 1997, 12:15 UTC.  (Note: image taken from \cite{Ruddick:2000bs}). \label{fig:ruddickplot} } 
 \end{figure}
 % The second atmospheric correction method will be an extension of a method developed for SeaWiFS over turbid coastal and inland waters \cite{Ruddick:2000bs}. This method is a modified version of the methods developed by Gordon \cite{Gordon:1997} for ocean color satellites, but when the signal leaving the water does contribute to the overall signal beyond the NIR part of the spectrum. By using longer wavelengths and restricting the input pixels to open waters, these methods can be  applied to many fresh and coastal regions. The water surface reflectance values obtained after atmospheric correction will be validated through comparison to water surface reflectance measured in situ. 
@@ -678,7 +678,7 @@ This method first uses a forwarding modeling to create a three dimensional (3-D)
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=14cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/4DLUT.png}
+  \includegraphics[width=14cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/4DLUT.png}
   \caption{Four dimensional LUT. The dimension are concentrations of chlorophyll-{\it a}, suspended particles, CDOM and visibility and the range is spectral sensor-reaching radiance. Source: \cite{GeraceThesis}}
   \label{fig:4DLUT} 
 \end{figure}\todo{change figure for a better quality}
@@ -750,27 +750,27 @@ After obtaining the LUT from Ecolight, the spectral curves in the LUT are spectr
 
 \begin{figure}[htb]
     \centering
-      \includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/ConferencesAndApplications/2014_ASPRS_SOY/Images/LUT.eps}
+      \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2014_ASPRS_SOY/Images/LUT.eps}
       \caption{LUT created in HydroLight}
       \label{fig:LUT}
 \end{figure}
 
 % \begin{figure}[htb]
 %   	\centering
-%   	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/CHLaastLONGSJavier.eps}
+%   	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastLONGSJavier.eps}
 %   \caption{Chlorophyll mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:CHLaastLONGS} } 
 % \end{figure}
 
 
 % \begin{figure}[htb]
 %   	\centering
-%   	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/astar_CDOM_LONGS091913.eps}
+%   	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_CDOM_LONGS091913.eps}
 %   \caption{CDOM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:CDOMaastLONGS} } 
 % \end{figure}
 
 % \begin{figure}[htb]
 %   	\centering
-%   	\includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/astar_SM_LONGS091913.eps}
+%   	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_SM_LONGS091913.eps}
 %   \caption{SM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:SMaastLONGS} } 
 % \end{figure}
 \subsection{Retrieval}
@@ -817,12 +817,12 @@ The output of this process is a concentration mapping for each water constituent
 The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat-8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the summer 2013\todo{update this info}. This project contemplates performing one new ground truth data collection during 2014. Therefore, images from the 2013-2014 spring and summer collection seasons will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
 \begin{figure}[htb]
   \centering
-  \includegraphics[height=9cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/AreaOfStudy1.pdf}
+  \includegraphics[height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/AreaOfStudy1.pdf}
   \caption{Area of Study. \label{fig:areaofstudy1} } 
 \end{figure}
 \begin{figure}[htb]
   \centering
-  \includegraphics[height=7cm]{C:/Users/Aixa/Dropbox/Javier/Latex/Proposal/Images/AreaOfStudy2.pdf}
+  \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/AreaOfStudy2.pdf}
   \caption{Area of Study. \label{fig:areaofstudy2} } 
 \end{figure}
 A field collection that includes water samples and remote-sensing reflectance ($R_{rs}$) measurements was conducted at the same time as the sensor overpass. The $R_{rs}$ measurements were performed using a SVC HR-1024i instrument\cite{SVCHR1024i} or a ASD instrument\todo{include reference} following the method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site. Then, the water samples were analyzed in the lab, following SeaWiFS protocols\cite{Mueller1995} for obtaining chlorophyll-{\it a} concentration ($C_a$) and total suspended solid concentration (TSS). \autoref{tab:Sites} shows the different site names, location and the $C_a$ and $TSS$ for each site for the collection on 09-19-2013, as example. Note the difference in concentration levels between the ponds (i.e. LONGN, LONGS and CRANB) and the lake (i.e. ONTNS, ONTOS and ONTEX) samples.
@@ -863,7 +863,7 @@ BRADONT&  43.325780 & -77.706432 &  ~~1.44 & ~2.00        & Braddock Bay, Lake O
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[height=8.0cm]{C:/Users/Aixa/Dropbox/Javier/ConferencesAndApplications/2015_SPIE_SanDiego/Images/ROI_RocEmbayment130919-eps-converted-to.pdf}
+  \includegraphics[height=8.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_SPIE_SanDiego/Images/ROI_RocEmbayment130919-eps-converted-to.pdf}
   \caption{Landsat 8 image acquired on 09-19-2015 (scene LC80160302013262LGN00) showing the study area, the Rochester Embayment. The labels indicate the sites of the field collection at the same time as the satellite overpass (\autoref{tab:Sites}).\label{fig:RrsROIs130919} } 
 \end{figure}
 
