@@ -855,7 +855,14 @@ The \gls{oc2} algorithm utilized just a green and a blue band. Modifications to 
 
 One of the known limitations of the approach is that the data set is mostly representative of Case 1 waters and not few Case 2 waters \cite{OReilly2000}. Some modification for low $C_a$ values have been suggested by \cite{Hu:2012fv}.
 
-\subsection{$TSS$}
+\subsection{\acrshort{tsm}}
+
+Previous versions of SeaDAS (SeaDAS 5 and below) supported the Clark \acrfull{tsm} product. This product was dropped in SeaDAS 6.2 because the algorithm are not maintained by its original authors, and therefore, it has not been updated. The current version of SeaDAS (SeaDAS 6.2) does not include any tsm algorithm. The Clark TSM algorithm was an empirical algorithm. For \gls{modis}, the equation is defined as
+\begin{align}
+  x   &= \log_{10}\left(\frac{L_{wN}[443]+L_{wN}[490]}{L_{wN}[551]}\right)\notag \\
+  tsm &= 10^{(\displaystyle a[0] + a[1]x + a[2]x^2 + a[3]x^3 + a[4]x^4 + a[5]x^5)}
+\end{align}
+\noindent where $L_{wN}$ is the normalized water leaving radiance, and the model coefficients $a[0]\dots a[5]$ are obtained from fitting a $5^{th}$ order polynomial curve to {\it in situ} \gls{tsm} concentrations versus $x$ data This kind of approach is fundamentally a regional relationship that related local concentrations with optical signatures. More info about the algorithm can be found at \url{http://oceancolor.gsfc.nasa.gov/forum/oceancolor/forum_show.pl}.
 
 
 
