@@ -207,6 +207,7 @@
 % Generate the glossary
 \makeglossaries
 \renewcommand*{\acronymname}{Acronyms and Abbreviations}
+\include{Acronyms} % to include Acronyms.tex
 
 % Added 11-15-13 ----------------------------------------
 \includeonly{Acronyms,Introduction,Objectives,Background_and_Theory,Methodology,Results,Summary,Appendix} 
@@ -352,8 +353,8 @@ Mis amados viejitos, Osvaldo Concha Silva and Nelly del Carmen Sep\'ulveda Reyes
 \listoftables
 \addcontentsline{toc}{chapter}{List of Tables}
 
-\include{Acronyms}
-\glsaddall
+
+% \glsaddall
 \printglossaries
 \addcontentsline{toc}{chapter}{Acronyms and Abbreviations}
 
