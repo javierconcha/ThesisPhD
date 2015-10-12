@@ -4,19 +4,7 @@
 \chapter{Methodology and Approach}
 \label{ch:method}
 
-The methodology is separated into the specific objectives mentioned in \S\ref{ch:objectives}. The retrieval process described in this work was first introduced by \cite{Concha2013IGARSS} and is based on previous work done by \cite{Raqueno:2000}, \cite{Gerace:2012}, \cite{Pahlevan:2012b} and \cite{Gerace:2013}. A flow diagram of the process is illustrated in \autoref{fig:retrieval}. In short, the retrieval process works as follows. First, the radiance image from the satellite is atmospherically corrected and transformed to $R_{rs}$ spectra, as shown in the diagram. At this point the $R_{rs}$ spectra of water pixels in the scene with unknown CPAs concentrations are compared with a LUT of $R_{rs}$ spectra with known CPAs concentrations. This comparison is made by using a spectrum-matching technique (\cite{Raqueno:2000,Mobley:2005}) that calculates the root mean squared error (RMSE) to find the closest match in the LUT. The end products are maps of CPAs concentrations (see \autoref{fig:retrieval}). Each step in this retrieval process is described in more detail below.
-
-In this work, a look-up-table (LUT) methodology was implemented to retrieve concentration of water constituents using Landsat-8 imagery. Figure~\ref{fig:retrieval} shows a diagram of this retrieval process. First, the Landsat-8 image data (shown at the top of the figure) needs to be atmospherically corrected. Then, a non-linear optimization routine uses the water pixels (reflectance values) and a LUT of reflectance spectra to estimate concentrations for each water pixels in the scene. The outputs from the process are concentration maps for each water constituents, as shown in Figure~\ref{fig:retrieval}. This process is explained in detail in \S\ref{sec:atmcorr} and \S\ref{sec:retrieval} below.
-
-\begin{figure}[htb]
-  \centering
-    \includegraphics[height=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/Retrieval_RMSE.pdf}
-    \caption{Retrieval process flow diagram. The radiance image from the satellite is first corrected for atmospheric effects, having as result $R_{rs}$ spectra for each water pixel in the image. Then, a spectrum-matching methodology is used to find the closest match in the least-squared sense for the water pixels with unknown CPAs concentration in the LUT of water pixels with known CPAs concentration. The final result is a concentration map for each CPA.  \label{fig:retrieval} }
-\end{figure}
-
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{figure}[!ht]
   \centering
 % \resizebox{9cm}{!}{%
@@ -38,26 +26,25 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 \node (RetProc) [process, right of=AtmCorr] {Retrieval Process};
 \node (CPAmap) [io, right of=RetProc] {CPA \\maps};
 
-\node[align=left, below=0.0 of prepro] (List1) {\scriptsize - Cloud/Land/Water Mask\\\scriptsize - Radiometric Calibration};
+\node (Val) [process, below of=CPAmap, yshift=1cm] {Validation};
+
+% \node[align=left, below=0.0 of prepro] (List1) {\scriptsize - Cloud/Land/Water Mask\\\scriptsize - Radiometric Calibration};
 
 \draw [arrow] (L8image) -- (prepro);
 \draw [arrow] (prepro) -- (AtmCorr);
 \draw [arrow] (AtmCorr) -- (RetProc);
 \draw [arrow] (RetProc) -- (CPAmap);
 
-
+\draw [arrow] (CPAmap) -- (Val);
 
 \end{tikzpicture}
-
 
 % } % resizebox end
 
 \caption{High-level flowchart of the process. \label{fig:highlevelflowchart}}
-
 \end{figure}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{figure}[!ht]
   \centering
 % \resizebox{9cm}{!}{%
@@ -145,17 +132,34 @@ In this work, a look-up-table (LUT) methodology was implemented to retrieve conc
 \draw [arrow] (bb_b.south) -- ([yshift=-0.8cm]bb_b.south) -| ([xshift=-0.5cm]hydro.south east);
 
 % \draw [arrow] (hydro) |- (AtmCorr);
-
 \end{tikzpicture}
-
-
 % } % resizebox end
-
 \caption{Detailed flowchart of the process. \label{fig:detailflowchart}}
+\end{figure}
+\todo{fix with NRMSE}
 
+This chapter describes the methodology and approach taken to accomplish the specific objectives mentioned in \S\ref{ch:objectives}. As a review, these specific requirements are (\S\ref{sec:objectives}):
+\begin{enumerate}
+  \item To develop an over-water atmospheric correction algorithm for Landsat 8 reflective imagery.
+  \item To design a water constituent concentration retrieval algorithm that can be applied to a specific study area.
+  \item To validate results by comparing with {\it in situ} measurements and products from ocean color satellites.
+\end{enumerate}.
+
+The processes described in this work were first introduced by \cite{Concha2013IGARSS} and are based on previous work done by \cite{Raqueno:2000}, \cite{Gerace:2012}, \cite{Pahlevan:2012b} and \cite{Gerace:2013}. A flowchart of the general processes involved is shown in \autoref{fig:highlevelflowchart}. The input are the Landsat 8 images and the final products are the maps of CPAs. The complete process can be divided in four different steps: image pre-processing, atmospheric correction, retrieval process, and validation. This chapter will be divided in this four processes. A more detailed flowchart is illustrated in \autoref{fig:detailflowchart} and a more pictorial diagram is shown in \autoref{fig:retrieval}\todo{Should I include this figure?}.
+
+In short, the whole process works as follows. First, the \gls{dn} image from the satellite is radiometric calibrated, resized, and masked for cloud and land. Then, the radiance image is atmospherically corrected and transformed to $R_{rs}$ spectra, as shown in \autoref{fig:detailflowchart}. At this point the $R_{rs}$ spectra of water pixels in the scene with unknown CPAs concentrations are compared with a LUT of $R_{rs}$ spectra with known CPAs concentrations. This comparison is made by using a spectrum-matching technique (\cite{Raqueno:2000,Mobley:2005}) that uses the \gls{rmse} and a non-linear optimization algorithm to find the closest match in the LUT. The end products are maps of CPA concentrations (see \autoref{fig:retrieval}). Finally, the CPA maps are validated by comparison with {\it in situ} data and standard bio-optical products. Each step in this retrieval process is described in more detail below.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+  \centering
+    \includegraphics[height=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/Retrieval_RMSE.pdf}
+    \caption{Retrieval process flow diagram. The radiance image from the satellite is first corrected for atmospheric effects, having as result $R_{rs}$ spectra for each water pixel in the image. Then, a spectrum-matching methodology is used to find the closest match in the least-squared sense for the water pixels with unknown CPAs concentration in the LUT of water pixels with known CPAs concentration. The final result is a concentration map for each CPA.  \label{fig:retrieval} }
 \end{figure}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+\section{Image Pre-processing} 
+\label{sec:prepro}
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \section{Over-Water Atmospheric Correction} 
 \label{sec:atmcorr}
 The first objective in this research is to identify a suitable approach to atmospherically correct the type of dataset provided by the OLI sensor. This is a complex task to perform over water because the signal leaving the water that reaches the sensor is very small compared to the signal reaching the sensor from atmospheric scattering. 
@@ -713,8 +717,9 @@ Enter the algorithm with glint corrected data:\\
 \noindent{\bf Step 3:} Use the averaged $\varepsilon^{(5,6)}$ to find the closest two matches for the modeled atmosphere in the LUT from Step 1 and calculate the interpolation ratio between these two matched and the averaged $\varepsilon^{(5,6)}$. \\
 \noindent{\bf Step 4:} Extrapolate the determined model to all wavelengths using interpolation ratio. \\
 \noindent{\bf Step 5:} Globally correct the scene for the atmospheric effect. \\
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% -----------------------------------------------
+
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \section{In-Water Constituent Retrieval Process}
 \label{sec:retrieval}
 The retrieval algorithm will be based on previous work done by Gerace {\it et al.} \cite{Gerace:2013} and Raqueno {\it et al.} \cite{Raqueno:2000}. The water surface reflectance product obtained after atmospheric correction from the previous stage is used as input to the retrieval algorithm. Each pixel in the reflectance product has an unknown concentration. A spectral matching technique is applied to predict this concentration by comparing the spectral shape of each pixel with the elements in a look-up table (LUT). The complete retrieval process will be explained in the following sections. 
@@ -811,8 +816,11 @@ where $F$ is obtained from a trilinear interpolation based in the CPA concentrat
 The output of this process is a concentration mapping for each water constituent that spans the range of constituents levels in the scene. 
 \todo{add combination of both methods!}
 
-% ----------------------------------------------------
-\section{Ground Truth Data Collection}
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+\section{Validation} 
+\label{sec:val}
+% -------------------------------------------------------------
+\subsection{Ground Truth Data Collection}
 \todo{mention technique to account for the sun glint when measuring Rrs}
 The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat-8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the summer 2013\todo{update this info}. This project contemplates performing one new ground truth data collection during 2014. Therefore, images from the 2013-2014 spring and summer collection seasons will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
 \begin{figure}[htb]
@@ -868,47 +876,15 @@ BRADONT&  43.325780 & -77.706432 &  ~~1.44 & ~2.00        & Braddock Bay, Lake O
 \end{figure}
 
 In order to have outputs in HydroLight that are representative of the water bodies that are being studied, inherent optical properties (IOPs) of those specific waters have to be defined as input to the HydroLight model. After collection, these water samples need to be analyzed in the lab to obtain IOPs for the main water constituents. Furthermore, apparent optical properties (AOPs) (i.e. water surface reflectance) and backscattering measurements will be also collected for further comparison and to pursue closure between the HydroLight AOPs results and in-situ AOPs measurements.
+% -------------------------------------------------------------
+\subsection{Laboratory Measurements}
+
 
 % ----------------------------------------------------
-\section{Validation}
+\subsection{Comparison}
 The results from the retrieval process will be validated by comparison with the concentration of water samples taken during field campaigns in the spring and summer of 2013 and 2014. These concentrations will be obtained from lab measurements made at the Rochester Institute of Technology. For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl-{\it a} product), in regions where it is possible. 
 
 Additionally, the results for the \gls{mobelm} and the CPA retrieval are compared with the products derived in the l2gen algorithm the in \gls{seadas} software.\todo{complete more!}
-
-\section{Summary of Process}
-\subsection{Atmospheric Correction}
-\begin{enumerate}
-  \item Create mask for Land/Water and Cloud/Cloud Shadow
-  \item Select dark and bright pixels from the scene
-\end{enumerate}
-
-\subsection{Retrieval}
-\begin{enumerate}
-  \item Process IOPs from lab measurements
-  \item Input IOPs to Ecolight
-\end{enumerate}
-% \section{OLI Sensor}
-% \subsection{Sensor Response}
-% Noise level. Quantization. SNR.
-
-% \section{Retrieval Process}
-% \subsection{The Look-Up Table}
-
-
-% \subsubsection{Real Atmosphere Conditions}
-
-% \section{Over-Water Atmospheric Compensation}
-% \subsection{Model Based Empirical Line Method}
-
-% \subsubsection{Pseudo Invariant Features}
-
-% This model employs pseudo-invariant feature (PIF) pixels extraction from the Landsat Climate Data Record (CDR) Surface Reflectance product along with an in-water radiative transfer model (HydroLight) to obtain the field spectra to be used in the ELM method. 
-%  A mask is created applying a threshold a the ratio between the NIR band and the red band. 
-%  A mask is created applying a threshold to the SWIR 2 band. 
-
-% The model based empirical line method (MBELM) atmospheric correction method is based in the well known empirical line method (ELM).
-
-% \subsection{LUT Method}
 
 % ----------------------------------------------------
 \section{Concluding Remarks}
