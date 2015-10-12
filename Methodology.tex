@@ -70,7 +70,7 @@
 \node (L8image) [io] {Landsat \\Image (DN)};
 \node (radcal) [process, below of=L8image] {Radiometric \\Calibration};
 \node (resize) [process, below of=radcal] {Resize};
-\node (mask) [process, below of=resize] {Cloud/Land \\Mask};
+\node (mask) [process, below of=resize] {Land/Cloud/\\Cloud Shadow \\Mask};
 \node (AtmCorr) [process, below of=mask] {Atmospheric \\Correction \\(MoB-ELM)};
 \node (rrs) [io, below of=AtmCorr] {$R_{rs}$ \\Image};
 \node (RetProc) [process, below of=rrs] {Retrieval \\Process \\(RMSE \\lsqnonlin)};
@@ -159,23 +159,36 @@ In short, the whole process works as follows. First, the \gls{dn} image from the
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \section{Image Pre-processing} 
 \label{sec:prepro}
+
+The images are downloaded for free from the server \url{http://earthexplorer.usgs.gov/} by \gls{usgs}. EarthExplorer contains data sets from several instruments, including Landsat satellites (labeled as Landsat Archive). The user needs to create an account in order to download the Level 1 GeoTIFF Data Product (data in \gls{dn}). This data product includes the OLI's nine bands, plus a \gls{qa} band, the TIRS's two bands, and the metadata file (\_MTL). The images are downloaded based on search criteria such as location and time. These images are first ordered on demand for processing. Once the processing is ready, they can be downloaded from the site.
+
+Once the images are downloaded, the next step is to perform a radiometric calibration to convert from \gls{dn} to \gls{toa} radiance. The radiometric calibration can be done in imaging processing tools, such an ENVI, which support Landsat 8 images. One of formulas to convert \gls{dn} to \gls{toa} radiance $L_{\lambda}$ using gain and bias values is
+\begin{equation}
+  L_{\lambda} = gain_{\lambda}*DN+bias_{\lambda}
+\end{equation}
+\noindent where $gain_{\lambda}$ and $bias_{\lambda}$ are provided in the MTL file. The image is then resized using the resize tool in the ENVI package in order to include only the area of study and make the process less time consuming.
+
+Then, the following step is to correct the glint in the image, if present. Details of one the glint methods are described in \S\ref{subsec:glintremoval} below.
+
+Finally, only the valid water pixels need to be used in the retrieval process. To do so, the land, cloud and cloud shadow need to be masked. Also, if bottom signal is present in the image, it needs to be masked, or not considered in the retrieval, since the bottom signal was not treated in this study. The water mask is created by thresholding the Landsat 8's SWIR 2 band, since the water pixel will have small values compared with the rest of the pixels, including land. The cloud and cloud shadow mask are obtained from the Landsat 8 Surface Reflectance Product's \cite{L8SurfProduct2015} cloud mask described in \S\ref{subsec:provisionalCDR}. Once all the masks have been created, they are combined using an $.AND.$ logic operation.
+
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \section{Over-Water Atmospheric Correction} 
 \label{sec:atmcorr}
 The first objective in this research is to identify a suitable approach to atmospherically correct the type of dataset provided by the OLI sensor. This is a complex task to perform over water because the signal leaving the water that reaches the sensor is very small compared to the signal reaching the sensor from atmospheric scattering. 
 
-Most of the atmospheric correction algorithms used for the heritage Ocean Color instruments (e.g. CZCS, MODIS and SeaWiFS) are based in the work done by \cite{Gordon:1994} (also described in \cite{Gordon:1997}). The NASA's standard algorithms for atmospheric correction based on \cite{Gordon:1994} have proved to work well in Case 1 waters where there are at least two wavelengths with a water-leaving signal negligible or known. Therefore, these algorithms could be considered a global solution for Case 1 waters, i.e. they could be applied in most cases. The wavelengths used for clear waters (Case 1) are in general in the near infrared (NIR) part of the spectrum. For highly turbid water (Case 2) or highly productive Case 1 waters, a combination of wavelengths in the NIR and shortwave infrared (SWIR), or two SWIR wavelengths can be used\cite{Wang:2007,Wang:2007dz,Wang2009}. Some efforts have been made to demonstrate the feasibility of using Landsat 8 for ocean color measurements in coastal waters that apply the Gordon and Wang approach\cite{Vanhellemont2014a,Vanhellemont2014,Vanhellemont:2015,Franz:2015} for the atmospheric correction using the NIR and SWIR 1 bands or the SWIR 1 and SWIR 2 bands. One problem with using the Gordon and Wang approach is that it requires a sufficient SNR over water in order to discriminate the water-leaving signal from the instrument noise. This could be particular important for OLI since it has a lower SNR than the heritage ocean color instruments have, and so derived ocean color products can be noisy.
+Most of the atmospheric correction algorithms used for the heritage Ocean Color instruments (e.g. CZCS, MODIS and SeaWiFS) are based on the work done by \cite{Gordon:1994} (also described in \cite{Gordon:1997}). The NASA's standard algorithms for atmospheric correction based on \cite{Gordon:1994} have proved to work well in Case 1 waters where there are at least two wavelengths with a water-leaving signal negligible or known. Therefore, these algorithms could be considered a global solution for Case 1 waters, i.e. they could be applied in most cases. The wavelengths used for clear waters (Case 1) are in general in the near infrared (NIR) part of the spectrum. For highly turbid water (Case 2) or highly productive Case 1 waters, a combination of wavelengths in the NIR and shortwave infrared (SWIR), or two SWIR wavelengths can be used \cite{Wang:2007,Wang:2007dz,Wang2009}. Some efforts have been made to demonstrate the feasibility of using Landsat 8 for ocean color measurements in coastal waters that apply the Gordon and Wang approach for the atmospheric correction using the Landsat 8's NIR and SWIR 1 bands, or the SWIR 1 and SWIR 2 bands \cite{Vanhellemont2014a,Vanhellemont2014,Vanhellemont:2015,Franz:2015}. One problem with using the Gordon and Wang approach is that it requires a sufficient \gls{snr} over water in order to discriminate the water-leaving signal from the instrument noise. This could be particular important for OLI since it has a lower SNR than the heritage ocean color instruments have, and so derived ocean color products can be noisy.
 
-However, some of the atmospheric correction algorithms applied to the heritage Ocean Color instruments are not suitable for highly turbid coastal waters because the {\it black pixel assumption} cannot be applied to these types of waters~\cite{Patt2003}. \cite{Concha2014SPIE} developed the model-based empirical line method (MoB-ELM) as an alternative for the standard atmospheric correction algorithms that does not rely on a negligible water-leaving signal assumption, and therefore it is not as sensitive to the SNR. The MoB-ELM algorithm uses a bright and dark pixel from the image to perform the atmospheric correction. One of the goals of this work is to compare the MoB-ELM with the standard algorithms as well as with {\it in situ} data. These comparisons are made in remote-sensing reflectance $R_{rs}$ units. 
+However, some of the atmospheric correction algorithms applied to the heritage Ocean Color instruments are not suitable for highly turbid coastal waters because the {\it black pixel assumption} cannot be applied to these types of waters \cite{Patt2003}. \cite{Concha2014SPIE} developed the \gls{mobelm} as an alternative for the standard atmospheric correction algorithms that does not rely on a negligible water-leaving signal assumption, and therefore it is not as sensitive to the SNR. The MoB-ELM algorithm uses a bright and dark pixel from the image to perform the atmospheric correction. % One of the goals of this work is to compare the MoB-ELM with the standard algorithms as well as with {\it in situ} data. These comparisons are made in remote-sensing reflectance $R_{rs}$ units. 
 
-Two approaches for atmospheric compensation are investigated in this research: the Gordon and Wang approach, and the Concha and Schott approach.\todo{check if valid statement}
+Two approaches for atmospheric compensation are investigated in this research: the \cite{Gordon:1994} approach, and the \cite{Concha2014SPIE} approach.
 
-Some atmospheric correction methods described in this section will use the notation used by \cite{Gordon:1994} and \cite{Ruddick:2000bs} who define the apparent reflectance as 
+Some atmospheric correction methods described in this section will use the notation used by \cite{Gordon:1994} and \cite{Ruddick:2000bs} who define the \gls{rho} as 
 
 \begin{equation}\label{eq:rho}
   \rho = \frac{\pi L}{F_o \cos{\theta}}
 \end{equation}
-where $L$ is upward radiance in the given viewing direction, $F_o$ is exoatmospheric irradiance, and $\theta$ is the solar-zenith angle. \autoref{eq:rho} allows a direct transformation from radiance to reflectance and vice versa. Therefore, taking in account all its contributors, the governing equation for sensor-reaching reflectance can be expressed as
+where $L$ is upward radiance in the given viewing direction, $F_o$ is exoatmospheric irradiance, and $\theta$ is the solar-zenith angle. \autoref{eq:rho} allows a direct transformation from radiance to reflectance and vice versa. Therefore, taking in account all its contributors, the governing equation for \gls{rhot} can be expressed as
 
 \begin{equation}\label{eq:rho_t}
   \rho_t(\lambda) = \rho_r(\lambda) + \rho_a(\lambda) + \rho_{ra}(\lambda) + T_v[\rho_w(\lambda) + \rho_{wc}(\lambda)]
@@ -188,6 +201,11 @@ where:\\
 \indent $T_v(\lambda)$ is the diffuse atmospheric transmittance from the water to the sensor\\
 \indent $\rho_{wc}(\lambda)$ is the reflectance due to solar photons reflecting off the air-water interface (from whitecaps and glint or glitter)\\
 \indent $\rho_w(\lambda)$ is the water-leaving reflectance
+
+The \acrfull{rhow}\index{marine reflectance $\rho_w$} (a.k.a. marine reflectance) is related to the \acrfull{rrs} as
+\begin{equation}\label{eq:Rrs_And_rhow}
+ R_{rs} = \frac{\rho_w}{\pi}~~~\left[\frac{1}{sr}\right]
+\end{equation}
 
 In order to perform the water constituent retrieval, we need to solve for only the $\rho_w(\lambda)$ term in \autoref{eq:rho_t}, which would be an easy task if all the rest of the terms were known. Unfortunately, the only term known {\it a priori} is the $\rho_t(\lambda)$, which is precisely the image of the scene itself. The main difference among the methods based on \cite{Gordon:1994} is in the approach used to estimate $\rho_a(\lambda) + \rho_{ra}(\lambda)$ in the visible (VIS) using an estimation of $\rho_a(\lambda) + \rho_{ra}(\lambda)$ in the near infrared (NIR).
 
