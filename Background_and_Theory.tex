@@ -855,7 +855,7 @@ The \gls{oc2} algorithm utilized just a green and a blue band. Modifications to 
 
 One of the known limitations of the approach is that the data set is mostly representative of Case 1 waters and not few Case 2 waters \cite{OReilly2000}. Some modification for low $C_a$ values have been suggested by \cite{Hu:2012fv}.
 % ------------------------------------------
-\subsection{\acrshort{tsm}}
+\subsection{Total Suspended Matter}
 
 Previous versions of SeaDAS (SeaDAS 5 and earlier) supported the Clark \acrfull{tsm} product. This product was dropped in SeaDAS 6.2 because the algorithm are not maintained by its original authors, and therefore, it has not been updated. The current version of SeaDAS (SeaDAS 6.2) does not include any tsm algorithm. The Clark TSM algorithm was an empirical algorithm. For \gls{modis}, the equation is defined as
 \begin{align}
@@ -864,7 +864,7 @@ Previous versions of SeaDAS (SeaDAS 5 and earlier) supported the Clark \acrfull{
 \end{align}
 \noindent where $L_{wN}$ is the normalized water leaving radiance, and the model coefficients $a[0]\dots a[5]$ are obtained from fitting a $5^{th}$ order polynomial curve to {\it in situ} \gls{tsm} concentrations versus $x$ data This kind of approach is fundamentally a regional relationship that related local concentrations with optical signatures. More info about the algorithm can be found at \url{http://oceancolor.gsfc.nasa.gov/forum/oceancolor/forum_show.pl}.
 % ------------------------------------------
-\subsection{$CDOM$}
+\subsection{Colored Dissolved Organic Matter}
 
 Previous versions of SeaDAS (SeaDAS 5 and earlier) supported the colored dissolved organic matter (CDOM) index ($cdom\_index$) product described in \cite{Morel2009_CDOM_index}. This $cdom\_index$ quantifies the deviation in the relationship between CDOM and chlorophyll concentration. $cdom\_index=1.0$ represents the mean relationship for Morel and Prieur case 1 waters \cite{Morel:1977rw}, and values above or below 1.0 indicate excess or deficit in CDOM relative to that mean relationship, respectively. The $cdom\_index$ is based on an unique relating the $R(412)/R(443)$ ratio to the $R(490)/R(555)$ ratio, where $R(\lambda)$ is spectral reflectance of the ocean at wavelength $\lambda$ derived from ocean color remote sensing data. This product was dropped from the current SeaDAS version (SeaDAS 6.2).
 
@@ -900,18 +900,18 @@ The single-variable models used for Case 2 waters do not work on Case 2 waters s
 \begin{figure}[htb]
   \begin{minipage}[c]{0.48\linewidth}
     \centering
-      \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/OCedu_CHLfixedlow.png}\\
+      \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/OCedu_CHLfixedlow.png}\\
       \centerline{(a)}\medskip
     \end{minipage} 
    \hfill   
    \begin{minipage}[c]{0.48\linewidth}
     \centering
-      \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/OCedu_CHLfixedmed.png}\\
+      \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/OCedu_CHLfixedmed.png}\\
       \centerline{(b)}\medskip
   \end{minipage}    
   \begin{minipage}[c]{1.0\linewidth}
     \centering
-      \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/OCedu_CHLfixedhigh.png}\\
+      \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/OCedu_CHLfixedhigh.png}\\
       \centerline{(c)}\medskip
   \end{minipage}    
       \caption{Fixed chlorophyll-{\it a} concentration, $C_a$, and variable sediments and CDOM for (a) low $C_a$, (b) medium $C_a$ and (c) high $C_a$ .\label{fig:OCedu_CHLfixed} }
@@ -924,17 +924,16 @@ The single-variable models used for Case 2 waters do not work on Case 2 waters s
 \end{figure}
 
 The standard empirical retrieval algorithms described in \cite{OReilly2000} (\S\ref{subsec:chlempirical}) were developed for Case 1 waters. The same approach cannot be used in the Case 2 waters due to the variability of each component. This is illustrated in \autoref{fig:ChlStandardFixedAntNot}, where the OC3 and OC2v4 models are compared with simulated Hydrolight data. \autoref{fig:ChlStandardFixedAntNot}.(a) shows the case when only the chlorophyll-{\it a} concentration is varying, showing a good agreement with the empirical algorithms. On the other hand, \autoref{fig:ChlStandardFixedAntNot}.(b) shows the case when the not only the chlorophyll-{\it a} concentration varies, but all the CPAs. It can be concluded that the empirical models do not fit for all cases. These is one of the reason why new approaches need to be developed.
-
 \begin{figure}[htb]
   \begin{minipage}[c]{0.48\linewidth}
     \centering
-      \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/ChlStandardFixed.png}\\
+      \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/ChlStandardFixed.png}\\
       \centerline{(a)}\medskip
   \end{minipage}
   \hfill      
   \begin{minipage}[c]{0.48\linewidth}
     \centering
-      \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/ChlStandardNoFixed.png}\\
+      \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/ChlStandardNoFixed.png}\\
       \centerline{(b)}\medskip
   \end{minipage}
       \caption{$C_a$ versus blue green band ratio for the OC3 and OC2v4 standard model compared with Hydrolight simulated data for (a) fixed and (b) variable sediment and CDOM.\label{fig:ChlStandardFixedAntNot} } 
