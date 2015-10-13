@@ -214,12 +214,11 @@ This section describes the different alternatives to obtain the rest of the term
 % ---------------------------------------------------------------------------
 \subsection{Solar-Glint Removal Algorithm}
 \label{subsec:glintremoval}
-The first step to solve \autoref{eq:rho_t} is to find the term due to glint, $\rho_{wc}(\lambda)$ and remove it from the total signal. This term $\rho_{wc}(\lambda)$ can be ignored in some cases since ocean-color sensors are designed to be tilted to avoid the specular image of the sun. However, Landsat-8 is not cataloged as an ocean-color satellite and it may need to be corrected for the glint effect depending on the location of the water in the scene and the sun location, and the wind conditions. Sometimes, the influence of glint can be strong, making difficult to process the images, as can be seen in the image acquired on 07-11-2014 (LC80170302014192LGN00), shown in \autoref{fig:L8glint}, with an sun elevation equal to $62^\circ$.
-
+The first step to solve \autoref{eq:rho_t} is to find the term due to glint, $\rho_{wc}(\lambda)$ and remove it from the total signal. This term $\rho_{wc}(\lambda)$ can be ignored in some cases since ocean-color sensors are designed to be tilted to avoid the specular image of the sun. However, Landsat-8 is not cataloged as an ocean-color satellite and it may need to be corrected for the glint effect depending on the location of the water in the scene and the sun location, and the wind conditions. Sometimes, the influence of glint can be strong, making difficult to process the images, as can be seen in the image acquired on 07-11-2014 (LC80170302014192LGN00), shown in \autoref{fig:L8glint}, with an sun elevation equal to $62^\circ$. Note the structure underneath the glint.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
   \centering
-    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/L8Glint}
+    \includegraphics[height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/L8Glint}
     \caption{Landsat 8 image with a strong glint.  \label{fig:L8glint} }
 \end{figure}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -446,7 +445,7 @@ LONGS & 112.76 & 1.1953 & 46.0\\
  \end{tabular}
 \end{table}
 
-The absorption properties for the component chlorophyll were input by user-supplied data files containing mass-specific absorption coefficient as a function of wavelength. This mass-specific absorption spectra is shown in \autoref{fig:CHLaast}. This data was obtained from lab measurements of absorption coefficient spectra for the water sample ONTNS with a {\todo{describe method} spectrophotometric method}. The spectrophotometric method yields absorption coefficients, which are converted to mass-specific absorption coefficient by dividing the absorption coefficient spectra by the concentration. This chlorophyll concentration was determined in lab by a {\todo{describe method} spectrophotometric method} as well. For the chlorophyll scattering properties, the same mass-specific scattering coefficient data used in \cite{Raqueno:2000} and \cite{Raqueno:2003} were utilized. This data is shown in \autoref{fig:CHLbast}. A Fournier-Forand (FF) phase function with backscatter fraction 0.010 was selected as the phase function for the chlorophyll. The details about the selection of this phase function will be described {\todo{correct?!} below}.
+The absorption properties for the component chlorophyll were input by user-supplied data files containing mass-specific absorption coefficient as a function of wavelength. This mass-specific absorption spectra is shown in \autoref{fig:CHLaast}. This data was obtained from lab measurements of absorption coefficient spectra for the water sample ONTNS with a spectrophotometric method (see Appendix~\ref{sec:labmea} for method details). The spectrophotometric method yields absorption coefficients, which are converted to mass-specific absorption coefficient by dividing the absorption coefficient spectra by the concentration. This chlorophyll concentration was determined in lab by a spectrophotometric method as well. For the chlorophyll scattering properties, the same mass-specific scattering coefficient data used in \cite{Raqueno:2000} and \cite{Raqueno:2003} were utilized. This data is shown in \autoref{fig:CHLbast}. A Fournier-Forand (FF) phase function with backscatter fraction 0.010 was selected as the phase function for the chlorophyll. The details about the selection of this phase function will be described below (page \pageref{pag:phasefn}).
 \begin{figure}[htb]
   	\centering
   	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastJavier.eps}
@@ -494,7 +493,7 @@ The mineral mass-specific absorption coefficient was determined in the same fash
   \caption{Mineral mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMbast} } 
 \end{figure}
 
-\todo{update with new Rrs measurement}The following approach was used to determine phase function for both the chlorophyll and mineral particle components. Ecolight was run several times with the different phase function from the library of discretized Fournier-Forand phase functions files supplied with Ecolight 5.2 to created a LUT of reflectance spectra, but maintaining the rest of the parameters the same. These parameters correspond to the ONTNS water sample. The different reflectance spectra generated as output were compared with the reflectance measured in situ. The best match was determining by choosing the lowest root mean squared error (RMSE) between the reflectance measured in situ and the simulated reflectance spectra.
+The following approach was used to determine phase function\label{pag:phasefn} for both the chlorophyll and mineral particle components. Ecolight was run several times with the different phase function from the library of discretized Fournier-Forand phase functions files supplied with Ecolight 5.2 to created a LUT of reflectance spectra, but maintaining the rest of the parameters the same. These parameters correspond to the ONTNS water sample. The different reflectance spectra generated as output were compared with the reflectance measured in situ. The best match was determining by choosing the lowest root mean squared error (RMSE) between the reflectance measured in situ and the simulated reflectance spectra.
 
 It was determined that the best matched corresponds to the discretized Fournier-Forand phase function with a backscatter equal to $0.010$, i.e. $1\%$ of backscatter fraction (FFbb010.dpf). Therefore, this discretized Fournier-Forand phase function is used for both the chlorophyll and mineral particle. \autoref{fig:BestMatchONTNS} illustrated the reflectance measured in situ (red solid line) and the best match reflectance from the LUT (blue solid line), generated with a discretized Fournier-Forand phase function of 0.010 backscatter fraction. It can be seen in \autoref{fig:BestMatchONTNS} that both spectra agree in values above $550nm$, but not below this wavelength. This suggests that there is still need for improvement in the determination of the phase function and rest of the parameters in the Ecolight model.
 
@@ -520,7 +519,14 @@ As a review, \autoref{fig:ELMpxsENVI} shows the different spectra used to perfor
   \caption{Bright and Dark pixels used in ENVI to apply ELM. \label{fig:ELMpxsENVI} } 
   % \vspace{0.5cm}
 \end{figure}
-\todo{include summary of MoB-ELM}
+
+\noindent {\bf SeaWiFS/MODIS Atmospheric Correction Summary:}
+\begin{enumerate}[itemsep=2pt,parsep=2pt]
+  \item Select bright pixel from the Landsat 8 Surface Reflectance \gls{cdr} product
+  \item Select dark pixel from a Hydrolight run
+  \item Use ENVI elm tool
+\end{enumerate}
+\todo{complete summary}
 
 % ----------------------------
 \subsection{SeaWiFS Algorithm for Case 1 Waters}
@@ -626,8 +632,6 @@ In order to determine multiple-scattering values in the VIS, the most appropriat
 
 Finally, the LUT is used to transform single-scattering to multiple-scattering values to obtain $\rho_{am}(\lambda)$ and using \autoref{eq:rhoam} to obtain $\rho_w(\lambda)$. 
 
-\missingfigure{Gordon and Wang method diagram}
-
 A summary of the method developed by \cite{Gordon:1994} is described below.
 
 \noindent {\bf SeaWiFS/MODIS Atmospheric Correction Summary:}
@@ -713,14 +717,13 @@ For Case 2 or high productive Case 1 waters, especially turbid waters, there is 
 \cite{GeraceThesis} proposed to use a combination of spectral matching and band ratio techniques (method developed by \cite{Gordon:1997}) to atmospherically correct OLI data over Case 2 waters. A requirement to use band ratio technique for atmospherically correct OLI data is $\varepsilon^{(1,6)}\cong constant$, or in other words the ratio of reflectance from OLI's band 1 (coastal band) and band 6 (SWIR 1 band) should be approximately constant for all water pixels in the region of interest. Due to variability in band 1, the previous requirement is not always true. However, this variability can be accounted using spectral matching. This method needs to be applied with caution as it will not work in highly turbid water due to high variability in band 1. Therefore, an {\it a priori} analysis of the band histogram is needed, and only the bands whose histogram has little spread and resemble a normal distribution should be used.
 
 This method first uses a forwarding modeling to create a three dimensional (3-D) LUT. Then, it adds atmospheric visibility as a fourth dimension (4-D). First, a 3-D LUT is created using Hydrolight. The dimensions are concentration of chlorophyll-{\it a}, suspended particles and CDOM. The range of the LUT is made up of spectral water-leaving reflectances. Then, this 3-D reflectance LUT is propagated to the TOA using MODTRAN for a range of visibilities. Therefore, the 4-D LUT will be made up of the independent variables chlorophyll-{\it a}, suspended particles, CDOM and visibility, while the range will be made up of spectral sensor-reaching radiances. A diagram showing the concept of this 4-D LUT is shown in \autoref{fig:4DLUT}. Note that this approach requires some knowledge of the aerosol type (e.g. rural, urban, maritime, etc.). Furthermore, the sensor-reaching radiances should be spectrally sampled by the OLI's sensor response and the data from the image should corrected for glint effect before comparing with the 4-D LUT since it does not include this effect.
-
 \begin{figure}[htb]
   \centering
   \includegraphics[width=14cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/4DLUT.png}
   \caption{Four dimensional LUT. The dimension are concentrations of chlorophyll-{\it a}, suspended particles, CDOM and visibility and the range is spectral sensor-reaching radiance. Source: \cite{GeraceThesis}}
   \label{fig:4DLUT} 
-\end{figure}\todo{change figure for a better quality}
-
+\end{figure}
+\todo{change figure for a better quality}
 Once the 4-D LUT has been created, an iterative search of the closest match to an imaged water pixel is performed. The first step in this iteration is to obtain an initial guess of the visibility. To do so an imaged spectrum is compared to the spectra contained in the 4-D LUT. The parameters (concentration of CPAs and visibility) associated to the closest non-interpolated spectrum in the 4-D LUT in a RMS sense are associated with the imaged spectrum. Then, these associated parameters are fixed and the observed $\varepsilon^{(1,6)}$ is compared with the 4-D LUT $\varepsilon^{(1,6)}$ values for different visibility but same concentration, and the visibility of the closest match is selected as initial visibility estimate.
 
 After estimating the initial visibility, an optimization routine can be used to estimate the four parameters from the 4-D LUT by interpolation. The final result of this process are interpolated CPA's concentration and visibility associated with the imaged pixel.
@@ -813,6 +816,7 @@ After obtaining the LUT from Ecolight, the spectral curves in the LUT are spectr
 %   \caption{SM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:SMaastLONGS} } 
 % \end{figure}
 \subsection{Retrieval}
+\todo{add combination of both methods!}
 Two methods are investigated for performing the retrieval. The first one is using the root mean squared error (RMSE) to determine the concentrations based in the closest element in the LUT. This method gives discretized concentration values corresponding to the LUT concentration values. The second one uses a non-linear optimization to estimate these values. This method gives continuous concentration values based in a trilinear interpolation that interpolated between the closest matches in the LUT.
 % -----------------------------------------
 \subsubsection{Root Mean Square Error}
@@ -824,7 +828,6 @@ where $\widetilde{R}_{rs}(i,\lambda_m)$ is the $i$th database spectrum from the 
 
 % -----------------------------------------
 \subsubsection{Non-linear Optimization}
-\todo{Mention: water mask and RMSE} 
 The spectral matching is made by a least square error minimization algorithm using the ``\texttt{lsqnonlin}'' package of the MATLAB's Optimization Toolbox. \texttt{lsqnonlin} solves least-squares problems, including nonlinear data-fitting problems \todo{cite Matlab Help}. If $f(x)$ is a user-defined vector function defined as
 \begin{equation}
   f(x)=
@@ -848,15 +851,14 @@ In this case, $x$ is the three CPA concentrations and the function $f(x)$ is the
 where $F$ is obtained from a trilinear interpolation based in the CPA concentrations of the LUT. The dimension $m$ is the number of bands. In other words, for each pixel in the image, \texttt{lsqnonlin} tries to find a function that minimizes the error between the measured value and an interpolated spectra from the LUT. \texttt{lsqnonlin} stops the search after reaching certain threshold. 
 
 The output of this process is a concentration mapping for each water constituent that spans the range of constituents levels in the scene. 
-\todo{add combination of both methods!}
+
 
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \section{Validation} 
 \label{sec:val}
 % -------------------------------------------------------------
 \subsection{Ground Truth Data Collection}
-\todo{mention technique to account for the sun glint when measuring Rrs}
-The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat-8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the summer 2013\todo{update this info}. This project contemplates performing one new ground truth data collection during 2014. Therefore, images from the 2013-2014 spring and summer collection seasons will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
+The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat-8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the 2013, 2014 and 2015 seasons\todo{2015?}. Therefore, these images will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
 \begin{figure}[htb]
   \centering
   \includegraphics[height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/AreaOfStudy1.pdf}
@@ -867,7 +869,8 @@ The area of study for this research is the Lake Ontario Rochester Embayment (lat
   \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/AreaOfStudy2.pdf}
   \caption{Area of Study. \label{fig:areaofstudy2} } 
 \end{figure}
-A field collection that includes water samples and remote-sensing reflectance ($R_{rs}$) measurements was conducted at the same time as the sensor overpass. The $R_{rs}$ measurements were performed using a SVC HR-1024i instrument\cite{SVCHR1024i} or a ASD instrument\todo{include reference} following the method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site. Then, the water samples were analyzed in the lab, following SeaWiFS protocols\cite{Mueller1995} for obtaining chlorophyll-{\it a} concentration ($C_a$) and total suspended solid concentration (TSS). \autoref{tab:Sites} shows the different site names, location and the $C_a$ and $TSS$ for each site for the collection on 09-19-2013, as example. Note the difference in concentration levels between the ponds (i.e. LONGN, LONGS and CRANB) and the lake (i.e. ONTNS, ONTOS and ONTEX) samples.
+
+A field collection that includes water samples and remote-sensing reflectance ($R_{rs}$) measurements was conducted at the same time as the sensor overpass. The $R_{rs}$ measurements were performed using a SVC HR-1024i instrument \cite{SVCHR1024i} or a ASD instrument\todo{include reference}~ following the method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site (see Appendix~\ref{sec:fieldmea} for more details about the $R_{rs}$ measurements). Then, the water samples were analyzed in the lab, following SeaWiFS protocols described in \cite{Mueller1995} for obtaining chlorophyll-{\it a} concentration ($C_a$) and total suspended solid concentration (TSS). \autoref{tab:Sites} shows the different site names, location and the $C_a$ and $TSS$ for each site for the collection on 09-19-2013, as example. Note the difference in concentration levels between the ponds (i.e. LONGN, LONGS and CRANB) and the lake (i.e. ONTNS, ONTOS and ONTEX) samples.
 
 % Site  & $C_a$  &    Latitude  & Longitude
 % ONTNS &   ~~0.48 &  43.272159 & -77.538274  
@@ -916,9 +919,9 @@ In order to have outputs in HydroLight that are representative of the water bodi
 
 % ----------------------------------------------------
 \subsection{Comparison}
-The results from the retrieval process will be validated by comparison with the concentration of water samples taken during field campaigns in the spring and summer of 2013 and 2014. These concentrations will be obtained from lab measurements made at the Rochester Institute of Technology. For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl-{\it a} product), in regions where it is possible. 
-
-Additionally, the results for the \gls{mobelm} and the CPA retrieval are compared with the products derived in the l2gen algorithm the in \gls{seadas} software.\todo{complete more!}
+The results from the retrieval process will be validated by comparison with the concentration of water samples taken during field campaigns in the spring and summer of 2013 and 2014\todo{2015?}. These concentrations will be obtained from lab measurements made at the Rochester Institute of Technology. %For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl-{\it a} product), in regions where it is possible.
+\todo{Comparison with MODIS?}
+Additionally, the results for the \gls{mobelm} and the CPA retrieval are compared with the products derived in the l2gen algorithm the in \gls{seadas} software described in \S\ref{sec:seadas}.
 
 % ----------------------------------------------------
 \section{Concluding Remarks}
