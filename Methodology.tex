@@ -211,9 +211,19 @@ In order to perform the water constituent retrieval, we need to solve for only t
 
 This section describes the different alternatives to obtain the rest of the terms in \autoref{eq:rho_t}.
 
+% ---------------------------------------------------------------------------
 \subsection{Solar-Glint Removal Algorithm}
 \label{subsec:glintremoval}
-The first step to solve \autoref{eq:rho_t} is to find the term due to glint, $\rho_{wc}(\lambda)$ and remove it from the total signal. This term $\rho_{wc}(\lambda)$ can be ignored in some cases since ocean-color sensors are designed to be tilted to avoid the specular image of the sun. However, Landsat-8 is not cataloged as an ocean-color satellite and it may need to be corrected for the glint effect depending on the location of the water in the scene.
+The first step to solve \autoref{eq:rho_t} is to find the term due to glint, $\rho_{wc}(\lambda)$ and remove it from the total signal. This term $\rho_{wc}(\lambda)$ can be ignored in some cases since ocean-color sensors are designed to be tilted to avoid the specular image of the sun. However, Landsat-8 is not cataloged as an ocean-color satellite and it may need to be corrected for the glint effect depending on the location of the water in the scene and the sun location, and the wind conditions. Sometimes, the influence of glint can be strong, making difficult to process the images, as can be seen in the image acquired on 07-11-2014 (LC80170302014192LGN00), shown in \autoref{fig:L8glint}, with an sun elevation equal to $62^\circ$.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+  \centering
+    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/L8Glint}
+    \caption{Landsat 8 image with a strong glint.  \label{fig:L8glint} }
+\end{figure}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 The method to remove the sun glint effect chosen for this study is the method suggested by \cite{Hedley:2005}, which is a revised version of the method suggested by \cite{Hochberg:2003}. The method described by Hochberg was developed for high spatial resolutions where glint effects occur at physical scales comparable to image pixels ($<10m$) as opposed to methods developed for ocean-color sensor, which tend to have large physical scales ($>1km$).
 The method presented by Hochberg is sensitive to outlier pixels and it needs to mask the land and cloud areas before deglinting. The method suggested by Hedley overcomes these inconveniences. This method assumes that (a) the brightness in the NIR is composed only of sun glint and a spatially constant ambient NIR component associated with NIR backscatter in the atmosphere (if the image is not atmospherically corrected), and (b) that the amount of sun glint in the visible bands is linearly related to the brightness (glint) in the NIR band. 
@@ -239,7 +249,13 @@ where $R_i'$ is the sun-glint corrected pixel value in band $i$, $R_i$ is the pi
 
 Some considerations need to be taken into account in order to apply this method. The first assumption is only valid when there is no water with high concentration of sediment present in the image, so precautions have to be taken to avoid highly turbid water in the image. As a way to overcome this problem, the OLI's SWIR band (band 6) will be used instead of the NIR band since the water-leaving signal is negligible at $1600nm$, as suggested by \cite{GeraceThesis}. The real part of the index of refraction is still nearly equal for all wavelengths in the VNIR/SWIR, and therefore the second assumption of a linear relationship between NIR values and the amount of sun glint in the visible band is still valid. Other consideration is that if the ROIs selected include non-submerged objects (i.e. buoys, boats, land), this algorithm could output negative values. Therefore, it is recommended to mask all non-submerged objects before applying this method.
 
-\missingfigure{Example of deglinting}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+  \centering
+    \includegraphics[height=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/HedleyGlint}
+    \caption{Example of the glint removal algorithm (image taken from \cite{Hedley:2005}).  \label{fig:HedlyGlint} }
+\end{figure}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The purpose of the deglinting process is to find the term $T_v\rho_{wc}$ in \autoref{eq:rho_t} and subtract it from the total TOA reflectance $\rho_t$,
 
