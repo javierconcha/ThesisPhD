@@ -442,49 +442,62 @@ LONGS & 112.76 & 1.1953 & 46.0\\
  \end{tabular}
 \end{table}
 
-The absorption properties for the component chlorophyll were input by user-supplied data files containing mass-specific absorption coefficients as a function of wavelength. This mass-specific absorption spectra are shown in \autoref{fig:CHLaast}. These data were obtained from lab measurements of absorption coefficient spectra for the water sample ONTNS with a spectrophotometric method (see Appendix~\ref{sec:labmea} for method details). The spectrophotometric method yields absorption coefficients, which are converted to mass-specific absorption coefficients by dividing the absorption coefficient spectra by the concentration. This chlorophyll concentration was determined in lab by a spectrophotometric method as well. For the chlorophyll scattering properties, the same mass-specific scattering coefficient data used in \cite{Raqueno:2000} and \cite{Raqueno:2003} were utilized. These data are shown in \autoref{fig:CHLbast}. A Fournier-Forand (FF) phase function with backscatter fraction 0.010 was selected as the phase function for the chlorophyll. The details about the selection of this phase function will be described below (page \pageref{pag:phasefn}).
+The absorption properties for the component chlorophyll were input by user-supplied data files containing mass-specific absorption coefficients as a function of wavelength. This mass-specific absorption spectra are shown in \autoref{fig:CHLabast}.(a). These data were obtained from lab measurements of absorption coefficient spectra for the water sample ONTNS with a spectrophotometric method (see Appendix~\ref{sec:labmea} for method details). The spectrophotometric method yields absorption coefficients, which are converted to mass-specific absorption coefficients by dividing the absorption coefficient spectra by the concentration. This chlorophyll concentration was determined in lab by a spectrophotometric method as well. For the chlorophyll scattering properties, the same mass-specific scattering coefficient data used in \cite{Raqueno:2000} and \cite{Raqueno:2003} were utilized. These data are shown in \autoref{fig:CHLabast}.(b). A Fournier-Forand (FF) phase function with backscatter fraction 0.010 was selected as the phase function for the chlorophyll. The details about the selection of this phase function will be described below (page \pageref{pag:phasefn}).
 \begin{figure}[htb]
-  	\centering
-  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastJavier.eps}
-  \caption{Chlorophyll mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLaast} } 
+  \begin{minipage}[c]{0.48\linewidth}
+    \centering
+  	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastJavier.eps}
+    \centerline{(a)}\medskip
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{0.48\linewidth}
+    \centering
+  	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLbastRolo.eps}
+    \centerline{(b)}\medskip
+  \end{minipage}
+  \caption{Chlorophyll IOPs. Chlorophyll mass-specific (a) absorption and (b) scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLabast} }   
+  % \caption{Chlorophyll mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLabast}} 
 \end{figure}
-\begin{figure}[htb]
-  	\centering
-  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLbastRolo.eps}
-  \caption{Chlorophyll mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLbast} } 
-\end{figure}
-\todo{combine figures?}
 
-For the CDOM component, the absorption specification was the following. First, the absorption coefficients were determined by spectrophotometric measurements in lab for the ONTNS water sample (see Appendix~\ref{sec:labmea} for details about lab measurements). These data are shown in \autoref{fig:CDOMa}. Then, the data were normalized by the absorption value $a(\lambda_0)=0.1151[1/m]$ at the reference wavelength $\lambda_0=440nm$, so that $a^*(\lambda_0)=1$. These normalized data are shown in \autoref{fig:CDOMaast} as purple dots. An exponential curve with the following equation
+For the CDOM component, the absorption specification was the following. First, the absorption coefficients were determined by spectrophotometric measurements in lab for the ONTNS water sample (see Appendix~\ref{sec:labmea} for details about lab measurements). These data are shown in \autoref{fig:CDOM_IOP}.(a). Then, the data were normalized by the absorption value $a(\lambda_0)=0.1151[1/m]$ at the reference wavelength $\lambda_0=440nm$, so that $a^*(\lambda_0)=1$. These normalized data are shown in \autoref{fig:CDOM_IOP}.(b) as purple dots. An exponential curve with the following equation
 \begin{equation}
 	\label{eq:CDOMabs}
 	a^*(\lambda)=a^*(\lambda_0)\exp{\left[-\gamma(\lambda-\lambda_0)\right]}
 \end{equation}
-was fitted to the normalized data. It was determined that the decay constant $\gamma=0.0126$. The fitted curve is illustrated in \autoref{fig:CDOMaast} in solid line. The parameters of this fitted curve are input in Ecolight to specify the CDOM specific absorption $a^*$, and $a(\lambda_0)=0.1151[1/m]$ to specify the dependence of the CDOM absorption at a reference wavelength.
+was fitted to the normalized data. It was determined that the decay constant $\gamma=0.0126$. The fitted curve is illustrated in \autoref{fig:CDOM_IOP}.(b) in solid line. The parameters of this fitted curve are input in Ecolight to specify the CDOM specific absorption $a^*$, and $a(\lambda_0)=0.1151[1/m]$ to specify the dependence of the CDOM absorption at a reference wavelength.
 
 \begin{figure}[!ht]
+  \begin{minipage}[c]{0.48\linewidth}
   	\centering
-  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ONTNS_CDOMabs.eps}
-  \caption{CDOM absorption coefficient spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOMa} } 
-\end{figure}
-\begin{figure}[!ht]
+  	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ONTNS_CDOMabs.eps}
+    \centerline{(a)}\medskip
+  \end{minipage} 
+  \hfill 
+  \begin{minipage}[c]{0.48\linewidth}
   	\centering
-  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ONTNS_CDOMfitting.eps}
-  \caption{CDOM mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOMaast} }
+  	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ONTNS_CDOMfitting.eps}
+    \centerline{(b)}\medskip
+  \end{minipage}    
+  \caption{CDOM IOPs. CDOM (a) absorption coefficient spectra and (b) mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOM_IOP} } 
+  % \caption{CDOM mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOMaast} }
 \end{figure}
 
-The mineral mass-specific absorption coefficient was determined in the same fashion as for the chlorophyll mass-specific absorption coefficient from lab measurements of the ONTNS water sample, by dividing the absorption coefficients by the mineral concentration. The mineral mass-specific absorption coefficients are shown in \autoref{fig:SMaast}. The mineral mass-specific scattering coefficients were the same used by \cite{Raqueno:2000} and \cite{Raqueno:2003} and are shown in \autoref{fig:SMbast}.
+The mineral mass-specific absorption coefficient was determined in the same fashion as for the chlorophyll mass-specific absorption coefficient from lab measurements of the ONTNS water sample, by dividing the absorption coefficients by the mineral concentration. The mineral mass-specific absorption coefficients are shown in \autoref{fig:SMabast}.(a). The mineral mass-specific scattering coefficients were the same used by \cite{Raqueno:2000} and \cite{Raqueno:2003} and are shown in \autoref{fig:SMabast}.(b).
 
 \begin{figure}[!ht]
+  \begin{minipage}[c]{0.48\linewidth}
   	\centering
-  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/SMaastJavier.eps}
-  \caption{Mineral mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMaast} } 
-  % \vspace{0.5cm}
-\end{figure}
-\begin{figure}[!ht]
+  	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/SMaastJavier.eps}
+    \centerline{(a)}\medskip
+  \end{minipage}     
+  \hfill
+  \begin{minipage}[c]{0.48\linewidth}
   	\centering
-  	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/SMbastRolo.eps}
-  \caption{Mineral mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMbast} } 
+  	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/SMbastRolo.eps}
+    \centerline{(b)}\medskip
+  \end{minipage} 
+  \caption{Mineral mass-specific (a) absorption and (b) scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMabast} }     
+  % \caption{Mineral mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMbast} } 
 \end{figure}
 
 The following approach was used to determine phase function\label{pag:phasefn} for both the chlorophyll and mineral particle components. Ecolight was run several times with the different phase function from the library of discretized Fournier-Forand phase functions files supplied with Ecolight 5.2 to created a LUT of reflectance spectra, but maintaining the rest of the parameters the same. These parameters corresponded to the ONTNS water sample. The different reflectance spectra generated as output were compared with the reflectance measured {\it in situ}. The best match was determining by choosing the lowest root mean squared error (RMSE) between the reflectance measured {\it in situ} and the simulated reflectance spectra.
