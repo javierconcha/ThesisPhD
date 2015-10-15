@@ -502,11 +502,11 @@ The mineral mass-specific absorption coefficient was determined by dividing the 
 
 The following approach was used to determine phase function\label{pag:phasefn} for both the chlorophyll and mineral particle components. Ecolight was run several times with the different phase function from the library of discretized Fournier-Forand phase functions files supplied with Ecolight 5.2 to created a LUT of reflectance spectra, but maintaining the rest of the parameters the same. These parameters corresponded to the ONTNS water sample. The different reflectance spectra generated as output were compared with the reflectance measured {\it in situ}. The best match was determining by choosing the lowest root mean squared error (RMSE) between the reflectance measured {\it in situ} and the simulated reflectance spectra.
 
-It was determined that the best matched corresponds to the discretized Fournier-Forand phase function with a backscatter equal to $0.010$, i.e. $1\%$ of backscatter fraction (file FFbb010.dpf in Ecolight). Therefore, this discretized Fournier-Forand phase function is used for both the chlorophyll and mineral particle. \autoref{fig:BestMatchONTNS} illustrated the reflectance measured {\it in situ} (red solid line) and the best match reflectance from the LUT (blue solid line), generated with a discretized Fournier-Forand phase function of 0.010 backscatter fraction. It can be seen in \autoref{fig:BestMatchONTNS} that both spectra agree in values above $550nm$, but not below this wavelength. This suggests that there is still need for improvement in the determination of the phase function and rest of the parameters in the Ecolight model.
+It was determined that the best matched corresponds to the discretized Fournier-Forand phase function with a backscatter equal to $0.010$, i.e. $1\%$ of backscatter fraction (file FFbb010.dpf in Ecolight). Therefore, this discretized Fournier-Forand phase function is used for both the chlorophyll and mineral particle. \autoref{fig:BestMatchONTNS} illustrated the reflectance measured {\it in situ} (red solid line) and the best match reflectance from the LUT (blue solid line), generated with a discretized Fournier-Forand phase function of 0.010 backscatter fraction. It can be seen in \autoref{fig:BestMatchONTNS} that both spectra agree in values above $550nm$, but not below this wavelength. This suggests that there is still room for improvement in the determination of the phase function and rest of the parameters in the Ecolight model.
 
 The following parameters were input to Ecolight in order to simulate the Landsat acquisition conditions. The illumination conditions were input to Ecolight by specifying the solar zenith angle and day of the year that matched the Landsat 8 image. Internal sources and inelastic scatter were not included in the simulations. The wavelength range was $[400nm,1000nm]$, with a $1nm$ step. Default values for the air-water surface conditions were used, with a windspeed equal to $5m/s$, a real index of refraction equal to $n=1.34$, and the semi-empirical sky model (based on RADTRAN-X). Recall that Hydrolight uses a Cox-Munk air-water surface model that parameterizes gravity and capillary waves via the wind speed\todo{reference to Cox-Munk}. Finally, The bottom boundary condition used was ``the water column is infinitely deep.''
 
-This best matched is used as the reflectance spectra of the dark pixel in the MoB-ELM method. This reflectance is further spectrally sampled to the Landsat 8 response using the OLI's sensor response. 
+This best match is used as the reflectance spectra of the dark pixel in the MoB-ELM method. This reflectance is further spectrally sampled to the Landsat 8 response using the OLI's sensor response obtained from ENVI. 
 
 \begin{figure}[htb]
   	\centering
@@ -514,26 +514,32 @@ This best matched is used as the reflectance spectra of the dark pixel in the Mo
   \caption{Reflectance for ONTNS sample and best matching from HydroLight. \label{fig:BestMatchONTNS} } 
 \end{figure}
 
-The radiance spectra for the dark pixel is obtained from the corresponding ROI in the water present in the Landsat 8 image. Statistics are computed in this dark region, and the mean values in each band is used as radiance spectra for the dark pixel.
-
-\missingfigure{figure showing and ROI in the Landsat 8 image and statistic in ENVI}
+The radiance spectra for the dark pixel is obtained from the corresponding ROI in the water present in the Landsat 8 image, from where the {\it in situ} data were taken. Statistics are computed in this dark region, and the mean values in each band is used as radiance spectra for the dark pixel. An example of a ROI over water is shown in \autoref{fig:ENVIROI_darkpx}, along with its statistics calculated in ENVI.
 
 As an example, \autoref{fig:ELMpxsENVI} shows the different spectra used to perform the MoB-ELM, where four different spectra can be seen: one reflectance and one radiance spectra for the bright pixel (obtained using the PIF extraction over the Landsat reflectance product and Landsat 8 image, respectively), one reflectance spectra for the dark pixel (obtained from Ecolight/Hydrolight), and one radiance spectra for bright pixel (obtained from the statistics of a ROI over water in the Landsat 8 image). These spectra are used to atmospherically correct the Landsat 8 image using the ENVI Classic software \cite{ENVIUserGuide}. This is performed using the ``Empirical Line'' algorithm of the ``Calibration Utilities'' in ENVI classic, where the Landsat 8 image is used as the input image, and the reflectance spectra are labeled as ``field spectra'' and the radiance spectra are labeled as ``data spectra.'' The product of this process is an image in reflectance values, which will be used to perform the retrieval of water constituents described in \S\ref{sec:retrieval} below. Note that the Landsat 8 image used was not glint corrected.
 
+\noindent {\bf MoB-ELM Correction Summary:}
+\begin{enumerate}[itemsep=2pt,parsep=2pt]
+  \item Select reflectance of the bright pixel from the Landsat 8 Surface Reflectance \gls{cdr} product by using a PIF mask or a particular target
+  \item Obtain radiance of the bright pixel from corresponding target in the Landsat 8 image
+  \item Select dark pixel from a Hydrolight run using {\it in situ} IOPs
+  \item Obtain radiance of the dark pixel from corresponding target in the Landsat 8 image
+  \item Use ENVI's Empirical Line tool with the bright and dark pixel obtained in previous steps
+\end{enumerate}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=12cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/ENVI_ROIdarkpx}
+  \caption{The radiance of the dark pixel is obtained over a ROI over water (red square) of the radiance Landsat 8 image. The mean value of this ROI is used as dark pixel.\label{fig:ENVIROI_darkpx} } 
+\end{figure}
 \begin{figure}[htb]
   \centering
   \includegraphics[width=14cm,clip=true]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ELMpixelsENVI.pdf}
-  \caption{Bright and Dark pixels used in ENVI to apply ELM. \label{fig:ELMpxsENVI} } 
+  \caption{Bright and Dark pixels used in ENVI to apply the MoB-ELM. \label{fig:ELMpxsENVI} } 
   % \vspace{0.5cm}
 \end{figure}
 
-\noindent {\bf MoB-ELM Correction Summary:}
-\begin{enumerate}[itemsep=2pt,parsep=2pt]
-  \item Select bright pixel from the Landsat 8 Surface Reflectance \gls{cdr} product
-  \item Select dark pixel from a Hydrolight run
-  \item Use ENVI's Empirical Line tool
-\end{enumerate}
-\todo{complete summary}
+
 
 % ----------------------------
 \subsection{SeaWiFS Algorithm for Case 1 Waters}
