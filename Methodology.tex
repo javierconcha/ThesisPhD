@@ -566,7 +566,7 @@ There are two different approaches to determine the $\rho_{am}(\lambda)$ term at
 % -------------------
 \subsubsection{Single Scattering approach to determine $\rho_{am}(\lambda)$}
 \label{subsubsec:singlescat}
-The aerosol is highly variable, and unlike the Rayleigh scattering component $\rho_r$, its effect in the total signal cannot be known {\it a priori} \cite{Gordon:1994}. One of the first efforts to overcome this problem was developed for the \gls{czcs} atmospheric correction algorithm using a single-scattering approximation for calculating the aerosol effect in the total signal. Its logic is as follow. If the optical thickness of the atmospheric is considered $<<1$, then the term $\rho_a$ can be replaced by is single-scattering value $\rho_{as}$ (the $\rho_{ra}$ term is ignored since it is a term related to multiple scattering). \autoref{eq:rhoam1} then becomes
+The aerosol is highly variable, and unlike the Rayleigh scattering component $\rho_r$, its effect in the total signal cannot be known {\it a priori} \cite{Gordon:1994}. One of the first efforts to overcome this problem was developed for the \gls{czcs} atmospheric correction algorithm using a single-scattering approximation for calculating the aerosol effect in the total signal. Its logic is as follow. If the optical thickness of the atmospheric is considered $<<1$, then the term $\rho_a$ can be replaced by is single-scattering value $\rho_{as}$ (the $\rho_{ra}$ term is ignored since it is a term related to multiple scattering). Using the \gls{rhoas}\index{reflectance!single-scattering aerosol, $\rho_{as}$} in \autoref{eq:rhoam1}, then
 \begin{equation}\label{eq:singleapprox}
   \rho_{am}(\lambda) = \rho_a(\lambda)+\cancel{\rho_{ra}(\lambda)} \approx \rho_{as}(\lambda)
 \end{equation}
