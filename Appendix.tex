@@ -9,10 +9,161 @@
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \label{ch:fieldmea}
 % -----------------------------------------------------------------------------
-\section{$R_{rs}$}
-% -----------------------------------------------------------------------------
 \section{Water Samples}
+\begin{figure}[h]
+% \subfloat[]{
+\centering
+    \includegraphics[width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/LDCM/WaterQualityProtocols/Images/WaterQualityProtocolDiagram.png}%}\hspace{0.5cm}
+% \subfloat[]{   
+%     \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/20122_Winter/Instrumentation/report3/Images/SideFluoSpec.jpg}}
+    \vspace{0.5cm}
+   \caption[]{\label{fig:ProtocolsDiagram} Protocols Diagram.}
+\end{figure}
+ %------------- 
 
+$a_{YS}$ cannot be determined directly. An approximation of $a_{YS}$ may be obtained by a spectrophotometer scan of a filtered sample (\cite{Bukata1995}, p.125). Spectrophotometer used in normal mode do not measure true absorbance but {\color{red} attenuance} because all the scattered light is measured. To overcome this, the cells can be placed close to a wide photomultiplier (\cite{Kirk1983}, p.51).
+
+\subsection{Equipment}
+
+\begin{multicols}{3}
+\begin{itemize}
+  \item Dark Nalgene bottles
+  \item Monroe County Environmental Lab bottles
+  \item Cooler
+  \item Marker
+  \item Bottle label
+  \item Ice packs
+  \item GPS
+  \item Extra batteries GPS
+  \item Data sheet
+  \item Pen
+  \item Back pen
+  \item Canoe 
+  \item Transport straps for canoe
+  \item Paddles
+  \item Life jacket
+  \item Suncream 
+  \item Drinking water
+  \item Wipes to clean extra suncream from hands
+  \item Bucket with rope (in case is not possible to take water samples due to bad condition weather, for example)
+\end{itemize}
+\end{multicols}
+
+
+\subsection{Procedure}
+\begin{enumerate}
+  \item Throughly clean the bottles prior to collection by brushing them inside with tap water a couple of times and rinse with DIW water a couple of times
+  \item Once in the site, press GPS button to save location
+  \item Fill the log sheet with the ``Location Description'', ``GPS WAYPOINT'' and ``Time''
+  \item Take a bottle from the cooler and write the bottle label down in the ``Bottle Number'' section on the data sheet along
+  \item Rinse the Nalgene Bottle and cap at least 3 times with water before filling
+  \item Submerge bottle with the cap on it in an undisturbed location.
+  \item Uncap the submerged bottle  to take subsurface water sample (avoid to take water from the surface)[\cite{Montana08}]
+  \item Cap the bottle with the bottle still submerged
+  \item Store bottle up-right immediately in the cooler in order to avoid direct sun light (\cite{Mueller1995})
+  \item Once off the water, text to Nina or person in charge of the collection for example: ``Safe, Long Pond team''
+  \item Take water some water samples to the Monroe County Environmental Lab, if applicable.
+  \item Place the sample bottles in the refrigerator as soon as possible
+  \item Filter water samples right after collection to preserve the chlorophyll and storage filters in the freezer as soon as possible
+\end{enumerate}
+Notes: 
+\begin{itemize}
+  \item Do not take any personal electronic device with you (recommended)
+  \item Storage car keys in zipped bag in you packet
+  \item In case of bad weather conditions that do not allow paddle the canoes, take at least water samples from the Charlotte pier with the bucket
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{$R_{rs}$}
+
+method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site 
+
+This section describes how to take the remote-sensing measurement using a single instrument that measures radiance (spectroradiometer or spectrometer) such as an SVC or ASD instrument. This procedure is taken from \cite{Mobley:1999} and \cite{Mueller1995}. 
+
+The remote-sensing reflectance $R_{rs}$ is defined as
+
+\begin{equation}\label{eq:Rrs}
+	R_{rs}(\theta,\phi,\lambda)=\frac{L_w(\theta,\phi,\lambda)}{E_d(\lambda)}
+\end{equation}
+where $L_w$ is the water-leaving radiance in the polar and azimuthal directions $\theta$ and $\phi$, respectively, and $E_d$ is the downwelling spectral plane irradiance incident onto the water surface. A radiometer pointing down toward the water surface in direction $(\pi-\theta,\phi)$ does not directly measure $L_w$. Instead, it measures $L_w$  plus any incident sky radiance reflected $L_r$ by the water surface into the field of view of the sensor. This total radiance at the sensor $L_t$ is define as
+
+\begin{equation}\label{eq:Lt}
+	L_t(\theta,\phi) = L_r(\theta,\phi)+L_w(\theta,\phi)\Rightarrow L_w(\theta,\phi)=L_t(\theta,\phi) - L_r(\theta,\phi)
+\end{equation}
+
+The term $L_r$ can be replaced by
+
+\begin{equation}\label{eq:Lsky}
+	L_r = \rho L_{sky}
+\end{equation}
+where $\rho$ is the proportionality factor that relates the radiance measured when the sensor views the sky to the reflected sky radiance measured when the sensor views the water surface. \cite{Mobley:1999} suggests to use $\rho \approx 0.028$ for a sensor view angle $\theta_v \approx 40^\circ$ from the nadir and  $\phi_v \approx 135^\circ$ from the Sun with the constraints of a clear sky and wind speed less than $5m/s$.
+
+Although $E_d$ could be measured directly with an appropriate sensor, it will be estimated from the radiance measured from a Lambertian surface (Spectralon) because both instruments in this case (SVC and ASD) are set to measure radiance. When an irradiance $E_d$ falls in a Lambertian surface with a known irradiance reflectance $R_g$, the uniform radiance $L_g$ leaving the surface is given by 
+
+\begin{equation}\label{eq:Lg}
+	L_g = (R_g/\pi)E_d\Rightarrow E_d = L_g*\pi/R_g
+\end{equation}
+
+Applying \autoref{eq:Lt} ,\autoref{eq:Lsky} and \autoref{eq:Lg} in \autoref{eq:Rrs} yields
+
+\begin{equation}
+	R_{rs} = \frac{L_t-\rho L_{sky}}{\frac{\displaystyle \pi}{\displaystyle R_g}L_g}
+\end{equation}
+
+\subsection{ASD}
+
+The ASD should be in ``radiance mode''. Three different radiance measurements need to be taken:
+\begin{itemize}
+	\item $L_g$: pointing the Spectralon
+
+Description: $L_g$ is measured with the sensor pointing downward in the same direction as is used in viewing the water surface (see \autoref{fig:Ltmea}), while the Spectralon is inserted into the sensor FOV. The Spectralon should be normal to the water surface.
+
+	\item $L_t$: pointing the water surface
+
+Description: $L_t$ is measured with the sensor pointing downward toward the water surface in the direction $\approx \pi-\theta_v = 140^\circ$ from nadir with $\theta_v = 40^\circ$ and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Ltmea}.
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/LDCM/WaterQualityProtocols/Latex/Images/Lgmea.png}
+    \vspace{0.5cm}
+   \caption[]{\label{fig:Ltmea} $L_t$ measurement.}
+\end{figure}
+
+	\item $L_{sky}$: pointing the sky
+
+Description: $L_{sky}$ is measured with the sensor pointing upward toward the sky in the direction $\approx \theta_v = 40^\circ$ from nadir and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Lskymea}.
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/LDCM/WaterQualityProtocols/Latex/Images/Lskymea.png}
+    \vspace{0.5cm}
+   \caption[]{\label{fig:Lskymea} $L_{sky}$ measurement.}
+\end{figure}
+
+\end{itemize}
+
+\subsection{SVC}
+The same three radiance measurements described above need to be taken:
+
+\begin{itemize}
+	\item $L_g$: pointing the Spectralon
+
+Description: The measurement is taken in the same fashion described in the previous section and it is taken only once per site. When the SVC instrument is used in ``reflectance mode'', it is necessary to measure first an standard measurement (Spectralon measurement). This standard measurement is the $L_r$ and is recorded internally in the ``sig'' file. Therefore, $L_r$ needs to be extracted from the later from the ``sig'' file. 
+
+	\item $L_t$: pointing the water surface
+
+Description: $L_t$ is measured in the same fashion described in the previous section. However, this measurement is saved internally in the ``sig'' file after the standard measurement column ($L_g$).
+
+	\item $L_{sky}$: pointing the sky	
+
+Description: $L_{sky}$ is measured in the same fashion described in the previous section. However, this measurement is saved internally in the ``sig'' file after the standard measurement column ($L_g$).
+
+\end{itemize}
+{\bf Notes:}
+\begin{itemize}
+	\item Wear dark clothes, preferable black.
+	\item Avoid any reflection from nearby objects in the boat or ship. 
+\end{itemize}
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \chapter{Lab Measurements}
 \label{ch:labmea} 
@@ -20,18 +171,146 @@
 \section{IOPs}
 \subsection{Chlorophyll}
 Spectrophotometric methods
+
+Method described by \cite{Mitchell2002} and \cite{Cleveland1993}
+
 \subsection{Minerals}
 
+%*******************************
+\subsubsection{Equipment}
+%*******************************
+\subsubsection*{Filtration}
+\begin{itemize}
+  \item Vacuum pump
+  \item Filter tower (filter funnel stem, filter base, funnel, filter cup)
+  \item Whatman Binder-Free Glass Microfiber Filters: Type GF/F - Diameter: 2.5cm
+  \item Forceps
+\end{itemize}
+%*******************************
+\subsubsection*{Measurement}
+\begin{itemize}
+  \item Spectrophotometer
+  \item {\color{red} Two lenses support}
+  \item Squirt bottle with {\color{red} DIW} or small pipette with {\color{red} DIW} 
+  \item Methanol
+\end{itemize}
+%*******************************
+\subsubsection{{\color{red} Procedure}}
+%*******************************
+\begin{enumerate}
+  \item Turn the spectrophotometer on at least 30 minutes before measuring
+  \item Set the spectrophotometer parameters in the UV-2101PC software menu: Configure > Parameters...
+  \item Select the Serial Port to be use for communication with the instrument. Go to: Configure > PC Configuration... In the PC Configuration Parameters, select Photometer Serial Port and click OK
+  \item From the menu, go to Configure > Utilities. In the System Utilities window, Turn Photometer On and press OK
+  \item Pour DIW water to two GF/F Whatman filters and stick them in the two lenses support. Both filter should have the same amount of water. Add water with the pipette or the squirt bottle
+  \item Place the two lenses support in the spectrophotometer
+  \item Press the Baseline button in the UV-2101PC software
+  \item Perform an scanner to see the baseline level of the instrument by pressing the "Start" button in the software
+  \item Press the "Go To WL" button of the software and type $850 [nm]$. Press the "Auto Zero" button of the software (optional)
+  \item Invert water sample bottle a couple of times to mix by turbulence and ensure large particles that settle are re-suspended (\cite{Mitchell2002})
+  \item \label{item:place_filter} Using the forceps, place the filter on the filter base and place the filter cup on the base. \textbf{Record volume filtered}. 
+  \item \label{item:filtration} Turn the vacuum pump on and turn the knob $90^\circ$ to allow filtration. Once all the water pass through the filter, turn the know $90^\circ$ back and the turn the vacuum pump off
+  \item Using the forceps, take the filter with just water from the two lenses support and storage it for future baselines. Do not remove the blank filter ({\color{red} OR reference filter}) for the whole measurement session
+  \item \label{item:place_filter_spec} Using the forceps, take the sample filter from the filtering tower. Add one or a few water drops to the sample filter and stick in the two lenses support. 
+  \item  Measure absorbance in the spectrophotometer by pressing the "Start" button of the software and save data. This will be the $OD_{filt}$ measurement
+  \item Using the forceps, remove carefully the sample filter from two lenses support avoiding to break it and place in the filter tower as in step \ref{item:place_filter}
+  \item Pour enough solvent {\color{red} to sumerge} the filter in the filter cup. {\color{red} Wait 5 min} and then filter as in step \ref{item:filtration}
+  \item Repeat step \ref{item:place_filter_spec}
+  \item Measure absorbance in the spectrophotometer by pressing the "Start" button of the software and save data. This will be the $OD_{no~pig}$ measurement 
+  \item Record the area of filtration in the sample filter
+  \item[]Note: The instrument only allows to save four measurement at the time. To save measurement, go to File > Data Translation > ASCII Export... {\color{red} Select channels to be saved, name files and press OK}
+\end{enumerate}
+%*******************************
+\subsubsection{Calculations}
+%*******************************
+
 \subsection{CDOM}
+%*******************************
+\subsubsection{Equipment}
+%*******************************
+\subsubsection*{Filtration}
+\begin{itemize}
+  \item Whatman GD/X 13 and 25mm Disposable Syringe Filters - Nylon $0.2[\mu m]$ Nylon
+  \item {\color{red}Syringe}
+\end{itemize}
+\subsubsection*{Measurement}
+\begin{itemize}
+  \item Spectrophotometer (Shimadzu UV2100V - Dual beam spectrophotometer)
+  \item Blank cell
+  \item Sample cell
+  \item Purified water
+  \item Ethanol
+\end{itemize}
+%*******************************
+\subsubsection{Procedure}
+%*******************************
+\begin{enumerate}
+  \item \textbf{Turn the Spectrophotometer on at least one hour before measuring}. It needs to be warmed up for optimal measurements.
+  \item Wash the syrenge filter out 3 times with purified water
+  \item Rinse cells a couple of times with a small amount of ethanol by shaking it (optional, if the cells seem dirty)
+  \item Use cotton sweep to clean internal face (optional, if face seems dirty)
+  \item Rinse cell with purified water
+  \item Clean and dry the external surface of the cells with optics paper. Be careful with scratching the surface, specially the front and bottom faces
+  \item Select a Slit Width equal to $5.0~[nm]$ in the photometer software
+  \item Select a Sampling Interval of $1~[nm]$ or $2~[nm]$ in the photometer software
+  \item Fill both cells with purified water and extract bubbles
+  \item Place both blank and sample cells filled with purified water in the sample compartment of the spectrophotometer
+  \item Press ``Auto Zero'' button in the spectrophotometer software
+  \item Press ``Baseline'' button in the spectrophotometer software
+  \item Fill sample cell with filtered water from the syringe filter
+  \item Press start button
+  \item Save Channel in the spectrophotometer software
+  \item Go to Data Translation > ASCII Export in spectrophotometer software
+\end{enumerate}
+\textbf{Important:} the samples should be at room temperature. The absorbance measurement is sensible to temperature changes.
+%*******************************
+\subsubsection{Data treatment}
+%*******************************
+\begin{itemize}
+  \item Absorbance: $A=-\ln{\displaystyle\frac{1}{T}}$ 
+  \item Substract bias before convert to coefficients
+  \item $a_{CDOM}=2.303~A(\lambda)/L~~[m^{-1}]$ where $A(\lambda)$ is the absorbance and $L$ the pathlength of the absorbance cell in meters.
+\end{itemize}
 % -----------------------------------------------------------------------------
 \section{Concentrations}
 \subsection{Chlorophyll-{\it a}}
 
+Method described by \cite{Lorenzen:1967fk} and \cite{Ritchie:2008eu}.
+
 \subsection{TSS}
 
+\subsubsection{Equipment}
+%*******************************
+\subsubsection*{Filtration}
+\begin{itemize}
+
+  \item TCLP filters ($47 mm$, $0.7\mu m$)
+  \item Vacuum
+  \item Balance
+  \item Graduate cylinder
+
+\end{itemize}
+
+%*******************************
+\subsubsection{{\color{red} Procedure}}
+%*******************************
+\begin{enumerate}
+  \item Weight filters before filtering
+  \item Record volume to filter. Use graduated cylinder
+  \item Use vacuum to filter water with the TCLP filters to filter the particles
+  \item Weight filter in balance
+  \item Put in aluminium foil with weight
+  \item Dry sample at $75^\circ C$ for a couple of hours
+\end{enumerate}
 
 
-method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site 
+\begin{equation}
+SPM_{\displaystyle concentration} = \frac{[final~filter~weight~(mg) - tare~filter~weight~(mg)]}{volume~filtered~(L)}~~~\left[\frac{mg}{L}\right]
+\end{equation}
+
+
+% &&&&&&&&&&&&&&&&&&
+
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \chapter{HydroLight Specification}
 
