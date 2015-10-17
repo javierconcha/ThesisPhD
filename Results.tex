@@ -51,7 +51,26 @@ Water samples are collected for each site in dark Nalgene bottles. Additionally,
 % ------------------------------
 \section{Laboratory Measurements}
 
-After collection, these water samples were analyzed in the lab at the Rochester Institute of Technology (RIT), and concentration and IOPs for each CPA were measured following the procedures described by \cite{Mueller1995}. These measurements are utilized as input to Ecolight for the LUT generation of the retrieval process and the black pixel determination for the MoB-ELM atmospheric correction algorithm. Also, some are utilized for validation of the retrieval process. The $C_a$ and $TSS$ measurements were validated by comparing with measurements analyzed by a credible lab (Monroe County Environmental Laboratory). This comparison between labs showed agreement in the measurements. \autoref{tab:collect} shows the measurements available.
+After collection, these water samples were analyzed in the lab at the Rochester Institute of Technology (RIT), and concentration and IOPs for each CPA were measured following the procedures described by \cite{Mueller1995}. These measurements are utilized as input to Ecolight for the LUT generation of the retrieval process and the black pixel determination for the MoB-ELM atmospheric correction algorithm. Also, some are utilized for validation of the retrieval process. The $C_a$ and $TSS$ measurements were validated by comparing with measurements analyzed by a credible lab (Monroe County Environmental Laboratory). This comparison between labs showed agreement in the measurements. \autoref{tab:collect} shows the measurements available.\todo{show IOPs figures}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastLONGSJavier.eps}
+  \caption{Chlorophyll mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:CHLaastLONGS} } 
+\end{figure}
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_CDOM_LONGS091913.eps}
+  \caption{CDOM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:CDOMaastLONGS} } 
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_SM_LONGS091913.eps}
+  \caption{SM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:SMaastLONGS} } 
+\end{figure}
 
 % ------------------------------
 \section{Atmospheric Correction}
@@ -734,7 +753,7 @@ The first chlorophyll-{\it a} retrieval algorithm used in this study was the alg
 \centering
     \begin{tabular}{ccccc}
     \hline \hline
-            IOPs Input & \bfseries{$C_a$} & \bfseries{$TSS$} & \bfseries{$a_{CDOM}(440nm)$} & \bfseries{$b_b/b$}    \\
+    \multirow{2}{*}{IOPs Input} & \bfseries{$C_a$} & \bfseries{$TSS$} & \bfseries{$a_{CDOM}(440nm)$} & \bfseries{$b_b/b$}    \\
                    & $[mg~m^{-3}]$        & $[g~m^{-3}]$       &  $[1/m]$           & $[\%]$            \\ \hline \hline
 \multirow{8}{*}{ONTNS}  &  0.1      & 1.0     &  0.11   &  0.3  \\
     &  0.5      & 2.0   &  0.15     &  0.4  \\
