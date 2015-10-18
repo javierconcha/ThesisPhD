@@ -46,13 +46,14 @@
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
+\vspace{1cm}
   \centering
 % \resizebox{9cm}{!}{%
 % Define block styles
 
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2em, minimum height=2em,text centered, draw=black, fill=red!30]
 
-\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1em, minimum height=3em, text width=2.0cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2em, minimum height=2em, text width=1.5cm, text centered, draw=black, fill=blue!30]
 
 \tikzstyle{iosmall} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1em, minimum height=1em, text width=1.0cm, text centered, draw=black, fill=blue!30]
 
@@ -65,6 +66,7 @@
 
 \begin{tikzpicture}[node distance=2cm]
 
+
 % \node (start) [startstop] {Start};
 
 \node (L8image) [io] {Landsat \\Image (DN)};
@@ -72,7 +74,7 @@
 \node (resize) [process, below of=radcal] {Resize};
 \node (mask) [process, below of=resize] {Land/Cloud/\\Cloud Shadow \\Mask};
 \node (AtmCorr) [process, below of=mask] {Atmospheric \\Correction \\(MoB-ELM)};
-\node (rrs) [io, below of=AtmCorr] {$R_{rs}$ \\Image};
+\node (rrs) [io, below of=AtmCorr,yshift=-1.5cm] {$R_{rs}$ \\Image};
 \node (RetProc) [process, below of=rrs] {Retrieval \\Process \\(RMSE/ \\lsqnonlin)};
 \node (CPAmap) [io, below of=RetProc] {CPA \\maps};
 
@@ -82,19 +84,22 @@
 
 \node (AOPs) [iosmall, right of=L8image, xshift=0.8cm] {{\it in situ} \\AOPs \\($R_{rs}$)};
 
-\node (samples) [io, right of=AOPs, xshift=0.8cm] {Water \\Samples};
+\node (samples) [io, right of=AOPs, xshift=1.0cm] {Water \\Samples};
 \node (labmea) [process, below of=samples] {Lab \\Mea.};
 \node (IOPs) [iosmall, below of=labmea, xshift=-1cm] {IOPs};
 \node (conc) [iosmall, below of=labmea, xshift=1cm] {Conc.};
 \node (hydro) [process, below of=IOPs, xshift=1cm] {Hydrolight};
 \node (darkpx) [iosmall, below of=hydro, xshift=-1.5cm] {Dark \\Pixel};
-\node (LUT) [iosmall, below of=hydro, xshift=1.5cm] {LUT};
+\node (LUT) [iosmall, below of=hydro, xshift=2.5cm] {LUT};
 
 \node (bb_b) [iosmall, right of=hydro, xshift=1cm] {$b_b/b$};
 
 
 \node (Comp) [process, right of=CPAmap, xshift=1.5cm] {Comparison};
 \node (NRMSE) [io, below of=Comp] {NRMSE};
+
+\node (Comprrs) [process, right of=rrs, xshift=0.8cm, yshift=1.5cm] {Comparison};
+\node (NRMSE2) [io, right of=Comprrs, xshift=1.4cm] {NRMSE};
 
 % \node[align=left, right=0.0 of prepro] (List1) {\scriptsize - Cloud/Land/Water Mask\\\scriptsize - Radiometric Calibration};
 
@@ -122,8 +127,11 @@
 \draw [arrow] (LUT) |- (RetProc);
 
 \draw [arrowdashed] (AOPs) |- (hydro);
+\draw [arrowdashed] (AOPs) -- (Comprrs);
+\draw [arrowdashed] (rrs.east) -| (Comprrs.south);
+\draw [arrowdashed] (Comprrs) -- (NRMSE2);
 
-\draw [arrow] (conc.east) |- ([xshift=2.5cm]conc.east)  |- (Comp);
+\draw [arrow] (conc.east) |- ([xshift=2.3cm]conc.east)  |- (Comp);
 \draw [arrow] (CPAmap) -- (Comp);
 \draw [arrow] (Comp) -- (NRMSE);
 
@@ -136,6 +144,7 @@
 % } % resizebox end
 \caption{Detailed flowchart of the process. \label{fig:detailflowchart}}
 \end{figure}
+\todo{complete figure}
 
 This chapter describes the methodology and approach taken to accomplish the specific objectives mentioned in \S\ref{ch:objectives}. As a review, these specific requirements are (\S\ref{sec:objectives}):
 \begin{enumerate}
@@ -856,8 +865,10 @@ The output of this process is a concentration mapping for each water constituent
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \section{Validation} 
 \label{sec:val}
+
+The validation of the retrieval is performed through comparison with both {\it in situ} data and standard bio-optical products. This comparison is done for the results from the atmospheric correction and from the retrieval process.
 % -------------------------------------------------------------
-\subsection{Ground Truth Data Collection}
+\subsection{Comparison with {\it in situ} data}
 The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat 8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the 2013, 2014 and 2015 seasons\todo{2015?}. Therefore, these images will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
 \begin{figure}[htb]
   \centering
@@ -913,12 +924,9 @@ BRADONT&  43.325780 & -77.706432 &  ~~1.44 & ~2.00        & Braddock Bay, Lake O
 \end{figure}
 
 In order to have outputs in HydroLight that are representative of the water bodies that are being studied, inherent optical properties (IOPs) of those specific waters have to be defined as input to the HydroLight model. After collection, these water samples need to be analyzed in the lab to obtain IOPs for the main water constituents. Furthermore, apparent optical properties (AOPs) (i.e. water-leaving reflectance) and backscattering measurements will be also collected for further comparison and to pursue closure between the HydroLight AOPs results and in-situ AOPs measurements.
-% -------------------------------------------------------------
-\subsection{Laboratory Measurements}
-
 
 % ----------------------------------------------------
-\subsection{Comparison}
+\subsection{Comparison with standard bio-optical product}
 Additionally, this study presents a comparison of chlorophyll-{\it a} concentrations ($C_a$) retrieved from the standard atmospheric correction algorithms and from the MoB-ELM algorithms. The NASA's standard bio-optical algorithms OC2, OC3, OC4\cite{OReilly2000} and OCI\cite{Hu:2012} for the retrieval of chlorophyll-{\it a} were developed mainly for Case 1 waters, where the main driver is chlorophyll-{\it a}. The {\it in situ} data used to develop these algorithms does not appear to contain enough data for high concentration of color producing agents (CPAs; chlorophyll-{\it a}, minerals (or total suspended matter or TSS), and colored dissolved organic matter (CDOM)), and therefore these data are not fully representative of Case 2 waters. Gerace {\it et al.} (2013)\cite{Gerace:2013} developed an algorithm for the simultaneous retrieval of color producing agents (CPAs) based on spectral matching and a look-up table (LUT) using simulated OLI data. Concha and Schott (2014)\cite{Concha2013IGARSS} extended Gerace's approach to actual OLI data. This approach does not depend on a global {\it in situ} dataset. Instead it builds a LUT specific to the inherent optical properties (IOPs) and observation conditions for the site.
 
 The results from the retrieval process will be validated by comparison with the concentration of water samples taken during field campaigns in the spring and summer of 2013 and 2014\todo{2015?}. These concentrations will be obtained from lab measurements made at the Rochester Institute of Technology. %For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl-{\it a} product), in regions where it is possible.
