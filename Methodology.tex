@@ -813,21 +813,22 @@ After obtaining the LUT from Ecolight, the spectral curves in the LUT are spectr
       \label{fig:LUT}
 \end{figure}
 
-
-\subsection{Retrieval}
-\todo{add combination of both methods!}
-Two methods were combined for performing the retrieval. The first one is using the root mean squared error (RMSE) to determine the concentrations based in the closest element in the LUT. This method gives discretized concentration values corresponding to the LUT concentration values. The second one uses a non-linear optimization to estimate these values. This method gives continuous concentration values based in a trilinear interpolation that interpolated between the closest matches in the LUT. Both method are described in the following section.
 % -----------------------------------------
+\subsection{Retrieval}
+The retrieval is divided in two stages (\autoref{fig:detailflowchart}). The first one uses the \acrfull{rmse} to fix the IOP set (ponds or lake) and the phase function. The \gls{rmse} is calculated between the water pixel and each element in the LUT, and the one with the smallest \gls{rmse} is selected as the first candidate. The IOP set and the phase function associated with this candidate is chosen as the IOP set and the phase function for the water pixel.
+
+The second stage of the retrieval uses a non-linear optimization to estimate the CPA concentrations of the water pixel. Only the elements in the LUT with the same IOP set and phase function selected from the first stage are utilized in this stage. The water pixel is input to a non-linear optimization routine to estimate the CPA concentration through a trilinear interpolation within the LUT's elements. This method gives continuous concentration values. The \gls{rmse} and the non-linear optimization are described below.
+% -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
 \subsubsection{Root Mean Square Error}
 In this work, the RMSE is defined as
 \begin{equation}
   RMSE(i) = \sqrt{\frac{1}{m}\sum_1^m\left[\widetilde{R}_{rs}(i,\lambda_m)-R_{rs}(\lambda_m)\right]^2}
 \end{equation}
-where $\widetilde{R}_{rs}(i,\lambda_m)$ is the $i$th database spectrum from the LUT at wavelength band $m$ and $R_{rs}(\lambda_m)$ is the measured spectrum for a particular image pixel. For each pixel in the image, the RMSE error is calculated with every $i$th element in the LUT. Then, the element of the LUT that results in the lowest RMSE is chosen as the concentration for that particular pixel. This method gives discretized values for the concentrations equal to the values used to create the LUT.
+where $\widetilde{R}_{rs}(i,\lambda_m)$ is the $i$th database spectrum from the LUT at wavelength band $m$ and $R_{rs}(\lambda_m)$ is the spectrum for a particular water pixel from the image.
 
 % -----------------------------------------
 \subsubsection{Non-linear Optimization}
-The spectral matching is made by a least square error minimization algorithm using the ``\texttt{lsqnonlin}'' package of the MATLAB's Optimization Toolbox. \texttt{lsqnonlin} solves least-squares problems, including nonlinear data-fitting problems \todo{cite Matlab Help}. If $f(x)$ is a user-defined vector function defined as
+The spectral matching is made by a least square error minimization algorithm using the ``\texttt{lsqnonlin}'' package of the MATLAB's Optimization Toolbox. \texttt{lsqnonlin} solves least-squares problems, including nonlinear data-fitting problems \cite{MatlabHelp}. If $f(x)$ is a user-defined vector function defined as
 \begin{equation}
   f(x)=
   \left[
