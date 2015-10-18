@@ -274,6 +274,7 @@ Once the water pixels in the image are deglinted, the next step is to atmospheri
 
 % ------------------------------------------------------------------
 \subsection{Model-Based Empirical Line Method (MoB-ELM) Atmospheric Correction Method}
+\label{subsec:mobelm}
 
 The first method will be a \gls{mobelm}\index{atmospheric correction!MoB-ELM} based on previous work done by \cite{Gerace:2013} and \cite{Gerace:2012}  for simulated OLI data and adapted by \cite{Concha2014SPIE} for actual OLI data. While this new method is based on the traditional ELM method (see \S\ref{sec:ELM}), this MoB-ELM method tries to avoid the measurement of ground truth at every sensor overpass over the scene by using \glspl{pif} in the scene as one target along with an estimation of water reflectivity for an open lake region for the other target. In the MoB-ELM atmospheric correction method, the dark pixel is obtained from a run of the radiative transfer model Hydrolight \cite{MobleyHEtech} simulating a water pixel in the scene with known CPAs concentrations and inherent optical properties (IOPs). The bright pixel is obtained from the Provisional Landsat 8 Surface Reflectance product \cite{L8SurfProduct2015} from USGS over a bright object in the scene or an average of bright pixels in the scene. The two targets used in this MoB-ELM to solve the regression in \autoref{eq:ELM} are referred to in this documents as the {\it bright pixel} \index{bright pixel} and the {\it dark pixel}\index{dark pixel}.
 
@@ -463,8 +464,8 @@ The absorption properties for the component chlorophyll were input by user-suppl
   	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLbastRolo.eps}
     \centerline{(b)}\medskip
   \end{minipage}
-  \caption{Chlorophyll IOPs. Chlorophyll mass-specific (a) absorption and (b) scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLabast} }   
-  % \caption{Chlorophyll mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CHLabast}} 
+  \caption{Chlorophyll IOPs. Chlorophyll mass-specific (a) absorption and (b) scattering spectra used for the determination of the reflectance spectra of the dark pixel in Hydrolight. \label{fig:CHLabast} }   
+  % \caption{Chlorophyll mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in Hydrolight. \label{fig:CHLabast}} 
 \end{figure}
 
 For the CDOM component, the absorption specification was the following. First, the absorption coefficients were determined by spectrophotometric measurements in lab for the ONTNS water sample (see Appendix~\ref{ch:labmea} for details about lab measurements). These data are shown in \autoref{fig:CDOM_IOP}.(a). Then, the data were normalized by the absorption value $a(\lambda_0)=0.1151[1/m]$ at the reference wavelength $\lambda_0=440nm$, so that $a^*(\lambda_0)=1$. These normalized data are shown in \autoref{fig:CDOM_IOP}.(b) as purple dots. An exponential curve with the following equation
@@ -486,8 +487,8 @@ was fitted to the normalized data. It was determined that the decay constant $\g
   	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/ONTNS_CDOMfitting.eps}
     \centerline{(b)}\medskip
   \end{minipage}    
-  \caption{CDOM IOPs. CDOM (a) absorption coefficient spectra and (b) mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOM_IOP} } 
-  % \caption{CDOM mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:CDOMaast} }
+  \caption{CDOM IOPs. CDOM (a) absorption coefficient spectra and (b) mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in Hydrolight. \label{fig:CDOM_IOP} } 
+  % \caption{CDOM mass-specific absorption spectra used for the determination of the reflectance spectra of the dark pixel in Hydrolight. \label{fig:CDOMaast} }
 \end{figure}
 
 The mineral mass-specific absorption coefficient was determined by dividing the absorption coefficients measured in the lab from the water ONTNS water sample by the mineral concentration, also measured in lab (see Appendix~\ref{ch:labmea} for details about lab measurements). The mineral mass-specific absorption coefficients are shown in \autoref{fig:SMabast}.(a). The mineral mass-specific scattering coefficients were the same used by \cite{Raqueno:2000} and \cite{Raqueno:2003} and are shown in \autoref{fig:SMabast}.(b).
@@ -504,8 +505,8 @@ The mineral mass-specific absorption coefficient was determined by dividing the 
   	\includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/SMbastRolo.eps}
     \centerline{(b)}\medskip
   \end{minipage} 
-  \caption{Mineral mass-specific (a) absorption and (b) scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMabast} }     
-  % \caption{Mineral mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in HydroLight. \label{fig:SMbast} } 
+  \caption{Mineral mass-specific (a) absorption and (b) scattering spectra used for the determination of the reflectance spectra of the dark pixel in Hydrolight. \label{fig:SMabast} }     
+  % \caption{Mineral mass-specific scattering spectra used for the determination of the reflectance spectra of the dark pixel in Hydrolight. \label{fig:SMbast} } 
 \end{figure}
 
 The following approach was used to determine phase function\label{pag:phasefn} for both the chlorophyll and mineral particle components. Ecolight was run several times with the different phase function from the library of discretized Fournier-Forand phase functions files supplied with Ecolight 5.2 to created a LUT of reflectance spectra, but maintaining the rest of the parameters the same. These parameters corresponded to the ONTNS water sample. The different reflectance spectra generated as output were compared with the reflectance measured {\it in situ}. The best match was determining by choosing the lowest root mean squared error (RMSE) between the reflectance measured {\it in situ} and the simulated reflectance spectra.
@@ -519,7 +520,7 @@ This best match is used as the reflectance spectra of the dark pixel in the MoB-
 \begin{figure}[htb]
   	\centering
   	\includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/RefWithFFbbONTNS.eps}
-  \caption{Reflectance for ONTNS sample and best matching from HydroLight. \label{fig:BestMatchONTNS} } 
+  \caption{Reflectance for ONTNS sample and best matching from Hydrolight. \label{fig:BestMatchONTNS} } 
 \end{figure}
 
 The radiance spectra for the dark pixel is obtained from the corresponding ROI in the water present in the Landsat 8 image, from where the {\it in situ} data were taken. Statistics are computed in this dark region, and the mean values in each band is used as radiance spectra for the dark pixel. An example of a ROI over water is shown in \autoref{fig:ENVIROI_darkpx}, along with its statistics calculated in ENVI.
@@ -786,6 +787,7 @@ Enter the algorithm with glint corrected data:\\
 The retrieval algorithm will be based on previous work done by \cite{Raqueno:2000}, \cite{Gerace:2013} and \cite{Concha2013IGARSS}. The water-leaving reflectance product (or \acrshort{rrs} product) obtained after atmospheric correction from the previous stage is used as input to the retrieval algorithm (\autoref{fig:detailflowchart}). Each water pixel in the \acrfull{rhow} product has an unknown concentration. A spectral matching technique is applied to predict this concentration by comparing the spectral shape of each pixel with the elements in a \gls{lut}. The complete retrieval process will be explained in the following sections. 
 % -------------------------------------
 \subsection{LUT generation}
+\label{subsec:LUTgen}
 The \gls{lut} is generated in Ecolight \cite{MobleyHE} for different triplets of water constituent concentrations (CPAs). Ecolight was used in the same fashion as in the black pixel determination for the MoB-ELM algorithm (\S\ref{subsubsec:blackpixel}). As an example, \autoref{tab:LUTconc2} shows the different parameters used to create a LUT in Ecolight. Two different sets of {\it in situ} IOPs (mass-specific absorption and scattering coefficient spectra) were used, one set for modeling the open lake conditions (low concentration of CPAs) and one set for modeling the pond condition (high concentration of CPAs). These IOPs are labeled in \autoref{tab:LUTconc2} as ``ONTNS'' for the open lake conditions and as ``LONGS'' for the pond conditions. \autoref{tab:LUTconc2} also shows the CPAs concentration used to create the LUT in Ecolight, where $C_a$ is the chlorophyll-{\it a} concentration, \acrfull{tss}, $a_{CDOM}(440)$ is the CDOM absorption coefficient at the wavelength $\lambda=440nm$. Furthermore, discretized Fournier-Forand phase function with four different \acrfull{b_boverb} values ($0.5$, $1.0$, $1.5$ and $2.0\%$) were used to account for the backscattering variability in the scene.
 
 
@@ -818,7 +820,7 @@ After obtaining the LUT from Ecolight, the spectral curves in the LUT are spectr
 \begin{figure}[htb]
     \centering
       \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2014_ASPRS_SOY/Images/LUT.eps}
-      \caption{LUT created in HydroLight}
+      \caption{LUT created in Hydrolight}
       \label{fig:LUT}
 \end{figure}
 
@@ -866,9 +868,9 @@ The output of this process is a concentration mapping for each water constituent
 \section{Validation} 
 \label{sec:val}
 
-The validation of the retrieval is performed through comparison with both {\it in situ} data and standard bio-optical products. This comparison is done for the results from the atmospheric correction and from the retrieval process.
+The validation of the retrieval is performed through comparison with both {\it in situ} data and standard bio-optical products. This comparison is done for the results from the atmospheric correction (\gls{rrs}) and from the retrieval process (CPA concentrations). The following section will describe the area of study, the comparison with {\it in situ} data and the comparison with standard products.
 % -------------------------------------------------------------
-\subsection{Comparison with {\it in situ} data}
+\subsection{Area of Study}
 The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat 8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the 2013, 2014 and 2015 seasons\todo{2015?}. Therefore, these images will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
 \begin{figure}[htb]
   \centering
@@ -880,8 +882,9 @@ The area of study for this research is the Lake Ontario Rochester Embayment (lat
   \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/AreaOfStudy2.pdf}
   \caption{Area of Study. \label{fig:areaofstudy2} } 
 \end{figure}
-
-A field collection that includes water samples and remote-sensing reflectance ($R_{rs}$) measurements was conducted at the same time as the sensor overpass. The $R_{rs}$ measurements were performed using a SVC HR-1024i instrument \cite{SVCHR1024i} or a ASD instrument\todo{include reference}~ following the method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site (see Appendix~\ref{ch:fieldmea} for more details about the $R_{rs}$ measurements). Then, the water samples were analyzed in the lab, following SeaWiFS protocols described in \cite{Mueller1995} for obtaining chlorophyll-{\it a} concentration ($C_a$) and total suspended solid concentration (TSS). \autoref{tab:Sites} shows the different site names, location and the $C_a$ and $TSS$ for each site for the collection on 09-19-2013, as example. Note the difference in concentration levels between the ponds (i.e. LONGN, LONGS and CRANB) and the lake (i.e. ONTNS, ONTOS and ONTEX) samples.
+% -------------------------------------------------------------
+\subsection{Comparison with {\it in situ} data}
+A field collection that includes water samples and remote-sensing reflectance ($R_{rs}$) measurements was conducted at the same time as the sensor overpass. The $R_{rs}$ measurements were performed using either the spectroradiometers SVC HR-1024i  \cite{SVCHR1024i} or ASD FieldSpec 4 \cite{ASDManual2012} following the method described by \cite{Mobley:1999} for measuring $R_rs$ from three consecutive measurements: the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site (see Appendix~\ref{ch:fieldmea} for more details about the water samples collection and the $R_{rs}$ measurements). Then, the water samples were analyzed in the lab, following SeaWiFS protocols described in \cite{Mueller1995} for obtaining chlorophyll-{\it a} concentration ($C_a$) and total suspended solid concentration (TSS) (see Appendix~\ref{ch:labmea} for more details about the lab measurements). \autoref{tab:Sites} shows the different site names, location and the $C_a$ and $TSS$ for each site for the collection on 09-19-2013, as example. Note the difference in concentration levels between the ponds (i.e. LONGN, LONGS and CRANB) and the lake (i.e. ONTNS, ONTOS and ONTEX) samples.
 
 % Site  & $C_a$  &    Latitude  & Longitude
 % ONTNS &   ~~0.48 &  43.272159 & -77.538274  
@@ -909,7 +912,7 @@ ONTOS &     43.308923 & -77.540085 &  ~~0.96 & ~1.00      & Lake Ontario off-sho
 ONTEX &     43.244892 & -77.536671 &  ~~1.68 & ~0.70      & Lake Ontario extra  \\    
 RVRPI &     43.259925 & -77.601587 &  ~~2.88 & ~2.10      & Genese River pier \\    
 RVRPL &     43.270990 & -77.592282 &  ~~0.48 & ~1.00      & Genese River plume  \\    
-LONGN &     43.290836 & -77.690662 &  123.85 & 48.00      & Long Pong north \\    
+LONGN &     43.290836 & -77.690662 &  123.85 & 48.00      & Long Pond north \\    
 LONGS &     43.289182 & -77.696458 &  112.76 & 46.00      & Long Pond south \\    
 CRANB &     43.299938 & -77.692915 &  ~64.08 & 26.70      & Cranberry Pond  \\    
 BRADIN&     43.313675 & -77.717531 &  ~19.22 & 13.10      & inside Braddock bay \\    
@@ -923,7 +926,11 @@ BRADONT&  43.325780 & -77.706432 &  ~~1.44 & ~2.00        & Braddock Bay, Lake O
   \caption{Landsat 8 image acquired on 09-19-2015 (scene LC80160302013262LGN00) showing the study area, the Rochester Embayment. The labels indicate the sites of the field collection at the same time as the satellite overpass (\autoref{tab:Sites}).\label{fig:RrsROIs130919} } 
 \end{figure}
 
-In order to have outputs in HydroLight that are representative of the water bodies that are being studied, inherent optical properties (IOPs) of those specific waters have to be defined as input to the HydroLight model. After collection, these water samples need to be analyzed in the lab to obtain IOPs for the main water constituents. Furthermore, apparent optical properties (AOPs) (i.e. water-leaving reflectance) and backscattering measurements will be also collected for further comparison and to pursue closure between the HydroLight AOPs results and in-situ AOPs measurements.
+Additionally, in order to have outputs in Hydrolight that are representative of the water bodies that are being studied, inherent optical properties (IOPs) of those specific waters have to be defined as input to the Hydrolight/Ecolight model. After collection, these water samples are analyzed in the lab to obtain IOPs for the main water constituents (see Appendix~\ref{ch:labmea} for more info about these lab measurements). Some IOPs and concentration measurements are used for the MoB-ELM algorithm and for the LUT creation described previously (\S\ref{subsec:mobelm} and \S\ref{subsec:LUTgen}, respectively). 
+
+The measured \gls{rrs}s and CPA concentrations are used to validate the developed MoB-ELM and retrieval algorithms by comparison (\autoref{fig:detailflowchart})). The \acrfull{rmse} and \acrfull{nrmse} are utilized to quantify these comparisons.
+
+% Furthermore, apparent optical properties (AOPs) (i.e. water-leaving reflectance) and backscattering measurements will be also collected for further comparison and to pursue closure between the Hydrolight AOPs results and in-situ AOPs measurements.
 
 % ----------------------------------------------------
 \subsection{Comparison with standard bio-optical product}
