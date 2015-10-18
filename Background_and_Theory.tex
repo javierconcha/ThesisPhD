@@ -813,9 +813,15 @@ The HydroLight physical model has the following characteristics \cite{MobleyHE}:
 \section{SeaDAS and NASA's Ocean-related Products}
 \label{sec:seadas}
 
-The \gls{seadas} software (more info: \url{http://seadas.gsfc.nasa.gov/}) is a comprehensive image analysis package for the processing, display, analysis, and quality control of ocean color data developed by the developers of \gls{esa}'s BEAM software package (\url{http://www.brockmann-consult.de/cms/web/beam/}) and the \gls{obpg} at NASA. Its last version (\gls{seadas} 7.2), recently launched, supports Level 1 Landsat 8 data. It can generate Level 2 data from Level 0 and Level 1. The level 2 data is obtained by applying the atmospheric correction method based on \cite{Gordon:1994} to the different heritage ocean color instruments and now Landsat 8, among others. It also can generate Level 3 data, such as temporal binned data. \gls{seadas} includes some  semi-analytical bio-optical models described in \S\ref{subsec:semianalitic}.
+The \gls{seadas} software (more info: \url{http://seadas.gsfc.nasa.gov/}) is a comprehensive image analysis package for the processing, display, analysis, and quality control of ocean color data developed by the developers of \gls{esa}'s BEAM software package (\url{http://www.brockmann-consult.de/cms/web/beam/}) and the \gls{obpg} at NASA. Its last version (\gls{seadas} 7.2), recently launched, supports Level 1 Landsat 8 data. It can generate Level 2 data from Level 0 and Level 1 through the package named ``l2gen''\todo{verify}. The level 2 data is obtained by applying the atmospheric correction method based on \cite{Gordon:1994} to the different heritage ocean color instruments and now Landsat 8, among others. It also can generate Level 3 data, such as temporal binned data. \gls{seadas} includes some  semi-analytical bio-optical models described in \S\ref{subsec:semianalitic}.
 
 A number of standard ocean bio-optical products are supported by the \gls{obpg} at NASA's Goddard Space Flight Center (\url{http://oceancolor.gsfc.nasa.gov/}). The \gls{obpg}'s responsibilities are collection, processing, calibration, validation, archive and distribution of ocean-related products from a large number of operational, satellite-based remote-sensing missions providing ocean color, sea surface temperature and sea surface salinity data to the international research community. Most of the ocean-related products are included in the \gls{seadas} package, supported by the \gls{obpg}. The following section describes some of the products relevant to this research.
+
+% ------------------------------------------
+\subsection{$R_{rs}$}
+\label{subsec:seadasrrs}
+\todo{complete this section!}
+
 % ------------------------------------------
 \subsection{Chlorophyll-{\it a} Concentration}
 \label{subsec:chlempirical}

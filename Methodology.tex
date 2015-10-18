@@ -934,16 +934,19 @@ The measured \gls{rrs}s and CPA concentrations are used to validate the develope
 
 % ----------------------------------------------------
 \subsection{Comparison with standard bio-optical product}
-Additionally, this study presents a comparison of chlorophyll-{\it a} concentrations ($C_a$) retrieved from the standard atmospheric correction algorithms and from the MoB-ELM algorithms. The NASA's standard bio-optical algorithms OC2, OC3, OC4\cite{OReilly2000} and OCI\cite{Hu:2012} for the retrieval of chlorophyll-{\it a} were developed mainly for Case 1 waters, where the main driver is chlorophyll-{\it a}. The {\it in situ} data used to develop these algorithms does not appear to contain enough data for high concentration of color producing agents (CPAs; chlorophyll-{\it a}, minerals (or total suspended matter or TSS), and colored dissolved organic matter (CDOM)), and therefore these data are not fully representative of Case 2 waters. Gerace {\it et al.} (2013)\cite{Gerace:2013} developed an algorithm for the simultaneous retrieval of color producing agents (CPAs) based on spectral matching and a look-up table (LUT) using simulated OLI data. Concha and Schott (2014)\cite{Concha2013IGARSS} extended Gerace's approach to actual OLI data. This approach does not depend on a global {\it in situ} dataset. Instead it builds a LUT specific to the inherent optical properties (IOPs) and observation conditions for the site.
+The \gls{rrs} spectra obtained from the \gls{mobelm} method are compared with the results from the \cite{Gordon:1994} approach obtained from both the ``l2gen'' tool in \gls{seadas} (\S\ref{subsec:seadasrrs}) and \gls{acolite} (\S\ref{subsec:acolite}), along with {\it in situ} data.
 
-The results from the retrieval process will be validated by comparison with the concentration of water samples taken during field campaigns in the spring and summer of 2013 and 2014\todo{2015?}. These concentrations will be obtained from lab measurements made at the Rochester Institute of Technology. %For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl-{\it a} product), in regions where it is possible.
-\todo{Comparison with MODIS?}
-Additionally, the results for the \gls{mobelm} and the CPA retrieval are compared with the products derived in the l2gen algorithm the in \gls{seadas} software described in \S\ref{sec:seadas}.
+Additionally, this study presents a comparison of chlorophyll-{\it a} concentrations ($C_a$) retrieved from the standard bio-optical products described in \S\ref{subsec:chlempirical} (using \gls{seadas}) with the $C_a$ retrieved from the developed retrieval algorithm. These results are further compared with {\it in situ} data.
+
+
+
+
+% The results from the retrieval process will be validated by comparison with the concentration of water samples taken during field campaigns in the spring and summer of 2013 and 2014\todo{2015?}. These concentrations will be obtained from lab measurements made at the Rochester Institute of Technology. %For further validation, the results will be compared with products derived from ocean color satellites such as MODIS (e.g. MODIS Chl-{\it a} product), in regions where it is possible.
 
 % ----------------------------------------------------
 \section{Concluding Remarks}
 The purpose of this chapter was to introduce the methodology required to achieve the objectives defined in the Chapter \S\ref{ch:objectives}. First, we began by explaining the different atmospheric correction techniques that will be investigated in this research along with the solar-glint removal algorithm. These atmospheric correction techniques include two different approaches. The first approach are methods applied to ocean color satellites. The second one is the MoB-ELM method. The in-water constituent retrieval process was presented. The LUT generation and the metrics used to perform the retrieval were described. Additionally, the ground truth data collection was briefly explained. Finally, how the results will be validated was described. 
 
-The next Chapter (\S\ref{ch:results}) will present the data and laboratory measurements available to date, along with preliminary results. These results include the atmospheric correction applied to Landsat 8 imagery, concentration of CPAs maps.
+The next Chapter (\S\ref{ch:results}) will present the data and laboratory measurements available to date, along with the final results. These results include the \gls{mobelm} atmospheric correction applied to Landsat 8 imagery, and concentration of CPA maps obtained from the developed retrieval.
 
 
