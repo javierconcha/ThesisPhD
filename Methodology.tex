@@ -144,7 +144,6 @@
 % } % resizebox end
 \caption{Detailed flowchart of the process. \label{fig:detailflowchart}}
 \end{figure}
-\todo{complete figure}
 
 This chapter describes the methodology and approach taken to accomplish the specific objectives mentioned in \S\ref{ch:objectives}. As a review, these specific requirements are (\S\ref{sec:objectives}):
 \begin{enumerate}
@@ -153,7 +152,7 @@ This chapter describes the methodology and approach taken to accomplish the spec
   \item To validate results by comparing with {\it in situ} measurements and products from ocean color satellites.
 \end{enumerate}
 
-The processes described in this work were first introduced by \cite{Concha2013IGARSS} and are based on previous work done by \cite{Raqueno:2000}, \cite{Gerace:2012}, \cite{Pahlevan:2012b} and \cite{Gerace:2013}. A flowchart of the general processes involved is shown in \autoref{fig:highlevelflowchart}. The input are the Landsat 8 images and the final products are the maps of CPAs. The complete process can be divided in four different steps: image pre-processing, atmospheric correction, retrieval process, and validation. This chapter will be divided in this four processes. A more detailed flowchart is illustrated in \autoref{fig:detailflowchart}\todo{fix width NRMSE}~ and a more pictorial diagram is shown in \autoref{fig:retrieval}\todo{Should I include this figure?}\todo{change RMSE for RMSE/lsqnonlin}.
+The processes described in this work were first introduced by \cite{Concha2013IGARSS} and are based on previous work done by \cite{Raqueno:2000}, \cite{Gerace:2012}, \cite{Pahlevan:2012b} and \cite{Gerace:2013}. A flowchart of the general processes involved is shown in \autoref{fig:highlevelflowchart}. The input are the Landsat 8 images and the final products are the maps of CPAs. The complete process can be divided in four different steps: image pre-processing, atmospheric correction, retrieval process, and validation. This chapter will be divided in this four processes. A more detailed flowchart is illustrated in \autoref{fig:detailflowchart} and a more pictorial diagram is shown in \autoref{fig:retrieval}\todo{Should I include this figure?}\todo{change RMSE for RMSE/lsqnonlin}.
 
 In short, the whole process works as follows. First, the \gls{dn} image from the satellite is radiometric calibrated, resized, and masked for cloud and land. Then, the radiance image is atmospherically corrected and transformed to $R_{rs}$ spectra, as shown in \autoref{fig:detailflowchart}. At this point the $R_{rs}$ spectra of water pixels in the scene with unknown CPAs concentrations are compared with a LUT of $R_{rs}$ spectra with known CPAs concentrations. This comparison is made by using a spectrum-matching technique (\cite{Raqueno:2000,Mobley:2005}) that uses the \gls{rmse} and a non-linear optimization algorithm to find the closest match in the LUT. The end products are maps of CPA concentrations (see \autoref{fig:retrieval}). Finally, the CPA maps are validated by comparison with {\it in situ} data and standard bio-optical products. Each step in this retrieval process is described in more detail below.
 
@@ -747,7 +746,7 @@ This method first uses a forwarding modeling to create a three dimensional (3-D)
   \caption{Four dimensional LUT. The dimension are concentrations of chlorophyll-{\it a}, suspended particles, CDOM and visibility and the range is spectral sensor-reaching radiance. Source: \cite{GeraceThesis}}
   \label{fig:4DLUT} 
 \end{figure}
-\todo{change figure for a better quality}
+% \todo{change figure for a better quality}
 Once the 4-D LUT has been created, an iterative search of the closest match to an imaged water pixel is performed. The first step in this iteration is to obtain an initial guess of the visibility. To do so an imaged spectrum is compared to the spectra contained in the 4-D LUT. The parameters (concentration of CPAs and visibility) associated to the closest non-interpolated spectrum in the 4-D LUT in a RMS sense are associated with the imaged spectrum. Then, these associated parameters are fixed and the observed $\varepsilon^{(1,6)}$ is compared with the 4-D LUT $\varepsilon^{(1,6)}$ values for different visibility but same concentration, and the visibility of the closest match is selected as initial visibility estimate.
 
 After estimating the initial visibility, an optimization routine can be used to estimate the four parameters from the 4-D LUT by interpolation. The final result of this process are interpolated CPA's concentration and visibility associated with the imaged pixel.
@@ -871,6 +870,7 @@ The output of this process is a concentration mapping for each water constituent
 The validation of the retrieval is performed through comparison with both {\it in situ} data and standard bio-optical products. This comparison is done for the results from the atmospheric correction (\gls{rrs}) and from the retrieval process (CPA concentrations). The following section will describe the area of study, the comparison with {\it in situ} data and the comparison with standard products.
 % -------------------------------------------------------------
 \subsection{Area of Study}
+\label{subsec:areaofstudy}
 The area of study for this research is the Lake Ontario Rochester Embayment (latitude: 43°15'32.53"N and longitude: 77°36'13.10"W), which includes some nearby ponds (Long and Cranberry Ponds), the Genesee River plume, the Irondequoit Bay and the southern end of Lake Ontario, as shown in Figure~\ref{fig:areaofstudy1} and Figure~\ref{fig:areaofstudy2}. This area was selected because it exhibits a wide range of variability in concentration of water constituents, including some eutrophic water bodies (ponds) with high concentration of CPAs, and oligomesotrophic water bodies (Lake Ontario) with low concentration of CPAs, so the retrieval algorithm can be tested with different scenarios. Landsat 8 images from this area of study and corresponding water samples collected at the time of the satellite's overpass will be used to test the retrieval algorithm. So far, there are only three satisfactory images available from the 2013, 2014 and 2015 seasons\todo{2015?}. Therefore, these images will be used to test the methodology. Note that a difficult challenge of this research is to obtain images with relatively clear weather conditions (i.e. cloud free) over the area of study.
 \begin{figure}[htb]
   \centering

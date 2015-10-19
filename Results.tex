@@ -3,17 +3,12 @@
 %% CHAPTER
 \chapter{Results}
 \label{ch:results}
-
-This chapter is separated in four sections. The first section explains the data collection process, giving some details in the kind of measurements taken in the field. Also, it includes a summary of the data collected at the moment of writing this document. The second section gives a brief description of the lab measurements. The atmospheric section shows preliminary results from the model-based ELM atmospheric correction method. Finally, the last section shows preliminary retrieval results over the area of study.
+This chapter is separated in four sections. The first section explains the data collection process, giving some details in the kind of measurements taken in the field. Also, it includes a summary of the data collected as part of this research. The second section gives a brief description of the lab measurements. The atmospheric section shows results from the MoB-ELM atmospheric correction method and validation. Finally, the last section shows the results from the developed retrieval over the area of study.
 % ------------------------------
 \section{Data Collection}
+An example of a Landsat 8 image that includes the area of study is illustrated in \autoref{fig:L8Image130919}.(a). This Landsat 8 image was taken on September 19, 2013 (scene LC80160302013262LGN00). This area includes part of Lake Ontario, the Genesee River, Irondequoit Bay and some nearby ponds (Long Pond and Cranberry Pond) (\autoref{fig:L8Image130919}.(b)). This area of study was chosen because of the very wide range of constituents between the ponds and the open water in the lake, which provides a very stressing case for the retrieval (\S\ref{subsec:areaofstudy}). \autoref{fig:0910913Sites} shows zoom over this area of study for the data collection done on September, $19^{th}$, 2013  with the different sites as an example. The data collections are divided in two crews. One crew, named ``Lake crew'', is in charge of the Irondequoit Bay, Ontario near shore, Ontario off shore, Genesee River plume, Genesee River pier sites (labeled in \autoref{fig:0910913Sites} as IBayN, OntNS, OntOS, RvrPLM and RvrPIER, respectively). The other crew, named ``Ponds crew'', is in charge of the Long Pond north and south, Cranberry Pond sites (labeled in \autoref{fig:0910913Sites} as LongN, LongS and Cranb, respectively).
 
-The first area of study used in this research is the Rochester Embayment in the city of Rochester, NY. This area of study includes some nearby ponds (Long and Cranberry ponds), the Genesee River plume, the Irondequoit bay and part of Lake Ontario. This area was selected because it exhibits a wide range of variability in concentration of water constituents, so the retrieval algorithm can be tested with different scenarios. 
-
-An example of a Landsat 8 image showing this area of study is illustrated in \autoref{fig:L8Image130919}. This Landsat 8 image was taken on September 19, 2013 (scene LC80160302013262LGN00). This area includes Lake Ontario, the Genesee River, Irondequoit Bay and some nearby ponds (Long Pond and Cranberry Pond). This area of study was chosen because of the very wide range of constituents between the ponds and the open water in the lake, which provides a very stressing case for the retrieval.
-
-
-\begin{figure}[htbp!]
+\begin{figure}[htb]
     \begin{minipage}[c]{0.48\linewidth}
       \centering
       \includegraphics[trim=30 350 30 350,clip,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/WholeImage130919}
@@ -29,9 +24,6 @@ An example of a Landsat 8 image showing this area of study is illustrated in \au
     \caption{Landsat 8 image (scene LC80160302013262LGN00) acquired 09-19-2013 (a), with zoom over study region (b) showing the downtown of Rochester, NY and the Rochester Embayment. \label{fig:L8Image130919} }
 \end{figure}
 
-
-\autoref{fig:0910913Sites} shows an image over this area of study for the data collection done on September, $19^{th}$, 2013  with the different sites as an example. The data collections are divided in two crews. One crew, named ``Lake crew'', is in charge of the Irondequoit Bay, Ontario near shore, Ontario off shore, Genesee River plume, Genesee River pier sites (labeled in \autoref{fig:0910913Sites} as IBayN, OntNS, OntOS, RvrPLM and RvrPIER, respectively). The other crew, named ``Ponds crew'', is in charge of the Long Pond north and south, Cranberry Pond sites (labeled in \autoref{fig:0910913Sites} as LongN, LongS and Cranb, respectively).
-
 \begin{figure}[htb]
   \centering
   \includegraphics[width=12cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/groundtruth-sitenames-no-ends.jpg}
@@ -39,14 +31,14 @@ An example of a Landsat 8 image showing this area of study is illustrated in \au
   % \vspace{1cm}
 \end{figure}
 
-Water samples are collected for each site in dark Nalgene bottles. Additionally, remote-sensing reflectances $R_{rs}$ are measured using an ASD and a SVC instrument (one for each crew). Backscattering measurements are taken using a HydroScat-2. This measurement is taken by both crew only if the logistic of the particular day allows it. Otherwise priority is given to the Lake crew. For each site, a location is recorded using a GPS. \autoref{tab:collect} shows a summary of the data collections done in 2013 and 2014 seasons with the respective available data.
+Water samples are collected for each site in dark Nalgene bottles. Additionally, remote-sensing reflectances $R_{rs}$ are measured using an ASD and a SVC instrument (one for each crew). Backscattering measurements are taken using a HydroScat-2. This measurement is taken by both crew only if the logistic of the particular day allows it. Otherwise priority is given to the Lake crew. For each site, a location is recorded using a GPS. \autoref{tab:collect} shows a summary of the data collections done in 2013, 2014 and 2015 seasons with the respective available data.
 
 \begin{table}[htb]
-  \caption{Summary of 2013 and 2014 data collections.}
+  \caption{Summary of 2013, 2014 and 2015 data collections. Three images were used for testing the retrieval (green filling).}
   \centering
-  \includegraphics[width=13cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/Collect1314.png}
+  \includegraphics[width=13cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/Collect131415.png}
   \label{tab:collect}
-\end{table}\todo{update table}
+\end{table}
 
 % ------------------------------
 \section{Laboratory Measurements}
