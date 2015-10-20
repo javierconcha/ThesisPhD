@@ -6,9 +6,9 @@
 This chapter is separated in four sections. The first section explains the data collection process, giving some details in the kind of measurements taken in the field. Also, it includes a summary of the data collected as part of this research. The second section gives a brief description of the lab measurements. The atmospheric section shows results from the MoB-ELM atmospheric correction method and validation. Finally, the last section shows the results from the developed retrieval over the area of study.
 % ------------------------------
 \section{Data Collection}
-An example of a Landsat 8 image that includes the area of study is illustrated in \autoref{fig:L8Image130919}.(a). This Landsat 8 image was taken on September 19, 2013 (scene LC80160302013262LGN00). This area includes part of Lake Ontario, the Genesee River, Irondequoit Bay and some nearby ponds (Long Pond and Cranberry Pond) (\autoref{fig:L8Image130919}.(b)). This area of study was chosen because of the very wide range of constituents between the ponds and the open water in the lake, which provides a very stressing case for the retrieval (\S\ref{subsec:areaofstudy}). \autoref{fig:0910913Sites} shows zoom over this area of study for the data collection done on September, $19^{th}$, 2013  with the different sites as an example. The data collections are divided in two crews. One crew, named ``Lake crew'', is in charge of the Irondequoit Bay, Ontario near shore, Ontario off shore, Genesee River plume, Genesee River pier sites (labeled in \autoref{fig:0910913Sites} as IBayN, OntNS, OntOS, RvrPLM and RvrPIER, respectively). The other crew, named ``Ponds crew'', is in charge of the Long Pond north and south, Cranberry Pond sites (labeled in \autoref{fig:0910913Sites} as LongN, LongS and Cranb, respectively).
+An example of a Landsat 8 image that includes the area of study is illustrated in \autoref{fig:L8Image130919}.(a). This Landsat 8 image was taken on September 19, 2013 (scene LC80160302013262LGN00). This area includes part of Lake Ontario, the Genesee River, Irondequoit Bay and some nearby ponds (Long Pond and Cranberry Pond) (\autoref{fig:L8Image130919}.(b)). This area of study was chosen because of the very wide range of constituents between the ponds and the open water in the lake, which provides a very stressing case for the retrieval (\S\ref{subsec:areaofstudy}). \autoref{fig:0910913Sites} shows zoom over this area of study for the data collection done on September, $19^{th}$, 2013  with the different sites as an example. In general, the data collections are divided in two crews. One crew, named ``Lake crew'', is in charge of the Irondequoit Bay, Ontario near shore, Ontario off shore, Genesee River plume, Genesee River pier sites (labeled in \autoref{fig:0910913Sites} as IBayN, OntNS, OntOS, RvrPLM and RvrPIER, respectively). The other crew, named ``Ponds crew'', is in charge of the Long Pond north and south, Cranberry Pond sites (labeled in \autoref{fig:0910913Sites} as LongN, LongS and Cranb, respectively).
 
-\begin{figure}[htb]
+\begin{figure}[htb!]
     \begin{minipage}[c]{0.48\linewidth}
       \centering
       \includegraphics[trim=30 350 30 350,clip,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/WholeImage130919}
@@ -20,7 +20,6 @@ An example of a Landsat 8 image that includes the area of study is illustrated i
       \includegraphics[trim=0 150 30 50,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/WaterAndDTROC}
       \centerline{(b)}\medskip
     \end{minipage}  
-
     \caption{Landsat 8 image (scene LC80160302013262LGN00) acquired 09-19-2013 (a), with zoom over study region (b) showing the downtown of Rochester, NY and the Rochester Embayment. \label{fig:L8Image130919} }
 \end{figure}
 
@@ -31,20 +30,27 @@ An example of a Landsat 8 image that includes the area of study is illustrated i
   % \vspace{1cm}
 \end{figure}
 
+Water samples are collected for each site in dark Nalgene bottles (see Appendix~\ref{ch:fieldmea} for more details about data collection). Additionally, remote-sensing reflectances $R_{rs}$ are measured using an ASD and a SVC instrument (one for each crew). Backscattering measurements are taken using a HydroScat-2. This measurement is taken by both crew only if the logistic of the particular day allows it. Otherwise priority is given to the Lake crew. For each site, a location is recorded using a GPS. \autoref{tab:collect} shows a summary of the data collections done in 2013, 2014 and 2015 seasons with the respective available data.  The three Landsat 8 images used in this research are shown in green filled rows: the images acquired in 09-19-2013 (scene LC80160302013262LGN00; \autoref{fig:L8Image130919}.(a)), 09-29-2014 (scene LC80170302014272LGN00; \autoref{fig:L8Images1415}.(a)) and 09-16-2015 (scene LC80170302015259LGN00; \autoref{fig:L8Images1415}.(b)). The corresponding areas of study are shown in \autoref{fig:0910913Sites}, \autoref{fig:ROI_L8Images1415}.(a) and \autoref{fig:ROI_L8Images1415}.(b), respectively.
+
+\begin{table}[htb]
+  \caption{Summary of 2013, 2014 and 2015 data collections. Three images were used for testing the retrieval (green filling).}
+  \centering
+  \includegraphics[width=12cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/Collect131415.png}
+  \label{tab:collect}
+\end{table}
 
 \begin{figure}[htb]
     \begin{minipage}[c]{0.48\linewidth}
       \centering
-      \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80170302014272LGN00_ENVI.jpg}
+      \includegraphics[trim=50 0 110 0,clip,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80170302014272LGN00_ENVI.jpg}
       \centerline{(a)}\medskip
     \end{minipage}
     \hfill
     \begin{minipage}[d]{0.48\linewidth}
       \centering
-      \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80170302015259LGN00_ENVI.jpg}
+      \includegraphics[trim=50 0 110 0,clip,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80170302015259LGN00_ENVI.jpg}
       \centerline{(b)}\medskip
     \end{minipage} 
-
       \caption{Landsat 8 images acquired on (a) 09-29-2014 (scene LC80170302014272LGN00) and (b) 09-16-2015 (scene LC80170302015259LGN00). \label{fig:L8Images1415} }
 \end{figure}  
 
@@ -64,39 +70,31 @@ An example of a Landsat 8 image that includes the area of study is illustrated i
       \caption{Area of study from the Landsat 8 images acquired on (a) 09-29-2014 (scene LC80170302014272LGN00) and (b) 09-16-2015 (scene LC80170302015259LGN00). \label{fig:ROI_L8Images1415} }
 \end{figure}  
 
-
-
-Water samples are collected for each site in dark Nalgene bottles. Additionally, remote-sensing reflectances $R_{rs}$ are measured using an ASD and a SVC instrument (one for each crew). Backscattering measurements are taken using a HydroScat-2. This measurement is taken by both crew only if the logistic of the particular day allows it. Otherwise priority is given to the Lake crew. For each site, a location is recorded using a GPS. \autoref{tab:collect} shows a summary of the data collections done in 2013, 2014 and 2015 seasons with the respective available data.
-
-\begin{table}[htb]
-  \caption{Summary of 2013, 2014 and 2015 data collections. Three images were used for testing the retrieval (green filling).}
-  \centering
-  \includegraphics[width=13cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/Collect131415.png}
-  \label{tab:collect}
-\end{table}
-
 % ------------------------------
 \section{Laboratory Measurements}
-
-After collection, these water samples were analyzed in the lab at the Rochester Institute of Technology (RIT), and concentration and IOPs for each CPA were measured following the procedures described by \cite{Mueller1995}. These measurements are utilized as input to Ecolight for the LUT generation of the retrieval process and the black pixel determination for the MoB-ELM atmospheric correction algorithm. Also, some are utilized for validation of the retrieval process. The $C_a$ and $TSS$ measurements were validated by comparing with measurements analyzed by a credible lab (Monroe County Environmental Laboratory). This comparison between labs showed agreement in the measurements. \autoref{tab:collect} shows the measurements available.\todo{show IOPs figures}
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastLONGSJavier.eps}
-  \caption{Chlorophyll mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:CHLaastLONGS} } 
-\end{figure}
-
+After collection, these water samples were analyzed in the lab at the Rochester Institute of Technology (RIT), and concentration and IOPs for each CPA were measured following the procedures described by \cite{Mueller1995} (see Appendix~\ref{ch:labmea} for more details about lab measurements). These measurements are utilized as input to Ecolight for the LUT generation of the retrieval process and the black pixel determination for the MoB-ELM atmospheric correction algorithm. Also, some are utilized for validation of the retrieval process. The $C_a$ and $TSS$ measurements were validated by comparing with measurements analyzed by a credible lab (Monroe County Environmental Laboratory). This comparison between labs showed agreement in the measurements. \autoref{tab:collect} shows the measurements available. Examples of IOPs measured in lab from the 09-19-13 collection for chlorophyll, CDOM and minerals are shown in \autoref{fig:IOPastLONGS}.
 
 \begin{figure}[htb]
-    \centering
-    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_CDOM_LONGS091913.eps}
-  \caption{CDOM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:CDOMaastLONGS} } 
-\end{figure}
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_SM_LONGS091913.eps}
-  \caption{SM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:SMaastLONGS} } 
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+    \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/CHLaastLONGSJavier.eps}
+     \centerline{(a)}\medskip
+    \end{minipage}
+    \hfill
+    \begin{minipage}[d]{0.48\linewidth}
+      \centering
+    \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_CDOM_LONGS091913.eps}
+     \centerline{(b)}\medskip
+    \end{minipage}\\
+    
+    \begin{minipage}[d]{1.0\linewidth}
+      \centering
+    \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/Proposal/Images/astar_SM_LONGS091913.eps}
+      \centerline{(c)}\medskip
+    \end{minipage}
+  \caption{Mass-specific absorption spectra for chlorophyll, CDOM and minerals from the 09-19-13 collection. These measured IOPs were used to create the LUT in HydroLight. \label{fig:IOPastLONGS} }  
+  % \caption{CDOM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:CDOMaastLONGS} } 
+  % \caption{SM mass-specific absorption spectra used to create the LUT in HydroLight. \label{fig:SMaastLONGS} } 
 \end{figure}
 
 % ------------------------------
