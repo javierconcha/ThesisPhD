@@ -748,6 +748,7 @@ With the launch of Landsat 8, a new Landsat surface reflectance product was deve
 % \section{MODTRAN}
 % ----------------------------------------------------
 \section{HydroLight}
+\label{sec:hydrolight}
 HydroLight is a radiative transfer numerical model written in Fortran \cite{MobleyHE} (more info: \url{http://www.sequoiasci.com/product/hydrolight/}). It computes radiance distributions and derived quantities (e.g. irradiances, reflectances, K functions, etc.) for natural water bodies. It was developed by Dr. Curtis Mobley for over 20 years (since 1989) and is a commercial software product of Sequoia Scientific, Inc. Hydrolight solves the \gls{rte} based on the \gls{iops} and the boundary conditions  to compute the in-water radiance as a function of depth, direction, and wavelength (\autoref{fig:HLflowchart}). Other quantities of interest for ocean color, such as the remote-sensing reflectance, can be obtained from the computed radiances. It has several models, including the Case 1 water model, whose main input is the chlorophyll IOPs and the Case 2 model, which is a 4-constituent model, pure water, chlorophyll, minerals and CDOM.
 
 \begin{figure}[H]
