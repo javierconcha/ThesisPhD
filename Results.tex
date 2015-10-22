@@ -789,7 +789,7 @@ We calculated the normalized \acrfull{nrmse} for $R_{rs}(\lambda)$ to evaluate t
 \section{Retrieval of Color Producing Agents (CPAs)}
 
 % ------------ added from SPIE SD
-\subsection{Spectral-Matching and LUT Approach}
+\subsection{Results from the Spectral-Matching and LUT Approach}
 \label{subsec:LUTapproach}
 The first chlorophyll-{\it a} retrieval algorithm used in this study was the algorithm developed by \cite{Concha2013IGARSS}. This algorithm uses a spectrum-matching and \gls{lut} methodology to extract CPA concentrations from $R_{rs}$ data. A LUT of $R_{rs}$ spectra is created in Hydrolight \cite{MobleyHE} with IOPs and CPA concentrations measured in the field as inputs. The parameters used to create this LUT are shown in \autoref{tab:LUTconc}. These parameters are chlorophyll-{\it a} ($C_a$), total suspended solid ($TSS$), CDOM absorption coefficient at $\lambda=440nm$ ($a_{CDOM}(440nm)$), and the backscatter fraction ($b_b/b$) for the scattering phase function selection.
 
@@ -826,7 +826,11 @@ The first chlorophyll-{\it a} retrieval algorithm used in this study was the alg
 
 Then, this algorithm finds the closest match in the least-squared sense for the $R_{rs}$ of water pixels with unknown CPA concentrations in the LUT of water pixels with known CPA concentrations. At this point, the closest element has discrete CPA concentration values corresponding to values used for the LUT generation (see \autoref{tab:LUTconc}). Finally, a non-linear interpolation is used to interpolate between the closest match's neighbors in order to obtain continuous values for the three CPAs simultaneously. In this study, this algorithm was applied to the $R_{rs}$'s results from the MoB-ELM method only.
 
-The results of the retrieval for the 09-19-2013 scene is illustrated in the left-hand side of \autoref{fig:CPAsMaps130919} as a concentration map for each CPA. These maps exhibit the expected trend of low concentrations in the lake and higher concentrations in the ponds. The right-hand side of \autoref{fig:CPAsMaps130919} shows a comparison between measured concentration from the field and retrieved concentration obtained from the retrieval for each CPA for the different sites in the area of study. The dashed line represent the 1:1 line. 
+The results of the retrieval for the 09-19-2013 scene is illustrated in the left-hand side of \autoref{fig:CPAsMaps130919} as a concentration map for each CPA. These maps exhibit the expected trend of low concentrations in the lake and higher concentrations in the ponds. 
+
+% ------------
+% \subsection{Comparison with {\it in situ} data}
+The right-hand side of \autoref{fig:CPAsMaps130919} shows a comparison between measured concentration from the field and retrieved concentration obtained from the retrieval for each CPA for the different sites in the area of study. The dashed line represent the 1:1 line.\todo{separate figures}
 
 \begin{figure}[htbp!]
   \begin{minipage}[c]{0.55\linewidth}
@@ -951,7 +955,7 @@ The numerical results are summarized in \autoref{fig:RMSE} where the root mean s
 
 
 % -----------------------------------------------------------
-\subsection{Bio-Optical Algorithm for $C_a$ Retrieval}
+\subsection{Comparison with Bio-Optical Algorithm for $C_a$ Retrieval}
 \label{subsec:bioopticalapproach}
 The second chlorophyll-{\it a} retrieval algorithm was the standard NASA algorithm OC3 \cite{OReilly2000}, which is a three-band empirical $R_{rs}(\lambda)$ band ratio algorithm, as suggested by \cite{Franz:2015}. Band ratio algorithms try to find a good fit between a band ratio $R$ and $C_a$. The chlorophyll-{\it a} results from the OC3 algorithm were obtained from the l2gen tool in SeaDAS when the SeaDAS-SWIR and SeaDAS-MUMM results were generated. Additionally, The OC3 algorithm was applied to the Acolite-SWIR results using the band math tool in SeaDAS. For the OLI case, the OC3 algorithm uses band 1 ($443nm$) or band 2 ($483nm$), and band 3 ($561nm$) for the band ratio, i.e.
 
@@ -969,37 +973,37 @@ The second chlorophyll-{\it a} retrieval algorithm was the standard NASA algorit
 % --------------- end SPIE SD
 
 \todo{Connect with previous paragraph} Preliminary results for concentration maps for each CPA over the Rochester Embayment, Rochester, NY are shown in Figure~\ref{fig:retrievalresults}. The expected trend of having low concentration of CPAs in the offshore of Lake Ontario and higher concentrations in the nearby ponds (Long Pond and Cranberry Pond) can be seen. 
-\begin{figure}[htb]
-\centering
-\includegraphics[trim=200 100 180 0,clip,height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2014_RITResearchSymposium/Images/RetrievalResults-eps-converted-to.pdf}
-   \caption{Retrieval preliminary results.}
-      \label{fig:retrievalresults}   
-\end{figure}
+% \begin{figure}[htb]
+% \centering
+% \includegraphics[trim=200 100 180 0,clip,height=9cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2014_RITResearchSymposium/Images/RetrievalResults-eps-converted-to.pdf}
+%    \caption{Retrieval preliminary results.}
+%       \label{fig:retrievalresults}   
+% \end{figure}
 
 Comparisons between retrieved CPAs concentrations and field measurements are shown in Figure~\ref{fig:chlcomp}, Figure~\ref{fig:tsscomp} and Figure~\ref{fig:cdomcomp} for four different stations in the area of study. This comparison with field measurements showed good agreement at low concentrations but differences at higher concentrations. Ongoing work is focusing on incorporation of the IOP differences between water bodies in the LUT optimization process.
-\begin{figure}[htb]
-\centering
-    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/chlcomp-eps-converted-to.pdf} 
-    \caption{Comparison between measured and retrieved chlorophyll {\it a} concentration.}
-    \label{fig:chlcomp} 
-\end{figure}     
+% \begin{figure}[htb]
+% \centering
+%     \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/chlcomp-eps-converted-to.pdf} 
+%     \caption{Comparison between measured and retrieved chlorophyll {\it a} concentration.}
+%     \label{fig:chlcomp} 
+% \end{figure}     
 
-\begin{figure}[htb]
-\centering
-    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/tsscomp-eps-converted-to.pdf}   
-    \caption{Comparison between measured and retrieved TSS concentration.}
-    \label{fig:tsscomp} 
-\end{figure}  
+% \begin{figure}[htb]
+% \centering
+%     \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/tsscomp-eps-converted-to.pdf}   
+%     \caption{Comparison between measured and retrieved TSS concentration.}
+%     \label{fig:tsscomp} 
+% \end{figure}  
 
-\begin{figure}[htb]
-\centering
-    \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/cdomcomp-eps-converted-to.pdf}    
-    \caption{Comparison between measured and retrieved CDOM concentration.}
-    \label{fig:cdomcomp} 
-\end{figure}  
+% \begin{figure}[htb]
+% \centering
+%     \includegraphics[height=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/IGARSS2014/paper/Images/cdomcomp-eps-converted-to.pdf}    
+%     \caption{Comparison between measured and retrieved CDOM concentration.}
+%     \label{fig:cdomcomp} 
+% \end{figure}  
 
 % ------------------------------
-\subsection{$C_a$ Comparison}
+% \subsection{$C_a$ Comparison with {\it in situ} data}
 The next step was to apply the algorithms described in Section~\ref{sec:retrieval} in order to retrieve chlorophyll-{\it a} concentration ($C_a$) from the $R_{rs}$ data. The spectral matching and LUT approach was applied to the $R_{rs}$ data retrieved from the MoB-ELM, while the OC3 algorithm was applied to data obtained from the rest of the algorithms. \autoref{fig:chlor_amaps} shows the $C_a$ maps obtained with the different methods. All the methods behave in a similar way for the clear water (lake), although some variability may not be visually noticeable due to the way the image is displayed. For the more turbid waters (ponds), the algorithms differ quite significantly. \autoref{fig:13262RrsMeaVSRet} shows a scatterplot of $C_a$ measured in the field versus the retrieved $C_a$ from the different algorithms. It can be seen that the retrieved values obtained from the MoB-ELM algorithm are closer to the measured values than the rest of the algorithms for the higher concentrations. However, the traditional algorithms generally perform well for the low concentration cases. Similarly, we calculated the normalized root mean squared error (NRMSE) for $C_a$, defined as
 
 \begin{equation}
