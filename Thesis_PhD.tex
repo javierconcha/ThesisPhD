@@ -82,42 +82,11 @@
 % \makeatother
 
 
-%%%%%%%%%%%%%%
-
-\usepackage{hyperref}
-\hypersetup{
-    % bookmarks=true,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in AcrobatÕs bookmarks
-    pdftoolbar=true,        % show AcrobatÕs toolbar?
-    pdfmenubar=true,        % show AcrobatÕs menu?
-    pdffitwindow=false,     % window fit to page when opened
-    pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={L8's potential for water constituents retrieval },    % title
-    pdfauthor={Javier Concha},     % author
-    pdfsubject={Subject},   % subject of the document
-    pdfcreator={Creator},   % creator of the document
-    pdfproducer={Producer}, % producer of the document
-    pdfkeywords={keyword1} {key2} {key3}, % list of keywords
-    pdfnewwindow=true,      % links in new window
-    colorlinks=true,       % false: boxed links; true: colored links
-    % linkcolor=blue,          % color of internal links
-    % citecolor=cyan,        % color of links to bibliography
-    % filecolor=magenta,      % color of file links
-    % urlcolor=blue,           % color of external links
-    linkcolor=black,          % color of internal links
-    citecolor=black,        % color of links to bibliography
-    filecolor=black,      % color of file links
-    urlcolor=black,           % color of external links
-    breaklinks=true
-}
 
 % Added 09-24-15 ----------------------------------------
 \usepackage{breakcites}
 
-\usepackage[all]{hypcap} % to see figure with hyper ref
 
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{5}
 
 % Added 11-12-13 ----------------------------------------
 
@@ -187,12 +156,6 @@
 \usepackage{morefloats} % for the error "Too many unprocessed floats"
 
 
-% Added 12-03-13 ----------------------------------------
-% \usepackage{imakeidx} % to create index
-% \indexsetup{othercode=\small}
-% \makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
-\usepackage{imakeidx}     % use this one when is not working
-\makeindex                % use this one when is not working
 % -------------------------------------------------------
 
 % Added 09-28-15 ----------------------------------------
@@ -213,6 +176,51 @@
 % Added 10-22-15 ----------------------------------------
 \usepackage{seqsplit}
 
+
+%%%%%%%%%%%%%%
+
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in AcrobatÕs bookmarks
+    pdftoolbar=true,        % show AcrobatÕs toolbar?
+    pdfmenubar=true,        % show AcrobatÕs menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={L8's potential for water constituents retrieval },    % title
+    pdfauthor={Javier Concha},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1} {key2} {key3}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    % linkcolor=blue,          % color of internal links
+    % citecolor=cyan,        % color of links to bibliography
+    % filecolor=magenta,      % color of file links
+    % urlcolor=blue,           % color of external links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=black,           % color of external links
+    breaklinks=true
+}
+
+\usepackage[all]{hypcap} % to see figure with hyper ref
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+% Added 10-23-15 ----------------------------------------
+\usepackage{tocbibind}
+
+% Added 12-03-13 ----------------------------------------
+\usepackage{imakeidx} % to create index
+\indexsetup{othercode=\small}
+\makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
+% \usepackage{imakeidx}     % use this one when is not working
+% \makeindex                % use this one when is not working
+
 %******************************************************************************************************
 %******************************************************************************************************
 %******************************************************************************************************
@@ -230,8 +238,8 @@
 \memberC{Dr. Christy Tyler}
 % \memberD{Dr. Christy Tyler}
 
-\pagenumbering{gobble} % no page number displayed
-
+% \pagenumbering{gobble} % no page number displayed
+\pagenumbering{roman}
 \makedeclaration
 
 \clearpage
@@ -262,9 +270,12 @@
 % \chapter*{Abstract}
 % \addcontentsline{toc}{chapter}{Abstract}
 
+
+
 \begin{abstract}
-\pagenumbering{roman}
+\phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
+
 
 \setlength{\parindent}{20pt}
 % 300 Words max.
@@ -326,6 +337,7 @@ Therefore, this study shows that the Landsat 8 satellite can be utilized over Ca
 % \chapter*{Acknowledgements}
 % %*****************************************************************************************************
 \begin{acknowledgements}
+\phantomsection
 \addcontentsline{toc}{chapter}{Acknowledgements}
 \setlength{\parindent}{20pt}
 % To my parents, Osvaldo Concha and Nelly Sepulveda, sister Loretto Concha and brother Alvaro Concha. USGS. Monroe County Environment: Scott, Providencia and Gary. Nina and Rolo. Dr. Christy Taylor. Paul. Aaron Gerace. Alan Wiedmman. Ocean Color community: Emmanuel Boss and attendants of the 2013 Ocean color and instrumentation summer course at the Darling Marine Center. Fulbright commission. My advisor Dr. John Schott. Amanda and Cindy. Classmates: Aly, Bikash, Viraj, Madurima, Peter Sun. Professor Dr. John Kerekes. Collection help: Harold Valdivia. My dear friends: Juan Saldana, Kader, Patrick, Sarada, Susan, Melisa, Sasha, Jeremy. The people at Crossfit Rochester: Joe, Andrew. The Latin Rhythm Dance Club at RIT. My best support here Aixa de Jesus. My adopted Chilean family and dancers in Rochester: Marcia, Rosa and Doña Rosita, Raul, Willy and Marisol, Harold and Nancy. My Chilean friends in U. of R. Felipe, Maria Eugenia, Emilio, Brenda and Pauly. Kimberley Thoms.
@@ -348,12 +360,13 @@ Mis amados viejitos,\\ Osvaldo Concha Silva\\ and (y) \\ Nelly del Carmen Sep\'u
 \end{dedication}
 
 \tableofcontents
+% \addcontentsline{toc}{chapter}{Contents}
 
 \listoffigures
-\addcontentsline{toc}{chapter}{List of Figures}
+% \addcontentsline{toc}{chapter}{List of Figures}
 
 \listoftables
-\addcontentsline{toc}{chapter}{List of Tables}
+% \addcontentsline{toc}{chapter}{List of Tables}
 
 
 % \glsaddall
@@ -370,15 +383,16 @@ Mis amados viejitos,\\ Osvaldo Concha Silva\\ and (y) \\ Nelly del Carmen Sep\'u
 \include{Summary}
 \include{Appendix}
 
-\listoftodos
+\printindex
+% \addcontentsline{toc}{chapter}{Index}
 
 %\bibliographystyle{ieeetr}
 %\bibliographystyle{unsrtnat}
+% \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{apalike}
-
 \bibliography{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/javier_bibPhD}
 
-\printindex
-\addcontentsline{toc}{chapter}{Index}
+
+\listoftodos
 
 \end{document}  
