@@ -8,9 +8,11 @@
 
 % Gerace {\it et al.} (2013)\cite{Gerace:2013} developed an algorithm for the simultaneous retrieval of color producing agents (CPAs) based on spectral matching and a look-up table (LUT) using simulated OLI data. Concha and Schott (2014)\cite{Concha2013IGARSS} extended Gerace's approach to actual OLI data. This approach does not depend on a global {\it in situ} dataset. Instead it builds a LUT specific to the inherent optical properties (IOPs) and observation conditions for the site.
 
+\todo{add from IGARSS paper }
+
 \subsection{MoB-ELM}
 
-% ----- added From SPIE SD
+
 \label{sec:conc}  % \label{} allows reference to this section
 
 
@@ -35,7 +37,7 @@ For further validation, this method needs to be applied to more scenes over the 
 To date, there are no other sources of free access, open to the international science community, satellite imagery with similar spatial resolution or similar standard product (e.g. MODIS chl-a product) to compare with. Therefore, a direct comparison of results from our approach with typical algorithms over water bodies smaller than one kilometer is not possible. This is a challenge that needs to be addressed since there is a particular interest from local communities for monitoring water bodies that are not resolvable by current ocean color satellites. This is the case of the ponds included in this study, which are less than one kilometer in size. This fact makes Landsat 8 a pioneer in the retrieval of water quality parameters over medium to small water bodies. This also opens a need for more field measurement collection (i.e. IOPs, $R_{rs}$ and concentrations) on a regular basis where water quality needs to be assessed for the validation of products derived from moderate spatial resolution sensors such a Landsat 8 and the upcoming Sentinel 2. 
 % ----- End copy
 
-
+% ----- added From SPIE SD
 \subsection{Comparison with Standard Algorithms}
 There were four different atmospheric correction algorithms analyzed in this study. Three of them are based in the NASA's standard algorithms based on the methods developed by Gordon and Wang\cite{Gordon:1994}. The fourth algorithm is based on the MoB-ELM algorithm developed by Concha and Schott\cite{Concha2014SPIE}. The remote-sensing reflectances retrieved from these atmospheric correction algorithms were compared against each other. There are better agreements in band 3 and 4 than in bands 1 and 2 for all algorithms, which can be concluded from the RMSE (\autoref{tab:Sites}). When compared with {\it in situ} data, the MoB-ELM and Gordon and Wang's algorithm from SeaDAS (SeaDAS-SWIR) show similar results for all bands (\autoref{fig:NRMSE130919_RRS}). The results from the Gordon and Wang's algorithm from Acolite (Acolite-SWIR) shows the largest disagreement (\autoref{fig:NRMSE130919_RRS}).
 
