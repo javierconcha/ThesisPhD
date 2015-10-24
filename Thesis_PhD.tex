@@ -176,9 +176,10 @@
 % Added 10-22-15 ----------------------------------------
 \usepackage{seqsplit}
 
-
-%%%%%%%%%%%%%%
-
+% Added 10-23-15 ----------------------------------------
+\usepackage{tocbibind}
+% ----------------------------------------
+\usepackage{seqsplit}
 \usepackage{hyperref}
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
@@ -211,9 +212,6 @@
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 
-% Added 10-23-15 ----------------------------------------
-\usepackage{tocbibind}
-
 % Added 12-03-13 ----------------------------------------
 \usepackage{imakeidx} % to create index
 \indexsetup{othercode=\small}
@@ -221,6 +219,7 @@
 % \usepackage{imakeidx}     % use this one when is not working
 % \makeindex                % use this one when is not working
 
+%%%%%%%%%%%%%%
 %******************************************************************************************************
 %******************************************************************************************************
 %******************************************************************************************************
@@ -383,8 +382,10 @@ Mis amados viejitos,\\ Osvaldo Concha Silva\\ and (y) \\ Nelly del Carmen Sep\'u
 \include{Summary}
 \include{Appendix}
 
+
 \printindex
-% \addcontentsline{toc}{chapter}{Index}
+\markboth{\it INDEX}{\it INDEX}
+\thispagestyle{fancy}
 
 %\bibliographystyle{ieeetr}
 %\bibliographystyle{unsrtnat}
