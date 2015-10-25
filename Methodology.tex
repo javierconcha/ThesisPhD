@@ -572,7 +572,7 @@ The following approach is taken in the SeaWiFS/MODIS atmospheric correction algo
 There are two different approaches to determine the $\rho_{am}(\lambda)$ term at this point. The first one is to use a single-scattering approximation for $\rho_{am}(\lambda)$. The second one is to determine the multiple-scattering term $\rho_{am}(\lambda)$ based in the single scattering approximation, assuming that there exist a linear relationship between them. Both approaches are described below.
 
 % -------------------
-\subsubsection{Single Scattering approach to determine $\rho_{am}(\lambda)$}
+\subsubsection{Single Scattering approach to determine \texorpdfstring{$\rho_{am}(\lambda)$}{aerosol contribution}}
 \label{subsubsec:singlescat}
 The aerosol is highly variable, and unlike the Rayleigh scattering component $\rho_r$, its effect in the total signal cannot be known {\it a priori} \cite{Gordon:1994}. One of the first efforts to overcome this problem was developed for the \gls{czcs} atmospheric correction algorithm using a single-scattering approximation for calculating the aerosol effect in the total signal. Its logic is as follow. If the optical thickness of the atmospheric is considered $<<1$, then the term $\rho_a$ can be replaced by is single-scattering value $\rho_{as}$ (the $\rho_{ra}$ term is ignored since it is a term related to multiple scattering). Using the \gls{rhoas}\index{reflectance!single-scattering aerosol, $\rho_{as}$} in \autoref{eq:rhoam1}, then
 \begin{equation}\label{eq:singleapprox}
@@ -634,7 +634,7 @@ The single-approximation is no longer an adequate approximation in cases where t
 
 %where $\rho_{as}^{(i)}$ for band $i$ is the single-scattering aerosol reflectance and $I=1..N$ denominates a set of $N$ simulated aerosol models obtained from, for example, an atmospheric radiative transfer model such as MODTRAN. This set of simulated aerosol models could be MODTRAN runs for different combination of particle size distribution (e.g. maritime, tropospheric, coastal, or urban), relative humidity, visibility, water vapor, etc., to simulate different atmosphere conditions that can occur in the scene.
 % -------------------
-\subsubsection{Multiple Scattering approach to determine $\rho_{am}(\lambda)$}
+\subsubsection{Multiple Scattering approach to determine \texorpdfstring{$\rho_{am}(\lambda)$}{aerosol contribution}}
 As mentioned  previously, we need to calculate the total multiple-scattering aerosol reflectance $\rho_{am}$ in order to obtain the desired water-leaving reflectance $\rho_w$. The multiple-scattering depends significantly on the aerosol model \cite{Gordon:1997}. In the single-scattering approach previously described, the multiple-scattering was ignored and specific aerosol properties were not needed for the atmospheric correction. On the other hand, if we want to include the multiple-scattering effects in the atmospheric correction algorithm in order to obtain more accurate water reflectance $\rho_w$, it is necessary to utilize specific aerosol models. As a way to use the same reasoning used in the single-scattering algorithm, we can define multiple-scattering term as
 \begin{equation}\label{eq:multscat}
   \rho_a(\lambda) + \rho_{ra}(\lambda) = K[\lambda,\rho_{as}(\lambda)]\rho_{as}(\lambda)

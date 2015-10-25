@@ -180,7 +180,7 @@ The fourth method evaluated in this work was the atmospheric correction approach
           %      and MUMM NIR calculation
 
 % -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
-\subsubsection{$R_{rs}$ Comparison Results}
+\subsubsection{\texorpdfstring{$R_{rs}$}{Rrs} Comparison Results}
 
 The $R_{rs}$ products from the four atmospheric correction methods described in the previous section (MoB-ELM, SeDAS-SWIR, Acolite-SWIR and SeaDAS-MUMM) are compared in this section. These algorithm were applied to the 09-19-2013 Landsat 8 image (\autoref{fig:0910913Sites}). A mask was created to mask out all pixels but water pixels. This mask was created by thresholding the Landsat 8's SWIR 2 band (\S\ref{sec:prepro}). \autoref{fig:Rrs443_482} shows the $R_{rs}$ values for $443nm$ (a-d) and $482nm$ (e-h), and \autoref{fig:Rrs561_655} for $561nm$ (a-d) and $655nm$ (e-h) for these four atmospheric correction methods. When analyzed visually, the similarities among the methods are higher in band 3 and 4 than band 1 and 2. For all bands, SeaDAS-SWIR and SeaDAS-MUMM look similar in both the lake and ponds. Also, the SeaDAS-SWIR method exhibits some noise in across all bands. This is caused due to the low SNR in SWIR bands and averaging used for applying the \cite{Gordon:1994} atmospheric correction in \gls{seadas}.  Note that there are some bottom effect in the lake's shoreline causing all methods to retrieve high $R_{rs}$ in those areas, which is not the case. This should be taken in account for future processing by masking the areas where the water is clear enough that the bottom can be seen or incorporating bottom effects in the \gls{lut}.
 
@@ -979,7 +979,7 @@ The numerical results for the retrieval are summarized in \autoref{fig:RMSE} whe
 \end{figure}
 
 % -----------------------------------------------------------
-\subsection{Comparison with Bio-Optical Algorithm for $C_a$ Retrieval}
+\subsection{Comparison with Bio-Optical Algorithm for \texorpdfstring{$C_a$}{Ca} Retrieval}
 \label{subsec:bioopticalapproach}
 In order to compare the results from the developed CPA concentration retrieval with the standard products, the NASA's \gls{oc3} algorithm \cite{OReilly2000} was applied to the $R_{rs}$ data from 09-19-2013 Landsat 8 scene, as suggested by \cite{Franz:2015}. The \gls{oc3} algorithm is a three-band empirical $R_{rs}(\lambda)$ band ratio algorithm. Band ratio algorithms try to find a good fit between a band ratio $R$ and $C_a$, as described in \S\ref{subsec:chlempirical}. The chlorophyll-{\it a} results from the OC3 algorithm were obtained from the l2gen tool in SeaDAS (\S\ref{subsec:chlempirical}) when the SeaDAS-SWIR and SeaDAS-MUMM results from the previous section (\S\ref{subsec:GordonComp}) were generated. Additionally, The OC3 algorithm was applied to the Acolite-SWIR results using the band math tool in SeaDAS. For the OLI case, the OC3 algorithm uses band 1 ($443nm$) or band 2 ($483nm$), and band 3 ($561nm$) for the band ratio, i.e.
 
