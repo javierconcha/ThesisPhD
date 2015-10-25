@@ -113,26 +113,32 @@
 % Select what to do with todonotes: 
 % \usepackage[disable]{todonotes} % notes not showed
 \usepackage[draft]{todonotes}   % notes showed
-
 \setlength{\marginparwidth}{2cm}
-
-
 
 \usepackage{tikz} % for flow charts
   \usetikzlibrary{shapes,shapes.geometric,arrows,positioning,shadows,calc}
 
-\begin{filecontents*}{linereg.data}
+
+\begingroup\newif\ifmy
+\IfFileExists{linereg.data}{}{\mytrue}
+\ifmy
+\begin{filecontents}{linereg.data}
 #x y
 0 4
 10 24
-\end{filecontents*} 
+\end{filecontents}
+\fi\endgroup
 
-\begin{filecontents*}{linereg2.data}
+\begingroup\newif\ifmy
+\IfFileExists{linereg2.data}{}{\mytrue}
+\ifmy
+\begin{filecontents}{linereg2.data}
 #x y
 2 8
 8 20
-\end{filecontents*}
- 
+\end{filecontents}
+\fi\endgroup
+
 \usepackage{colortbl}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -147,14 +153,12 @@
 % \setlength{\belowcaptionskip}{-4ex} % space after caption
 %******************************************************************************************************
 
-
 % Added 08-10-14 
 \usepackage{enumitem}
 
 % Added 07-28-15 
 \usepackage[percent]{overpic}
 \usepackage{morefloats} % for the error "Too many unprocessed floats"
-
 
 % -------------------------------------------------------
 
@@ -218,6 +222,12 @@
 \makeindex[program=makeindex,columns=2,intoc=true,options={-s MyIndex.ist}]
 % \usepackage{imakeidx}     % use this one when is not working
 % \makeindex                % use this one when is not working
+
+% Added 10-25-15 ----------------------------------------
+\usepackage{silence}
+\WarningFilter{latex}{Text page}
+\WarningFilter{latex}{Float too large}
+\WarningFilter{latex}{Marginpar on page}
 
 %%%%%%%%%%%%%%
 %******************************************************************************************************
