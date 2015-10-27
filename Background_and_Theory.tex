@@ -579,7 +579,7 @@ It is important to note that AOPs are not additive as the IOPs. Also, AOPs can n
 % ------------------------------------------
 \subsection{Deriving IOPs from AOPs}
 \label{subsec:semianalitic}
-The reflectance inversion methods\index{reflectance inversion algorithms} refer to method to derive IOPs (e.g. absorption $a$ and scattering $b$ coefficients) from AOPs (e.g. $R_{rs}$). There two kinds of inversion algorithms: empirical\index{empirical algorithms|see {reflectance inversion algorithms}} and semi-analytic algorithms\index{semi-analytic algorithms|see {reflectance inversion algorithms}}. The empirical algorithms apply simple or multiple regressions between the property of of interest and the ratios of \gls{rrs}. Examples of this algorithms are the \acrfull{oc2} and \acrfull{oc4} algorithms (see \S\ref{subsec:chlempirical}). These kinds of algorithms tend to work only in waters with similar properties to the ones they were based on, resulting in a limited applicability. Some of the advantage of the empirical algorithms are their simplicity and rapidity in data processing. On the other hand, the semianalytical algorithms are based on solving the \gls{rte} and they can be applied to different water types \cite{Lee2002_invQAA}.
+The reflectance inversion methods\index{reflectance inversion algorithms} refer to method to derive IOPs (e.g. absorption $a$ and scattering $b$ coefficients) from AOPs (e.g. $R_{rs}$). There are two kinds of inversion algorithms: empirical\index{empirical algorithms|see {reflectance inversion algorithms}} and semi-analytic algorithms\index{semi-analytic algorithms|see {reflectance inversion algorithms}}. The empirical algorithms apply simple or multiple regressions between the property of interest and the ratios of \gls{rrs}. Examples of this algorithms are the \acrfull{oc2} and \acrfull{oc4} algorithms (see \S\ref{subsec:chlempirical}). These kinds of algorithms tend to work only in waters with similar properties to the ones they were based on, resulting in a limited applicability. Some of the advantage of the empirical algorithms are their simplicity and rapidity in data processing. On the other hand, the semianalytical algorithms are based on solving the \gls{rte} and they can be applied to different water types \cite{Lee2002_invQAA}.
 
 It is well known that the AOPs are a function of the ratio between the backscattering and the absorption coefficients, .i.e. $R_{rs}(\lambda)~or~L_{wN} = f[b_b(\lambda)/a(\lambda)]$ with $R_{rs}=L_w/E_d$ the remote-sensing reflectance and $L_{wN}$ the normalized water-leaving radiance \cite{Morel:1977rw,Maritorena:02}. As an example, \cite{Gordon:1988qv} derived this relationship as
 \begin{equation}\label{eq:semianal}
@@ -587,31 +587,13 @@ It is well known that the AOPs are a function of the ratio between the backscatt
 \end{equation}
 \noindent where $t$ is the sea-air transmission factor, $F_0(\lambda)$ is the extraterrestrial solar irradiance, $n_w$ is the index of refraction of the water, and the $g_i$ terms are fitting coefficients from Monte Carlo simulations of an idealized ocean by \cite{Gordon:1986fr}. If \autoref{eq:semianal} is used at first order only, the $g_1$ term becomes the $f/Q$ factor, which is dependent on the viewing geometry and not constant \cite{Maritorena:02}. Examples of semianalytical algorithms can be found in \cite{Lee2002_invQAA}, \cite{Lee_Du_Arnone2005} and \cite{Werdell2013_inv}. Note that the IOP spectra, $a(\lambda)$ and $b_b(\lambda)$, can be decomposed in the different water constituents or \gls{cpas} (see \autoref{eq:atotal} and \autoref{eq:b_btotal}). Therefore, if all the \gls{iops} but the $b_b(\lambda)$ are known, then the $b_b(\lambda)$ can be determined from \gls{rrs} using one of these semianalytical algorithms. This can help to determine the unknown information in this research: the backscattering phase function.
 
-% ------------------------------------------
-% \subsection{Constituent Retrieval}
-
-
-% Each sensor-reaching radiance curve is associated with a specific combination of water components (CHL, SM and CDOM). HidroLight provides us the \hl{remote sensing reflectance}, $R_{RS}$, which describes how much of the total incident downwelling irradiance is ultimately returned from a water column in a given direction, defined as
-
-% \begin{equation} \label{eq:Rrs}
-% R_{RS}(\theta,\phi,\lambda,z=a) = \frac{L(\theta,\phi,\lambda,z=a)}{E_d(\lambda,z=a)}   \indent   \indent  \left[\frac{1}{sr}\right]  
-% \end{equation} 
-% where:
-% \begin{tabbing}
-% \indent \indent \indent  $\theta$ \hspace{1.5mm}\=:  \indent \= sensor-zenith angle\\
-% \indent \indent \indent  $\phi$\>: \>sensor-azimuth angle\\
-% \indent \indent \indent $L$\>:\>water-leaving radiance\\
-% \indent \indent \indent $E_d$\>:\>total downwelling irradiance\\
-% \indent \indent \indent $\lambda$\>:\>wavelength dependent\\
-% \indent \indent \indent $a$\>:\>height just above the water's surface\\
-% \end{tabbing}
-
+\todo{Dr. Schott: check paragraph!}This section presented the different phenomena affecting the signal captured by the sensor, such as the atmospheric effect, the glint, and the light that interacts with the water column. Understanding this signal's components allows for a better isolation of the signal of interest, the water-leaving signal, from the rest. Also, the various components that affect the water color, their interaction with light, and their influence in the water-signal was defined. These concepts permit a better separation of each water component, which is the final product of this research.
 
 % ----------------------------------------------------
 \section{The OLI Sensor}
 The Landsat project, a joint initiative between USGS and NASA, has been monitoring the earth for over four decades, creating the longest uninterrupted data set available. Landsat 8, formally known as the \gls{ldcm}, is the most recent satellite to continue this objective. Carrying two instruments onboard, the \acrfull{oli} and the \acrfull{tirs}, Landsat 8 is the first of a new generation of Landsat satellites with these state-of-the-art technologies. 
 
-Landsat 8 is an optical passive satellite, which means it records the energy reflected from a source (in this case the sun) by a target. It has a temporal resolution is 16 days, which means that it images the same location on Earth every 16 days. Because the area of study (Rochester Embayment) appears in two Landsat 8 paths, there is one image of this area every eight days. OLI is considered to be a multispectral instrument with a total of seven bands: four bands in the \gls{vis}, one band in the \acrfull{nir} and two bands in the \acrfull{swir}, as can be seen in \autoref{fig:olibands}. \autoref{fig:olibands} also shows Landsat 7 bands for comparison. Note the two new bands added to the mission: coastal band and cirrus bands.
+Landsat 8 is an optical passive satellite, which means it records the energy reflected from a source (in this case the sun) by a target. It has a temporal resolution of 16 days, which means that it images the same location on Earth every 16 days. Because the area of study (Rochester Embayment) appears in two Landsat 8 paths, there is one image of this area every eight days. OLI is considered to be a multispectral instrument with a total of seven bands: four bands in the \gls{vis}, one band in the \acrfull{nir} and two bands in the \acrfull{swir}, as can be seen in \autoref{fig:olibands}. \autoref{fig:olibands} also shows Landsat 7 bands for comparison. Note the two new bands added to the mission: coastal band and cirrus bands.
 
 \begin{figure}[htb]
 \centering
@@ -653,19 +635,20 @@ Although the OLI's spectral bands are not narrow enough to be compared with MODI
       \caption{Comparison between Landsat 7 and Landsat 8 SNR. \label{fig:L8SNR} } 
       \label{fig:olisnr}
 \end{figure}
-\todo{include my SNR figure}
 
 % ----------------------------------------------
 \section{Empirical Line Method}
 \label{sec:ELM}
-The {\it empirical line method}\index{ELM} (ELM) is a method for calibration of image data to reflectance that uses ground truth. The \acrshort{elm} uses a linear regression in each band to relate digital counts (\acrshort{dc}; a.k.a. \gls{dn}) or radiance to reflectance \cite{Schott,Smith:1999}. The ground truth can be in general  either control panels or ad hoc control surfaces of known reflectance. These ground truth objects need to be approximately Lambertian to minimize any errors that could be introduced by sensor view angles effects. Also, these calibration targets are assumed flat and level, with no neighboring obscuration, and homogeneous as well. The ELM method generally assumes that the atmosphere is constant over the complete scene. If that is not the case, corrections must be made for changes in the atmosphere over the scene. The regression to be solved for each band in the ELM method (\autoref{fig:ELMregression}) is given by
+The {\it empirical line method}\index{ELM} (ELM) is a method for calibration of image data to reflectance that uses ground truth. The \acrshort{elm} uses a linear regression in each band to relate digital counts (\acrshort{dc}; a.k.a. \gls{dn}) or radiance to reflectance \cite{Schott,Smith:1999}. The ground truth can be in general  either control panels or ad hoc control surfaces of known reflectance. These ground truth objects need to be approximately Lambertian to minimize any errors that could be introduced by sensor view angles effects. Also, these calibration targets are assumed flat and level, with no neighboring obscuration, and homogeneous as well. The ELM method generally assumes that the atmosphere is constant over the complete scene. If that is not the case, corrections must be made for changes in the atmosphere over the scene. The regression to be solved for each band in the ELM method (\autoref{fig:ELMregression}) is given 
+
 \begin{equation}
 	\label{eq:ELM} 
 	L = m\times R_{rs} + b
 \end{equation}
-where $L$ is the radiance reaching the sensor value, $m$ is the slope of the regression, $R_{rs}$ is the remote-sensing reflectance, and $b=L_u$ is the intercept, with $L_u$ the upwelled radiance or path radiance. Then, the reflectance of the any Lambertian objects can be calculated by rearranging \autoref{eq:ELM}. In order to solve this regression, i.e. determine the value of $m$ and $b$, we need to have at least two targets with known radiance $L$ and reflectance $R_{rs}$. These targets are known as dark and bright targets or objects (\autoref{fig:ELMregression}). After $m$ and $b$ have been determined, the reflectance of each pixel at each wavelength can be calculated from its radiance value from the image.
 
-An ELM target needs to have a size at least three times the ground instantaneous field of view of the sensor that will image it at the time of data collection. Taking this in consideration, the target should be at least 90x90 meters big for the Landsat sensor, which is sometimes difficult to build or even to find in the scene. 
+where $L$ is the radiance reaching the sensor, $m$ is the slope of the regression, $R_{rs}$ is the remote-sensing reflectance, and $b=L_u$ is the intercept, with $L_u$ the upwelled radiance or path radiance, which also includes sky glint. Then, the reflectance of the any Lambertian objects can be calculated by rearranging \autoref{eq:ELM}. In order to solve this regression, i.e. determine the value of $m$ and $b$, we need to have at least two targets with known radiance $L$ and reflectance $R_{rs}$. These targets are known as dark and bright targets or objects (\autoref{fig:ELMregression}). After $m$ and $b$ have been determined, the reflectance of each pixel at each wavelength can be calculated from its radiance value from the image.
+
+An ELM target needs to have a size at least three times the ground instantaneous field of view of the sensor that will image it at the time of data collection. Taking this in consideration, the target should be at least 90x90 meters big for the Landsat sensor, which is sometimes difficult to build or even to find in the scene. \todo{Dr. Schott: check these last two sentences!}This traditional \gls{elm} is the base of the \gls{mobelm} atmospheric correction method developed by \cite{Concha2014SPIE} and used in this research (\S\ref{subsec:mobelm}). The \gls{mobelm} tries to overcome the difficulty of finding the appropriate targets to be used in the \gls{elm} algorithm by modeling them.
 
 \begin{figure}[htb]
   \centering
@@ -731,7 +714,7 @@ An ELM target needs to have a size at least three times the ground instantaneous
 \section{Landsat Surface Reflectance CDR}
 \label{sec:CDR} 
 \subsection{Landsat 4-7 Surface Reflectance Product}
-The Landsat \gls{cdr} surface reflectance product for Landsat 4-7 is part of the higher-level Landsat data product to support land surface change study developed by USGS \cite{LandsatCDR}. This product is generated from specialized software called \gls{ledaps} \cite{Masek:2006}. The LEDAPS software uses MODIS atmospheric correction routines to correct Level-1 Landsat \gls{tm} or \gls{etmplus} data. Atmospheric variables such as water vapor, ozone, aerosol optical thickness along with geometric variables ({\todo{What is geopotential height?} geopotential height} and digital elevation) are input with Landsat data to the \gls{6s} radiative transfer model. The 6S model outputs surface reflectance among others parameters. This surface reflectance product is called the Landsat surface reflectance CDR. This Landsat surface reflectance product has comparable uncertainty to the standard MODIS reflectance product \cite{Masek:2006}.
+The Landsat \gls{cdr} surface reflectance product for Landsat 4-7 is part of the higher-level Landsat data product to support land surface change study developed by USGS \cite{LandsatCDR}. This product is generated from specialized software called \gls{ledaps} \cite{Masek:2006}. The LEDAPS software uses MODIS atmospheric correction routines to correct Level-1 Landsat \gls{tm} or \gls{etmplus} data. Atmospheric variables such as water vapor, ozone, aerosol optical thickness along with geometric variables (geopotential height and digital elevation) are input with Landsat data to the \gls{6s} radiative transfer model. The 6S model outputs surface reflectance among others parameters. This surface reflectance product is called the Landsat surface reflectance CDR. This Landsat surface reflectance product has comparable uncertainty to the standard MODIS reflectance product \cite{Masek:2006}.
 
 The LEDAPS algorithm works in the following fashion. First, calibrated images from the Landsat satellite are corrected to \gls{toa} reflectance by correcting for solar zenith, Sun-Earth distance, TM or ETM+ bandpass, and solar irradiance. Then, the TOA reflectance is atmospherically corrected with the assumptions that the target is Lambertian and infinite, and the gaseous absorption and particle scattering in the atmosphere can be decoupled. The TOA reflectance can be expressed as \cite{Masek:2006}
 \begin{equation}
@@ -746,6 +729,8 @@ According to the author in \cite{LandsatCDR}\todo{fix ref!}, the Landsat reflect
 \subsection{Landsat 8 Surface Reflectance Product}
 \label{subsec:provisionalCDR} 
 With the launch of Landsat 8, a new Landsat surface reflectance product was developed by \gls{usgs}. At the moment of writing this document, the product was named ``Provisional Landsat 8 Surface Reflectance'' [USGS, 2014]\todo{cite}. This product is generated from a specialized software called L8SR, which is different from the \gls{ledaps} algorithm. The product have to be used with caution because there are some artifacts reported. These artifacts particularly near feature transitions such as cloud, water-land regions, and high topography variation. The product includes Level 1 data file, and the ``Cloud QA'' band for cloud, cloud shadow, snow and water identification along. Also, the ``cfmask'' and ``cfmask\_conf'' are included as alternative to the Cloud QA band. This product can be downloaded from \url{http://earthexplorer.usgs.gov/}.
+
+\todo{Dr. Schott: check this paragraph!}The reflectance products presented above were used for the determination of the bright target used for the \gls{mobelm} atmospheric correction algorithm described in \S\ref{subsec:mobelm}. The Landsat 4-7 reflectance product was used at the first part of this research when Landsat 8 imagery was not available. These data helped to developed the first versions of the algorithms described in this work. Once the Landsat 8 reflectance product became available, the Landsat 4-7 reflectance product was replaced by this new product.
 % ----------------------------------------------------
 % \section{MODTRAN}
 % ----------------------------------------------------
@@ -753,7 +738,7 @@ With the launch of Landsat 8, a new Landsat surface reflectance product was deve
 \label{sec:hydrolight}
 HydroLight is a radiative transfer numerical model written in Fortran \cite{MobleyHE} (more info: \url{http://www.sequoiasci.com/product/hydrolight/}). It computes radiance distributions and derived quantities (e.g. irradiances, reflectances, K functions, etc.) for natural water bodies. It was developed by Dr. Curtis Mobley for over 20 years (since 1989) and is a commercial software product of Sequoia Scientific, Inc. Hydrolight solves the \gls{rte} based on the \gls{iops} and the boundary conditions  to compute the in-water radiance as a function of depth, direction, and wavelength (\autoref{fig:HLflowchart}). Other quantities of interest for ocean color, such as the remote-sensing reflectance, can be obtained from the computed radiances. It has several models, including the Case 1 water model, whose main input is the chlorophyll IOPs and the Case 2 model, which is a 4-constituent model, pure water, chlorophyll, minerals and CDOM.
 
-\begin{figure}[H]
+\begin{figure}[htb!]
   \begin{minipage}[c]{0.3\linewidth}
       \hspace{0.5cm}
   		\includegraphics[height=3cm]{/Users/javier/Desktop/Javier/PHD_RIT/20123_Spring/Modeling/HydroLight/Beamer/absvsz.png}
@@ -812,6 +797,8 @@ The HydroLight physical model has the following characteristics \cite{MobleyHE}:
 	\item It can optionally include horizontally homogeneous internal sources such as bioluminescing layers.
 	\item Polarization not included.
 \end{itemize}
+
+\todo{Dr. Schott: check this paragraph!}The Hydrolight model is of vital importance for this work since the dark pixel of the \gls{mobelm} algorithm and the \gls{lut} used in the developed retrieval are created on it.
 % ------------------------------------------
 \section{SeaDAS and NASA's Ocean-related Products}
 \label{sec:seadas}
@@ -823,14 +810,14 @@ A number of standard ocean bio-optical products are supported by the \gls{obpg} 
 % ------------------------------------------
 \subsection{Remote-sensing reflectance}
 \label{subsec:seadasrrs}
-The l2gen tool includes a set of different atmospheric correction methods based on \cite{Gordon:1994}, among others. It also includes the \gls{mumm} algorithm based on \cite{Ruddick:2000bs}. This tool allows to change the bands used for the atmospheric correction. The user can choose from the NIR or SWIR bands. One of the outputs of the l2gen tool is \gls{rrs} at different wavelengths. 
+\todo{Dr. Schott: check this paragraph!}The l2gen tool includes a set of different atmospheric correction methods based on \cite{Gordon:1994}, among others. It also includes the \gls{mumm} algorithm based on \cite{Ruddick:2000bs}. This tool allows to change the bands used for the atmospheric correction. The user can choose from the NIR or SWIR bands. One of the outputs of the l2gen tool is \gls{rrs} at different wavelengths. These two approaches, the \cite{Gordon:1994} and the \cite{Ruddick:2000bs}, are utilized to compare with the \gls{mobelm} algorithm's results.
 
 % The capability for processing OLI data was recently made fully operational in the SeaDAS version 7.2 \cite{Franz:2015}. 
 % ------------------------------------------
 \subsection{Chlorophyll-{\it a} Concentration}
 \label{subsec:chlempirical}
 
-The chlorophyll-{\it a} concentration retrieval algorithms supported by \gls{seadas} are described in \cite{OReilly1998_Chl} and \cite{OReilly2000}. These include semianalytic models and empirical algorithms. The semianalytic models are based on the $b_b/(a + b_b)$ to $R_{rs}$ relationship \cite{Gordon:1988qv}  (see \S\ref{subsec:semianalitic}). The empirical algorithms are based in band ratios \cite{OReilly2000}. One example of a empirical algorithm is the \gls{oc2} algorithm developed for \gls{seawifs}. The \gls{oc2} algorithm establishes an empirical equation relating \gls{rrs} in the $490$ and $555nm$ bands to chlorophyll-{\it a} concentrations $C_a$ from a large data set of coincident {\it in situ} remote-sensing reflectances and chlorophyll-{\it a} concentrations, $\tilde{R}_{rs}$ and $\tilde{C}_a$. This empirical equation is a \gls{mcp} defined as
+The chlorophyll-{\it a} concentration retrieval algorithms supported by \gls{seadas} are described in \cite{OReilly1998_Chl} and \cite{OReilly2000}. These include semianalytic models and empirical algorithms. The semianalytic models are based on the $b_b/(a + b_b)$ to $R_{rs}$ relationship \cite{Gordon:1988qv}  (see \S\ref{subsec:semianalitic}). The empirical algorithms are based in band ratios \cite{OReilly2000}. One example of an empirical algorithm is the \gls{oc2} algorithm developed for \gls{seawifs}. The \gls{oc2} algorithm establishes an empirical equation relating \gls{rrs} in the $490$ and $555nm$ bands to chlorophyll-{\it a} concentrations $C_a$ from a large data set of coincident {\it in situ} remote-sensing reflectances and chlorophyll-{\it a} concentrations, $\tilde{R}_{rs}$ and $\tilde{C}_a$. This empirical equation is a \gls{mcp} defined as
 \begin{equation}\label{eq:oc2}
   C_a = 10^{\displaystyle a_0+a_1R_2+a_2R_2^2+a_3R_2^3} + a_4
 \end{equation}
@@ -863,11 +850,11 @@ The \gls{oc2} algorithm utilized just a green and a blue band. Modifications to 
   \caption{Empirical algorithms for the chlorophyll-{\it a} concentration for \gls{seawifs}. (a) $R_{555}^{490}$ versus $\tilde{C}_a$ and OC2v4 model (solid curve). (b) $R_{555}^{443}>R_{555}^{490}>R_{555}^{510}$ versus $\tilde{C}_a$ and OC4v4 model (solid curve). These empirical algorithms were developed over a data set of $N=2804$ data points (Figures taken from \cite{OReilly2000}). \label{fig:chlemp} } 
 \end{figure}
 
-One of the known limitations of the approach is that the data set is mostly representative of Case 1 waters and not few Case 2 waters \cite{OReilly2000}. Some modification for low $C_a$ values have been suggested by \cite{Hu:2012fv}.
+One of the known limitations of the approach is that the data set is mostly representative of Case 1 waters and few Case 2 waters \cite{OReilly2000}. Some modification for low $C_a$ values have been suggested by \cite{Hu:2012fv}.
 % ------------------------------------------
 \subsection{Total Suspended Matter}
 
-Previous versions of SeaDAS (SeaDAS 5 and earlier) supported the Clark \acrfull{tsm} product. This product was dropped in SeaDAS 6.2 because the algorithm are not maintained by its original authors, and therefore, it has not been updated. The current version of SeaDAS (SeaDAS 6.2) does not include any tsm algorithm. The Clark TSM algorithm was an empirical algorithm. For \gls{modis}, the equation is defined as
+\todo{Dr. Schott: check from here to the end of the chapter!}Previous versions of SeaDAS (SeaDAS 5 and earlier) supported the Clark \acrfull{tsm} product. This product was dropped in SeaDAS 6.2 because the algorithm are not maintained by its original authors, and therefore, it has not been updated. The current version of SeaDAS (SeaDAS 6.2) does not include any tsm algorithm. The Clark TSM algorithm was an empirical algorithm. For \gls{modis}, the equation is defined as
 \begin{align}
   x   &= \log_{10}\left(\frac{L_{wN}[443]+L_{wN}[490]}{L_{wN}[551]}\right)\notag \\
   tsm &= 10^{(\displaystyle a[0] + a[1]x + a[2]x^2 + a[3]x^3 + a[4]x^4 + a[5]x^5)}
@@ -880,12 +867,14 @@ Previous versions of SeaDAS (SeaDAS 5 and earlier) supported the colored dissolv
 
 The current SeaDAS version (SeaDAS 6.2) include semianalytic bio-optical models that can be related to CDOM (see \S\ref{subsec:semianalitic}). Examples of this models are the Garver-Siegel-Maritorena-2001 absorption due to gelbstof and detrital material at sensor wavelength nnn, ``adg\_nnn\_gsm01'' \cite{Maritorena:02}, and the Quasi-Analytical Algorithm (QAA) model absorption due to gelbstof and detrital material at sensor wavelength nnn, ``adg\_nnn\_qaa'' \cite{Lee_Du_Arnone2005}.
 
+\todo{Dr. Schott: check this paragraph!}From all the products from the \gls{seadas} tool described above, only the \gls{rrs} and the $C_a$ products are used in this work for comparison with the results of the developed atmospheric correction and retrieval algorithms.
 % ----------------------------------------------------
 \section{ACOLITE}
 \label{subsec:acolite}
 
 The \gls{acolite} package is a binary distribution for processing Lansat 8 imagery developed by the \gls{rbins} (more info \url{http://odnature.naturalsciences.be/remsem/software-and-data/acolite}). \gls{acolite}'s main use is the atmospheric correction for OLI data. It applies the atmospheric correction algorithms based on \cite{Gordon:1994}. The atmospheric correction used is described in \cite{Vanhellemont2014} and \cite{Vanhellemont:2015}. \gls{acolite} generates products as RGB images for TOA, after Rayleigh correction, and atmospherically corrected. It also generates Level 2 output, such as marine reflectance and multiple scattering aerosol reflectance.
 
+The \gls{acolite} tool is used to test the \cite{Gordon:1994} approach on Landsat 8 data and for comparison with the results of the developed \gls{mobelm} atmospheric correction algorithm.
 % ----------------------------------------------------
 \section{Challenges in the remote sensing of Case 2 waters}
 
@@ -927,14 +916,15 @@ The single-variable models used for Case 2 waters do not work on Case 2 waters s
       \caption{Fixed chlorophyll-{\it a} concentration, $C_a$, and variable sediments and CDOM for (a) low $C_a$, (b) medium $C_a$ and (c) high $C_a$ .\label{fig:OCedu_CHLfixed} }
 \end{figure}
 \autoref{fig:SmallConcImpact} shows the effect of different level of chlorophyll-{\it a} in the spectral remote-sensing reflectance for low ($[5-10] \mu g/L$) and high ($[60-65]\mu/L$) level. It can be seen that the same relative difference has different impacts at low and high levels of chlorophyll-{\it a} concentration. There are more differences at level than a high levels.
-\begin{figure}[htb]
+\begin{figure}[htb!]
 \centering
       \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/SmallConcImpact.png}
       \caption{Hydrolight simulated remote-sensing reflectance for $C_a$ concentration differences at high level and low levels.\label{fig:SmallConcImpact} } 
 \end{figure}
 
 The standard empirical retrieval algorithms described in \cite{OReilly2000} (\S\ref{subsec:chlempirical}) were developed for Case 1 waters. The same approach cannot be used in the Case 2 waters due to the variability of each component. This is illustrated in \autoref{fig:ChlStandardFixedAntNot}, where the OC3 and OC2v4 models are compared with simulated Hydrolight data. \autoref{fig:ChlStandardFixedAntNot}.(a) shows the case when only the chlorophyll-{\it a} concentration is varying, showing a good agreement with the empirical algorithms. On the other hand, \autoref{fig:ChlStandardFixedAntNot}.(b) shows the case when the not only the chlorophyll-{\it a} concentration varies, but all the CPAs. It can be concluded that the empirical models do not fit for all cases. These is one of the reason why new approaches need to be developed.
-\begin{figure}[htb]
+
+\begin{figure}[htb!]
   \begin{minipage}[c]{0.48\linewidth}
     \centering
       \includegraphics[width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPHD/Images/ChlStandardFixed.png}\\
