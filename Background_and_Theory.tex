@@ -427,15 +427,15 @@ and represents the fraction of the incident power that is scattered out of the b
 \end{equation}
 and represents the fraction of the incident power that is lost or attenuated. As examples of magnitudes and shapes, \autoref{fig:compabs} and \autoref{fig:compscat} show contributions by the various components of waters to the absorption and scattering coefficients, respectively, for Case 1 and Case 2 waters.
 
-The IOPs are additive. Therefore, the total absorption coefficient, for instance, can be expressed as
+The IOP of the different water components are additive. Therefore, the total absorption coefficient, for instance, can be expressed as
 \begin{equation}
   a_{total}(z,\lambda) = \sum_{i=1}^{ncomp} a_i(z,\lambda)
 \end{equation}
 e.g.,
 \begin{equation}\label{eq:atotal}
-  a_{total}(z,\lambda) =  a_w(\lambda) +a_{CDOM}(z,\lambda)+ a_{Chl}(z,\lambda)+a_{SM}(z,\lambda)
+  a_{total}(z,\lambda) =  a_w(\lambda) + a_{Chl}(z,\lambda)+a_{SM}(z,\lambda)+a_{CDOM}(z,\lambda)
 \end{equation}
-This fact is important because it will help to retrieve simultaneously the CPAs in this case. This also implies that we need to know the IOPs for each component, which is not an easy task, especially the scattering coefficient.
+\noindent where $a_w$, $a_{Chl}$, $a_{SM}$ and $a_{CDOM}$ are the spectral absorption coefficients of water, chlorophyll-{\it a}, minerals and CDOM, respectively. This fact is important because it will help to retrieve simultaneously the CPAs in this case. This also implies that we need to know the IOPs for each component, which is not an easy task, especially for the scattering coefficients.
 
 The scattering coefficients does not take into account the angular distribution of the scattered power. The \gls{vsf} is an IOP that takes into account angular information. Consider $\Phi_s(\psi,\lambda)/\Phi_i(\lambda)$ as the fraction of incident power scattered out of the beam through an angle $\psi$ into a solid angle $\Delta\Omega$ centered on $\Psi$, as shown in \autoref{fig:IOPsdef}. Then, the {\it volume scattering function} (VSF) \index{volume scattering function, VSF} is defined as the fraction of scattered power per unit distance and unit solid angle, i.e.
 \begin{equation}\label{eq:VSF1}
@@ -552,6 +552,7 @@ The irradiance reflectance\index{reflectance!irradiance,$R(z,\lambda)$} (a.k.a. 
 
 The fundamental quantity used in ocean color remote sensing is the \acrfull{rrs}\index{reflectance!remote-sensing, $R_{rs}$}, defined as
 \begin{equation}
+\label{eq:Rrs}
   R_{rs}(\theta,\phi,\lambda)\equiv \frac{L_w(\theta,\varphi,\lambda)}{E_d(\lambda)}~~\left[sr^{-1} \right]
 \end{equation}
 where $L_w$ is the upwelling water-leaving radiance and $E_d$ is the downwelling plane irradiance. $L_w$ is the total upward radiance minus the sky and solar radiance that is reflected upward by the water surface. $L_w$ and $E_d$ are measured in air, just above the water surface.

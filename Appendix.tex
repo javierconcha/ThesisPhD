@@ -3,19 +3,22 @@
 %% CHAPTER
 \begin{appendices}
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-\chapter{Field Measurements}
+\chapter{Field Collection and Measurements}
 % \addcontentsline{toc}{chapter}{Appendix}
 % \renewcommand{\thesection}{\Alph{section}}
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \label{ch:fieldmea}
+
+This part of the appendix describes how to collect the water samples and how to take the different measurements in the field.
 % -----------------------------------------------------------------------------
 \section{Water Samples}
-
+\todo{add filtration procedure}The water samples should be taken using Dark Nalgene bottles (or similar) simultaneously with in-water optical measurements \cite{Mitchell2002}.
 
 \subsection{Equipment}
+\subsubsection*{Acquisition}
 
 \begin{multicols}{3}
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
   \item Dark Nalgene bottles
   \item Monroe County Environmental Lab bottles
   \item Cooler
@@ -34,44 +37,56 @@
   \item Suncream 
   \item Drinking water
   \item Wipes to clean extra suncream from hands
-  \item Bucket with rope (in case is not possible to take water samples due to bad condition weather, for example)
+  \item Bucket with rope (in case it is not possible to take water samples due to bad weather conditions, for example)
 \end{itemize}
 \end{multicols}
 
+\subsubsection*{Filtration}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
+  \item Whatman Binder-Free Glass Microfiber Filters: Type GF/F - Diameter: 4.7cm
+  \item Vacuum pump
+  \item Balance
+  \item Graduate cylinder
+  \item Forceps
+\end{itemize}
 
 \subsection{Procedure}
-\begin{enumerate}
-  \item Throughly clean the bottles prior to collection by brushing them inside with tap water a couple of times and rinse with DIW water a couple of times
-  \item Once in the site, press GPS button to save location
-  \item Fill the log sheet with the ``Location Description'', ``GPS WAYPOINT'' and ``Time''
+\begin{enumerate}[itemsep=2pt,parsep=2pt]
+  \item Throughly clean the bottles prior to collection by brushing them inside and rinsing with tap water a couple of times. Then, allow them to dry
+  \item Make sure to take enough bottles for each sample. For low concentration waters, three $1[L]$ bottles is recommended, and for high concentration waters, two $1[L]$ bottles is recommended
+  \item Distribute the bottles in the different coolers and fill with enough ice to keep the samples cool
+  \item Once in the site, press GPS button to save location. Fill the ``GPS WAYPOINT'' cell in the log sheet with the location number from the GPS
+  \item Fill the log sheet in the ``Location Description'', and ``Time''
   \item Take a bottle from the cooler and write the bottle label down in the ``Bottle Number'' section on the data sheet along
-  \item Rinse the Nalgene Bottle and cap at least 3 times with water before filling
+  \item Rinse the Nalgene Bottle and cap at least 3 times with the water to be sampled before filling
   \item Submerge bottle with the cap on it in an undisturbed location.
   \item Uncap the submerged bottle  to take subsurface water sample (avoid to take water from the surface) \cite{Montana08} 
   \item Cap the bottle with the bottle still submerged
   \item Store bottle up-right immediately in the cooler in order to avoid direct sun light \cite{Mueller1995}
   \item Once off the water, text to Nina or person in charge of the collection for example: ``Safe, Long Pond team''
+  \item Take the in-water optical measurements simultaneously
   \item Take water some water samples to the Monroe County Environmental Lab, if applicable.
   \item Place the sample bottles in the refrigerator as soon as possible
-  \item Filter water samples right after collection to preserve the chlorophyll and storage filters in the freezer as soon as possible
+  \item Filter water samples right after collection to preserve the chlorophyll and storage filters in the a $-80[F^\circ]$ freezer as soon as possible
 \end{enumerate}
 Notes: 
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
+  \item Never try to take samples alone. The team should be of at least two people
   \item Do not take any personal electronic device with you (recommended) to avoid dropping it on the water
   \item Storage car keys in zipped bag in you packet
   \item In case of bad weather conditions that do not allow paddle the canoes, take at least water samples from the Charlotte pier with the bucket
 \end{itemize}
 
 % -----------------------------------------------------------------------------
-\section{\texorpdfstring{$R_{rs}$}{Rrs}}
+\section{Remote-sensing Reflectance (\texorpdfstring{$R_{rs}$}{Rrs})}
 
 % method described by \cite{Mobley:1999} for measuring the spectra of the downwelling irradiance $E_d$, the surface reflected sky radiance $L_s$, and the water-leaving radiance $L_w$ for each site 
 
 This section describes how to take the remote-sensing measurement using a single instrument that measures radiance (spectroradiometer or spectrometer) such as a SVC \cite{SVCHR1024i} or an ASD \cite{ASDManual2012} instrument. This procedure is taken from \cite{Mobley:1999} and \cite{Mueller1995}. 
 
-Recall that the \gls{rrs} is defined as
+Recall that the \gls{rrs} (\autoref{eq:Rrs}) is defined as
 
-\begin{equation}\label{eq:Rrs}
+\begin{equation}\label{eq:RrsAppendix}
 	R_{rs}(\theta,\phi,\lambda)=\frac{L_w(\theta,\phi,\lambda)}{E_d(\lambda)}
 \end{equation}
 where $L_w$ is the water-leaving radiance in the polar and azimuthal directions $\theta$ and $\phi$, respectively, and $E_d$ is the downwelling spectral plane irradiance incident onto the water surface. A radiometer pointing down toward the water surface in direction $(\pi-\theta,\phi)$ does not directly measure $L_w$. Instead, it measures $L_w$  plus any incident sky radiance reflected $L_r$ by the water surface into the field of view of the sensor. This total radiance at the sensor $L_t$ is define as
@@ -93,16 +108,19 @@ Although $E_d$ could be measured directly with an appropriate sensor, it will be
 	L_g = (R_g/\pi)E_d\Rightarrow E_d = L_g*\pi/R_g
 \end{equation}
 
-Applying \autoref{eq:Lt} ,\autoref{eq:Lsky} and \autoref{eq:Lg} in \autoref{eq:Rrs} yields
+Applying \autoref{eq:Lt}, \autoref{eq:Lsky} and \autoref{eq:Lg} in \autoref{eq:RrsAppendix} yields
 
-\begin{equation}
+\begin{equation}\label{eq:RrsFinalAppendix}
 	R_{rs} = \frac{L_t-\rho L_{sky}}{\frac{\displaystyle \pi}{\displaystyle R_g}L_g}
 \end{equation}
 
-\subsection{ASD}
+Therefore, from \autoref{eq:RrsFinalAppendix}, there are three quantities that need to be measured in a consecutive order: $L_g$, $L_t$, and $L_{sky}$. The procedures for taking these three measurements in the field will be explained for both the ASD and the SVC instrument.
 
-The ASD should be in ``radiance mode''. Three different radiance measurements need to be taken:
-\begin{itemize}
+% ------------------------------------
+\subsection{\texorpdfstring{$R_{rs}$}{Rrs} measurement using the ASD}
+
+The ASD instrument should be the ``radiance mode''. Three different radiance measurements need to be taken:
+\begin{itemize}[itemsep=2pt,parsep=2pt]
 	\item $L_g$: pointing the Spectralon
 
 Description: $L_g$ is measured with the sensor pointing downward in the same direction as is used in viewing the water surface (see \autoref{fig:Ltmea}), while the Spectralon is inserted into the sensor FOV. The Spectralon should be normal to the water surface.
@@ -131,10 +149,11 @@ Description: $L_{sky}$ is measured with the sensor pointing upward toward the sk
 
 \end{itemize}
 
-\subsection{SVC}
+% ------------------------------------
+\subsection{\texorpdfstring{$R_{rs}$}{Rrs} measurement using the SVC}
 The same three radiance measurements described above need to be taken:
 
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
 	\item $L_g$: pointing the Spectralon
 
 Description: The measurement is taken in the same fashion described in the previous section and it is taken only once per site. When the SVC instrument is used in ``reflectance mode'', it is necessary to measure first an standard measurement (Spectralon measurement). This standard measurement is the $L_r$ and is recorded internally in the ``sig'' file. Therefore, $L_r$ needs to be extracted from the later from the ``sig'' file. 
@@ -149,8 +168,11 @@ Description: $L_{sky}$ is measured in the same fashion described in the previous
 
 \end{itemize}
 {\bf Notes:}
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
+  \item A good way to find these angles in the field is to find your shadow, and point the instrument $-45^\circ$ or $45^\circ$ from it, which is equivalent to $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$.
+
 	\item Wear dark clothes, preferable black, to avoid contamination from adjacent objects.
+
 	\item Avoid any reflection from nearby objects in the boat or ship by covering the ship's side with a black turf. 
 \end{itemize}
 
@@ -159,6 +181,8 @@ Description: $L_{sky}$ is measured in the same fashion described in the previous
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \chapter{Lab Measurements}
 \label{ch:labmea} 
+
+This part of the appendix describes how to take the lab measurements from the water samples. \autoref{fig:ProtocolsDiagram} shows a diagram of the different methods. These measurements included concentration and spectral absorption coefficients of particles, dissolved material and phytoplankton (\gls{cpas}).
 
 
 \begin{figure}[htb]
@@ -176,84 +200,143 @@ Description: $L_{sky}$ is measured in the same fashion described in the previous
 % -----------------------------------------------------------------------------
 \section{IOPs}
 %*******************************
-\subsection{Chlorophyll absorption coefficients}
-The spectrophotometric methods are described by \cite{Mitchell2002} and \cite{Cleveland1993}.
-%*******************************
-\subsection{Minerals absorption coefficients}
+The \gls{iops}, specifically the spectral absorption coefficients, are obtained from spectrophotometric measurements of samples prepared from filtration of water samples. These methods are described by \cite{Mitchell2002}. In brief, the total absorption coefficient for natural water can be defined as \cite{Mitchell2002}
+\begin{equation}
+  a_{total}(\lambda) = a_w(\lambda) + a_p(\lambda) + a_g(\lambda)~~[m^{-1}] 
+\end{equation}
+\noindent where $a_w(\lambda)$, $a_p(\lambda)$, and $a_g(\lambda)$ are the spectral absorption coefficients of water, particles, and soluble components, respectively. $a_p(\lambda)$ can be decomposed as
+\begin{equation}
+  a_p(\lambda) = a_\phi(\lambda) + a_d(\lambda)~~[m^{-1}] 
+\end{equation}
+\noindent where $a_\phi(\lambda)$ and $a_d(\lambda)$ are the spectral absorption coefficients of phytoplankton and de-pigmented particles, respectively. $a_\phi$, $a_d$, $a_g$ are referred in \autoref{eq:atotal} as $a_{Chl}$, $a_{SM}$ and $a_{CDOM}$, respectively. The main idea is to first measure $a_p(\lambda)$ and $a_d(\lambda)$ from a dual-beam spectrophotometer, and then obtain $a_\phi(\lambda)$ as $a_\phi(\lambda)=a_p(\lambda)$ - $a_d(\lambda)$.
+
+A dual-beam spectrophotometer is an instrument that measures the amount of light that passes a medium, i.e. transmittance, using two paths, one for the reference, and one for the sample. The spectrophotometer used was a Shimadzu \gls{uv}-\gls{vis} recording spectrophotometer, model UV-2100U. One the output of the instrument is the dimensionless quantity \gls{od} (a.k.a. absorbance). 
+
+The water sample is filtered, and a $OD_{fp}(\lambda)$ is measured using the spectrophotometer. $OD_{fp}(\lambda)$ is a measurement of the \gls{od} of the retained particles. Then, the filter is soaked in chemical solvent to extract phytoplankton pigments \cite{Kishino1985cj}. At this point, the filter only retained the de-pigmented particles, and $OD_{fd}(\lambda)$ is measured. The conversion from \gls{od} to absorption coefficients is \cite{Cleveland1993}
+\begin{equation}
+  a_p = \frac{\displaystyle 2.3 OD_{susp}(\lambda)}{V/A}
+\end{equation}
+\noindent where 2.3 is a conversion from $\log$ base $10$ to $\log$ base $e$, $V~[m^3]$ is the volume filtered, $A~[m^2]$ is the clearance area of the filter. $OD_{susp}$ is obtained from $OD_{fp}$ or $OD_{fd}$ after a scattering correction for glass-fiber filter proposed by \cite{Cleveland1993} as
+\begin{equation}
+   OD_{susp}(\lambda) = 0.378 (OD_{fp}(\lambda)-OD_{fp}(750nm)) + 0.523 (OD_{fp}(\lambda)-OD_{fp}(750nm))^2
+ \end{equation} 
+ \noindent where $OD_{fp}$ is the optical density of the filter before methanol extraction. $a_d$ is obtained in a similar fashion. In the following section, the procedure to measure $OD_{fp}$ and $OD_{fd}$ in the lab are presented.
+
+
+\subsection{Mineral and Chlorophyll absorption coefficients}
+
+% %*******************************
+% \subsection{Minerals absorption coefficients}
 
 %*******************************
 \subsubsection{Equipment}
 %*******************************
 \subsubsection*{Filtration}
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
   \item Vacuum pump
   \item Filter tower (filter funnel stem, filter base, funnel, filter cup)
   \item Whatman Binder-Free Glass Microfiber Filters: Type GF/F - Diameter: 2.5cm
   \item Forceps
+  \item Graduated cylinder
 \end{itemize}
 %*******************************
 \subsubsection*{Measurement}
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
   \item Spectrophotometer
-  \item {\color{red} Two lenses support}
-  \item Squirt bottle with {\color{red} DIW} or small pipette with {\color{red} DIW} 
-  \item Methanol
+  \item Two-lenses support
+  \item Squirt bottle with purified water (e.g. \gls{diw})
+  \item Purified water
+  \item Small pipette 
+  \item Hot Methanol
+\end{itemize}
+%*******************************
+\subsubsection*{Lab Safety}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
+  \item Lab coat
+  \item Gloves
+  \item Goggles
 \end{itemize}
 %*******************************
 \subsubsection{Procedure}
 %*******************************
-\begin{enumerate}
+\begin{enumerate}[itemsep=2pt,parsep=2pt]
   \item Turn the spectrophotometer on at least 30 minutes before measuring
-  \item Set the spectrophotometer parameters in the UV-2101PC software menu: Configure > Parameters...
-  \item Select the Serial Port to be use for communication with the instrument. Go to: Configure > PC Configuration... In the PC Configuration Parameters, select Photometer Serial Port and click OK
-  \item From the menu, go to Configure > Utilities. In the System Utilities window, Turn Photometer On and press OK
-  \item Pour DIW water to two GF/F Whatman filters and stick them in the two lenses support. Both filter should have the same amount of water. Add water with the pipette or the squirt bottle
-  \item Place the two lenses support in the spectrophotometer
+  \item Set the spectrophotometer parameters in the UV-2101PC software menu: Configure $>$ Parameters... to (suggested):
+  \begin{itemize}[itemsep=2pt,parsep=2pt]
+    \item Measuring Mode: Abs
+    \item Wavelength Range [nm]: Start 900 To End 400
+    \item Scan Speed: Medium
+    \item Slit Width [nm]: 5.0
+    \item Sampling interval [nm]: 1.0
+    \item Click OK
+  \end{itemize}
+  \item Select the Serial Port number to be used for communication with the instrument. Go to: Configure $>$ PC Configuration... In the PC Configuration Parameters, select Photometer Serial Port number where the instrument is connected and click OK
+  \item Initialize the instrument. From the menu, go to Configure $>$ Utilities. In the System Utilities window, Turn Photometer On and press OK. A new initialization window that check the system pops up. Wait until it is finished. Note: make sure the beam paths are empty before initialize the instrument
+  \item Pour DIW water to two GF/F Whatman filters and stick them in the two-lenses support. Both filter should have the same amount of water. Add water with the pipette or the squirt bottle
+  \item Place the two-lenses support in the spectrophotometer
   \item Press the Baseline button in the UV-2101PC software
-  \item Perform an scanner to see the baseline level of the instrument by pressing the "Start" button in the software
-  \item Press the "Go To WL" button of the software and type $850 [nm]$. Press the "Auto Zero" button of the software (optional)
-  \item Invert water sample bottle a couple of times to mix by turbulence and ensure large particles that settle are re-suspended (\cite{Mitchell2002})
-  \item \label{item:place_filter} Using the forceps, place the filter on the filter base and place the filter cup on the base. \textbf{Record volume filtered}. 
-  \item \label{item:filtration} Turn the vacuum pump on and turn the knob $90^\circ$ to allow filtration. Once all the water pass through the filter, turn the know $90^\circ$ back and the turn the vacuum pump off
-  \item Using the forceps, take the filter with just water from the two lenses support and storage it for future baselines. Do not remove the blank filter ({\color{red} OR reference filter}) for the whole measurement session
-  \item \label{item:place_filter_spec} Using the forceps, take the sample filter from the filtering tower. Add one or a few water drops to the sample filter and stick in the two lenses support. 
-  \item  Measure absorbance in the spectrophotometer by pressing the "Start" button of the software and save data. This will be the $OD_{filt}$ measurement
+  \item Perform an scanner to see the baseline level of the instrument by pressing the ``Start'' button in the software
+  \item Press the ``Go To WL'' button of the software and type $850 [nm]$. Press the ``Auto Zero'' button of the software (optional)
+  \item Shake water sample bottle a couple of times to mix by turbulence and ensure large particles that settle at the bottom are re-suspended \cite{Mitchell2002}
+  \item \label{item:place_filter} Using the forceps, place the filter on the filter base and place the filter cup on the base. 
+  \item Pour the desired amount of water in a graduated cylinder
+  \item \label{item:filtration} Turn the vacuum pump on and turn the knob $90^\circ$ to allow filtration. Once all the water pass through the filter, turn the know $90^\circ$ back and the turn the vacuum pump off. \textbf{Record volume filtered}
+  \item Using the forceps, take the filter used for the baseline (closer to the front of the instrument) from the two-lenses support and storage it for future baselines. Do not remove the reference filter (closer to the back of the instrument) for the whole measurement session
+  \item \label{item:place_filter_spec} Using the forceps, take the sample filter from the filtering tower and stick in the two lenses support. Add one or a few water drops to the sample filter if needed 
+  \item  Measure absorbance in the spectrophotometer by pressing the ``Start'' button of the software. This will be the $OD_{fp}$ measurement
+  \item Once the scan is finished, input a name for the file and press OK
   \item Using the forceps, remove carefully the sample filter from two lenses support avoiding to break it and place in the filter tower as in step \ref{item:place_filter}
-  \item Pour enough solvent {\color{red} to sumerge} the filter in the filter cup. {\color{red} Wait 5 min} and then filter as in step \ref{item:filtration}
+  \item Pour enough solvent (hot methanol) to soak the filter in the filter cup, and filter methanol. The solvent should be disposed in a different flask from the only water filtering
+  \item Pour enough solvent (hot methanol) to soak the filter in the filter cup.  Wait 10 min. Check level of solvent frequently and add more if needed. Then, filter as in step \ref{item:filtration}
+  \item Pour some purified water and filter again\todo{look reference!}
   \item Repeat step \ref{item:place_filter_spec}
-  \item Measure absorbance in the spectrophotometer by pressing the "Start" button of the software and save data. This will be the $OD_{no~pig}$ measurement 
+  \item Measure absorbance in the spectrophotometer by pressing the ``Start'' button of the software. This will be the $OD_{fd}$ measurement 
   \item Record the area of filtration in the sample filter
-  \item[]Note: The instrument only allows to save four measurement at the time. To save measurement, go to File > Data Translation > ASCII Export... {\color{red} Select channels to be saved, name files and press OK}
+  \item To save measurement, go to File $>$ Data Translation $>$ ASCII Export...  Select channels to be saved
 \end{enumerate}
-%*******************************
-\subsubsection{Calculations}
+
+Notes:
+\begin{itemize}[itemsep=2pt,parsep=2pt]
+  \item Avoid light exposure to the filters when filtering water samples to avoid pigment degradation
+  \item The instrument only allows to save 10 measurement, or channels, at the time. 
+  \item Add sporadically purified water drops to the reference filter to avoid it to dry
+  \item Repeat baseline measurement if needed
+\end{itemize}  
+{\bf Warning:}  Use of how methanol is risky due to flammability, and volatility. Extra precautions must be taken!!!
+% %*******************************
+% \subsubsection{Calculations}
 
 
 %*******************************
 \subsection{CDOM absorption coefficients}
+\todo{complete!}The spectral absorption coefficient are calculated as \cite{Mitchell2002}
+\begin{equation}
+  a_g=2.303 \frac{(OD_s(\lambda)-OD_s(\lambda_{NIR}))}{l}~~[m^{-1}]
+\end{equation}
+\noindent where $OD_s(\lambda)$ is the \gls{od} of the sample measured with spectrophotometer, $\lambda_{NIR}$ is a wavelength in the \gls{nir} where the absorption by dissolved materials is assumed to be zero ,and $l$ the cuvette pathlength in meters.
+
 %*******************************
 \subsubsection{Equipment}
 %*******************************
 \subsubsection*{Filtration}
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
   \item Whatman GD/X 13 and 25mm Disposable Syringe Filters - Nylon $0.2[\mu m]$ Nylon
-  \item {\color{red}Syringe}
+  \item Syringe
+  \item Small glass beakers or small graduated cylinders
 \end{itemize}
 \subsubsection*{Measurement}
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
   \item Spectrophotometer (Shimadzu UV2100V - Dual beam spectrophotometer)
-  \item Blank cell
-  \item Sample cell
+  \item 2 clean quartz glass optical cuvettes (a.k.a. cells)
   \item Purified water
-  \item Ethanol
 \end{itemize}
 %*******************************
 \subsubsection{Procedure}
 %*******************************
-\begin{enumerate}
-  \item \textbf{Turn the Spectrophotometer on at least one hour before measuring}. It needs to be warmed up for optimal measurements.
-  \item Wash the syrenge filter out 3 times with purified water
-  \item Rinse cells a couple of times with a small amount of ethanol by shaking it (optional, if the cells seem dirty)
+\begin{enumerate}[itemsep=2pt,parsep=2pt]
+  \item \textbf{Turn the Spectrophotometer on at least 30 minutes before measuring}. It needs to be warmed up for optimal measurements.
+  \item Wash the syringe filter out 3 times with purified water
+  \item Rinse cells a couple of times with a small amount of ethanol or acetone by shaking it (optional, if the cells seem dirty)
   \item Use cotton sweep to clean internal face (optional, if face seems dirty)
   \item Rinse cell with purified water
   \item Clean and dry the external surface of the cells with optics paper. Be careful with scratching the surface, specially the front and bottom faces
@@ -264,25 +347,25 @@ The spectrophotometric methods are described by \cite{Mitchell2002} and \cite{Cl
   \item Press ``Auto Zero'' button in the spectrophotometer software
   \item Press ``Baseline'' button in the spectrophotometer software
   \item Fill sample cell with filtered water from the syringe filter
-  \item Press start button
-  \item Save Channel in the spectrophotometer software
-  \item Go to Data Translation > ASCII Export in spectrophotometer software
+  \item Press start button to start scan. This measurement is $OD_s(\lambda)$
+  \item Save Channel in the spectrophotometer software. Go to Data Translation $>$ ASCII Export in spectrophotometer software
 \end{enumerate}
-\textbf{Important:} the samples should be at room temperature. The absorbance measurement is sensible to temperature changes.
+\textbf{Important:} the samples should be at room temperature. The \gls{od} measurement is sensible to temperature changes. Filter the water samples in advance and let them reach room temperature. It could take hours.
+% %*******************************
+% \subsubsection{Data treatment}
 %*******************************
-\subsubsection{Data treatment}
-%*******************************
-\begin{itemize}
-  \item Absorbance: $A=-\ln{\displaystyle\frac{1}{T}}$ 
-  \item Substract bias before convert to coefficients
-  \item $a_{CDOM}=2.303~A(\lambda)/L~~[m^{-1}]$ where $A(\lambda)$ is the absorbance and $L$ the pathlength of the absorbance cell in meters.
-\end{itemize}
+
 % -----------------------------------------------------------------------------
 \section{Concentrations}
+% ------------------------------
 \subsection{Chlorophyll-{\it a} concentration}
 
-\todo{Show comparison of Monroe county to RIT Lab}Methods described by \cite{Lorenzen:1967fk} and \cite{Ritchie:2008eu}.
 
+\todo{Show comparison of Monroe county to RIT Lab}Methods described by \cite{Lorenzen:1967fk} and \cite{Ritchie:2008eu}.
+% ------------------------------
+\subsubsection{Procedures}
+The procedures are described by \cite{Tyler2013_chl_protocol}
+% ------------------------------
 \subsubsection{Calculations}
 
 The calculations used \cite{Lorenzen:1967fk} are:
@@ -296,8 +379,8 @@ The calculations used \cite{Lorenzen:1967fk} are:
 \end{equation}
 
 \noindent where: \\
-$665_o = 665 - (750-blank~value)~before~acidification$\\
-$665_a = 665 - (750-blank~value)~after~acidification$  \\
+$665_o = 665 - (750-blank~value)$ before acidification\\
+$665_a = 665 - (750-blank~value)$ after acidification  \\
 $v = $ volume of extract in mililiters $[ml]$ \\
 $V = $ volume of water filtered in liters $[L]$ \\
 $l = $ pathlength of cuvette ($1cm$ for the cuvette used) \\
@@ -310,7 +393,7 @@ Note: concentrations are in $[mg/m^3]$ or $[\mu g/L]$.
 \subsubsection{Equipment}
 %*******************************
 % \subsubsection*{Filtration}
-\begin{itemize}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
 
   \item TCLP filters ($47 mm$, $0.7\mu m$)
   \item Vacuum
@@ -323,18 +406,21 @@ Note: concentrations are in $[mg/m^3]$ or $[\mu g/L]$.
 %*******************************
 \subsubsection{Procedure}
 %*******************************
-\begin{enumerate}
+\begin{enumerate}[itemsep=2pt,parsep=2pt]
   \item Weight filters before filtering
   \item Record volume to filter. Use graduated cylinder
   \item Use vacuum to filter water with the TCLP filters to filter the particles
   \item Weight filter in balance
-  \item Put in aluminium foil with weight
+  \item Put in aluminum foil with weight
   \item Dry sample at $75^\circ C$ for a couple of hours
 \end{enumerate}
 
+ %*******************************
+\subsubsection{Calculations}
+From \cite{Tyler2013_SPM_protocol}:
 
 \begin{equation}
-SPM_{\displaystyle concentration} = \frac{[final~filter~weight~(mg) - tare~filter~weight~(mg)]}{volume~filtered~(L)}~~~\left[\frac{mg}{L}\right]
+TSS = \frac{[final~filter~weight~(mg) - tare~filter~weight~(mg)]}{volume~filtered~(L)}~~~\left[\frac{mg}{L}\right]~or~\left[\frac{g}{m^3}\right]
 \end{equation}
 
 
