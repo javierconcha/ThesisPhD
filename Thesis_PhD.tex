@@ -1,5 +1,5 @@
 % \documentclass[draft]{book}
-\documentclass[]{book}
+\documentclass[draft]{book}
 
 \usepackage{graphicx}
 
@@ -111,8 +111,8 @@
 
 % Added 11-17-13 ----------------------------------------
 % Select what to do with todonotes: 
-\usepackage[disable]{todonotes} % notes not showed
-% \usepackage[draft]{todonotes}   % notes showed
+% \usepackage[disable]{todonotes} % notes not showed
+\usepackage[draft]{todonotes}   % notes showed
 \setlength{\marginparwidth}{2cm}
 
 \usepackage{tikz} % for flow charts
@@ -265,6 +265,16 @@
   belowskip=-12pt
 }
 
+% Added 11-05-15 ----------------------------------------
+% \usepackage[round]{natbib} 
+% from
+% http://tex.stackexchange.com/questions/117428/get-round-brackets-with-apalike
+% o your preamble. For regular in text citations, use
+
+% \citet{<key>} % or \cite{<key>}
+% and for citations enclosed in parentheses use
+
+% \citep{<key>}
 %%%%%%%%%%%%%%
 %******************************************************************************************************
 %******************************************************************************************************
