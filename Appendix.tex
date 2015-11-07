@@ -357,11 +357,43 @@ Notes:
 
 % -----------------------------------------------------------------------------
 \section{Concentrations}
+
+% N [69  70]  [71  71]  [71  56]
+% RMSE 13.70   8.53    10.92 
+% Chl corr    Chl uncorr    TSS
+%^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+\begin{figure}[htb!]
+  \begin{minipage}[c]{0.48\linewidth}
+  \centering
+  % CHL
+      \begin{overpic}[trim=0 0 0 0,clip,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/ChlCompRIT_County.pdf}  
+  \put (90,70) {(a)}
+      \end{overpic}   
+  \end{minipage}
+  % TSS
+  \begin{minipage}[d]{0.48\linewidth}
+  \centering
+      \begin{overpic}[trim=0 0 0 0,clip,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/ChlCompRIT_CountyUncorr.pdf}
+  \put (90,70) {(b)}
+      \end{overpic}   
+  \end{minipage}
+
+  \vspace{0.7cm}
+  % CDOM
+  \begin{minipage}[c]{1.0\linewidth}
+  \centering
+      \begin{overpic}[trim=0 0 0 0,clip,width=7cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSCompRIT_County.pdf}  
+  \put (90,70) {(c)}
+      \end{overpic}   
+  \end{minipage}
+
+  \caption{Comparison of Monroe County Lab versus RIT measurements for (a) chlorophyll-{\it a} corrected for pheophytin, (b) uncorrected chlorophyll-{\it a}, and (c) TSS. \label{fig:RIT_County_Comp} } 
+\end{figure}
+
 % ------------------------------
 \subsection{Chlorophyll-{\it a} concentration}
 
-
-\todo{Show comparison of Monroe county to RIT Lab}Methods described by \cite{Lorenzen:1967fk} and \cite{Ritchie:2008eu}.
+Methods described by \cite{Lorenzen:1967fk} and \cite{Ritchie:2008eu}.
 % ------------------------------
 \subsubsection{Procedures}
 The procedures are described by \cite{Tyler2013_chl_protocol}.
