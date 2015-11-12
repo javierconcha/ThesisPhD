@@ -36,9 +36,37 @@
 	
 	% \usetheme{Warsaw}
 	\usetheme{Frankfurt}
+	% \usetheme{Singapore}
 	% \usetheme{Boadilla}
+
+
+
 	\setbeamertemplate{navigation symbols}{} 
 	\setbeamertemplate{mini frames}{}
+	\setbeamertemplate{frametitle}[default][center]
+
+\setbeamertemplate{headline}{%
+\leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=1.125ex]{palette quaternary}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}
+    \end{beamercolorbox}%
+  }
+}
+
+\setbeamerfont{headline}{size=\tiny}
+% \setbeamertemplate{section in head/foot shaded}[default][20]
+% \usesectionheadtemplate
+%   {\hfill{\bfseries\insertsectionhead}}
+%   {\hfill\color{fg!30!bg}\insertsectionhead}
+
+\definecolor{SectionBox}{RGB}{255,255,255}
+
+\setbeamertemplate{section in head/foot}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[rectangle,fill=SectionBox!90,rounded corners=2pt,inner sep=2pt](P){\textcolor{black}{\bfseries\insertsectionhead}};}
+\setbeamertemplate{section in head/foot shaded}{\textcolor{fg!50!bg}{\hfill\insertsectionhead}}
+
+
+
 	% \useoutertheme{infolines} 
 \setbeamertemplate{footline}{\hbox{\vspace{0.1cm}\hspace*{12.2cm} \hfill\insertframenumber}} 
 
@@ -48,7 +76,8 @@
 
 % \usecolortheme{lily}
 
-% \usecolortheme{default}
+% \usecolortheme{wolverine}
+% \useinnertheme{circles}
 \usecolortheme{cranejavier}
 
 
@@ -220,7 +249,7 @@
 \end{frame}
 
 % ------------------------------ SUBSECTION ----------------------------------------------
-\subsection*{Landsat 8}
+% \subsection*{Landsat 8}
 % ----------------------------------- Slide ----------------------------------------------
 \begin{frame}{\LARGE Why Landsat 8?} 
 \vspace{-.5cm}
@@ -348,7 +377,7 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Atmospheric Correction}
-\subsection*{}
+% \subsection*{}
 % --- slide ------------------------------------------------
 \begin{frame}{\LARGE Standard Atmospheric Correction}{\Large NASA's \cite{Gordon:1994} Methods}
 
@@ -903,7 +932,7 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section[CPA Retrieval]{CPA Retrieval}
-\subsection*{}
+% \subsection*{}
 % ----------------------------------- Slide ----------------------------------------------
 \begin{frame}{\LARGE CPA Retrieval Process} 
 
@@ -1225,7 +1254,7 @@ $n=1\dots N$: number of samples.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
-\subsection*{Conclusions}
+% \subsection*{Conclusions}
 % ----------------------------------- Slide ----------------------------------------------
 \begin{frame}{\LARGE Summary}
 \Large
@@ -1300,7 +1329,7 @@ $n=1\dots N$: number of samples.
 \section{Additional Material}
 % ----------------------------------- Slide ----------------------------------------------
 % ------------------------------ SUBSECTION ----------------------------------------------
-\subsection*{Field Collection and Lab Measurements}
+% \subsection*{Field Collection and Lab Measurements}
 \begin{frame}{\LARGE Field Collection} 
 \begin{figure}[htb]
   \centering
