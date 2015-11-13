@@ -17,6 +17,7 @@
 	\usepackage{tikz} % for flow charts
 	\usetikzlibrary{shapes,arrows,positioning,shadows,calc}
 
+
 \usepackage{filecontents}% http://ctan.org/pkg/filecontents
 \usepackage{silence}% http://ctan.org/pkg/silence
 \WarningFilter{latex}{Overwriting file}% Remove LaTeX warnings starting with "Overwriting file"
@@ -32,23 +33,22 @@
 8 20
 \end{filecontents*} 
 
-	\renewcommand<>{\item}[1]{\only#2{\beameroriginal{\item}{#1}}} % for replace a equation for other equation in the same place
-	
-	% \usetheme{Warsaw}
-	\usetheme{Frankfurt}
-	% \usetheme{Singapore}
-	% \usetheme{Boadilla}
+\renewcommand<>{\item}[1]{\only#2{\beameroriginal{\item}{#1}}} % for replace a equation for other equation in the same place
 
+% ---------- FRAME THEME -------------
+% \usetheme{Warsaw}
+\usetheme{Frankfurt}
+% \usetheme{Singapore}
+% \usetheme{Boadilla}
 
-
-	\setbeamertemplate{navigation symbols}{} 
-	\setbeamertemplate{mini frames}{}
-	\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{mini frames}{}
+\setbeamertemplate{frametitle}[default][center]
 
 \setbeamertemplate{headline}{%
 \leavevmode%
   \hbox{%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=1.125ex]{palette quaternary}%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=0.7ex]{palette quaternary}%
     \insertsectionnavigationhorizontal{\paperwidth}{}{}
     \end{beamercolorbox}%
   }
@@ -60,30 +60,28 @@
 %   {\hfill{\bfseries\insertsectionhead}}
 %   {\hfill\color{fg!30!bg}\insertsectionhead}
 
-\definecolor{SectionBox}{RGB}{255,255,255}
+\definecolor{RITorange}{RGB}{243,110,33}
 
-\setbeamertemplate{section in head/foot}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[rectangle,fill=SectionBox!90,rounded corners=2pt,inner sep=2pt](P){\textcolor{black}{\bfseries\insertsectionhead}};}
-\setbeamertemplate{section in head/foot shaded}{\textcolor{fg!50!bg}{\hfill\insertsectionhead}}
+\setbeamertemplate{section in head/foot}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[trapezium,fill=RITorange,rounded corners=2pt,inner sep=2.5pt](P){\textcolor{black}{\bfseries\insertsectionhead}};}
 
+\setbeamertemplate{section in head/foot shaded}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[trapezium,draw=RITorange,fill=white,rounded corners=2pt,inner sep=2.5pt](P){\textcolor{fg!70!bg}{\insertsectionhead}};}
+% \setbeamertemplate{section in head/foot shaded}{\textcolor{fg!70!bg}{\hfill\insertsectionhead}}
 
-
-	% \useoutertheme{infolines} 
+% \useoutertheme{infolines} 
 \setbeamertemplate{footline}{\hbox{\vspace{0.1cm}\hspace*{12.2cm} \hfill\insertframenumber}} 
 
 \def\braces#1{[#1]} % to define square parenthesis 
 	
 % \usecolortheme{orchid}
-
 % \usecolortheme{lily}
-
 % \usecolortheme{wolverine}
 % \useinnertheme{circles}
 \usecolortheme{cranejavier}
 
-
-
 % \setbeamertemplate{footline}[frame number]
 % \setbeamertemplate{footline}[page number]
+
+% ------------------------------------------------------
 
 % My packages
 % added on 08-03-15
@@ -162,14 +160,19 @@
 %\setbeamercovered{transparent}
 \setbeamercovered{still covered={\opaqueness<1->{2}},again covered={\opaqueness<1->{2}}}
 
-% ----------------------------------- Slide ----------------------------------------------	
+% ----------------------------------- Slide -------------------------------------	
 
 % \addtobeamertemplate{frametitle}{}{%
 % \begin{textblock*}{90mm}(8.2cm,-0.5cm)
 % % \includegraphics[height=0.5cm]{/Users/javier/Desktop/Javier/MASTER_RIT/SPIE2012/Slides/rit_white_no_bar.jpg}
 % \includegraphics[height=0.4cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2014_ASPRS_SOY/Images/RIT_LOGO.png}
 % \end{textblock*}}
-% ----------------------------------- Slide ----------------------------------------------	
+% ----------------------------------- Slide -------------------------------------	
+{
+\setbeamertemplate{headline}{}
+\addtobeamertemplate{frametitle}{\vspace*{-0.5\baselineskip}}{}
+
+
 \begin{frame}{\LARGE Motivation} 
 \vspace{-.5cm}
 \begin{columns}[c] % contents are top vertically aligned
@@ -194,7 +197,8 @@
 		\includegraphics[height=4cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2014_ASPRS_SOY/Images/DiffResol.png}
 \end{figure}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+}
+% ----------------------------------- Slide -------------------------------------
 {
 \setbeamertemplate{footline}{} 
 \begin{frame}{\Large Atmospheric Correction for Landsat 8 over Case 2 Waters} 
@@ -208,7 +212,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Goal}
 \subsection*{Goal}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Big Picture} 
 \begin{itemize}
 \LARGE
@@ -228,7 +232,7 @@
 \end{itemize}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Why Atmospheric Correction is important for Water Studies?} 
  \begin{columns}[c] % contents are top vertically aligned
   	\begin{column}[T]{5cm} % each column can also be its own environment
@@ -247,10 +251,61 @@
 \vspace{.5cm}
 \hspace{4cm}{\scriptsize $*~$Images from: http://www.oceanopticsbook.info/}
 \end{frame}
+% ----------------------------------- Slide ------------------------------------
+\begin{frame}[t]\frametitle{\LARGE Flowchart}
+\setbeamercovered{invisible}
+\vspace{0.5cm}
+\begin{figure}[!ht]
+  \centering
+\hspace*{-15pt}\makebox[\linewidth][c]{%  
+% \resizebox{11cm}{!}{%
+% Define block styles
+\small
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2em, minimum height=2em,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1em, minimum height=3em, text width=3em, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=2em, minimum height=2em, text width=5em, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=2em, minimum height=2em, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
-% ------------------------------ SUBSECTION ----------------------------------------------
+\begin{tikzpicture}[node distance=7em]
+
+% \node (start) [startstop] {Start};
+% step 1
+\pause
+\node (L8image) [io] {Landsat \\Image};
+\node[inner sep=0pt,above of=L8image]
+    {\includegraphics[width=.3\textwidth]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80170302014272LGN00_AreaOfStudy.png}};\pause
+% step 2
+\node (prepro) [process, right of=L8image] {Image \\pre-processing};
+\draw [arrow] (L8image) -- (prepro);\pause
+% step 3
+\node (AtmCorr) [process, right of=prepro] {Atmospheric Correction};
+\draw [arrow] (prepro) -- (AtmCorr);\pause
+% step 4
+\node (RetProc) [process, right of=AtmCorr] {Retrieval Process};
+\draw [arrow] (AtmCorr) -- (RetProc);\pause
+% step 5
+\node (CPAmap) [io, right of=RetProc] {CPA \\maps};
+\node[inner sep=0pt,above of=CPAmap]
+    {\includegraphics[trim=0 0 0 30,clip,width=.25\textwidth]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/TSSmap140929_150420}};
+\draw [arrow] (RetProc) -- (CPAmap);\pause
+% step 6
+\node (Val) [process, below of=CPAmap, yshift=2em] {Validation};
+\draw [arrow] (CPAmap) -- (Val);
+
+% \node[align=left, below=0.0 of prepro] (List1) {\scriptsize - Cloud/Land/Water Mask\\\scriptsize - Radiometric Calibration};
+
+
+\end{tikzpicture}
+% } % resizebox end
+} % makebox end
+% \caption{High-level flowchart of the process. \label{fig:highlevelflowchart}}
+\end{figure}
+
+\end{frame}
+% ----------------- SUBSECTION ----------------------------------------------
 % \subsection*{Landsat 8}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Why Landsat 8?} 
 \vspace{-.5cm}
 \begin{itemize}
@@ -271,7 +326,7 @@
 \end{itemize}
 
 \end{frame}
-% % ----------------------------------- Slide ----------------------------------------------
+% % ----------------------------------- Slide -------------------------------------
 % \begin{frame}{\LARGE Landsat 8} 
 
 % \begin{figure}[H]
@@ -279,7 +334,7 @@
 % \end{figure}
 
 % \end{frame}
-% % ----------------------------------- Slide ----------------------------------------------
+% % ----------------------------------- Slide -------------------------------------
 % \begin{frame}{\LARGE Landsat 8 Image} 
 
 
@@ -390,7 +445,7 @@
 
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Which Atmospheric Correction?}{\Large Empirical Line Method (ELM)} 
  \begin{columns}[c] % contents are top vertically aligned
   	\begin{column}[T]{5cm} % each column can also be its own environment
@@ -456,7 +511,7 @@
 	% \item Linear relationship between radiance $L$ and reflectance $r_d$ 	
 \end{itemize}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Our Approach:} 
 {\Large Model-Based ELM (MoB-ELM)}
 
@@ -481,7 +536,7 @@
 \footnotetext[2]{Region of interest}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Model-Based ELM} 
 {\vspace{.1cm} \Large Bright Pixel -- Pseudo-Invariant Features}
 
@@ -505,7 +560,7 @@
 \end{figure}
 \end{frame}
 
-% % ----------------------------------- Slide ----------------------------------------------
+% % ----------------------------------- Slide -------------------------------------
 % \begin{frame}{\LARGE Atmospheric Correction} 
 % {\Large PIFs -- Bright Pixel}
 
@@ -530,7 +585,7 @@
 %   % \caption{PIF mask determination. (a) False color image, with vegetation in red and (b) PIF mask over downtown Rochester. \label{fig:PIFmask} } 
 % \end{figure}
 % \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Model-Based ELM} 
 {\vspace{.1cm} \Large Dark Pixel -- Hydrolight}
 
@@ -539,7 +594,7 @@
 \end{figure}
 \hspace{5cm}{$*~$IOPs: Inherent Optical Properties}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Model-Based ELM} 
 {\vspace{.1cm} \Large Dark Pixel -- Hydrolight}
 
@@ -559,7 +614,7 @@
 \end{columns}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Model-Based ELM}{\vspace{.1cm} \Large Bright and Dark Pixel}
 
 \begin{figure}[htb]
@@ -581,7 +636,7 @@
 
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Model-Based ELM}{\vspace{.1cm} \Large Results}
 
 \begin{figure}[htbp!]
@@ -591,7 +646,7 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Corrections Comparison}
 \LARGE
 \begin{itemize}\itemsep.5cm
@@ -613,7 +668,7 @@
 \end{block}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Corrections Comparison @ $443nm$}
 \tiny
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -658,7 +713,7 @@
 
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Corrections Comparison @ $561nm$}
 \tiny
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -705,7 +760,7 @@
 
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Corrections Comparison @ $443nm$}%{\Large Methods Comparison }
 % \tiny
 \vspace{-.3cm}
@@ -765,7 +820,7 @@
 
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Corrections Comparison @ $561nm$}
 \vspace{-.3cm}
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -827,7 +882,7 @@
 \end{frame}
 
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Correction Methods} 
 {\Large Comparison with Field Data}
 % \centerline{\LARGE Bright and Dark Pixel}
@@ -873,7 +928,7 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Correction Methods} 
 {\Large Comparison with Field Data}
 % \centerline{\LARGE Bright and Dark Pixel}
@@ -891,7 +946,7 @@
 	 	$n=1\dots N$: number of samples.
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Correction Methods} 
 {\Large Comparison with Field Data}
 % \centerline{\LARGE Bright and Dark Pixel}
@@ -933,7 +988,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section[CPA Retrieval]{CPA Retrieval}
 % \subsection*{}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE CPA Retrieval Process} 
 
 \begin{figure}[H]
@@ -941,7 +996,7 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 
 \begin{frame}{\LARGE CPA Retrieval}{\vspace{0.1cm} \large RIT's Spectral Matching and LUT Algorithm}
 % \begin{block}{\footnotesize LUT}
@@ -991,7 +1046,7 @@
 % \end{block}
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 
 \begin{frame}{\LARGE CPA Retrieval}{\vspace{0.1cm} \large RIT's Spectral Matching and LUT Algorithm}
 
@@ -1038,7 +1093,7 @@
 		$F$: estimated curve from the LUT using {\bf trilinear interpolation}\\
 \end{block}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE CPA Retrieval Process}{\vspace{0.1cm}\Large Results 09-19-13}
 \vspace{-0.3cm}
 \begin{figure}[htbp!]
@@ -1064,10 +1119,10 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE CPA Retrieval Process}{\vspace{.1cm}\Large Results 09-29-14}
 \vspace{-0.3cm}
 \begin{figure}[htbp!]
@@ -1093,7 +1148,7 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE CPA Retrieval Process}{\vspace{.1cm}\Large Comparison with Field Data}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1121,7 +1176,7 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE CPA Retrieval Process}{\vspace{.1cm} \Large Normalized Root Mean Square Error}
 
 \begin{figure}[htb]
@@ -1133,7 +1188,7 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Chl-{\it a} Retrieval}{\vspace{0.1cm} \Large NASA's OC3 Algorithm}
 
 
@@ -1162,7 +1217,7 @@
 
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Chl-{\it a} Retrieval}{\vspace{.1cm} \Large Methods Comparison}
 
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1208,7 +1263,7 @@
 \end{figure}
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Chl-{\it a} Retrieval}{\vspace{.1cm} \Large Comparison with Field Data}
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 \begin{figure}[htbp!]
@@ -1222,7 +1277,7 @@
 \end{figure}
 \end{frame}
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Chl-{\it a} Retrieval}{\vspace{.1cm} \Large Comparison with Field Data}
 
 \begin{block}{$C_a$ normalized root mean squared error (NRMSE)}
@@ -1241,7 +1296,7 @@ $n=1\dots N$: number of samples.
 \end{frame}
 
 
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Chl-{\it a} Retrieval}{\vspace{.1cm} \Large Comparison with Field Data}
 
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1255,7 +1310,7 @@ $n=1\dots N$: number of samples.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
 % \subsection*{Conclusions}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Summary}
 \Large
 \begin{itemize}\itemsep.4cm
@@ -1272,7 +1327,7 @@ $n=1\dots N$: number of samples.
 
 
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Conclusions} 
 \begin{itemize}\itemsep.4cm
 \Large
@@ -1287,7 +1342,7 @@ $n=1\dots N$: number of samples.
 	\item Retrieval Algorithm is a good solution when some knowledge is available}
 \end{itemize}
 \end{frame}
- % ----------------------------------- Slide ----------------------------------------------
+ % ----------------------------------- Slide -------------------------------------
 % \section*{}
 % \begin{frame}%[shrink=30] 
 % \tiny
@@ -1297,7 +1352,7 @@ $n=1\dots N$: number of samples.
 %   \bibliography{HLbeamerbib}
 % \end{frame}
 
-%% ----------------------------------- Slide ----------------------------------------------
+%% ----------------------------------- Slide -------------------------------------
 
 {	
 \setbeamertemplate{footline}{} 
@@ -1327,7 +1382,7 @@ $n=1\dots N$: number of samples.
 % #################################################################################
 \appendix
 \section{Additional Material}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 % ------------------------------ SUBSECTION ----------------------------------------------
 % \subsection*{Field Collection and Lab Measurements}
 \begin{frame}{\LARGE Field Collection} 
@@ -1337,7 +1392,7 @@ $n=1\dots N$: number of samples.
   % \caption{Sites in the Rochester Embayment for the water sample collection on September, $19^{th}$, 2013.\label{fig:0910913Sites} } 
 \end{figure}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Field Collection (con't)} 
 \vspace{-1cm}
 \begin{figure}[htb]
@@ -1348,7 +1403,7 @@ $n=1\dots N$: number of samples.
 % \centerline{Comparison between traditional ELM (dashed lines)}
 % \centerline{and model-based ELM (solid lines).}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Lab Measurements} 
 \vspace{-1cm}
 \begin{figure}[htb]
@@ -1508,7 +1563,7 @@ where:\\
   \bibliographystyle{apalike}
   \bibliography{/Users/javier/Desktop/Javier/PHD_RIT/Latex/javier_bib}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Atmospheric Correction}{\Large Methods Comparison}
 % \centerline{\LARGE Bright and Dark Pixel}
 
@@ -1547,7 +1602,7 @@ $[nm]$		&	  		      &  		 	  &	  		&			&	   		&	     	&$[mg/m^3]$ 	\\	\hline \hl
  \end{tabular}
 \end{table}
 \end{frame}
-% ----------------------------------- Slide ----------------------------------------------
+% ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Chl-{\it a} Retrieval}{\Large Methods Comparison}
 
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
