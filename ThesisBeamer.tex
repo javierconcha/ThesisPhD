@@ -60,11 +60,13 @@
 %   {\hfill{\bfseries\insertsectionhead}}
 %   {\hfill\color{fg!30!bg}\insertsectionhead}
 
-\definecolor{RITorange}{RGB}{243,110,33}
+% \definecolor{RITorange}{RGB}{243,110,33}
+\definecolor{RITorange}{RGB}{ 255, 153, 0}
+\definecolor{craneblack}{RGB}{51, 51, 51}
 
-\setbeamertemplate{section in head/foot}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[trapezium,fill=RITorange,rounded corners=2pt,inner sep=2.5pt](P){\textcolor{black}{\bfseries\insertsectionhead}};}
+\setbeamertemplate{section in head/foot}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[trapezium,fill=RITorange,rounded corners=2pt,inner sep=2.5pt](P){\textcolor{craneblack}{\insertsectionhead}};}
 
-\setbeamertemplate{section in head/foot shaded}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[trapezium,draw=RITorange,fill=white,rounded corners=2pt,inner sep=2.5pt](P){\textcolor{fg!70!bg}{\insertsectionhead}};}
+\setbeamertemplate{section in head/foot shaded}{\hfill\protect\tikz[baseline=(P.base)] \protect\node[trapezium,draw=RITorange,fill=white,rounded corners=2pt,inner sep=2.5pt](P){\textcolor{craneblack}{\insertsectionhead}};}
 % \setbeamertemplate{section in head/foot shaded}{\textcolor{fg!70!bg}{\hfill\insertsectionhead}}
 
 % \useoutertheme{infolines} 
