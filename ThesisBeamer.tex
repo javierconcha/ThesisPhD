@@ -350,11 +350,65 @@ Water resources are important for both society and ecosystems:\\
 \hspace{4cm}{\scriptsize $*~$Images from: http://www.oceanopticsbook.info/}
 \end{frame}
 % ----------------------------------- Slide -------------------------------------
-\begin{frame}{\LARGE Case 1 versus Case 2 Waters} 
+\begin{frame}{\LARGE Definitions}{\Large Inherent Optical Properties (IOPs)}
 \Large
-Case 1:\\
+{\bf IOPs:} depend only upon the medium, and not light field\\
 
-Case 2:
+\begin{figure}[htb]
+  \begin{minipage}[c]{1.0\linewidth}
+\centering
+\includegraphics[height=3cm]{/Users/javier/Desktop/Javier/PHD_RIT/20123_Spring/Modeling/HydroLight/Beamer/IOPgeo.png}
+\end{minipage}\\
+
+  \begin{minipage}[c]{1.0\linewidth}
+  \centering
+\footnotesize
+*\cite{Mobley:2001}\\
+\end{minipage}
+\end{figure}
+
+\vspace{0.3cm}
+\large
+{\bf Absorption coefficients:}\\ 
+\begin{equation}
+  a(\lambda)\equiv \lim_{\Delta r\to 0} \frac{1}{\Phi_i(\lambda)}\frac{\Phi_a(\lambda)}{\Delta r}~~\left[m^{-1} \right]
+\end{equation}
+
+\end{frame}
+% ----------------------------------- Slide -------------------------------------
+\begin{frame}{\LARGE Definitions}{\Large Apparent Optical Properties (AOPs)}
+\Large
+{\bf AOPs:} depend upon the medium, and the directional structure of the light field\\
+\vspace{0.5cm}
+\large
+{\bf Remote-sensing reflectance:}
+\begin{equation}
+\label{eq:Rrs}
+  R_{rs}(\theta,\phi,\lambda)\equiv \frac{L_w(\theta,\varphi,\lambda)}{E_d(\lambda)}~~\left[sr^{-1} \right]
+\end{equation}
+
+{\bf Reflectance:}
+\begin{equation}\label{eq:rho}
+  \rho = \frac{\pi L}{F_o \cos{\theta}}
+\end{equation}
+
+{\bf Relationship:}
+\begin{equation}\label{eq:Rrs_And_rhow}
+ R_{rs} = \frac{\rho_w}{\pi}~~~\left[sr^{-1} \right]
+\end{equation}
+
+
+\end{frame}
+
+% ----------------------------------- Slide -------------------------------------
+\begin{frame}{\LARGE Case 1 versus Case 2 Waters}{\Large Optical Classification \cite{GordonMorel1983}}
+\Large
+\begin{itemize}\itemsep0.5cm
+	\item {\bf Case 1}: Phytoplankton is the main driver\\ Ex: Open ocean
+
+	\item {\bf Case 2}: Not only phytoplankton, but suspended sediments and/or CDOM\\ Ex: ponds, coastal waters
+\end{itemize}
+
 \end{frame}
 % ----------------------------------- Slide -------------------------------------
 \begin{frame}{\LARGE Case 1 versus Case 2 Waters} 
@@ -528,35 +582,26 @@ Case 2:
 \hspace{5cm}{$*~$IOPs: Inherent Optical Properties}
 \end{frame}
 
-\begin{frame}{\LARGE Definitions} 
-AOPs:\\
-Remote-sensing reflectance:
-\begin{equation}
-\label{eq:Rrs}
-  R_{rs}(\theta,\phi,\lambda)\equiv \frac{L_w(\theta,\varphi,\lambda)}{E_d(\lambda)}~~\left[sr^{-1} \right]
-\end{equation}
 
-Reflectance:
-\begin{equation}\label{eq:rho}
-  \rho = \frac{\pi L}{F_o \cos{\theta}}
-\end{equation}
-
-
-\begin{equation}\label{eq:Rrs_And_rhow}
- R_{rs} = \frac{\rho_w}{\pi}~~~\left[sr^{-1} \right]
-\end{equation}
-
-IOPs:\\
-Absorption coefficients:
-
-
-
-\end{frame}
 %%%%%%%%%%%%%%%%%%% SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data Collection}
 % --- slide ------------------------------------------------
 \begin{frame}{\LARGE Field Data Collection}
-Images of team in the lake
+
+\begin{figure}[htbp!]
+      \centering
+      \includegraphics[trim=0 0 0 0,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/Pictures1.pdf}  
+\end{figure}
+
+\end{frame}
+% --- slide ------------------------------------------------
+\begin{frame}{\LARGE Field Data Collection}
+
+\begin{figure}[htbp!]
+      \centering
+      \includegraphics[trim=0 0 0 0,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/Pictures2.pdf}  
+\end{figure}
+
 \end{frame}
 
 % --- slide ------------------------------------------------
@@ -617,7 +662,32 @@ Lab Measurements:
 \end{frame}
 % --- slide ------------------------------------------------
 \begin{frame}{\LARGE Measured $R_{rs}$ and $a$}
-Figures from the field and lab
+
+\begin{figure}[htbp!]
+  \begin{minipage}[a]{0.485\linewidth}
+  	\hspace{-1cm}
+      \centering
+      \includegraphics[trim=0 0 0 0,clip,width=6.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/RrsExamplesField.png}  
+  \end{minipage}
+\hfill
+  \begin{minipage}[a]{0.485\linewidth}
+      \centering
+      \includegraphics[trim=0 0 0 0,clip,width=6.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/IOPExamplesField.png}  
+  \end{minipage}\\
+  \vspace{0.3cm}
+   \begin{minipage}[a]{0.485\linewidth}
+  	\centering
+  	remote-sensing reflectance\\$R_{rs}$  
+  \end{minipage}
+  \hfill
+  \begin{minipage}[a]{0.485\linewidth}
+  	\centering
+  	absorption coefficient\\$a$  
+  \end{minipage}
+\end{figure}
+
+
+
 \end{frame}
 % --- slide ------------------------------------------------
 \begin{frame}{\LARGE Field Data Collection (con't)}{\vspace{0.1cm} \Large 2013, 2014 and 2015 Seasons}
@@ -630,7 +700,31 @@ Figures from the field and lab
 \end{frame}
 % --- slide ------------------------------------------------
 \begin{frame}{\LARGE Landsat 8 Images}
-
+\begin{figure}[htb!]
+    \begin{minipage}[c]{0.48\linewidth}
+    \hspace{-1.0cm}
+      \centering
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[trim=50 0 110 0,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80170302014272LGN00_ENVI.jpg}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \draw[red,ultra thick] (0.8,0.5) rectangle (0.93,0.6);
+        \end{scope}
+    \end{tikzpicture}
+      \centerline{09-19-2013}\medskip
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+      \centering
+    \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[trim=50 0 110 0,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80170302015259LGN00_ENVI.jpg}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            \draw[red,ultra thick] (0.8,0.5) rectangle (0.93,0.6);
+        \end{scope}
+    \end{tikzpicture}
+      \centerline{09-29-2014}\medskip
+    \end{minipage}
+      % \caption{Landsat 8 images acquired on (a) 09-29-2014 (scene LC80170302014272LGN00) and (b) 09-16-2015 (scene LC80170302015259LGN00). Study area indicated in red boxes. \label{fig:L8Images1415} }
+\end{figure}  
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Atmospheric Correction}
@@ -1354,7 +1448,27 @@ $R_{rs}(\lambda_m)$: spectrum for a particular water pixel from the image.
 % --- slide ------------------------------------------------
 \begin{frame}{\LARGE Retrieval Algorithm} 
 {\vspace{0.05cm} \Large Fixed IOP input and Phase Function}
-Figures dpf and inputs
+
+\scriptsize
+\begin{equation}
+  RMSE(i) = \sqrt{\frac{1}{m}\sum_1^m\left[\widetilde{R}_{rs}(i,\lambda_m)-R_{rs}(\lambda_m)\right]^2} \notag
+\end{equation}
+
+\vspace{0.5cm}
+
+\begin{figure}[htbp!]
+  \begin{minipage}[a]{0.485\linewidth}
+  	\hspace{-1cm}
+      \centering
+      \includegraphics[trim=0 0 0 0,clip,width=6.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/INPmap130919masked.png}  
+  \end{minipage}
+\hfill
+  \begin{minipage}[a]{0.485\linewidth}
+      \centering
+      \includegraphics[trim=0 0 0 0,clip,width=6.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/DPFmap130919masked.png}  
+  \end{minipage}\\
+\end{figure}
+
 \end{frame}
 % --- slide ------------------------------------------------
 \begin{frame}{\LARGE Retrieval Algorithm} 
@@ -1426,28 +1540,28 @@ Figures dpf and inputs
 
 \begin{figure}[htbp!]
   \begin{minipage}[a]{0.485\linewidth}
-  	\hspace{-0.5cm}
+  	\hspace{-1.0cm}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CHLmap140929masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CHLmap140929masked.png}  
   \end{minipage}
 \hfill
 %% TSS
   \begin{minipage}[a]{0.485\linewidth}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSmap140929masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSmap140929masked.png}  
   \end{minipage}\\
 %% CDOM
       \vspace{0.3cm}
   \begin{minipage}[c]{0.485\linewidth}
-  \hspace{-0.5cm}
+  \hspace{-1.0cm}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CDOmap140929masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CDOmap140929masked.png}  
   \end{minipage}
   \hfill
   \begin{minipage}[c]{0.485\linewidth}
   	\vspace{-0.7cm}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/ROIRGB140929masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/ROIRGB140929masked.png}  
   \end{minipage}
 %
   % \caption{CPA retrieval results for the Landsat 8 image acquired on 09-19-2013 (scene LC80160302013262LGN00). Concentration maps (left) and measured vs retrieved plots (right). The dashed line represent the 1:1 line. (Labels: LongS: Long Pond south, Cranb: Cranberry Pond, OntOS: Lake Ontario off-shore, and OntNS: Lake Ontario near-shore). \label{fig:CPAsMaps130919} } 
@@ -1463,28 +1577,28 @@ Figures dpf and inputs
 
 \begin{figure}[htbp!]
   \begin{minipage}[a]{0.485\linewidth}
-  	\hspace{-0.5cm}
+  	\hspace{-1.0cm}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CHLmap150916masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CHLmap150916masked.png}  
   \end{minipage}
 \hfill
 %% TSS
   \begin{minipage}[a]{0.485\linewidth}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSmap150916masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSmap150916masked.png}  
   \end{minipage}\\
 %% CDOM
       \vspace{0.3cm}
   \begin{minipage}[c]{0.485\linewidth}
-  \hspace{-0.5cm}
+  \hspace{-1.0cm}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CDOmap150916masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CDOmap150916masked.png}  
   \end{minipage}
   \hfill
   \begin{minipage}[c]{0.485\linewidth}
   	\vspace{-0.7cm}
       \centering
-      \includegraphics[trim=0 0 0 120,clip,width=5.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/ROIRGB150916masked.png}  
+      \includegraphics[trim=0 0 0 120,clip,width=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/ROIRGB150916masked.png}  
   \end{minipage}
 %
   % \caption{CPA retrieval results for the Landsat 8 image acquired on 09-19-2013 (scene LC80160302013262LGN00). Concentration maps (left) and measured vs retrieved plots (right). The dashed line represent the 1:1 line. (Labels: LongS: Long Pond south, Cranb: Cranberry Pond, OntOS: Lake Ontario off-shore, and OntNS: Lake Ontario near-shore). \label{fig:CPAsMaps130919} } 
