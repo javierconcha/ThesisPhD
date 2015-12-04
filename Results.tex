@@ -64,7 +64,7 @@ Water samples are collected for each site in dark Nalgene bottles (see Appendix~
       \caption{Landsat 8 images acquired on (a) 09-29-2014 (scene LC80170302014272LGN00) and (b) 09-16-2015 (scene LC80170302015259LGN00). Study area indicated in red boxes. \label{fig:L8Images1415} }
 \end{figure}  
 
-\begin{figure}[h]
+\begin{figure}[ht]
       \begin{minipage}[c]{1.0\linewidth}
       \centering
       \begin{overpic}[width=12cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/LC80160302013262LGN00_AreaOfStudy.png}
@@ -842,38 +842,59 @@ The developed retrieval algorithm \citep{Concha2013IGARSS} was applied to the 09
 Then, the MoB-ELM algorithm finds the closest match in the least-squared sense for the $R_{rs}$ of water pixels with unknown CPA concentrations in the LUT of water pixels with known CPA concentrations. This first step is done in order to fix the IOP set (pond or lake) and the backscatter fraction. At this point, the closest element has discrete CPA concentration values corresponding to values used for the LUT generation (see \autoref{tab:LUTconc}). Finally, a non-linear interpolation is used to interpolate between the closest match's neighbors in order to obtain continuous values for the three CPAs simultaneously. In this study, this algorithm was applied to the $R_{rs}$'s results from the MoB-ELM method only, and not to the results from the Gordon and Wang's algorithms. 
 
 The results of the retrieval for the 09-19-2013 scene are illustrated in \autoref{fig:CPAsMaps130919} as a concentration map for each CPA. These maps exhibit the expected trend of low concentrations in the lake and higher concentrations in the ponds. Some bottom effect is perceived in the shoreline of Lake Ontario causing wrong high values, and these pixels are discarded. 
+
+%^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+\begin{figure}[htbp!]
+%% IOP
+  \begin{minipage}[b]{1.0\linewidth}
+      \centering
+      \begin{overpic}[trim=0 0 0 0,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/INPmap130919masked.png} \put (105,55) {(a)}
+      \end{overpic}   
+  \end{minipage}\\
+\vspace{.3cm}\\
+%% DPF
+  \begin{minipage}[b]{1.0\linewidth}
+      \centering
+      \begin{overpic}[trim=0 0 0 0,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/DPFmap130919masked.png} \put (105,55) {(b)}
+      \end{overpic}   
+  \end{minipage}
+% 
+  \caption[Input and phase function retrieval results for the Landsat 8 image acquired on 09-19-2013]{Input and phase function retrieval results for the Landsat 8 image acquired on 09-19-2013 (scene LC80160302013262LGN00) over the Rochester Embayment for (a) Input, (b) Backscatter fraction.\label{fig:CPAsMaps130919_IOP_bb}}
+\end{figure}
+
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 \begin{figure}[htbp!]
 %% Chl
-  \begin{minipage}[c]{1.0\linewidth}
+  \begin{minipage}[b]{1.0\linewidth}
       \centering
-      \begin{overpic}[trim=0 20 0 30,clip,width=9.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/CHLmap130919_150420} \put (105,60) {(a)}
+      \begin{overpic}[trim=0 0 0 0,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CHLmap130919masked.png} \put (105,55) {(a)}
       \end{overpic}   
-  \end{minipage}
-
+  \end{minipage}\\
+\vspace{.3cm}\\
 %% TSS
-  \begin{minipage}[d]{1.0\linewidth}
+  \begin{minipage}[b]{1.0\linewidth}
       \centering
-      \begin{overpic}[trim=0 30 0 10,clip,width=9.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/TSSmap130919_150420} \put (105,60) {(b)}
+      \begin{overpic}[trim=0 0 0 0,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSmap130919masked.png} \put (105,55) {(b)}
       \end{overpic}   
-  \end{minipage}
-
+  \end{minipage}\\
+\vspace{.3cm}\\
 %% CDOM
   \begin{minipage}[c]{1.0\linewidth}
       \centering
-      \begin{overpic}[trim=0 0 0 30,clip,width=9.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/CDOMmap130919_150420} \put (105,60) {(c)}
+      \begin{overpic}[trim=0 0 0 0,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CDOmap130919masked.png} \put (105,55) {(c)}
       \end{overpic}   
   \end{minipage}
 % 
   \caption[CPA retrieval results for the Landsat 8 image acquired on 09-19-2013]{CPA retrieval results for the Landsat 8 image acquired on 09-19-2013 (scene LC80160302013262LGN00) over the Rochester Embayment for (a) chlorophyll, (b) sediments and (c) CDOM.\label{fig:CPAsMaps130919}}
-\end{figure}\
+\end{figure}
 %^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 \begin{figure}[htbp!]
   \begin{minipage}[c]{1.0\linewidth}
       \centering
-      \begin{overpic}[trim=0 0 0 30,clip,height=6.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/CHLmap140929_150420} \put (105,60) {(a)}
+      \begin{overpic}[trim=0 0 0 120,clip,width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CHLmap140929masked.png} \put (105,60) {(a)}
       \end{overpic}   
   \end{minipage}\\
+  \vspace{.3cm}\\
   % \hfill
   % \begin{minipage}[d]{0.45\linewidth}
       % \includegraphics[height=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/CHLretvsmea140929_150420}
@@ -882,9 +903,10 @@ The results of the retrieval for the 09-19-2013 scene are illustrated in \autore
 %% TSS
   \begin{minipage}[c]{1.0\linewidth}
       \centering
-      \begin{overpic}[trim=0 0 0 30,clip,height=6.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/TSSmap140929_150420} \put (105,60) {(b)}
+      \begin{overpic}[trim=0 0 0 120,clip,width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSmap140929masked.png} \put (105,60) {(b)}
       \end{overpic}   
   \end{minipage}\\
+  \vspace{.3cm}\\
   % \hfill
   % \begin{minipage}[d]{0.45\linewidth}
       % \includegraphics[height=5.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/TSSretvsmea140929_150420}
@@ -893,7 +915,7 @@ The results of the retrieval for the 09-19-2013 scene are illustrated in \autore
 %% CDOM
   \begin{minipage}[c]{1.0\linewidth}
       \centering
-      \begin{overpic}[trim=0 0 0 30,clip,height=6.5cm]{/Users/javier/Desktop/Javier/PHD_RIT/ConferencesAndApplications/2015_Landsat_Special_Issue/Images/CDOMmap140929_150420} \put (105,60) {(c)}
+      \begin{overpic}[trim=0 0 0 120,clip,width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CDOmap140929masked.png} \put (105,60) {(c)}
       \end{overpic}   
   \end{minipage}\\
   % \hfill
@@ -902,6 +924,32 @@ The results of the retrieval for the 09-19-2013 scene are illustrated in \autore
   % \end{minipage}
 
   \caption[CPA concentration maps for Landsat 8 image acquired on 09-29-2014]{CPA concentration maps for Landsat 8 image acquired on 09-29-2014 (scene LC80170302014272LGN00) over the Rochester Embayment for (a) chlorophyll, (b) sediments and (c) CDOM.\label{fig:CPAsMaps140929} } 
+\end{figure}
+
+%^^^^^^^^^^^^^^^^^^^  FIGURE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+\begin{figure}[htbp!]
+%% Chl
+  \begin{minipage}[b]{1.0\linewidth}
+      \centering
+      \begin{overpic}[trim=0 0 0 120,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CHLmap150916masked.png} \put (105,55) {(a)}
+      \end{overpic}   
+  \end{minipage}\\
+\vspace{.3cm}\\
+%% TSS
+  \begin{minipage}[b]{1.0\linewidth}
+      \centering
+      \begin{overpic}[trim=0 0 0 120,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/TSSmap150916masked.png} \put (105,55) {(b)}
+      \end{overpic}   
+  \end{minipage}\\
+\vspace{.3cm}\\
+%% CDOM
+  \begin{minipage}[c]{1.0\linewidth}
+      \centering
+      \begin{overpic}[trim=0 0 0 120,clip,width=10.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/CDOmap150916masked.png} \put (105,55) {(c)}
+      \end{overpic}   
+  \end{minipage}
+% 
+  \caption[CPA retrieval results for the Landsat 8 image acquired on 09-16-2015]{CPA retrieval results for the Landsat 8 image acquired on 09-16-2015 (scene LC80170302015259LGN00) over the Rochester Embayment for (a) chlorophyll, (b) sediments and (c) CDOM.\label{fig:CPAsMaps150916}}
 \end{figure}
 
 % %%%%%%%%%%%%%%%%%%% SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
