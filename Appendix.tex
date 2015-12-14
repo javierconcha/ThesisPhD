@@ -73,7 +73,7 @@ Notes:
 \begin{itemize}[itemsep=2pt,parsep=2pt]
   \item Never try to take samples alone. The team should be of at least two people
   \item Do not take any personal electronic device with you (recommended) to avoid dropping it on the water
-  \item Storage car keys in zipped bag in you packet
+  \item Storage car keys in zipped bag in you pocket
   \item In case of bad weather conditions that do not allow paddle the canoes, take at least water samples from the Charlotte pier with the bucket
 \end{itemize}
 
@@ -89,7 +89,7 @@ Recall that the \gls{rrs} (\autoref{eq:Rrs}) is defined as
 \begin{equation}\label{eq:RrsAppendix}
 	R_{rs}(\theta,\phi,\lambda)=\frac{L_w(\theta,\phi,\lambda)}{E_d(\lambda)}
 \end{equation}
-where $L_w$ is the water-leaving radiance in the polar and azimuthal directions $\theta$ and $\phi$, respectively, and $E_d$ is the downwelling spectral plane irradiance incident onto the water surface. A radiometer pointing down toward the water surface in direction $(\pi-\theta,\phi)$ does not directly measure $L_w$. Instead, it measures $L_w$  plus any incident sky radiance reflected $L_r$ by the water surface into the field of view of the sensor. This total radiance at the sensor $L_t$ is define as
+where $L_w$ is the water-leaving radiance in the polar and azimuthal directions $\theta$ and $\phi$, respectively, and $E_d$ is the downwelling spectral plane irradiance incident onto the water surface. A radiometer pointing down toward the water surface in direction $(\pi-\theta,\phi)$ does not directly measure $L_w$. Instead, it measures $L_w$  plus any incident sky radiance reflected $L_r$ by the water surface into the field of view of the sensor. This total radiance at the sensor $L_t$ is defined as
 
 \begin{equation}\label{eq:Lt}
 	L_t(\theta,\phi) = L_r(\theta,\phi)+L_w(\theta,\phi)\Rightarrow L_w(\theta,\phi)=L_t(\theta,\phi) - L_r(\theta,\phi)
@@ -102,7 +102,7 @@ The term $L_r$ can be replaced by
 \end{equation}
 where $\rho$ is the proportionality factor that relates the radiance measured when the sensor views the sky to the reflected sky radiance measured when the sensor views the water surface. \citet{Mobley:1999} suggests to use $\rho \approx 0.028$ for a sensor view angle $\theta_v \approx 40^\circ$ from the nadir and  $\phi_v \approx 135^\circ$ from the Sun with the constraints of a clear sky and wind speed less than $5m/s$.
 
-Although $E_d$ could be measured directly with an appropriate sensor, it will be estimated from the radiance measured from a Lambertian surface (Spectralon) because both instruments in this case (SVC and ASD) are set to measure radiance. When an irradiance $E_d$ falls in a Lambertian surface with a known irradiance reflectance $R_g$, the uniform radiance $L_g$ leaving the surface is given by 
+Although $E_d$ could be measured directly with an appropriate sensor, it will be estimated from the radiance measured from a Lambertian surface (Spectralon) because both instruments in this case (SVC and ASD) are set to measure radiance. When an irradiance $E_d$ falls on a Lambertian surface with a known irradiance reflectance $R_g$, the uniform radiance $L_g$ leaving the surface is given by 
 
 \begin{equation}\label{eq:Lg}
 	L_g = (R_g/\pi)E_d\Rightarrow E_d = L_g*\pi/R_g
@@ -121,11 +121,11 @@ Therefore, from \autoref{eq:RrsFinalAppendix}, there are three quantities that n
 
 The ASD instrument should be the ``radiance mode''. Three different radiance measurements need to be taken:
 \begin{itemize}[itemsep=2pt,parsep=2pt]
-	\item $L_g$: pointing the Spectralon
+	\item $L_g$: pointing at the Spectralon
 
 Description: $L_g$ is measured with the sensor pointing downward in the same direction as is used in viewing the water surface (see \autoref{fig:Ltmea}), while the Spectralon is inserted into the sensor FOV. The Spectralon should be normal to the water surface.
 
-	\item $L_t$: pointing the water surface
+	\item $L_t$: pointing at the water surface
 
 Description: $L_t$ is measured with the sensor pointing downward toward the water surface in the direction $\approx \pi-\theta_v = 140^\circ$ from nadir with $\theta_v = 40^\circ$ and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Ltmea}.
 
@@ -136,7 +136,7 @@ Description: $L_t$ is measured with the sensor pointing downward toward the wate
    \caption[]{\label{fig:Ltmea} $L_t$ measurement.}
 \end{figure}
 
-	\item $L_{sky}$: pointing the sky
+	\item $L_{sky}$: pointing at the sky
 
 Description: $L_{sky}$ is measured with the sensor pointing upward toward the sky in the direction $\approx \theta_v = 40^\circ$ from nadir and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Lskymea}.
 
@@ -154,15 +154,15 @@ Description: $L_{sky}$ is measured with the sensor pointing upward toward the sk
 The same three radiance measurements described above need to be taken:
 
 \begin{itemize}[itemsep=2pt,parsep=2pt]
-	\item $L_g$: pointing the Spectralon
+	\item $L_g$: pointing at the Spectralon
 
-Description: The measurement is taken in the same fashion described in the previous section and it is taken only once per site. When the SVC instrument is used in ``reflectance mode'', it is necessary to measure first an standard measurement (Spectralon measurement). This standard measurement is the $L_r$ and is recorded internally in the ``sig'' file. Therefore, $L_r$ needs to be extracted from the later from the ``sig'' file. 
+Description: The measurement is taken in the same fashion described in the previous section and it is taken only once per site. When the SVC instrument is used in ``reflectance mode'', it is necessary to measure first a standard measurement (Spectralon measurement). This standard measurement is the $L_r$ and is recorded internally in the ``sig'' file. Therefore, $L_r$ needs to be extracted from the later from the ``sig'' file. 
 
-	\item $L_t$: pointing the water surface
+	\item $L_t$: pointing at the water surface
 
 Description: $L_t$ is measured in the same fashion described in the previous section. However, this measurement is saved internally in the ``sig'' file after the standard measurement column ($L_g$).
 
-	\item $L_{sky}$: pointing the sky	
+	\item $L_{sky}$: pointing at the sky	
 
 Description: $L_{sky}$ is measured in the same fashion described in the previous section. However, this measurement is saved internally in the ``sig'' file after the standard measurement column ($L_g$).
 
@@ -173,7 +173,7 @@ Description: $L_{sky}$ is measured in the same fashion described in the previous
 
 	\item Wear dark clothes, preferable black, to avoid contamination from adjacent objects.
 
-	\item Avoid any reflection from nearby objects in the boat or ship by covering the ship's side with a black turf. 
+	\item Avoid any reflection from nearby objects in the boat or ship by covering the ship's side with a black tarp. 
 \end{itemize}
 
 
@@ -208,7 +208,7 @@ The \gls{iops}, specifically the spectral absorption coefficients, are obtained 
 \begin{equation}
   a_p(\lambda) = a_\phi(\lambda) + a_d(\lambda)~~[m^{-1}] 
 \end{equation}
-\noindent where $a_\phi(\lambda)$ and $a_d(\lambda)$ are the spectral absorption coefficients of phytoplankton and de-pigmented particles, respectively. $a_\phi$, $a_d$, $a_g$ are referred in \autoref{eq:atotal} as $a_{Chl}$, $a_{SM}$ and $a_{CDOM}$, respectively. The main idea is to first measure $a_p(\lambda)$ and $a_d(\lambda)$ from a dual-beam spectrophotometer, and then obtain $a_\phi(\lambda)$ as $a_\phi(\lambda)=a_p(\lambda)$ - $a_d(\lambda)$.
+\noindent where $a_\phi(\lambda)$ and $a_d(\lambda)$ are the spectral absorption coefficients of phytoplankton and de-pigmented particles, respectively. $a_\phi$, $a_d$, $a_g$ are referred to in \autoref{eq:atotal} as $a_{Chl}$, $a_{SM}$ and $a_{CDOM}$, respectively. The main idea is to first measure $a_p(\lambda)$ and $a_d(\lambda)$ from a dual-beam spectrophotometer, and then obtain $a_\phi(\lambda)$ as $a_\phi(\lambda)=a_p(\lambda)$ - $a_d(\lambda)$.
 
 A dual-beam spectrophotometer is an instrument that measures the amount of light that passes a medium, i.e. transmittance, using two paths, one for the reference, and one for the sample. The spectrophotometer used was a Shimadzu \gls{uv}-\gls{vis} recording spectrophotometer, model UV-2100U. One the output of the instrument is the dimensionless quantity \gls{od} (a.k.a. absorbance). 
 
@@ -220,7 +220,7 @@ The water sample is filtered, and a $OD_{fp}(\lambda)$ is measured using the spe
 \begin{equation}
    OD_{susp}(\lambda) = 0.378 (OD_{fp}(\lambda)-OD_{fp}(750nm)) + 0.523 (OD_{fp}(\lambda)-OD_{fp}(750nm))^2
  \end{equation} 
- \noindent where $OD_{fp}$ is the optical density of the filter before methanol extraction. $a_d$ is obtained in a similar fashion. In the following section, the procedure to measure $OD_{fp}$ and $OD_{fd}$ in the lab are presented.
+ \noindent where $OD_{fp}$ is the optical density of the filter before methanol extraction. $a_d$ is obtained in a similar fashion. In the following section, the procedure to measure $OD_{fp}$ and $OD_{fd}$ in the lab is presented.
 
 
 \subsection{Mineral and Chlorophyll absorption coefficients}
@@ -271,11 +271,11 @@ The water sample is filtered, and a $OD_{fp}(\lambda)$ is measured using the spe
     \item Click OK
   \end{itemize}
   \item Select the Serial Port number to be used for communication with the instrument. Go to: Configure $>$ PC Configuration... In the PC Configuration Parameters, select Photometer Serial Port number where the instrument is connected and click OK
-  \item Initialize the instrument. From the menu, go to Configure $>$ Utilities. In the System Utilities window, Turn Photometer On and press OK. A new initialization window that check the system pops up. Wait until it is finished. Note: make sure the beam paths are empty before initialize the instrument
+  \item Initialize the instrument. From the menu, go to Configure $>$ Utilities. In the System Utilities window, Turn Photometer On and press OK. A new initialization window that check the system pops up. Wait until it is finished. Note: make sure the beam paths are empty before initializing the instrument
   \item Pour DIW water to two GF/F Whatman filters and stick them in the two-lenses support. Both filter should have the same amount of water. Add water with the pipette or the squirt bottle
   \item Place the two-lenses support in the spectrophotometer
   \item Press the Baseline button in the UV-2101PC software
-  \item Perform an scanner to see the baseline level of the instrument by pressing the ``Start'' button in the software
+  \item Perform a scan to see the baseline level of the instrument by pressing the ``Start'' button in the software
   \item Press the ``Go To WL'' button of the software and type $850 [nm]$. Press the ``Auto Zero'' button of the software (optional)
   \item Shake water sample bottle a couple of times to mix by turbulence and ensure large particles that settle at the bottom are re-suspended \citep{Mitchell2002}
   \item \label{item:place_filter} Using the forceps, place the filter on the filter base and place the filter cup on the base. 
