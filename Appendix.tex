@@ -123,29 +123,36 @@ The ASD instrument should be the ``radiance mode''. Three different radiance mea
 \begin{itemize}[itemsep=2pt,parsep=2pt]
 	\item $L_g$: pointing at the Spectralon
 
-Description: $L_g$ is measured with the sensor pointing downward in the same direction as is used in viewing the water surface (see \autoref{fig:Ltmea}), while the Spectralon is inserted into the sensor FOV. The Spectralon should be normal to the water surface.
+Description: $L_g$ is measured with the sensor pointing downward in the same direction as is used in viewing the water surface (see \autoref{fig:Rrsinsitu}.(a)), while the Spectralon is inserted into the sensor FOV. The Spectralon should be normal to the water surface.
 
 	\item $L_t$: pointing at the water surface
 
-Description: $L_t$ is measured with the sensor pointing downward toward the water surface in the direction $\approx \pi-\theta_v = 140^\circ$ from nadir with $\theta_v = 40^\circ$ and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Ltmea}.
+Description: $L_t$ is measured with the sensor pointing downward toward the water surface in the direction $\approx \pi-\theta_v = 140^\circ$ from nadir with $\theta_v = 40^\circ$ and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Rrsinsitu}.(a).
 
 \begin{figure}[htb]
+\begin{minipage}[c]{1.0\linewidth}
 \centering
     \includegraphics[width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/LDCM/WaterQualityProtocols/Latex/Images/Lgmea.png}
-    \vspace{0.5cm}
-   \caption[]{\label{fig:Ltmea} $L_t$ measurement.}
+    \centerline{(a) $L_t$ measurement}\medskip
+\end{minipage}  
+\hfill 
+    % \vspace{0.5cm}
+   % \caption[]{\label{fig:Ltmea} $L_t$ measurement.}
+% \centering
+\begin{minipage}[d]{1.0\linewidth}
+\centering
+    \includegraphics[width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/LDCM/WaterQualityProtocols/Latex/Images/Lskymea.png}
+    \centerline{(b) $L_{sky}$ measurement}\medskip
+\end{minipage}    
+    % \vspace{0.5cm}
+   \caption[Rrs {\it in situ} measurement]{\label{fig:Rrsinsitu} $R_{rs}$ measurement.}
 \end{figure}
 
 	\item $L_{sky}$: pointing at the sky
 
-Description: $L_{sky}$ is measured with the sensor pointing upward toward the sky in the direction $\approx \theta_v = 40^\circ$ from nadir and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Lskymea}.
+Description: $L_{sky}$ is measured with the sensor pointing upward toward the sky in the direction $\approx \theta_v = 40^\circ$ from nadir and $\phi_v \approx 135^\circ$ or $\phi_v \approx -135^\circ$ from the Sun as illustrated in \autoref{fig:Rrsinsitu}.(b).
 
-\begin{figure}[htb]
-\centering
-    \includegraphics[width=10cm]{/Users/javier/Desktop/Javier/PHD_RIT/LDCM/WaterQualityProtocols/Latex/Images/Lskymea.png}
-    \vspace{0.5cm}
-   \caption[]{\label{fig:Lskymea} $L_{sky}$ measurement.}
-\end{figure}
+
 
 \end{itemize}
 
@@ -176,6 +183,16 @@ Description: $L_{sky}$ is measured in the same fashion described in the previous
 	\item Avoid any reflection from nearby objects in the boat or ship by covering the ship's side with a black tarp. 
 \end{itemize}
 
+Examples of {\it in situ} spectral remote-sensing reflectance $R_{rs}$ for the 09-29-2014 scene are shown in \autoref{fig:insituRrs}.
+
+\begin{figure}[htbp!]
+      \centering
+      \includegraphics[trim=0 0 0 0,clip,width=9.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/RrsExamplesField.png}  
+      \caption[{\it In situ} remote-sensing reflectance for the 09-29-2014 scene]{{\it In situ} remote-sensing reflectance for the different sites on the 09-29-2014 scene . \label{fig:insituRrs}}
+\end{figure}
+
+
+
 
 
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -188,7 +205,7 @@ This part of the appendix describes how to take the lab measurements from the wa
 \begin{figure}[htb]
 % \subfloat[]{
 \centering
-    \includegraphics[width=14cm]{/Users/javier/Desktop/Javier/PHD_RIT/LDCM/WaterQualityProtocols/Images/WaterQualityProtocolDiagram.png}%}\hspace{0.5cm}
+    \includegraphics[width=15cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/WaterQualityProtocolDiagram_g.png}%}\hspace{0.5cm}
 % \subfloat[]{   
 %     \includegraphics[width=8cm]{/Users/javier/Desktop/Javier/PHD_RIT/20122_Winter/Instrumentation/report3/Images/SideFluoSpec.jpg}}
     \vspace{0.5cm}
@@ -238,6 +255,8 @@ The water sample is filtered, and a $OD_{fp}(\lambda)$ is measured using the spe
   \item Whatman Binder-Free Glass Microfiber Filters: Type GF/F - Diameter: 2.5cm
   \item Forceps
   \item Graduated cylinder
+  \item Beaker with purified water or DIW
+  \item Dropper or pipette
 \end{itemize}
 %*******************************
 \subsubsection*{Measurement}
@@ -302,18 +321,18 @@ Notes:
   \item Add sporadically purified water drops to the reference filter to avoid it to dry
   \item Repeat baseline measurement if needed
 \end{itemize}  
-{\bf Warning:}  Use of how methanol is risky due to flammability, and volatility. Extra precautions must be taken!!!
+{\bf Warning:}  Use of hot methanol is risky due to flammability, and volatility. Extra precautions must be taken!!!
 % %*******************************
 % \subsubsection{Calculations}
 
 
 %*******************************
 \subsection{CDOM absorption coefficients}
-\todo{complete!}The spectral absorption coefficient are calculated as \citep{Mitchell2002}
+The spectral absorption coefficient for CDOM are calculated as \citep{Mitchell2002}
 \begin{equation}
   a_g=2.303 \frac{(OD_s(\lambda)-OD_s(\lambda_{NIR}))}{l}~~[m^{-1}]
 \end{equation}
-\noindent where $OD_s(\lambda)$ is the \gls{od} of the sample measured with spectrophotometer, $\lambda_{NIR}$ is a wavelength in the \gls{nir} where the absorption by dissolved materials is assumed to be zero ,and $l$ the cuvette pathlength in meters.
+\noindent where $OD_s(\lambda)$ is the \gls{od} of the sample measured with spectrophotometer, $\lambda_{NIR}$ is a wavelength in the \gls{nir} where the absorption by dissolved materials is assumed to be zero, and $l$ the cuvette pathlength in meters.
 
 %*******************************
 \subsubsection{Equipment}
@@ -328,14 +347,17 @@ Notes:
 \begin{itemize}[itemsep=2pt,parsep=2pt]
   \item Spectrophotometer (Shimadzu UV2100V - Dual beam spectrophotometer)
   \item 2 clean quartz glass optical cuvettes (a.k.a. cells)
-  \item Purified water
+  \item Purified water or DIW
+  \item Optics paper
 \end{itemize}
 %*******************************
 \subsubsection{Procedure}
 %*******************************
 \begin{enumerate}[itemsep=2pt,parsep=2pt]
-  \item \textbf{Turn the Spectrophotometer on at least 30 minutes before measuring}. It needs to be warmed up for optimal measurements.
+  \item \textbf{Turn the Spectrophotometer on at least 30 minutes before measuring}. It needs to be warmed up for optimal measurements
   \item Wash the syringe filter out 3 times with purified water
+  \item Filter the water samples in advance with the syringe placing the filtered samples in the small glass beakers or small graduated cylinders.
+  \item Allow to reach room temperature to avoid bumps in the spectral signal in the NIR (these bumps are produced for temperature difference between the blank and the sample cells)
   \item Rinse cells a couple of times with a small amount of ethanol or acetone by shaking it (optional, if the cells seem dirty)
   \item Use cotton sweep to clean internal face (optional, if face seems dirty)
   \item Rinse cell with purified water
@@ -346,11 +368,12 @@ Notes:
   \item Place both blank and sample cells filled with purified water in the sample compartment of the spectrophotometer
   \item Press ``Auto Zero'' button in the spectrophotometer software
   \item Press ``Baseline'' button in the spectrophotometer software
-  \item Fill sample cell with filtered water from the syringe filter
+  \item Fill sample cell with filtered sample water from the small glass beakers or small graduated cylinders \label{item:fillsample}
   \item Press start button to start scan. This measurement is $OD_s(\lambda)$
-  \item Save Channel in the spectrophotometer software. Go to Data Translation $>$ ASCII Export in spectrophotometer software
+  \item Repeat from step \ref{item:fillsample} for all samples
+  \item Save Channel in the spectrophotometer software. Go to Data Translation $>$ ASCII Export in spectrophotometer software. The spectrophotometer software can only store a maximum number of ten scans 
 \end{enumerate}
-\textbf{Important:} the samples should be at room temperature. The \gls{od} measurement is sensible to temperature changes. Filter the water samples in advance and let them reach room temperature. It could take hours.
+\textbf{Important:} the samples should be at room temperature. The \gls{od} measurement is sensible to temperature changes. Filter the water samples in advance and let them reach room temperature. Be aware that it could take hours.
 % %*******************************
 % \subsubsection{Data treatment}
 %*******************************
@@ -394,14 +417,40 @@ Notes:
 \subsection{Chlorophyll-{\it a} concentration}
 
 Methods described by \citet{Lorenzen:1967fk} and \citet{Ritchie:2008eu}.
+%*******************************
+% ------------------------------
+\subsubsection{Equipment \citep{Tyler2013_chl_protocol}}
+\begin{multicols}{2}
+\subsubsection*{Filtration}
+\begin{itemize}[itemsep=0.01cm,leftmargin=*]
+  \item Vacuum pump
+  \item Filter tower
+  \item Glass fiber filters: Whatman $4.7cm$, $0.7\mu m$
+  \item Forceps
+  \item 15 ml Nalgene centrifuge tubes with caps
+  \item Drill
+  \item Teflon pestle and glass mortar
+  \item Cold $90\%$ acetone (spectrophotometric grade)
+  \item Squirt bottle with purified water or DIW
+  \item Optics paper
+\end{itemize}
+\subsubsection*{Measurement}
+\begin{itemize}[itemsep=0.01cm,leftmargin=*]
+  \item Spectrophotometer
+  \item Centrifuge
+  \item $5\%$ HCl
+  \item Pipette
+
+\end{itemize}
+\end{multicols}
 % ------------------------------
 \subsubsection{Procedures}
-The procedures are described by \citet{Tyler2013_chl_protocol}.
+These procedures are described by \citet{Tyler2013_chl_protocol}.
 
 % ------------------------------
 \subsubsection{Calculations}
 
-The calculations used \citep{Lorenzen:1967fk} are:
+The calculations used by \citep{Lorenzen:1967fk} are:
 
 \begin{equation}
   C_a = \frac{26.7(655_o - 665_a)\times v}{V\times l}
@@ -418,9 +467,6 @@ $v = $ volume of extract in mililiters $[ml]$ \\
 $V = $ volume of water filtered in liters $[L]$ \\
 $l = $ pathlength of cuvette ($1cm$ for the cuvette used) \\
 
-Note: concentrations are in $[mg/m^3]$ or $[\mu g/L]$.
-
-
 \subsection{Total suspended solids (TSS)}
 
 \subsubsection{Equipment}
@@ -428,9 +474,12 @@ Note: concentrations are in $[mg/m^3]$ or $[\mu g/L]$.
 % \subsubsection*{Filtration}
 \begin{itemize}[itemsep=2pt,parsep=2pt]
 
-  \item TCLP filters ($47 mm$, $0.7\mu m$)
-  \item Vacuum
-  \item Balance
+  \item TCLP filters ($47 mm$, $0.7\mu m$) or membrane of glass fiber filter -- GF/F is standard
+  \item Vacuum pump
+  \item Filter apparatus
+  \item Petri dishes or aluminum foil envelopes
+  \item Squirt bottle with DIW
+  \item balance
   \item Graduate cylinder
   \item Forceps
 
@@ -440,22 +489,37 @@ Note: concentrations are in $[mg/m^3]$ or $[\mu g/L]$.
 \subsubsection{Procedure}
 %*******************************
 \begin{enumerate}[itemsep=2pt,parsep=2pt]
-  \item Weight filters before filtering
-  \item Record volume to filter. Use graduated cylinder
-  \item Use vacuum to filter water with the TCLP filters to filter the particles
-  \item Weight filter in balance
-  \item Put in aluminum foil with weight
-  \item Dry sample at $75^\circ C$ for a couple of hours
+  \item Weigh filters before filtering
+  \item Store weighed filter in aluminum foil with label including weight
+  \item Shake sample well, and measure sample in a graduated cylinder. 
+  \item {\bf Record volume filtered}
+  \item Using forceps, place a pre-weighed filter (if GF/F, rough side up) on the filter tower
+  \item Pour sample water from the graduated cylinder into filter tower and turn vacuum pump
+  \item After sample has filtered, place in aluminum foil using the forceps and label including sample name and date
+  \item If not analyzing samples right away, place in freezer for storage
+  \item Dry sample at $60^\circ C$ for a couple of hours or overnight. Note: Check to see if the samples are dry by checking the weight at two different times
+  \item Weigh dried filter in the balance
 \end{enumerate}
+{\bf Notes:}
+\begin{itemize}[itemsep=2pt,parsep=2pt]
+  \item If the organic fraction (SPOM) of the TSS is desired, the filters need to be combusted in a muffle furnace at $450^\circ C$ for 4 before being weighed again
+  \item The weight should be obtained using a 6 place balance and recorded on a data sheet
+\end{itemize}
+
 
  %*******************************
 \subsubsection{Calculations}
 From \citet{Tyler2013_SPM_protocol}:
 
 \begin{equation}
-TSS = \frac{[final~filter~weight~(mg) - tare~filter~weight~(mg)]}{volume~filtered~(L)}~~~\left[\frac{mg}{L}\right]~or~\left[\frac{g}{m^3}\right]
+TSS~or~SPM = \frac{[final~filter~weight~(mg) - tare~filter~weight~(mg)]}{volume~filtered~(L)}
 \end{equation}
 
+\begin{equation}
+SPOM = \frac{[final~filter~weight~(mg) - AFDM~(mg)]}{volume~filtered~(L)}
+\end{equation}
+
+\noindent Note: concentrations are in $[mg/m^3]$ or $[\mu g/L]$.
 
 % &&&&&&&&&&&&&&&&&&
 
