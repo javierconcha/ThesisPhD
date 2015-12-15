@@ -1,4 +1,4 @@
-\documentclass[oneside,11pt,draft]{book}
+\documentclass[oneside,11pt]{book}
 
 \usepackage{graphicx}
 
@@ -113,8 +113,8 @@
 
 % Added 11-17-13 ----------------------------------------
 % Select what to do with todonotes: 
-% \usepackage[disable]{todonotes} % notes not showed
-\usepackage[draft]{todonotes}   % notes showed
+\usepackage[disable]{todonotes} % notes not showed
+% \usepackage[draft]{todonotes}   % notes showed
 \setlength{\marginparwidth}{2cm}
 
 \usepackage{tikz} % for flow charts
@@ -233,14 +233,15 @@
 
 % Added 10-26-15 ----------------------------------------
 \usepackage{listings}
- 
+\usepackage{xcolor} 
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
  
 \lstset{ %
   % language=Matlab,                % the language of the code
-  basicstyle=\small\ttfamily,           % the size of the fonts that are used for the code
+  basicstyle=\small\ttfamily\color{black},           % the size of the fonts that are used for the code
   numbers=left,                   % where to put the line-numbers
   numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
   stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
@@ -258,9 +259,9 @@
   breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
   title=\lstname,                   % show the filename of files included with \lstinputlisting;
                                   % also try caption instead of title
-  keywordstyle=\color{blue},          % keyword style
-  commentstyle=\color{dkgreen},       % comment style
-  stringstyle=\color{mauve},         % string literal style
+  keywordstyle=\color{black},          % keyword style
+  commentstyle=\color{black},       % comment style
+  stringstyle=\color{black},         % string literal style
   escapeinside={\%*}{*)},            % if you want to add a comment within your code
   morekeywords={*,...,lsqnonlin},              % if you want to add more keywords to the set
   aboveskip=10pt,
@@ -374,11 +375,11 @@ Therefore, this study shows that the Landsat 8 satellite can be utilized over Ca
 \phantomsection
 \addcontentsline{toc}{chapter}{Acknowledgments}
 \setlength{\parindent}{20pt}
-I would like to extend a special thanks to the United States Geological Survey (USGS) for its sponsorship (contract number G12PC00065) and for the free-access Landsat archive that has made this effort possible. Thanks to the Fulbright Commission for opening me the doors and sponsoring my M.S. degree. Special thanks to the Monroe County Environmental Laboratory of the Monroe County Department of Environmental Services for the $C_a$ and $TSS$ measurements used to validate our in house concentration measurements, especially Scott, Providencia and Gary. Nina Raque\~{n}o is thanked for her invaluable help in the logistic of the field data collections, and faculty, staff and students at the Rochester Institute of Technology for helping in the data collection, especially Paul Romanczyk, Rolando Raque\~{n}o and Captain Mark. Also, thanks to Dr. Christy Tyler for facilitating the Aquatic Ecology Lab at RIT for the $C_a$ measurements. Also, thanks to the people who help me in one way or other in the data collections. Also, thanks to Ocean Color community, specially Dr. Emmanuel Boss and attendants of the 2013 Ocean color and instrumentation summer course at the Darling Marine Center for including me in their family. To my advisor Dr. John Schott for believing on me, guiding me and allowing me independence. Thanks to the administrative staff at the center, specially Cindy Schultz, Sue Chan and Amanda Zeluff for always helping me with a smile.
+I would like to extend special thanks to the United States Geological Survey (USGS) for its sponsorship (contract number G12PC00065) and for the free-access Landsat archive that has made this effort possible. Thanks to the Fulbright Commission for opening me the doors and sponsoring my M.S. degree. Special thanks to the Monroe County Environmental Laboratory of the Monroe County Department of Environmental Services for the $C_a$ and $TSS$ measurements used to validate our in-house concentration measurements, especially Scott, Providencia, and Gary. Nina Raque\~{n}o is thanked for her invaluable help in the logistic of the field data collections. Faculty, staff, and students at the Chester F. Carlson Center for Imaging Science at RIT for helping in the data collection, especially Paul Romanczyk, Rolando Raque\~{n}o, Aaron Gerace and Captain Mark. Thanks to the professors Dr. Kerekes, Dr. Messinger. Dr. Bachmann, and Dr. Vodacek, among others, for their support. Also, thanks to Dr. Christy Tyler for facilitating the Aquatic Ecology Lab at RIT for the $C_a$ measurements. Also, thanks to Ocean Color community, especially Dr. Emmanuel Boss and attendants of the 2013 Ocean color and instrumentation summer course at the Darling Marine Center for including me in their family. To my advisor Dr. John Schott for believing on me, guiding me and allowing me independence. Thanks to the administrative staff at the center, especially Cindy, Sue, and Amanda Zeluff for always helping me with a smile.
 
-It is not easy to be far away from my beloved ones. I cannot describe the pride I feel of having what a supporting family that overcomes the sadness of not being together with happiness of me achieving my goals. Thanks to my parents Osvaldo Concha Silva and Nelly del Carmen Sep\'ulveda Reyes for sacrificing their life for ours and always giving the best for our education. I would not be here if were not for them. Thanks to my siblings Loretto Constanza Concha Sep\'ulveda and Alvaro Nicolas Concha Sep\'ulveda for always supporting me.
+It is not easy to be far away from my beloved ones. I cannot describe the pride I feel of having what a supporting family that overcomes the sadness of not being together with the happiness of me achieving my goals. Thanks to my parents Osvaldo Concha Silva and Nelly del Carmen Sep\'ulveda Reyes for sacrificing their life for ours and always giving the best for our education. I would not be here if were not for them. Thanks to my siblings Loretto Constanza Concha Sep\'ulveda and Alvaro Nicol\'as Concha Sep\'ulveda for always supporting me.
 
-Being at RIT and in Rochester, NY was a great experience. Many are the ones to thanks for making my time here enjoyable. My friends Aly, Anton, Claudia, Dmitry and my girlfriend Yana. To my classmates: Bikash, Viraj, Madurima, Peter Sun, Dave Kelbe. To he Latin Rhythm Dance Club at RIT. Especially thanks to my best support here in the U.S.: my dear friend Aixa de Jesus. My adopted Chilean family and dancers in Rochester: Marcia, Rosa and Doña Rosita, Raul, Willy and Marisol, Harold and Nancy. My Chilean friends in University of Rochester: Felipe, Maria Eugenia, Emilio, Brenda and Pauly. And finally to all the Rochester's dance community that helped me not to get insane on all these five years.
+Being at RIT and in Rochester, NY was a great experience. Many are the ones to thank for making my time here enjoyable. Especially thanks to my best support here in the U.S.: my dear friend Aixa de Jes\'us. My friends Aly, Anton, Claudia, Dmitry and my girlfriend Yana. To my classmates: Bikash, Viraj, Madurima, Peter Sun, Dave Kelbe, Leidy, and Gary. To the Latin Rhythm Dance Club at RIT, the Fulbright Scholars Association, and Tiger Tales Toastmansters International. My adopted Chilean family and dancers in Rochester: Marcia, Rosa and Doña Rosita, Raul, Willy and Marisol, Harold and Nancy. My Chilean friends in the University of Rochester: Felipe, Maria Eugenia, Emilio, Brenda, and Pauly. Finally, to the Rochester's dance community that helped me not to get insane on all these five years.
 \end{acknowledgements}
 %*****************************************************************************************************
 

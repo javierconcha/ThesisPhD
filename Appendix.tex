@@ -374,6 +374,14 @@ The spectral absorption coefficient for CDOM are calculated as \citep{Mitchell20
   \item Save Channel in the spectrophotometer software. Go to Data Translation $>$ ASCII Export in spectrophotometer software. The spectrophotometer software can only store a maximum number of ten scans 
 \end{enumerate}
 \textbf{Important:} the samples should be at room temperature. The \gls{od} measurement is sensible to temperature changes. Filter the water samples in advance and let them reach room temperature. Be aware that it could take hours.
+
+Examples of absorption coefficients measured in the lab are shown in \autoref{fig:IOPlabmea} for the three CPAs.
+
+\begin{figure}[htb!]
+\centering
+     \includegraphics[trim=0 0 0 0,clip,width=8.0cm]{/Users/javier/Desktop/Javier/PHD_RIT/Latex/ThesisPhD/Images/IOPExamplesField.png} 
+\caption{Example of absorption coefficients measured in the lab. \label{fig:IOPlabmea}}
+\end{figure}     
 % %*******************************
 % \subsubsection{Data treatment}
 %*******************************
@@ -416,41 +424,7 @@ The spectral absorption coefficient for CDOM are calculated as \citep{Mitchell20
 % ------------------------------
 \subsection{Chlorophyll-{\it a} concentration}
 
-Methods described by \citet{Lorenzen:1967fk} and \citet{Ritchie:2008eu}.
-%*******************************
-% ------------------------------
-\subsubsection{Equipment \citep{Tyler2013_chl_protocol}}
-\begin{multicols}{2}
-\subsubsection*{Filtration}
-\begin{itemize}[itemsep=0.01cm,leftmargin=*]
-  \item Vacuum pump
-  \item Filter tower
-  \item Glass fiber filters: Whatman $4.7cm$, $0.7\mu m$
-  \item Forceps
-  \item 15 ml Nalgene centrifuge tubes with caps
-  \item Drill
-  \item Teflon pestle and glass mortar
-  \item Cold $90\%$ acetone (spectrophotometric grade)
-  \item Squirt bottle with purified water or DIW
-  \item Optics paper
-\end{itemize}
-\subsubsection*{Measurement}
-\begin{itemize}[itemsep=0.01cm,leftmargin=*]
-  \item Spectrophotometer
-  \item Centrifuge
-  \item $5\%$ HCl
-  \item Pipette
-
-\end{itemize}
-\end{multicols}
-% ------------------------------
-\subsubsection{Procedures}
-These procedures are described by \citet{Tyler2013_chl_protocol}.
-
-% ------------------------------
-\subsubsection{Calculations}
-
-The calculations used by \citep{Lorenzen:1967fk} are:
+There are two kinds of spectrometric methods to determine chlorophyll concentrations. The first methods take into account the presence of pheophytin-{\it a}, which is a common degradation product of chlorophyll-{\it a}, that can interfere with the determination of chlorophyll-{\it a} because it absorbs light and fluoresce in the same region of the spectrum as does chlorophyll-{\it a} \citep{StandardMethodsWater2011}. Examples of these methods are described by \citet{Lorenzen:1967fk}. These methods use a solvent for extraction, $90\%$ acetone in this case. The pheophytin-{\it a} concentration is estimated by adding acid to the chlorophyll-{\it a}, which results in loss of the magnesium atom, converting the chlorophyll-{\it a} to pheophytin-{\it a}. The calculations used by \citep{Lorenzen:1967fk} are:
 
 \begin{equation}
   C_a = \frac{26.7(655_o - 665_a)\times v}{V\times l}
@@ -466,6 +440,93 @@ $665_a = 665 - (750-blank~value)$ after acidification  \\
 $v = $ volume of extract in mililiters $[ml]$ \\
 $V = $ volume of water filtered in liters $[L]$ \\
 $l = $ pathlength of cuvette ($1cm$ for the cuvette used) \\
+
+The second kind of spectrophotometric methods do not take into account the pheophytin-{\it a} presence, and they are based only on the absorbance values at specific wavelengths (a.k.a. uncorrected methods). These are empirical methods that use non linear least squares fitting methods over a dataset with known concentrations. Examples of these methods are described by \citet{Ritchie:2008eu}. One algorithm to determine chlorophyll-{\it a} concentration with $90\%$ acetone as solvent that uses blank-corrected absorbances measured at four wavelengths (quadrichroic) is \citep{Ritchie:2008eu}
+\begin{equation}
+  C_a = -0.3319A_{630}-1.7485*A_{647}+11.9442A_{664}-1.4306A_{691} (\pm 0.0020)
+\end{equation}
+
+\begin{equation}
+  Chlorophyll a, mg/m^3 = \frac{C_a\times extract~volume, L}{volume~of~sample, m^3}
+\end{equation}
+% SM 10200 H, 17th – 20th editions & on-line (2001) edition, published by APHA
+% Chl a (10200Hb) and Chl a (10200Hc)
+% =$Y9*$E9/$D9
+% =-0.3319*$F9-1.7485*$G9+11.9442*$H9-1.4306*$J9
+
+Similar spectrophotometric methods and other kinds of methods are also described in \citet{StandardMethodsWater2011}.
+%*******************************
+% ------------------------------
+\subsubsection[Equipment]{Equipment \citep{Tyler2013_chl_protocol}}
+\begin{multicols}{2}
+\subsubsection*{Filtration}
+\begin{itemize}[itemsep=0.01cm,leftmargin=*]
+  \item Vacuum pump
+  \item Filter tower
+  \item Glass fiber filters: Whatman $4.7cm$, $0.7\mu m$
+  \item Graduate cylinder
+  \item Forceps
+  \item 15 ml Nalgene centrifuge tubes with caps
+  \item Drill
+  \item Teflon pestle and glass mortar
+  \item Cold $90\%$ acetone (spectrophotometric grade)
+  \item Squirt bottle with purified water or DIW
+  \item Optics paper
+  \item Aluminum foil envelopes
+  \item MgCO$_3$ slurry (1g/100ml - optional)
+\end{itemize}
+\subsubsection*{Measurement}
+\begin{itemize}[itemsep=0.01cm,leftmargin=*]
+  \item Spectrophotometer
+  \item 2 cuvettes
+  \item Centrifuge
+  \item $5\%$ HCl
+  \item Pipette
+
+\end{itemize}
+\end{multicols}
+% ------------------------------
+\subsubsection{Procedures}
+These procedures are described by \citet{Tyler2013_chl_protocol}.
+\subsubsection*{Filtration}
+\begin{enumerate}
+  \item Using forceps, place glass fiber filter onto tower, rough side up
+  \item Shake sample well, and pour into graduated cylinder
+  {\bf \item Record volume of water filtered}
+  \item Turn on the vacuum pump. Vacuum pressure should always stay at or below 7mm Hg to avoid breaking the cells 
+  \item Optional: Add 1 ml of MgCO$_3$ slurry to filter after all of the water has passed through
+  \item Turn off vacuum pump
+  \item Fold filter in half, and place in aluminum foil envelope (or Preti dish)
+  \item Place immediately in freezer (-80$^\circ$ is best)
+\end{enumerate}
+
+\subsubsection*{Extraction}
+\begin{enumerate}
+  \item Using forceps, tear up filter and put into glass mortar
+  \item Add 6 ml $90\%$ acetone
+  \item Using pestle attached to drill, grind sample until it is a slurry
+  \item Pour sample into Nalgene test tube
+  \item Using 3 additional ml of acetone, rinse mortar and add rinse to test tube
+  \item Cap tube, label with volume filtered, acetone volume, and date, and place immediately in freezer over night
+\end{enumerate}
+
+\subsubsection*{Spectrophotometric Measurement}
+\begin{enumerate}
+  \item Turn on spec and let it warm up for 15-20 minutes, set the wavelength to 665 nm
+  \item Pipette 3 ml of $90\%$ acetone into each cuvette, place in the spec
+  \item Rezero the instrument
+  \item Change the wavelength to 750 nm and record the blank value
+  \item Keep the blank cuvette on the instrument and empty the sample cuvette into a waste bottle, rinse once with DIW, and once with $90\%$ acetone
+  \item Remove samples tubes from freezer and shake to resuspend
+  \item Centrifuge samples tubes for 5 minutes
+  \item Shake samples tubes to remove filter particles from the wall of the tubes
+  \item Centrifuge samples tubes again for 10 minutes
+  \item Pipette 3 ml of sample into the sample cuvette
+  \item Read absorbance at 630, 647, 664, 665, 691, and 750 nm
+  \item Add two drops of $5\%$ HCl to the cuvette and wait 1 minute
+  \item Read absorbance at 665 and 750 nm
+\end{enumerate}
+
 
 \subsection{Total suspended solids (TSS)}
 
@@ -526,9 +587,10 @@ SPOM = \frac{[final~filter~weight~(mg) - AFDM~(mg)]}{volume~filtered~(L)}
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 \chapter{Main Codes}
 
+The codes used in this research can be found at \url{https://github.com/javierconcha}.
 
 \singlespacing
-\lstset{language=bash,caption={Example of an input file used in Ecolight.},label=code:EcolightInput}
+\lstset{language=bash,rulecolor=\color{black},caption={Example of an input file used in Ecolight.},label=code:EcolightInput}
 \renewcommand{\lstlistingname}{Code}
 \begin{lstlisting}
 0,400,2500,.02,488,.00026,1,5.3
@@ -597,5 +659,451 @@ dummyComp.txt
 /home/jxc4005/hydrolight5Aaron_install/data/user/Ed_total.txt
 /home/jxc4005/hydrolight5Aaron_install/data/MyBiolumData.txt
 \end{lstlisting}
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+\singlespacing
+\lstset{language=matlab,rulecolor=\color{black},caption={Optimization Routine in MATLAB.},label=code:optimization routine}
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}
+% Optimization Routine
+function [XResults,residual,IMatrix] = opt(Ytest,LUT,LUTconc,LUTconcInput,LUTconcDPF)
+format short;
+
+% Xtest: water pixels concentration from the image; Dim: 2000x3
+% Ytest: water pixels reflectance from the image; Dim: 2000x8
+% LUT: LUT
+
+% global visual
+% global visual2
+%% Reading in the LUT
+Y = LUT;
+
+%% Optimization
+% [f2,f1,f3] = ndgrid(CDOMconc,SMconc,CHLconc); % CDOM SM CHL
+options = optimset('Display','off','Tolfun',1e-10);
+
+tic
+
+matlabpool open 4 % for using paralel computing
+
+XResults    = zeros(size(Ytest,1),3);
+residual    = zeros(size(Ytest));
+IMatrix     = zeros(size(Ytest,1),1);
+%%
+
+parfor i = 1:size(Ytest,1)
+%     if visual==1
+% figure(30)
+% clf
+% 
+% i
+% if i==172
+%    disp('i=172') 
+% end
+
+%     figure(68)
+%     clf
+%     ylim([0 0.05])
+%     end 
+%     
+%     if visual2==1
+%     figure(69)
+%     xlim([0 68])
+%     ylim([0 24])
+%     zlim([0 14])
+%     end
+    
+
+    % select x0
+    a=sum((Y-repmat(Ytest(i,:),size(Y,1),1)).^2,2);
+    [~,index]=min(a);
+    x0=LUTconc(index,:);
+
+    % Select from the LUT with same input. From ponds OR lake inputs
+    cond1 = LUTconcInput == LUTconcInput(index); %fix pond or lake
+    cond2 = LUTconcDPF == LUTconcDPF(index); % fix phase function
+    cond3 =  cond1&cond2;
+    
+    IMatrix(i) = index; % index in the LUT
+    
+    CDconc  = unique(LUTconc(cond3,3))';
+    SMconc  = unique(LUTconc(cond3,2))';
+    CHconc  = unique(LUTconc(cond3,1))';
+    
+    LUTconcUsed = LUTconc(cond3,:);
+    YUsed = Y(cond3,:);
+    
+    % for the extremes (myfun_mod.m error otherwise)
+    if x0(1)==max(CHconc) , x0(1)=CHconc(end-1); end
+    if x0(2)==max(SMconc) , x0(2)=SMconc(end-1); end
+    if x0(3)==max(CDconc) , x0(3)=CDconc(end-1); end
+    
+    % Y: LUT
+    % Ytest: TestSamples
+    % f1,f2,f3: Grid for the LUT
+    [XResults(i,:),~,residual(i,:)]= ...
+        lsqnonlin(@MyTrilinearInterp,x0,...
+            [min(CHconc);min(SMconc);min(CDconc)],...
+            [max(CHconc);max(SMconc);max(CDconc)],...
+            options,YUsed,Ytest(i,:),LUTconcUsed);
+    
+end
+
+
+matlabpool close % for using paralel computing
+
+disp('Elapsed time is (min):')
+disp(toc/60)
+beep
+pause(0.1)
+beep
+pause(0.1)
+beep
+pause(0.1)
+beep
+\end{lstlisting}
+
+
+
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+\singlespacing
+\lstset{language=matlab,rulecolor=\color{black},caption={"MyTrilinearInterp.m": Trylinear interpolation for the optimization routine.},label=code:trylinearinterp}
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}
+function f = MyTrilinearInterp(x0,LUT,Ytest,LUTconc)
+% Trilinear interpolation
+% By Javier A. Concha
+% 05-09-13
+% Trilinear interpolation for non uniform and monotoning grid
+%% Intialization
+% Initial Concentration
+
+nx = x0(1); 
+ny = x0(2);
+nz = x0(3);
+
+% Concentrations per components
+xx = unique(LUTconc(:,1)); % CHL
+yy = unique(LUTconc(:,2)); % SM
+zz = unique(LUTconc(:,3)); % CDOM
+%% To find index in between xx and weight for each dim
+index_up = find(xx >= nx,1);
+
+if isempty(index_up)
+    index_up = length(xx);
+end
+
+index_low = index_up-1;
+
+if index_low ~= 0
+    xl = xx(index_low); % lower concentration
+else xl = 0;
+end
+xu = xx(index_up);      % upper concentration
+
+wx = (nx-xl)/(xu-xl);
+if isnan(wx)
+    wx = 1;
+end
+%% To find index in between yy and weight for each dim
+indey_up = find(yy >= ny,1);
+
+if isempty(indey_up)
+    indey_up = length(yy);
+end
+
+indey_low = indey_up-1;
+
+if indey_low ~= 0
+    yl = yy(indey_low);
+else yl = 0;
+end
+yu = yy(indey_up);
+
+
+wy = (ny-yl)/(yu-yl);
+if isnan(wy)
+    wy = 1;
+end
+%% To find index in between zz and weight for each dim
+indez_up = find(zz >= nz,1);
+
+if isempty(indez_up)
+    indez_up = length(zz);
+end
+
+indez_low = indez_up-1;
+
+if indez_low ~= 0
+    zl = zz(indez_low);
+else zl = 0;
+end
+zu = zz(indez_up);
+
+wz = (nz-zl)/(zu-zl);
+if isnan(wz)
+    wz = 1;
+end
+%% Look up the values of the 8 points surrounding the cube
+if (index_low ~= 0 && indey_low ~= 0 && indez_low ~= 0)
+    V000 = LUT(LUTconc(:,1)==xl & ...
+        LUTconc(:,2)==yl & ...
+        LUTconc(:,3)==zl,:);
+else
+    V000 = zeros(1,size(LUT,2));
+end
+
+if (index_low ~= 0 && indey_low ~= 0)
+    V001 = LUT(LUTconc(:,1)==xl & ...
+        LUTconc(:,2)==yl & ...
+        LUTconc(:,3)==zu,:);
+else
+    V001 = zeros(1,size(LUT,2));
+end
+
+if (index_low ~= 0 && indez_low ~= 0)
+    V010 = LUT(LUTconc(:,1)==xl & ...
+        LUTconc(:,2)==yu & ...
+        LUTconc(:,3)==zl,:);
+else
+    V010 = zeros(1,size(LUT,2));
+end
+
+if index_low ~= 0
+    V011 = LUT(LUTconc(:,1)==xl & ...
+        LUTconc(:,2)==yu & ...
+        LUTconc(:,3)==zu,:);
+else
+    V011 = zeros(1,size(LUT,2));
+end
+
+if (indey_low ~= 0 && indez_low ~= 0)
+    V100 = LUT(LUTconc(:,1)==xu & ...
+        LUTconc(:,2)==yl & ...
+        LUTconc(:,3)==zl,:);
+else
+    V100 = zeros(1,size(LUT,2));
+end
+
+if indey_low ~= 0
+    V101 = LUT(LUTconc(:,1)==xu & ...
+        LUTconc(:,2)==yl & ...
+        LUTconc(:,3)==zu,:);
+else
+    V101 = zeros(1,size(LUT,2));
+end
+
+if indez_low ~= 0
+    V110 = LUT(LUTconc(:,1)==xu & ...
+        LUTconc(:,2)==yu & ...
+        LUTconc(:,3)==zl,:);
+else
+    V110 = zeros(1,size(LUT,2));
+end
+
+V111 = LUT(LUTconc(:,1)==xu & ...
+    LUTconc(:,2)==yu & ...
+    LUTconc(:,3)==zu,:);
+
+Vxyz =  ...
+    V000*(1-wx)*(1-wy)*(1-wz) +...
+    V001*(1-wx)*(1-wy)*wz + ...
+    V010*(1-wx)*wy*(1-wz) + ...
+    V011*(1-wx)*wy*wz + ...
+    V100*wx*(1-wy)*(1-wz) + ...
+    V101*wx*(1-wy)*wz + ...
+    V110*wx*wy*(1-wz) + ...
+    V111*wx*wy*wz;
+
+f = Ytest - Vxyz;
+
+
+% figure(30)
+% plot(Ytest,'r')
+% hold on
+% plot(Vxyz,'g')
+% plot(V000)
+% plot(V001)
+% plot(V010)
+% plot(V011)
+% plot(V100)
+% plot(V101)
+% plot(V110)
+% plot(V111)
+
+\end{lstlisting}
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+\singlespacing
+\lstset{language=bash,rulecolor=\color{black},caption={Bash script to create LUT in Hydrolight.},label=code:LUT creation}
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}
+#!/bin/bash
+rm directory_list.txt
+rm -r SITE/
+rm concentration_list.txt
+for SITE in `cat SITE_list.txt`
+do
+for CHL in `cat CHL_list.txt`
+do
+      for SM in `cat SM_list.txt`
+  do
+    for CDOM in `cat CDOM_list.txt`
+    do
+      for DPF in `cat DPF_list.txt`
+      do
+      directory="/home/jxc4005/HYDROLIGHT/EL5.2/SITE/"$SITE"/CHL/"$CHL"/SM/"$SM"/CDOM/"$CDOM"/DPF/"$DPF 
+      mkdir -p $directory
+      echo $directory
+      echo $directory >> directory_list.txt
+      echo $SITE $CHL $SM $CDOM $DPF>> concentration_list.txt 
+      mkdir -p $directory/ref 
+      
+      let i++
+      input=$SITE".txt"   
+      cat $input | sed 's"site"'$SITE'"g' | sed 's"flaCH"'$CHL'"g' | sed 's"flaCD"'$CDOM'"g' | sed 's"flaSM"'$SM'"g' | sed 's"user_dpfCHL"'$DPF'"g' | sed 's"user_dpfTSS"'$DPF'"g'  > $directory/input.txt
+
+        cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
+      #cp ./CommonInputs/* $directory/
+      #sbatch --qos=cis-normal $directory/ELRun.sh
+      sbatch --qos free --partition work --mem=12 $directory/ELRun.sh
+      #sbatch --qos schott --partition premium $directory/ELRun.sh
+    # sbatch --qos schott --partition premium --mem=12 $directory/ELRun.sh
+      echo $i
+      done
+    done
+  done
+done
+done 
+
+\end{lstlisting}
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+\singlespacing
+\lstset{language=bash,rulecolor=\color{black},caption={"ELRun.sh": Script to submit jobs to SLURM.},label=code:ELRun_sh}
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}
+#!/bin/bash -l
+# NOTE the -l flag!
+#
+
+# This is an example job file for a multi-core MPI job.
+# Note that all of the following statements below that begin
+# with #SBATCH are actually commands to the SLURM scheduler.
+# Please copy this file to your home directory and modify it
+# to suit your needs.
+# 
+# If you need any help, please email rc-help@rit.edu
+#
+
+# Name of the job - You'll probably want to customize this.
+#SBATCH -J ELRun
+
+# Standard out and Standard Error output files
+#SBATCH -o ELRun.output
+#SBATCH -e ELRun.output
+
+# Request 2 mins run time MAX, anything over will be KILLED
+#SBATCH -t 0:5:0
+
+# Put the job in the "work" partition and request FOUR cores
+# "work" is the default partition so it can be omitted without issue.
+#SBATCH -p work -n 1
+
+
+#
+# Your job script goes below this line.  
+# 
+
+#/home/jxc4005/ecolight52_install/Code/Ecolight/mainEL_stndg95.exe < ./input.txt
+
+cd flag
+
+/home/jxc4005/ecolight52_install/Code/Ecolight/mainEL_stnd.exe < ./input.txt
+
+awk 'c&&!--c;/Rrs \= Lw\/Ed/{c=3}' POutputEL.txt |awk '{ print $8 }'>tempR.txt
+
+mv tempR.txt ./ref/
+#rm ./* 2> /dev/null
+#exit
+
+\end{lstlisting}
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+\singlespacing
+\lstset{language=bash,rulecolor=\color{black},caption={Bash script to extract Rrs from Hydrolight runs.},label=code:Rrs extraction from Hydrolight runs}
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}
+#!/bin/bash
+rm ./work/Rvector.txt
+#rm file_list.txt
+rm concentration_listright.txt
+rm wrong_list.txt
+rm right_list.txt
+#find SITE/ -name "tempR.txt" > file_list.txt
+j=0
+
+for DIR in `cat directory_list.txt`
+do
+  echo $DIR
+        SITE="$(echo $DIR | cut -d/ -f7)"
+        CHL="$(echo $DIR | cut -d/ -f9)"
+        SM="$(echo $DIR | cut -d/ -f11)"
+        CDOM="$(echo $DIR | cut -d/ -f13)"
+        DPF="$(echo $DIR | cut -d/ -f15)"
+        echo $SITE $CHL $SM $CDOM $DPF
+
+  directory="/home/jxc4005/HYDROLIGHT/EL5.2/SITE/"$SITE"/CHL/"$CHL"/SM/"$SM"/CDOM/"$CDOM"/DPF/"$DPF
+
+  if [ " $(cat $DIR/ref/tempR.txt | wc -l)" -ne 120 ]
+        then
+                echo $DIR >> $PWD/wrong_list.txt
+    echo Warning: $DIR not completed yet and resubmitted!
+    
+    input=$SITE".txt"
+                cat $input | sed 's"site"'$SITE'"g' | sed 's"flaCH"'$CHL'"g' | sed 's"flaCD"'$CDOM'"g' | sed 's"flaSM"'$SM'"g' | sed 's"user_dpfCHL"'$DPF'"g' | sed 's"user_dpfTSS"'$DPF'"g'  > $directory/input.txt
+
+                 cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
+                 #sbatch --qos=cis-normal $directory/ELRun.sh
+     #sbatch --qos=cis-nopreempt $directory/ELRun.sh
+                 #sbatch --qos schott --partition premium $directory/ELRun.sh
+           sbatch --qos free  --partition work --mem=12 $directory/ELRun.sh
+     let j++
+  else
+
+                echo $DIR >> $PWD/right_list.txt
+                cat $DIR/ref/tempR.txt >> $PWD/work/Rvector.txt
+                echo $SITE $CHL $SM $CDOM $DPF>> $PWD/concentration_listright.txt
+                #rm $directory/* 2> /dev/null
+  fi
+        let i++
+        echo $i
+
+done
+echo Jobs completed correctly: $(cat ./right_list.txt|wc -l)
+echo Jobs not completed and resubmitted: $j
+
+if [ "$j" -ne 0 ]
+then
+  nohup nice ./monitor.sh 2> nohup.out &
+else
+  exit
+fi
+
+
+\end{lstlisting}
+
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+% \singlespacing
+% \lstset{language=matlab,caption={Example of an input file used in Ecolight.},label=code:optimization routine}
+% \renewcommand{\lstlistingname}{Code}
+% \begin{lstlisting}
+
+% \end{lstlisting}
+
 
 \end{appendices}
